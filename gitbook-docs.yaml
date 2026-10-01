@@ -16,18 +16,6 @@ site:
           content:
             directory: ./home
     - type: section
-      key: mariadb-platform-sec
-      title: Mariadb Platform
-      path: mariadb-platform
-      children:
-        - type: space
-          key: mariadb-platform
-          title: Mariadb Platform
-          path: mariadb-platform
-          default: true
-          content:
-            directory: ./platform
-    - type: section
       key: server-sec
       title: Server
       path: server
@@ -39,66 +27,71 @@ site:
           default: true
           content:
             directory: ./server
-    - type: section
-      key: maxscale-sec
-      title: MaxScale
-      path: maxscale
+    - type: section-group
+      key: mariadb-platform-group
+      title: MariaDB Platform
+      icon: layer-group
       children:
-        - type: space
-          key: maxscale
+        - type: section
+          key: mariadb-platform-sec
+          title: Platform Overview
+          path: mariadb-platform
+          children:
+            - type: space
+              key: mariadb-platform
+              title: Platform Overview
+              path: mariadb-platform
+              default: true
+              content:
+                directory: ./platform
+        - type: section
+          key: maxscale-sec
           title: MaxScale
           path: maxscale
-          default: true
-          content:
-            directory: ./maxscale
-    - type: section
-      key: analytics-sec
-      title: Analytics
-      path: analytics
-      children:
-        - type: space
-          key: analytics
-          title: Analytics
-          path: analytics
-          default: true
-          content:
-            directory: ./analytics
-    - type: section
-      key: galera-cluster-sec
-      title: Galera Cluster
-      path: galera-cluster
-      children:
-        - type: space
-          key: galera-cluster
+          children:
+            - type: space
+              key: maxscale
+              title: MaxScale
+              path: maxscale
+              default: true
+              content:
+                directory: ./maxscale
+        - type: section
+          key: galera-cluster-sec
           title: Galera Cluster
           path: galera-cluster
-          default: true
-          content:
-            directory: ./galera-cluster
-    - type: section
-      key: connectors-sec
-      title: Connectors
-      path: connectors
-      children:
-        - type: space
-          key: connectors
-          title: Connectors
-          path: connectors
-          default: true
-          content:
-            directory: ./connectors
-    - type: section
-      key: enterprise-tools-sec
-      title: Enterprise Tools
-      path: enterprise-tools
-      children:
-        - type: space
-          key: enterprise-tools
+          children:
+            - type: space
+              key: galera-cluster
+              title: Galera Cluster
+              path: galera-cluster
+              default: true
+              content:
+                directory: ./galera-cluster
+        - type: section
+          key: analytics-sec
+          title: Analytics
+          path: analytics
+          children:
+            - type: space
+              key: analytics
+              title: Analytics
+              path: analytics
+              default: true
+              content:
+                directory: ./analytics
+        - type: section
+          key: enterprise-tools-sec
           title: Enterprise Tools
           path: enterprise-tools
-          default: true
-          content:
-            directory: ./tools
+          children:
+            - type: space
+              key: enterprise-tools
+              title: Enterprise Tools
+              path: enterprise-tools
+              default: true
+              content:
+                directory: ./tools
     - type: section
       key: mariadb-cloud-sec
       title: MariaDB Cloud
@@ -111,6 +104,18 @@ site:
           default: true
           content:
             directory: ./mariadb-cloud
+    - type: section
+      key: connectors-sec
+      title: Connectors
+      path: connectors
+      children:
+        - type: space
+          key: connectors
+          title: Connectors
+          path: connectors
+          default: true
+          content:
+            directory: ./connectors
     - type: section
       key: release-notes-sec
       title: Release Notes
