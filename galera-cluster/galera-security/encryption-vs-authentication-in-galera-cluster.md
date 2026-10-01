@@ -2,7 +2,7 @@
 description: >-
   How encryption and peer authentication differ in MariaDB Galera Cluster, what
   each wsrep_ssl_mode value guarantees, and why the default SERVER mode is
-  insufficient for compliance regimes that require peer authentication.
+  insufficient for compliance regimes that require
 icon: shield-halved
 ---
 

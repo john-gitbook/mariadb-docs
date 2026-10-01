@@ -305,7 +305,7 @@ Make sure to replace the paths with whatever is relevant on your system. This sh
 
 ### TLS Using OpenSSL Encryption With Galera-Compatible Certificates and Keys <a href="#tls-using-openssl-encryption-with-galera-compatible-certificates-and-keys" id="tls-using-openssl-encryption-with-galera-compatible-certificates-and-keys"></a>
 
-To generate keys compatible with this encryption method, follow [Certificate Creation With OpenSSL](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-in-transit-encryption/certificate-creation-with-openssl).
+To generate keys compatible with this encryption method, follow [Certificate Creation With OpenSSL](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-in-transit-encryption/certificate-creation-with-openssl).
 
 First, generate the keys and certificates:
 
@@ -345,7 +345,7 @@ The `ssl-mode` option in the `[sst]` section is the higher-level TLS control for
 
 | `ssl-mode`        | Behavior                                                                       |
 | ----------------- | ------------------------------------------------------------------------------ |
-| `DISABLED`        | Default. TLS not required (legacy `encrypt`/`tca`/`tcert`/`tkey` still apply).  |
+| `DISABLED`        | Default. TLS not required (legacy `encrypt`/`tca`/`tcert`/`tkey` still apply). |
 | `REQUIRED`        | TLS mandatory; peer certificate chain not verified.                            |
 | `VERIFY_CA`       | TLS mandatory; peer chain verified against the CA.                             |
 | `VERIFY_IDENTITY` | TLS mandatory; chain verified and peer host identity checked.                  |
