@@ -6,7 +6,7 @@ description: >-
 
 # Authentication Plugin - mysql\_native\_password
 
-The `mysql_native_password` authentication plugin is the default authentication plugin that will be used for an account created when no authentication plugin is explicitly mentioned and [old\_passwords=0](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_passwords) is set. It uses the password hashing algorithm introduced in MySQL 4.1, which is also used by the [PASSWORD()](../../sql-functions/secondary-functions/encryption-hashing-and-compression-functions/password.md) function when [old\_passwords=0](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_passwords) is set. This hashing algorithm is based on [SHA-1](https://en.wikipedia.org/wiki/SHA-1).
+The `mysql_native_password` authentication plugin is the default authentication plugin that will be used for an account created when no authentication plugin is explicitly mentioned and [old\_passwords=0](../../../server-management/variables-and-modes/server-system-variables.md#old_passwords) is set. It uses the password hashing algorithm introduced in MySQL 4.1, which is also used by the [PASSWORD()](../../sql-functions/secondary-functions/encryption-hashing-and-compression-functions/password.md) function when [old\_passwords=0](../../../server-management/variables-and-modes/server-system-variables.md#old_passwords) is set. This hashing algorithm is based on [SHA-1](https://en.wikipedia.org/wiki/SHA-1).
 
 It is not recommended to use the `mysql_native_password` authentication plugin for new installations that require **high password security**. If someone is able to both listen to the connection protocol and get a copy of the mysql.user table, then the person would be able to use this information to connect to the MariaDB server. The [ed25519](authentication-plugin-ed25519.md) authentication plugin is a more modern authentication plugin that provides simple password authentication using a more secure algorithm.
 
@@ -16,7 +16,7 @@ The `mysql_native_password` authentication plugin is statically linked into the 
 
 ## Creating Users
 
-The easiest way to create a user account with the `mysql_native_password` authentication plugin is to make sure that [old\_passwords=0](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_passwords) is set, and then create a user account via [CREATE USER](../../sql-statements/account-management-sql-statements/create-user.md) that does not specify an authentication plugin, but does specify a password via the [IDENTIFIED BY](../../sql-statements/account-management-sql-statements/create-user.md#identified-by-password) clause:
+The easiest way to create a user account with the `mysql_native_password` authentication plugin is to make sure that [old\_passwords=0](../../../server-management/variables-and-modes/server-system-variables.md#old_passwords) is set, and then create a user account via [CREATE USER](../../sql-statements/account-management-sql-statements/create-user.md) that does not specify an authentication plugin, but does specify a password via the [IDENTIFIED BY](../../sql-statements/account-management-sql-statements/create-user.md#identified-by-password) clause:
 
 ```sql
 SET old_passwords=0;
@@ -61,7 +61,7 @@ You can change a user account's password with the [SET PASSWORD](../../sql-state
 SET PASSWORD =  PASSWORD('new_secret')
 ```
 
-You can also change the user account's password with the [ALTER USER](../../sql-statements/account-management-sql-statements/alter-user.md) statement. You would have to make sure that [old\_passwords=0](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_passwords) is set, and then you would have to specify a password via the [IDENTIFIED BY](../../sql-statements/account-management-sql-statements/alter-user.md#identified-by-password) clause:
+You can also change the user account's password with the [ALTER USER](../../sql-statements/account-management-sql-statements/alter-user.md) statement. You would have to make sure that [old\_passwords=0](../../../server-management/variables-and-modes/server-system-variables.md#old_passwords) is set, and then you would have to specify a password via the [IDENTIFIED BY](../../sql-statements/account-management-sql-statements/alter-user.md#identified-by-password) clause:
 
 ```sql
 SET old_passwords=0;

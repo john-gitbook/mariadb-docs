@@ -42,14 +42,14 @@ The limit for indexing column values depends on the [innodb\_page\_size](../../.
 
 The Compressed row format does not efficiently use the InnoDB buffer pool, so it is not the recommended way to achieve InnoDB table compression. For more information about how to compress InnoDB tables, see [Configure InnoDB Page Compression](../innodb-page-compression.md#configuring-the-innodb-page-compression-algorithm).
 
-An InnoDB table that uses the `COMPRESSED` row format can be created by setting the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option to `COMPRESSED` and by setting the [KEY\_BLOCK\_SIZE](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option to one of the following values in a [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement, where the units are in `KB`.
+An InnoDB table that uses the `COMPRESSED` row format can be created by setting the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option to `COMPRESSED` and by setting the [KEY\_BLOCK\_SIZE](../../../tables/create-table.md#key_block_size) table option to one of the following values in a [CREATE TABLE](../../../tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement, where the units are in `KB`.
 
 `16k` is the default value of the [innodb\_page\_size](../innodb-system-variables.md#innodb_page_size) system variable, so using `16` will usually result in minimal compression unless one of the following is true:
 
 * The table has many columns that can be stored in overflow pages, such as columns that use the [VARBINARY](../../../../reference/data-types/string-data-types/varbinary.md), [VARCHAR](../../../../reference/data-types/string-data-types/varchar.md), [BLOB](../../../../reference/data-types/string-data-types/blob.md) and [TEXT](../../../../reference/data-types/string-data-types/text.md) data types.
 * The server is using a non-default [innodb\_page\_size](../innodb-system-variables.md#innodb_page_size) value that is greater than `16k`.
 
-The value of the [innodb\_page\_size](../innodb-system-variables.md#innodb_page_size) system variable can be set to `32k` and `64k`. This is especially useful because the larger page size permits more columns using the [VARBINARY](../../../../reference/data-types/string-data-types/varbinary.md), [VARCHAR](../../../../reference/data-types/string-data-types/varchar.md), [BLOB](../../../../reference/data-types/string-data-types/blob.md) and [TEXT](../../../../reference/data-types/string-data-types/text.md) data types. Regardless, even when the value of the [innodb\_page\_size](../innodb-system-variables.md#innodb_page_size) system variable is set to some value higher than `16k`, `16` is still the maximum value for the [KEY\_BLOCK\_SIZE](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option for InnoDB tables using the `COMPRESSED` row format.
+The value of the [innodb\_page\_size](../innodb-system-variables.md#innodb_page_size) system variable can be set to `32k` and `64k`. This is especially useful because the larger page size permits more columns using the [VARBINARY](../../../../reference/data-types/string-data-types/varbinary.md), [VARCHAR](../../../../reference/data-types/string-data-types/varchar.md), [BLOB](../../../../reference/data-types/string-data-types/blob.md) and [TEXT](../../../../reference/data-types/string-data-types/text.md) data types. Regardless, even when the value of the [innodb\_page\_size](../innodb-system-variables.md#innodb_page_size) system variable is set to some value higher than `16k`, `16` is still the maximum value for the [KEY\_BLOCK\_SIZE](../../../tables/create-table.md#key_block_size) table option for InnoDB tables using the `COMPRESSED` row format.
 
 The `COMPRESSED` row format cannot be set as the default row format with the [innodb\_default\_row\_format](../innodb-system-variables.md#innodb_default_row_format) system variable.
 
@@ -59,7 +59,7 @@ In earlier versions, the `COMPRESSED` row format is also only supported if the t
 
 It is also recommended to set the [innodb\_strict\_mode](../innodb-system-variables.md#innodb_strict_mode) system variable to `ON` when using this row format.
 
-InnoDB automatically uses the `COMPRESSED` row format for a table if the [KEY\_BLOCK\_SIZE](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is set to some value in a [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement:
+InnoDB automatically uses the `COMPRESSED` row format for a table if the [KEY\_BLOCK\_SIZE](../../../tables/create-table.md#key_block_size) table option is set to some value in a [CREATE TABLE](../../../tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement:
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -74,7 +74,7 @@ CREATE TABLE tab (
 ) ENGINE=InnoDB KEY_BLOCK_SIZE=4;
 ```
 
-If the [KEY\_BLOCK\_SIZE](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is **not** set to some value, but the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to `COMPRESSED` in a [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement, then InnoDB uses a default value of `8` for the [KEY\_BLOCK\_SIZE](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option:
+If the [KEY\_BLOCK\_SIZE](../../../tables/create-table.md#key_block_size) table option is **not** set to some value, but the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option is set to `COMPRESSED` in a [CREATE TABLE](../../../tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement, then InnoDB uses a default value of `8` for the [KEY\_BLOCK\_SIZE](../../../tables/create-table.md#key_block_size) table option:
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -113,7 +113,7 @@ CREATE TABLE hq_sales.invoices (
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -128,7 +128,7 @@ SHOW SESSION VARIABLES
 +------------------------+--------+
 ```
 
-3. Create the table using the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement, and specify the Compressed row format using the `ROW_FORMAT` table option:
+3. Create the table using the [CREATE TABLE](../../../tables/create-table.md) statement, and specify the Compressed row format using the `ROW_FORMAT` table option:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -182,7 +182,7 @@ CREATE TABLE hq_sales.invoices (
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```
 SHOW SESSION VARIABLES

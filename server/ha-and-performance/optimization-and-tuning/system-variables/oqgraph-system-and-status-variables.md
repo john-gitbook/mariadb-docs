@@ -1,11 +1,10 @@
 ---
-description: >-
-  System and status variables for the OQGRAPH storage engine.
+description: System and status variables for the OQGRAPH storage engine.
 ---
 
 # OQGRAPH System and Status Variables
 
-This page documents system and status variables related to the [OQGRAPH storage engine](../../../server-usage/storage-engines/oqgraph-storage-engine/). See [Server Status Variables](server-status-variables.md) and [Server System Variables](server-system-variables.md) for complete list of all system and status variables.
+This page documents system and status variables related to the [OQGRAPH storage engine](../../../server-usage/storage-engines/oqgraph-storage-engine/). See [Server Status Variables](../../../server-management/variables-and-modes/server-status-variables.md) and [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for complete list of all system and status variables.
 
 ## System Variables
 

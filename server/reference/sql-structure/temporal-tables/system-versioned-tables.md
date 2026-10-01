@@ -26,7 +26,7 @@ Always provide `SYSTEM` when using it as a column name: `system`. See the [Reser
 
 ### Creating a System-Versioned Table
 
-The [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md) syntax has been extended to permit creating a system-versioned table. To be system-versioned, according to SQL:2011, a table must have two generated columns, a period, and a special table option clause:
+The [CREATE TABLE](../../../server-usage/tables/create-table.md) syntax has been extended to permit creating a system-versioned table. To be system-versioned, according to SQL:2011, a table must have two generated columns, a period, and a special table option clause:
 
 ```sql
 CREATE TABLE t(
@@ -150,7 +150,7 @@ ERROR 4134 (HY000): Duplicate ROW START column `rs`
 
 ### Inserting Data
 
-When data is inserted into a system-versioned table, it is given a _row\_start_ value of the current timestamp, and a _row\_end_ value of [FROM\_UNIXTIME](../../sql-functions/date-time-functions/from_unixtime.md) (`2147483647.999999`). The current timestamp can be adjusted by setting the [timestamp system variable](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#timestamp):
+When data is inserted into a system-versioned table, it is given a _row\_start_ value of the current timestamp, and a _row\_end_ value of [FROM\_UNIXTIME](../../sql-functions/date-time-functions/from_unixtime.md) (`2147483647.999999`). The current timestamp can be adjusted by setting the [timestamp system variable](../../../server-management/variables-and-modes/server-system-variables.md#timestamp):
 
 ```sql
 SELECT NOW();
@@ -293,7 +293,7 @@ Empty set (0.001 sec)
 Before MariaDB 10.11:
 {% endhint %}
 
-If the `FOR SYSTEM_TIME` clause is not used, the table shows the _current_ data. This is usually the same as if you had specified `FOR SYSTEM_TIME AS OF CURRENT_TIMESTAMP`, unless you've adjusted the _row\_start_ value (only possible by setting the [secure\_timestamp](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#secure_timestamp) variable):
+If the `FOR SYSTEM_TIME` clause is not used, the table shows the _current_ data. This is usually the same as if you had specified `FOR SYSTEM_TIME AS OF CURRENT_TIMESTAMP`, unless you've adjusted the _row\_start_ value (only possible by setting the [secure\_timestamp](../../../server-management/variables-and-modes/server-system-variables.md#secure_timestamp) variable):
 
 ```sql
 CREATE OR REPLACE TABLE t (a int) WITH SYSTEM VERSIONING;
@@ -362,7 +362,7 @@ Tables that use system-versioning implicitly add the `row_end` column to the Pri
 
 Specifically, these writes include a value on the `row_end` column containing the timestamp from when the write was initially made. The re-occurrence of the Primary Key with the old system-versioning columns raises an error due to the duplication.
 
-To mitigate this with MariaDB Replication, set the [secure\_timestamp](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#secure_timestamp) system variable to `YES` on the replica. When set, the replica uses its own system clock when applying to the row log, meaning that the primary can retry as many times as needed without causing a conflict. The retries generate new historical rows with new values for the `row_start` and `row_end` columns.
+To mitigate this with MariaDB Replication, set the [secure\_timestamp](../../../server-management/variables-and-modes/server-system-variables.md#secure_timestamp) system variable to `YES` on the replica. When set, the replica uses its own system clock when applying to the row log, meaning that the primary can retry as many times as needed without causing a conflict. The retries generate new historical rows with new values for the `row_start` and `row_end` columns.
 
 ### Transaction-Precise History in InnoDB
 
@@ -662,7 +662,7 @@ A number of system variables are related to system-versioned tables:
 
 #### system\_versioning\_insert\_history
 
-* Description: Allows direct inserts into ROW\_START and ROW\_END columns if [secure\_timestamp](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#secure_timestamp) allows changing [timestamp](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#timestamp).
+* Description: Allows direct inserts into ROW\_START and ROW\_END columns if [secure\_timestamp](../../../server-management/variables-and-modes/server-system-variables.md#secure_timestamp) allows changing [timestamp](../../../server-management/variables-and-modes/server-system-variables.md#timestamp).
 * Command line: `--system-versioning-insert-history[={0|1}]`
 * Scope: Global, Session
 * Dynamic: Yes

@@ -7,7 +7,7 @@ description: >-
 
 # Silent Column Changes
 
-When a [CREATE TABLE](create-table.md) or [ALTER TABLE](../alter/alter-table/) command is issued, MariaDB silently changes a column specification in the following cases:
+When a [CREATE TABLE](../../../../server-usage/tables/create-table.md) or [ALTER TABLE](../alter/alter-table/) command is issued, MariaDB silently changes a column specification in the following cases:
 
 * [PRIMARY KEY](../../../../mariadb-quickstart-guides/mariadb-indexes-guide.md#primary-key) columns are always NOT NULL.
 * Any trailing spaces from [SET](../../../data-types/string-data-types/set-data-type.md) and [ENUM](../../../data-types/string-data-types/enum.md) values are discarded.
@@ -39,8 +39,6 @@ To ease imports from other RDBMSs, MariaDB also silently maps the following data
 | NUMERIC              | [DECIMAL](../../../data-types/numeric-data-types/decimal.md)      |
 
 All MySQL types are supported in MariaDB.
-
-
 
 ## Example
 

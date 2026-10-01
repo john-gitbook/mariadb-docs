@@ -4,7 +4,7 @@ The goal of the subquery cache is to optimize the evaluation of correlated subqu
 
 ## Administration
 
-The cache is on by default. One can switch it off using the [optimizer\_switch](../../system-variables/server-system-variables.md#optimizer_switch) `subquery_cache` setting, like so:
+The cache is on by default. One can switch it off using the [optimizer\_switch](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) `subquery_cache` setting, like so:
 
 ```sql
 SET optimizer_switch='subquery_cache=off';
@@ -12,10 +12,10 @@ SET optimizer_switch='subquery_cache=off';
 
 The efficiency of the subquery cache is visible in 2 statistical variables:
 
-* [Subquery\_cache\_hit](../../system-variables/server-status-variables.md#subquery_cache_hit) - Global counter for all subquery cache hits.
-* [Subquery\_cache\_miss](../../system-variables/server-status-variables.md#subquery_cache_miss) - Global counter for all subquery cache misses.
+* [Subquery\_cache\_hit](../../../../server-management/variables-and-modes/server-status-variables.md#subquery_cache_hit) - Global counter for all subquery cache hits.
+* [Subquery\_cache\_miss](../../../../server-management/variables-and-modes/server-status-variables.md#subquery_cache_miss) - Global counter for all subquery cache misses.
 
-The session variables [tmp\_table\_size](../../system-variables/server-system-variables.md#tmp_table_size) and [max\_heap\_table\_size](../../system-variables/server-system-variables.md#max_heap_table_size) influence the size of in-memory temporary tables in the table used for caching. It cannot grow more than the minimum of the above variables values (see the [Implementation](subquery-cache.md#implementation) section for details).
+The session variables [tmp\_table\_size](../../../../server-management/variables-and-modes/server-system-variables.md#tmp_table_size) and [max\_heap\_table\_size](../../../../server-management/variables-and-modes/server-system-variables.md#max_heap_table_size) influence the size of in-memory temporary tables in the table used for caching. It cannot grow more than the minimum of the above variables values (see the [Implementation](subquery-cache.md#implementation) section for details).
 
 ## Visibility
 
@@ -41,8 +41,7 @@ SHOW WARNINGS;
 1 row in set (0.00 sec)
 ```
 
-In the example above the presence of`"<expr_cache><`test`.`t1`.`a`>(...)"` is how you know you are
-using the subquery cache.
+In the example above the presence of`"<expr_cache><`test`.`t1`.`a`>(...)"` is how you know you are using the subquery cache.
 
 ## Implementation
 

@@ -56,7 +56,7 @@ See [Installing and Using MariaDB via Docker](../../../automated-mariadb-deploym
 
 While experimenting with MariaDB, you could end up with an unusable installation. This occurs for example if you deliberately delete files that you shouldn't delete. If it happens, there is no need to uninstall and reinstall MariaDB. Instead, you can simply delete the contents of the data directory and run [mariadb-install-db](../../../../clients-and-utilities/deployment-tools/mariadb-install-db.md). The program will recreate your system tables and the essential files.
 
-To know where your data directory is, check the [datadir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) system variable.
+To know where your data directory is, check the [datadir](../../../variables-and-modes/server-system-variables.md#datadir) system variable.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

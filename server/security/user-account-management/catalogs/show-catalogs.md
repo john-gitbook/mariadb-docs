@@ -22,7 +22,7 @@ The `LIKE` clause, if present on its own, indicates which catalog names to match
 
 You see only use `SHOW CATALOGS` have the [CATALOG privilege](../../../reference/sql-statements/account-management-sql-statements/grant.md). Only users of the 'def' schema can have this privilege.
 
-If the server was started with the [--skip-show-database](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#skip_show_database) option, you cannot use this statement unless you have the [SHOW DATABASES privilege](../../../reference/sql-statements/account-management-sql-statements/grant.md#show-databases).
+If the server was started with the [--skip-show-database](../../../server-management/variables-and-modes/server-system-variables.md#skip_show_database) option, you cannot use this statement unless you have the [SHOW DATABASES privilege](../../../reference/sql-statements/account-management-sql-statements/grant.md#show-databases).
 
 The list of results returned by `SHOW CATALOGS` is based on directories in the data directory, which is how MariaDB implements catalogs. It only list directories that have a `mysql` directory.
 

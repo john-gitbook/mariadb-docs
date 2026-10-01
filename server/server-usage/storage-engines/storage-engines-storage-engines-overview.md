@@ -32,7 +32,7 @@ A storage engine is a type of [plugin](../../reference/plugins/) for MariaDB:
 
 ### Identify the Default Storage Engine
 
-Identify the server's global default storage engine by using [SHOW GLOBAL VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) to query the [default\_storage\_engine](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) system variable:
+Identify the server's global default storage engine by using [SHOW GLOBAL VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) to query the [default\_storage\_engine](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) system variable:
 
 ```sql
 SHOW GLOBAL VARIABLES LIKE 'default_storage_engine';
@@ -115,7 +115,7 @@ Standard MariaDB storage engines are used for System Table storage:
 ### Can I use more than one storage engine on a server?
 
 * Yes, different tables can use different storage engines on the same server.
-* To create a table with a specific storage engine, specify the ENGINE table option to the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement.
+* To create a table with a specific storage engine, specify the ENGINE table option to the [CREATE TABLE](../tables/create-table.md) statement.
 
 ### Can I use more than one storage engine in a single query?
 

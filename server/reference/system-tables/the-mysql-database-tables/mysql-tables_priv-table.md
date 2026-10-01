@@ -29,7 +29,7 @@ The `mysql.tables_priv` table contains the following fields:
 | Table\_priv  | set('Select', 'Insert', 'Update', 'Delete', 'Create', 'Drop', 'Grant', 'References', 'Index', 'Alter', 'Create View', 'Show view', 'Trigger', 'Delete versioning rows') | NO   |     |                    | The table privilege type. See [Table Privileges](../../sql-statements/account-management-sql-statements/grant.md#table-privileges) for details.    |
 | Column\_priv | set('Select', 'Insert', 'Update', 'References')                                                                                                                         | NO   |     |                    | The column privilege type. See [Column Privileges](../../sql-statements/account-management-sql-statements/grant.md#column-privileges) for details. |
 
-The [Acl\_table\_grants](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#acl_table_grants) status variable indicates how many rows the `mysql.tables_priv` table contains.
+The [Acl\_table\_grants](../../../server-management/variables-and-modes/server-status-variables.md#acl_table_grants) status variable indicates how many rows the `mysql.tables_priv` table contains.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

@@ -55,13 +55,13 @@ SHOW COLLATION LIKE 'latin2%';
 
 ## Server Level
 
-The [character\_set\_server](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_server) system variable can be used to change the default server character set. It can be set both on startup or dynamically, with the [SET](../../../sql-statements/administrative-sql-statements/set-commands/set.md) command:
+The [character\_set\_server](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_server) system variable can be used to change the default server character set. It can be set both on startup or dynamically, with the [SET](../../../sql-statements/administrative-sql-statements/set-commands/set.md) command:
 
 ```sql
 SET character_set_server = 'latin2';
 ```
 
-Similarly, the [collation\_server](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_server) variable is used for setting the default server collation.
+Similarly, the [collation\_server](../../../../server-management/variables-and-modes/server-system-variables.md#collation_server) variable is used for setting the default server collation.
 
 ```sql
 SET collation_server = 'latin2_czech_cs';
@@ -120,19 +120,19 @@ SHOW CREATE DATABASE danish_names;
 +--------------+----------------------------------------------------------------------------------------------+
 ```
 
-Although there are [character\_set\_database](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_database) and [collation\_database](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_database) system variables which can be set dynamically, these are used for determining the character set and collation for the default database, and should only be set by the server.
+Although there are [character\_set\_database](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_database) and [collation\_database](../../../../server-management/variables-and-modes/server-system-variables.md#collation_database) system variables which can be set dynamically, these are used for determining the character set and collation for the default database, and should only be set by the server.
 
 {% hint style="info" %}
-`USE db_name` updates `character_set_database` and `collation_database` to the new default database's values, but it does not touch [collation\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection). The connection collation is an independent session setting, changed only by [SET NAMES](set-names.md) or by assigning the variable directly.
+`USE db_name` updates `character_set_database` and `collation_database` to the new default database's values, but it does not touch [collation\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#collation_connection). The connection collation is an independent session setting, changed only by [SET NAMES](../../../sql-statements/administrative-sql-statements/set-commands/set-names.md) or by assigning the variable directly.
 
 The distinction matters because string literals take the connection collation, not the database collation. After connecting to, or switching into, a database whose collation differs from the connection's, literals carry the connection collation — including literals baked into a view definition, a `CASE` result or a `UNION` branch at the time it was created. Literals are coercible, so a literal gives way to a column's collation in a direct comparison; a stored expression, however, keeps the collation it was defined with.
 {% endhint %}
 
-A database's collation is inherited only by statements that don't name a character set of their own. A `CREATE TABLE` that names one, such as `CREATE TABLE ... DEFAULT CHARACTER SET utf8mb4`, takes its collation from the [character\_set\_collations](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_collations) map instead. See [Table Level](setting-character-sets-and-collations.md#table-level) and [Changing Default Collation](setting-character-sets-and-collations.md#changing-default-collation).
+A database's collation is inherited only by statements that don't name a character set of their own. A `CREATE TABLE` that names one, such as `CREATE TABLE ... DEFAULT CHARACTER SET utf8mb4`, takes its collation from the [character\_set\_collations](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_collations) map instead. See [Table Level](setting-character-sets-and-collations.md#table-level) and [Changing Default Collation](setting-character-sets-and-collations.md#changing-default-collation).
 
 ## Table Level
 
-The [CREATE TABLE](../../../sql-statements/data-definition/create/create-table.md) and [ALTER TABLE](../../../sql-statements/data-definition/alter/alter-table/) statements support optional character set and collation clauses, a MariaDB and MySQL extension to standard SQL.
+The [CREATE TABLE](../../../../server-usage/tables/create-table.md) and [ALTER TABLE](../../../sql-statements/data-definition/alter/alter-table/) statements support optional character set and collation clauses, a MariaDB and MySQL extension to standard SQL.
 
 ```sql
 CREATE TABLE english_names (id INT, name VARCHAR(40)) 
@@ -143,7 +143,7 @@ CREATE TABLE english_names (id INT, name VARCHAR(40))
 If neither character set nor collation is provided, the database default will be used. If only the character set is provided, the default collation for that character set will be used. If only the collation is provided, the associated character set will be used. See [Supported Character Sets and Collations](supported-character-sets-and-collations.md).
 
 {% hint style="warning" %}
-Naming a character set without a `COLLATE` clause does **not** inherit the database's collation. The collation comes from the [character\_set\_collations](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_collations) map instead, which has a non-empty default value since MariaDB 11.5. So these two statements can produce different collations in the same database:
+Naming a character set without a `COLLATE` clause does **not** inherit the database's collation. The collation comes from the [character\_set\_collations](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_collations) map instead, which has a non-empty default value since MariaDB 11.5. So these two statements can produce different collations in the same database:
 
 ```sql
 CREATE TABLE t1 (id VARCHAR(24));                                -- inherits the database collation
@@ -175,7 +175,7 @@ ALTER TABLE table_name MODIFY ascii_varchar_column VARCHAR(M) CHARACTER SET utf8
 
 ## Column Level
 
-Character sets and collations can also be specified for columns that are character types `CHAR`, `TEXT` or `VARCHAR`. The [CREATE TABLE](../../../sql-statements/data-definition/create/create-table.md) and [ALTER TABLE](../../../sql-statements/data-definition/alter/alter-table/) statements support optional character set and collation clauses for this purpose - unlike those at the table level, the column level definitions are standard SQL.
+Character sets and collations can also be specified for columns that are character types `CHAR`, `TEXT` or `VARCHAR`. The [CREATE TABLE](../../../../server-usage/tables/create-table.md) and [ALTER TABLE](../../../sql-statements/data-definition/alter/alter-table/) statements support optional character set and collation clauses for this purpose - unlike those at the table level, the column level definitions are standard SQL.
 
 ```sql
 CREATE TABLE european_names (
@@ -247,7 +247,7 @@ CHARACTER_MAXIMUM_LENGTH: 40
 
 ## Filenames
 
-The [character\_set\_filesystem](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_filesystem) system variable has controlled interpretation of file names that are given as literal strings. This affects the following statements and functions:
+The [character\_set\_filesystem](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_filesystem) system variable has controlled interpretation of file names that are given as literal strings. This affects the following statements and functions:
 
 * [SELECT INTO DUMPFILE](../../../sql-statements/data-manipulation/selecting-data/select-into-dumpfile.md)
 * [SELECT INTO OUTFILE](../../../sql-statements/data-manipulation/selecting-data/select-into-outfile.md)
@@ -257,13 +257,13 @@ The [character\_set\_filesystem](../../../../ha-and-performance/optimization-and
 
 ## Literals
 
-By default, the character set and collation used for literals is determined by the [character\_set\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection) system variables. However, they can also be specified explicitly:
+By default, the character set and collation used for literals is determined by the [character\_set\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) system variables. However, they can also be specified explicitly:
 
 ```sql
 [_charset_name]'string' [COLLATE collation_name]
 ```
 
-The character set of string literals that do not have a character set introducer is determined by the [character\_set\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_connection) system variable.
+The character set of string literals that do not have a character set introducer is determined by the [character\_set\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_connection) system variable.
 
 This query always returns the same character set name in both columns.:
 
@@ -271,7 +271,7 @@ This query always returns the same character set name in both columns.:
 SELECT CHARSET('a'), @@character_set_connection;
 ```
 
-[character\_set\_client](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_client) and [character\_set\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_connection) are normally (e.g. during handshake, or after a `SET NAMES` query) are set to equal values. However, it's possible to set to different values.
+[character\_set\_client](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_client) and [character\_set\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_connection) are normally (e.g. during handshake, or after a `SET NAMES` query) are set to equal values. However, it's possible to set to different values.
 
 ### Examples
 
@@ -388,7 +388,7 @@ SELECT 'Mueller' = 'Müller' COLLATE 'latin1_german2_ci';
 
 ## Stored Programs and Views
 
-The literals which occur in stored programs and views, by default, use the character set and collation which was specified by the [character\_set\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection) system variables when the stored program was created. These values can be seen using the `SHOW CREATE` statements. To change the character sets used for literals in an existing stored program, it is necessary to drop and recreate the stored program.
+The literals which occur in stored programs and views, by default, use the character set and collation which was specified by the [character\_set\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) system variables when the stored program was created. These values can be seen using the `SHOW CREATE` statements. To change the character sets used for literals in an existing stored program, it is necessary to drop and recreate the stored program.
 
 For stored routines parameters and return values, a character set and a collation can be specified via the `CHARACTER SET` and `COLLATE` clauses.
 
@@ -451,7 +451,7 @@ SELECT @param_coll;
 From MariaDB 11.5:
 {% endhint %}
 
-The default collation associated with a particular character set is determined by the [character\_set\_collations](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_collations) system variable, which accepts a comma-delimited list of character sets and their default collations, for example:
+The default collation associated with a particular character set is determined by the [character\_set\_collations](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_collations) system variable, which accepts a comma-delimited list of character sets and their default collations, for example:
 
 ```sql
 SET @@character_set_collations = 'utf8mb4=uca1400_ai_ci, latin2=latin2_hungarian_ci';
@@ -550,7 +550,7 @@ The shift to `utf8mb4` and UCA-based collations provides several benefits:
 
 Before upgrading, please be aware of the following technical implications:
 
-* The storage overhead for `CHAR(N)` indeed significantly increases. The server reserved `N` bytes for a `CHAR(N) CHARACTER SET latin1` column in every record. Now it must reserve `N*4` bytes for a `CHAR(N) CHARACTER SET utf8mb4` column, and fill the unused bytes with trailing spacing.&#x20;
+* The storage overhead for `CHAR(N)` indeed significantly increases. The server reserved `N` bytes for a `CHAR(N) CHARACTER SET latin1` column in every record. Now it must reserve `N*4` bytes for a `CHAR(N) CHARACTER SET utf8mb4` column, and fill the unused bytes with trailing spacing.
 * The storage overhead for a `VARCHAR(N)` is not really palpable because the server only stores actual strings without padding. West European languages mostly use basic ASCII letters, only rarely accented letters. For example, for German, the letter use statistics is here: [https://www.sttmedia.com/characterfrequency-german](https://www.sttmedia.com/characterfrequency-german). After switching from latin1 to utf8mb4, only accented letters need more storage, but since they're making up only for a small portion, the overall growth is insignificant.
 * The previous two points indicate that it might be worthwhile to consider switching from `CHAR` to `VARCHAR` columns.
 * Replication Impact: Because `utf8mb4_uca1400_ai_ci` was not available in earlier versions, replication from MariaDB 11.8 to MariaDB 10.6 will fail unless the server is configured to use the old defaults.
@@ -560,7 +560,7 @@ Before upgrading, please be aware of the following technical implications:
 
 ### Auditing for Mixed Collations
 
-Because a table that names a character set without naming a collation takes its collation from [character\_set\_collations](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_collations) rather than from its database, a schema built up across several MariaDB versions can end up holding tables and columns in different collations. Comparing two such columns fails with [error 1267](../../../error-codes/mariadb-error-codes-1200-to-1299/e1267.md), `Illegal mix of collations`, because both operands are `IMPLICIT` and neither takes precedence.
+Because a table that names a character set without naming a collation takes its collation from [character\_set\_collations](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_collations) rather than from its database, a schema built up across several MariaDB versions can end up holding tables and columns in different collations. Comparing two such columns fails with [error 1267](../../../error-codes/mariadb-error-codes-1200-to-1299/e1267.md), `Illegal mix of collations`, because both operands are `IMPLICIT` and neither takes precedence.
 
 To find every column in the current database whose collation differs from the database default:
 

@@ -81,8 +81,8 @@ An overview of supported online schema change operations in InnoDB, detailing wh
 
 {% columns %}
 {% column %}
-{% content-ref url="../innodb-unmaintained/" %}
-[innodb-unmaintained](../innodb-unmaintained/)
+{% content-ref url="innodb-unmaintained/" %}
+[innodb-unmaintained](innodb-unmaintained/)
 {% endcontent-ref %}
 {% endcolumn %}
 

@@ -293,7 +293,7 @@ plugin_dir = /usr/lib64/mysql/plugin
 
 ### Configuring the Minimum Plugin Maturity
 
-When a plugin is being installed, the server compares the plugin's maturity level against the server's minimum allowed plugin maturity. This can help prevent users from using unstable plugins on production servers. This minimum plugin maturity is configured by the [plugin\_maturity](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#plugin_maturity) system variable. This can be specified as a command-line argument to [mariadbd](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) or it can be specified in a relevant server [option group](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md):
+When a plugin is being installed, the server compares the plugin's maturity level against the server's minimum allowed plugin maturity. This can help prevent users from using unstable plugins on production servers. This minimum plugin maturity is configured by the [plugin\_maturity](../../server-management/variables-and-modes/server-system-variables.md#plugin_maturity) system variable. This can be specified as a command-line argument to [mariadbd](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) or it can be specified in a relevant server [option group](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md):
 
 ```ini
 [mariadb]
@@ -337,7 +337,7 @@ Plugins that were enabled as a `--plugin-load` option do not need to be uninstal
 
 ## See Also
 
-* [List of Plugins](information-on-plugins/list-of-plugins.md)
+* [List of Plugins](list-of-plugins.md)
 * [INSTALL PLUGIN](../sql-statements/administrative-sql-statements/plugin-sql-statements/install-plugin.md)
 * [INSTALL SONAME](../sql-statements/administrative-sql-statements/plugin-sql-statements/install-soname.md)
 * [UNINSTALL PLUGIN](../sql-statements/administrative-sql-statements/plugin-sql-statements/uninstall-plugin.md)

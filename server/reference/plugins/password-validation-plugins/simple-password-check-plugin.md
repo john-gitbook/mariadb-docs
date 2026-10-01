@@ -9,7 +9,7 @@ description: >-
 
 `simple_password_check` is a [password validation](./) plugin. It can check whether a password contains at least a certain number of characters of a specific type. When first installed, a password is required to be at least eight characters, and requires at least one digit, one uppercase character, one lowercase character, and one character that is neither a digit nor a letter.
 
-Note that passwords can be directly set as a hash, bypassing the password validation, if the [strict\_password\_validation](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#strict_password_validation) variable is `OFF` (it is `ON` by default).
+Note that passwords can be directly set as a hash, bypassing the password validation, if the [strict\_password\_validation](../../../server-management/variables-and-modes/server-system-variables.md#strict_password_validation) variable is `OFF` (it is `ON` by default).
 
 ## Installing the Plugin
 

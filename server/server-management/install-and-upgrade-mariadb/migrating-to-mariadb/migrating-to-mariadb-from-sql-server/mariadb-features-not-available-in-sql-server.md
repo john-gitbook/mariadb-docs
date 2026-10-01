@@ -42,7 +42,7 @@ See also [Syntax Differences between MariaDB and SQL Server](syntax-differences-
 ## Types
 
 * [Character sets and collations](../../../../reference/data-types/string-data-types/character-sets/) don't depend on column type. They can be set globally, or at database, table or column level.
-* Columns may use non-constant expressions as the [DEFAULT](../../../../reference/sql-statements/data-definition/create/create-table.md#default-column-option) value. [TIMESTAMP](../../../../reference/data-types/date-and-time-data-types/timestamp.md) columns may have a `DEFAULT` value.
+* Columns may use non-constant expressions as the [DEFAULT](../../../../server-usage/tables/create-table.md#default-column-option) value. [TIMESTAMP](../../../../reference/data-types/date-and-time-data-types/timestamp.md) columns may have a `DEFAULT` value.
 * [UNSIGNED](../../../../reference/data-types/numeric-data-types/numeric-data-type-overview.md#signed-unsigned-and-zerofill) numeric types.
 * [Dynamic columns](../../../../reference/sql-structure/nosql/dynamic-columns.md) (note that JSON is usually preferred to this feature).
 

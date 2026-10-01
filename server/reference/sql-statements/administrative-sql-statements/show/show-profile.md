@@ -29,7 +29,7 @@ type:
 
 The `SHOW PROFILE` and [SHOW PROFILES](show-profiles.md) statements display profiling information that indicates resource usage for statements executed during the course of the current session.
 
-Profiling is controlled by the [profiling](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#profiling) session variable, which has a default value of `0` (`OFF`). Profiling is enabled by setting profiling to `1` or `ON`:
+Profiling is controlled by the [profiling](../../../../server-management/variables-and-modes/server-system-variables.md#profiling) session variable, which has a default value of `0` (`OFF`). Profiling is enabled by setting profiling to `1` or `ON`:
 
 ```sql
 SET profiling = 1;

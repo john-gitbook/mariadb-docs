@@ -4,7 +4,7 @@ description: The CONNECT storage engine.
 
 # CONNECT Table Types - Data Files
 
-Most of the tables processed by CONNECT are just plain DOS or UNIX data files, logically regarded as tables thanks to the description given when creating the table. This description comes from the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement. Depending on the application, these tables can already exist as data files, used as is by CONNECT, or can have been physically made by CONNECT as the result of a `CREATE TABLE ... SELECT ...` and/or INSERT statement(s).
+Most of the tables processed by CONNECT are just plain DOS or UNIX data files, logically regarded as tables thanks to the description given when creating the table. This description comes from the [CREATE TABLE](../../../tables/create-table.md) statement. Depending on the application, these tables can already exist as data files, used as is by CONNECT, or can have been physically made by CONNECT as the result of a `CREATE TABLE ... SELECT ...` and/or INSERT statement(s).
 
 The file _path/name_ is given by the `FILE_NAME` option. If it is a relative path/name, it are relative to the database directory, the one containing the table `.FRM` file.
 
@@ -29,7 +29,7 @@ The `FILEID` special column, described [here](../using-connect/using-connect-vir
 
 ## Record Format
 
-This characteristic applies to table files handled by the operating system input/output functions. It is **fixed** for table types [FIX](connect-dos-and-fix-table-types.md), [BIN](connect-bin-table-type.md), [DBF](connect-dbf-table-type.md) and [VEC](connect-vec-table-type.md), and it is variable for [DOS](connect-dos-and-fix-table-types.md), VCT, [FMT](connect-csv-and-fmt-table-types.md) and some [JSON](connect-json-table-type/README.md) tables.
+This characteristic applies to table files handled by the operating system input/output functions. It is **fixed** for table types [FIX](connect-dos-and-fix-table-types.md), [BIN](connect-bin-table-type.md), [DBF](connect-dbf-table-type.md) and [VEC](connect-vec-table-type.md), and it is variable for [DOS](connect-dos-and-fix-table-types.md), VCT, [FMT](connect-csv-and-fmt-table-types.md) and some [JSON](connect-json-table-type/) tables.
 
 For fixed tables, most I/O operations are done by block of BLOCK\_SIZE rows. This diminishes the number of I/O’s and enables block indexing.
 
@@ -45,8 +45,7 @@ Because all files are handled by the standard input/output functions of the oper
 
 ## Compressed File Tables
 
-CONNECT can make and process some tables whose data file is compressed. The only supported compression format is the gzlib format. Zip and zlib formats are supported differently. The table types that can be compressed are [DOS](connect-dos-and-fix-table-types.md),[FIX](connect-dos-and-fix-table-types.md),[BIN](connect-bin-table-type.md),[CSV](connect-csv-and-fmt-table-types.md) and [FMT](connect-csv-and-fmt-table-types.md). This can save some disk space
-at the cost of a somewhat longer processing time.
+CONNECT can make and process some tables whose data file is compressed. The only supported compression format is the gzlib format. Zip and zlib formats are supported differently. The table types that can be compressed are [DOS](connect-dos-and-fix-table-types.md),[FIX](connect-dos-and-fix-table-types.md),[BIN](connect-bin-table-type.md),[CSV](connect-csv-and-fmt-table-types.md) and [FMT](connect-csv-and-fmt-table-types.md). This can save some disk space at the cost of a somewhat longer processing time.
 
 Some restrictions apply to compressed tables:
 
@@ -80,7 +79,7 @@ This is also different from what MariaDB does with [dynamic columns](../../../..
 The following NoSQL types are supported:
 
 * [XML Table Type](connect-xml-table-type.md)
-* [JSON Table Type](connect-json-table-type/README.md)
+* [JSON Table Type](connect-json-table-type/)
 * [INI Table Type](connect-ini-table-type.md)
 
 <sub>_This page is licensed: GPLv2_</sub>

@@ -30,22 +30,22 @@ The length-encoded info string is not always included in the packet. Check the l
 
 Values of server status flags:
 
-| Flag                                   | Value | Details                                                                                                                                                         |
-| -------------------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SERVER\_STATUS\_IN\_TRANS              | 1     | A transaction is currently active.                                                                                                                              |
-| SERVER\_STATUS\_AUTOCOMMIT             | 2     | Autocommit mode is set.                                                                                                                                         |
-| SERVER\_MORE\_RESULTS\_EXISTS          | 8     | More results exists (more packets will follow).                                                                                                                 |
-| SERVER\_QUERY\_NO\_GOOD\_INDEX\_USED   | 16    | Set if [EXPLAIN](../../sql-statements/administrative-sql-statements/analyze-and-explain-statements/explain.md) would've shown Range checked for each record.    |
-| SERVER\_QUERY\_NO\_INDEX\_USED         | 32    | The query did not use an index.                                                                                                                                 |
-| SERVER\_STATUS\_CURSOR\_EXISTS         | 64    | When using `COM_STMT_FETCH`, indicate that current cursor still has result.                                                                                     |
-| SERVER\_STATUS\_LAST\_ROW\_SENT        | 128   | When using `COM_STMT_FETCH`, indicate that current cursor has finished to send results.                                                                         |
-| SERVER\_STATUS\_DB\_DROPPED            | 1<<8  | Database has been dropped.                                                                                                                                      |
-| SERVER\_STATUS\_NO\_BACKSLASH\_ESCAPES | 1<<9  | Current escape mode is "no backslash escape".                                                                                                                   |
-| SERVER\_STATUS\_METADATA\_CHANGED      | 1<<10 | A DDL change did have an impact on an existing `PREPARE` (an automatic re-prepare has been executed).                                                           |
-| SERVER\_QUERY\_WAS\_SLOW               | 1<<11 | The query was slower than [long\_query\_time](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#long_query_time). |
-| SERVER\_PS\_OUT\_PARAMS                | 1<<12 | This result set contains stored procedure output parameter.                                                                                                     |
-| SERVER\_STATUS\_IN\_TRANS\_READONLY    | 1<<13 | Current transaction is a read-only transaction.                                                                                                                 |
-| SERVER\_SESSION\_STATE\_CHANGED        | 1<<14 | Session state change. See [session change type](ok_packet.md#session-change-type) for more information.                                                         |
+| Flag                                   | Value | Details                                                                                                                                                      |
+| -------------------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| SERVER\_STATUS\_IN\_TRANS              | 1     | A transaction is currently active.                                                                                                                           |
+| SERVER\_STATUS\_AUTOCOMMIT             | 2     | Autocommit mode is set.                                                                                                                                      |
+| SERVER\_MORE\_RESULTS\_EXISTS          | 8     | More results exists (more packets will follow).                                                                                                              |
+| SERVER\_QUERY\_NO\_GOOD\_INDEX\_USED   | 16    | Set if [EXPLAIN](../../sql-statements/administrative-sql-statements/analyze-and-explain-statements/explain.md) would've shown Range checked for each record. |
+| SERVER\_QUERY\_NO\_INDEX\_USED         | 32    | The query did not use an index.                                                                                                                              |
+| SERVER\_STATUS\_CURSOR\_EXISTS         | 64    | When using `COM_STMT_FETCH`, indicate that current cursor still has result.                                                                                  |
+| SERVER\_STATUS\_LAST\_ROW\_SENT        | 128   | When using `COM_STMT_FETCH`, indicate that current cursor has finished to send results.                                                                      |
+| SERVER\_STATUS\_DB\_DROPPED            | 1<<8  | Database has been dropped.                                                                                                                                   |
+| SERVER\_STATUS\_NO\_BACKSLASH\_ESCAPES | 1<<9  | Current escape mode is "no backslash escape".                                                                                                                |
+| SERVER\_STATUS\_METADATA\_CHANGED      | 1<<10 | A DDL change did have an impact on an existing `PREPARE` (an automatic re-prepare has been executed).                                                        |
+| SERVER\_QUERY\_WAS\_SLOW               | 1<<11 | The query was slower than [long\_query\_time](../../../server-management/variables-and-modes/server-system-variables.md#long_query_time).                    |
+| SERVER\_PS\_OUT\_PARAMS                | 1<<12 | This result set contains stored procedure output parameter.                                                                                                  |
+| SERVER\_STATUS\_IN\_TRANS\_READONLY    | 1<<13 | Current transaction is a read-only transaction.                                                                                                              |
+| SERVER\_SESSION\_STATE\_CHANGED        | 1<<14 | Session state change. See [session change type](ok_packet.md#session-change-type) for more information.                                                      |
 
 ## Session state info
 
@@ -86,9 +86,9 @@ For each variable data:
 * [string](../protocol-data-types.md#length-encoded-strings) variable value.
 
 {% hint style="info" %}
-Possible tracked variables list is tracked by [session\_track\_system\_variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) special variable value description:
+Possible tracked variables list is tracked by [session\_track\_system\_variables](../../../server-management/variables-and-modes/server-system-variables.md) special variable value description:
 
-* [redirect\_url](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#redirect_url): format is `mariadb/mysql:[<user>[:<password>]@]<host>[:<port>]/[<db>[?<opt1>=<value1>[&<opt2>=<value2>]]]`. Possible options:
+* [redirect\_url](../../../server-management/variables-and-modes/server-system-variables.md#redirect_url): format is `mariadb/mysql:[<user>[:<password>]@]<host>[:<port>]/[<db>[?<opt1>=<value1>[&<opt2>=<value2>]]]`. Possible options:
   * `ttl` : cache timeout in ms to remember redirection, in order to reconnect directly to new host. 0=no caching
 {% endhint %}
 

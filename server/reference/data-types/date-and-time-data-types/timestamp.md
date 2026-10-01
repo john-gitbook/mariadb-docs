@@ -20,7 +20,7 @@ A timestamp in the format `YYYY-MM-DD HH:MM:SS.ffffff`.
 
 The timestamp field is generally used to define at which moment in time a row was added or updated and by default will automatically be assigned the current datetime when a record is inserted or updated. The automatic properties only apply to the first `TIMESTAMP` in the record; subsequent `TIMESTAMP` columns will not be changed.
 
-MariaDB includes the [--mysql56-temporal-format](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) option, on by default, which allows MariaDB to store `TIMESTAMP` values using the same low-level format MySQL 5.6 uses.
+MariaDB includes the [--mysql56-temporal-format](../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) option, on by default, which allows MariaDB to store `TIMESTAMP` values using the same low-level format MySQL 5.6 uses.
 
 For more information, see [Internal Format](timestamp.md#internal-format).
 
@@ -48,7 +48,7 @@ MariaDB can also store [microseconds](../../sql-functions/date-time-functions/mi
 
 ## Automatic Values
 
-MariaDB has special behavior for the first column that uses the `TIMESTAMP` data type in a specific table when the system variable [explicit\_defaults\_for\_timestamp](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#explicit_defaults_for_timestamp) is not set (which was the default until [MariaDB 10.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.10/what-is-mariadb-1010)). For the first column that uses the `TIMESTAMP` data type in a specific table, MariaDB automatically assigns the following properties to the column:
+MariaDB has special behavior for the first column that uses the `TIMESTAMP` data type in a specific table when the system variable [explicit\_defaults\_for\_timestamp](../../../server-management/variables-and-modes/server-system-variables.md#explicit_defaults_for_timestamp) is not set (which was the default until [MariaDB 10.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.10/what-is-mariadb-1010)). For the first column that uses the `TIMESTAMP` data type in a specific table, MariaDB automatically assigns the following properties to the column:
 
 * `DEFAULT CURRENT_TIMESTAMP`
 * `ON UPDATE CURRENT_TIMESTAMP`
@@ -85,9 +85,9 @@ If the [SQL\_MODE](../../../server-management/variables-and-modes/sql_mode.md) i
 
 ## Internal Format
 
-A temporal format was introduced from MySQL 5.6 that alters how the `TIME`, `DATETIME` and `TIMESTAMP` columns operate at lower levels. These changes allow these temporal data types to have fractional parts and negative values. You can disable this feature using the [mysql56\_temporal\_format](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) system variable.
+A temporal format was introduced from MySQL 5.6 that alters how the `TIME`, `DATETIME` and `TIMESTAMP` columns operate at lower levels. These changes allow these temporal data types to have fractional parts and negative values. You can disable this feature using the [mysql56\_temporal\_format](../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) system variable.
 
-Tables that include `TIMESTAMP` values that were created on an older version of MariaDB or that were created while the [mysql56\_temporal\_format](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) system variable was disabled continue to store data using the older data type format.
+Tables that include `TIMESTAMP` values that were created on an older version of MariaDB or that were created while the [mysql56\_temporal\_format](../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) system variable was disabled continue to store data using the older data type format.
 
 In order to update table columns from the older format to the newer format, execute an [ALTER TABLE... MODIFY COLUMN](../../sql-statements/data-definition/alter/alter-table/#modify-column) statement that changes the column to the _same_ data type. This change may be needed if you want to export the table's tablespace and import it onto a server that has `mysql56_temporal_format=ON` set (see [MDEV-15225](https://jira.mariadb.org/browse/MDEV-15225)).
 

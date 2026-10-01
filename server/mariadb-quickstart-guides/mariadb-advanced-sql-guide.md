@@ -27,7 +27,7 @@ CREATE TABLE student_tests (
 );
 ```
 
-For more details, see the official [CREATE TABLE](../reference/sql-statements/data-definition/create/create-table.md) documentation.
+For more details, see the official [CREATE TABLE](../server-usage/tables/create-table.md) documentation.
 
 ### Inserting Records
 

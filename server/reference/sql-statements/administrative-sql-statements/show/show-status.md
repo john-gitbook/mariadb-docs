@@ -21,7 +21,7 @@ With the `GLOBAL` modifier, `SHOW STATUS` displays the status values for all con
 
 Some status variables have only a global value. For these, you get the same value for both `GLOBAL` and `SESSION`.
 
-See [Server Status Variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md) for a full list, scope and description of the variables that can be viewed with `SHOW STATUS`.
+See [Server Status Variables](../../../../server-management/variables-and-modes/server-status-variables.md) for a full list, scope and description of the variables that can be viewed with `SHOW STATUS`.
 
 The `LIKE` clause, if present on its own, indicates which variable name to match.
 

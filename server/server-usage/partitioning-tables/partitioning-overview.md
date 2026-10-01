@@ -71,7 +71,7 @@ and you will not be able to create partitions.
 
 ## Using Partitions
 
-It is possible to create a new partitioned table using [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md).
+It is possible to create a new partitioned table using [CREATE TABLE](../tables/create-table.md).
 
 [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/) allows one to:
 
@@ -331,7 +331,7 @@ CREATE TABLE: CREATE TABLE `t2` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci
 ```
 
-Similarly, to do the reverse and convert a table into a partition [`ALTER TABLE`](../../reference/sql-statements/data-definition/alter/alter-table/README.md) `... EXCHANGE PARTITION` can also be used, with the following manual steps required:
+Similarly, to do the reverse and convert a table into a partition [`ALTER TABLE`](../../reference/sql-statements/data-definition/alter/alter-table/) `... EXCHANGE PARTITION` can also be used, with the following manual steps required:
 
 * create the partition
 * exchange the partition with the table

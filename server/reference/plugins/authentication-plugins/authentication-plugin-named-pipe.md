@@ -7,7 +7,7 @@ description: >-
 
 # Authentication Plugin - Named Pipe
 
-The `named_pipe` authentication plugin allows the user to use operating system credentials when connecting to MariaDB via named pipe on Windows. Named pipe connections are enabled by the [named\_pipe](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#named_pipe) system variable.
+The `named_pipe` authentication plugin allows the user to use operating system credentials when connecting to MariaDB via named pipe on Windows. Named pipe connections are enabled by the [named\_pipe](../../../server-management/variables-and-modes/server-system-variables.md#named_pipe) system variable.
 
 The `named_pipe` authentication plugin works by using [named pipe impersonation](https://msdn.microsoft.com/en-us/library/windows/desktop/aa378618\(v=vs.85\).aspx) and calling `GetUserName()` to retrieve the user name of the process that is connected to the named pipe. Once it has the user name, it authenticates the connecting user as the MariaDB account that has the same user name.
 

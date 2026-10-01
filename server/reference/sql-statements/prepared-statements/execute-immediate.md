@@ -153,9 +153,9 @@ SELECT * FROM t1;
 +------+
 ```
 
-EXECUTE IMMEDIATE increments the [Com\_execute\_immediate](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#com_execute_immediate) status variable, as well as the [Com\_stmt\_prepare](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#com_stmt_prepare), [Com\_stmt\_execute](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#com_stmt_execute) and [Com\_stmt\_close](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#com_stmt_close) status variables.
+EXECUTE IMMEDIATE increments the [Com\_execute\_immediate](../../../server-management/variables-and-modes/server-status-variables.md#com_execute_immediate) status variable, as well as the [Com\_stmt\_prepare](../../../server-management/variables-and-modes/server-status-variables.md#com_stmt_prepare), [Com\_stmt\_execute](../../../server-management/variables-and-modes/server-status-variables.md#com_stmt_execute) and [Com\_stmt\_close](../../../server-management/variables-and-modes/server-status-variables.md#com_stmt_close) status variables.
 
-Note, EXECUTE IMMEDIATE does not increment the [Com\_execute\_sql](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#com_execute_sql) status variable. _Com\_execute\_sql_ is used only for [PREPARE](prepare-statement.md)..[EXECUTE](execute-statement.md).
+Note, EXECUTE IMMEDIATE does not increment the [Com\_execute\_sql](../../../server-management/variables-and-modes/server-status-variables.md#com_execute_sql) status variable. _Com\_execute\_sql_ is used only for [PREPARE](prepare-statement.md)..[EXECUTE](execute-statement.md).
 
 This session screenshot demonstrates how EXECUTE IMMEDIATE affects status variables:
 

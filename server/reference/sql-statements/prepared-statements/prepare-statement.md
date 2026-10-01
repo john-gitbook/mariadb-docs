@@ -20,7 +20,7 @@ The scope of a prepared statement is the session within which it is created. Oth
 
 If a prepared statement with the given name already exists, it is deallocated implicitly before the new statement is prepared. This means that if the new statement contains an error and cannot be prepared, an error is returned and no statement with the given name exists.
 
-Prepared statements can be `PREPARE` and [EXECUTE](execute-statement.md) in a stored procedure, but never in a trigger. In a stored function they are not permitted at all before MariaDB 13.2.1, and from MariaDB 13.2.1 only in the restricted context described in [Dynamic SQL in Stored Functions](#dynamic-sql-in-stored-functions). Also, even if the statement is prepared with `PREPARE` in a procedure, it will not be deallocated when the procedure execution ends.
+Prepared statements can be `PREPARE` and [EXECUTE](execute-statement.md) in a stored procedure, but never in a trigger. In a stored function they are not permitted at all before MariaDB 13.2.1, and from MariaDB 13.2.1 only in the restricted context described in [Dynamic SQL in Stored Functions](prepare-statement.md#dynamic-sql-in-stored-functions). Also, even if the statement is prepared with `PREPARE` in a procedure, it will not be deallocated when the procedure execution ends.
 
 A prepared statement can access [user-defined variables](../../sql-structure/sql-language-structure/user-defined-variables.md), but not [local variables](../programmatic-compound-statements/declare-variable.md) or procedure's parameters.
 
@@ -43,7 +43,7 @@ The [FOUND\_ROWS()](../../sql-functions/secondary-functions/information-function
 
 A prepared statement is executed with [EXECUTE](execute-statement.md) and released with [DEALLOCATE PREPARE](deallocate-drop-prepare.md).
 
-The [max\_prepared\_stmt\_count](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_prepared_stmt_count) server system variable determines the number of allowed prepared statements that can be prepared on the server. If it is set to `0`, prepared statements are not allowed. If the limit is reached, an error similar to the following will be produced:
+The [max\_prepared\_stmt\_count](../../../server-management/variables-and-modes/server-system-variables.md#max_prepared_stmt_count) server system variable determines the number of allowed prepared statements that can be prepared on the server. If it is set to `0`, prepared statements are not allowed. If the limit is reached, an error similar to the following will be produced:
 
 ```sql
 ERROR 1461 (42000): Can't create more than max_prepared_stmt_count statements 
@@ -68,7 +68,7 @@ PREPARE LOCAL spvar FROM preparable_stmt;
 
 Here `spvar` is a local variable (or routine parameter) whose string value is used as the prepared statement name — useful when the name must be computed at runtime. `LOCAL` does not create a separate namespace: a statement prepared with `PREPARE LOCAL` can be executed or deallocated by its resolved name with a plain [EXECUTE](execute-statement.md) or [DEALLOCATE PREPARE](deallocate-drop-prepare.md), and the reverse also works.
 
-`PREPARE LOCAL` is only valid inside a stored procedure. Like the plain form, it is never permitted in a trigger, and in a stored function it is subject to the same restrictions as `PREPARE` — see [Dynamic SQL in Stored Functions](#dynamic-sql-in-stored-functions).
+`PREPARE LOCAL` is only valid inside a stored procedure. Like the plain form, it is never permitted in a trigger, and in a stored function it is subject to the same restrictions as `PREPARE` — see [Dynamic SQL in Stored Functions](prepare-statement.md#dynamic-sql-in-stored-functions).
 
 **Example:**
 
@@ -189,7 +189,7 @@ Prior to this, not all statements can be prepared. Only the following SQL comman
 * [COMMIT](../transactions/commit.md)
 * {[CREATE](../data-definition/create/create-database.md) | [DROP](../data-definition/drop/drop-database.md)} DATABASE
 * {[CREATE](../data-definition/create/create-index.md) | [DROP](../data-definition/drop/drop-index.md)} INDEX
-* {[CREATE](../data-definition/create/create-table.md) | [RENAME](../data-definition/rename-table.md) | [DROP](../data-definition/drop/drop-table.md)} TABLE
+* {[CREATE](../../../server-usage/tables/create-table.md) | [RENAME](../data-definition/rename-table.md) | [DROP](../../../server-usage/tables/drop-table.md)} TABLE
 * {[CREATE](../account-management-sql-statements/create-user.md) | [RENAME](../account-management-sql-statements/rename-user.md) | [DROP](../account-management-sql-statements/drop-user.md)} USER
 * {[CREATE](../../../server-usage/views/create-view.md) | [DROP](../../../server-usage/views/drop-view.md)} VIEW
 * [DELETE](../data-manipulation/changing-deleting-data/delete.md)
@@ -216,7 +216,7 @@ Prior to this, not all statements can be prepared. Only the following SQL comman
 * [SET GLOBAL SQL\_SLAVE\_SKIP\_COUNTER](../administrative-sql-statements/replication-statements/set-global-sql_slave_skip_counter.md)
 * [SET ROLE](../account-management-sql-statements/set-role.md)
 * [SET SQL\_LOG\_BIN](../administrative-sql-statements/set-commands/set-sql_log_bin.md)
-* [SET TRANSACTION ISOLATION LEVEL](../transactions/set-transaction.md)
+* [SET TRANSACTION ISOLATION LEVEL](../administrative-sql-statements/set-commands/set-transaction.md)
 * [SHOW EXPLAIN](../administrative-sql-statements/show/show-explain.md)
 * SHOW {[DATABASES](../administrative-sql-statements/show/show-databases.md) | [TABLES](../administrative-sql-statements/show/show-tables.md) | [OPEN TABLES](../administrative-sql-statements/show/show-open-tables.md) | [TABLE STATUS](../administrative-sql-statements/show/show-table-status.md) | [COLUMNS](../administrative-sql-statements/show/show-columns.md) | [INDEX](../administrative-sql-statements/show/show-index.md) | [TRIGGERS](../administrative-sql-statements/show/show-triggers.md) |[EVENTS](../administrative-sql-statements/show/show-events.md) | [GRANTS](../administrative-sql-statements/show/show-grants.md) | [CHARACTER SET](../administrative-sql-statements/show/show-character-set.md) | [COLLATION](../administrative-sql-statements/show/show-collation.md) | [ENGINES](../administrative-sql-statements/show/show-events.md) | \[PLUGINS [SONAME](../administrative-sql-statements/show/show-plugins.md)] | [PRIVILEGES](../administrative-sql-statements/show/show-privileges.md) |[PROCESSLIST](../administrative-sql-statements/show/show-processlist.md) | [PROFILE](../administrative-sql-statements/show/show-profile.md) | [PROFILES](../administrative-sql-statements/show/show-profiles.md) | [VARIABLES](../administrative-sql-statements/show/show-variables.md) | [STATUS](../administrative-sql-statements/show/show-status.md) | [WARNINGS](../administrative-sql-statements/show/show-warnings.md) | [ERRORS](../administrative-sql-statements/show/show-errors.md) |[TABLE\_STATISTICS](../administrative-sql-statements/show/show-table-statistics.md) | [INDEX\_STATISTICS](../administrative-sql-statements/show/show-index-statistics.md) | [USER\_STATISTICS](../administrative-sql-statements/show/show-user-statistics.md) | [CLIENT\_STATISTICS](../administrative-sql-statements/show/show-client-statistics.md) | [AUTHORS](../administrative-sql-statements/show/show-authors.md) |[CONTRIBUTORS](../administrative-sql-statements/show/show-contributors.md)}
 * SHOW CREATE {[DATABASE](../administrative-sql-statements/show/show-create-database.md) | [TABLE](../administrative-sql-statements/show/show-create-table.md) | [VIEW](../administrative-sql-statements/show/show-create-view.md) | [PROCEDURE](../administrative-sql-statements/show/show-create-procedure.md) | [FUNCTION](../administrative-sql-statements/show/show-create-function.md) | [TRIGGER](../administrative-sql-statements/show/show-create-trigger.md) | [EVENT](../administrative-sql-statements/show/show-create-event.md)}

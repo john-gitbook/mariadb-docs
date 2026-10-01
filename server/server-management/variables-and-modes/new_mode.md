@@ -6,7 +6,7 @@ description: >-
 
 # NEW\_MODE
 
-The `NEW_MODE` system variable and command line switch were introduced in [MariaDB 11.4](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114) to provide a way to enable new behavior in otherwise stable versions. Specifying a flag in the `NEW_MODE` variable enables the corresponding new behavior; otherwise, the old (stable) behavior is used. This can be useful to preserve execution plans in stable versions that may change when the new behavior is active.
+The `NEW_MODE` system variable and command line switch were introduced in [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114) to provide a way to enable new behavior in otherwise stable versions. Specifying a flag in the `NEW_MODE` variable enables the corresponding new behavior; otherwise, the old (stable) behavior is used. This can be useful to preserve execution plans in stable versions that may change when the new behavior is active.
 
 A sample usage scenario is:
 
@@ -17,7 +17,7 @@ A sample usage scenario is:
 
 ## Syntax
 
-You can set `NEW_MODE` from the [command line](../starting-and-stopping-mariadb/mariadbd-options.md) using the `--new-mode` option, or by setting the [new\_mode](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#new_mode) system variable.
+You can set `NEW_MODE` from the [command line](../starting-and-stopping-mariadb/mariadbd-options.md) using the `--new-mode` option, or by setting the [new\_mode](server-system-variables.md#new_mode) system variable.
 
 ```bnf
 SET [GLOBAL|SESSION] new_mode = 'fix_1[,fix_2]...';

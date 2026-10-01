@@ -40,7 +40,7 @@ If the [binary log](../../../server-monitoring-logs/binary-log/) is enabled, wri
 
 The first read or write to an InnoDB table starts a transaction. No data access is possible outside a transaction.
 
-By default [autocommit](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) is on, which means that the transaction is committed automatically after each SQL statement. We can disable it, and manually commit transactions:
+By default [autocommit](../../../variables-and-modes/server-system-variables.md#autocommit) is on, which means that the transaction is committed automatically after each SQL statement. We can disable it, and manually commit transactions:
 
 ```sql
 SET SESSION autocommit = 0;
@@ -68,7 +68,7 @@ Changing autocommit and explicitly starting a transaction will implicitly commit
 
 A rollback can also be triggered implicitly, when certain errors occur.
 
-You can experiment with transactions to check in which cases they implicitly commit or rollback. The [in\_transaction](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#in_transaction) system variable can help: it is set to 1 when a transaction is in progress, or 0 when no transaction is in progress.
+You can experiment with transactions to check in which cases they implicitly commit or rollback. The [in\_transaction](../../../variables-and-modes/server-system-variables.md#in_transaction) system variable can help: it is set to 1 when a transaction is in progress, or 0 when no transaction is in progress.
 
 This section only covers the basic syntax for transactions. Much more options are available. For more information, see [Transactions](../../../../reference/sql-statements/transactions/).
 
@@ -141,11 +141,11 @@ The last solutions temporarily disable `CHECK` constraints and foreign keys. Not
 * This doesn't disable a single `CHECK` or foreign key, but also others, that you don't expect to violate.
 * This doesn't defer the constraint checks, but it simply disables them for a while. This means that, if you insert some invalid values, they will not be detected.
 
-See [check\_constraint\_checks](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#check_constraint_checks) and [foreign\_key\_checks](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks) system variables.
+See [check\_constraint\_checks](../../../variables-and-modes/server-system-variables.md#check_constraint_checks) and [foreign\_key\_checks](../../../variables-and-modes/server-system-variables.md#foreign_key_checks) system variables.
 
 ## Isolation Levels and Locks
 
-For more information about MariaDB isolation levels see [SET TRANSACTION](../../../../reference/sql-statements/transactions/set-transaction.md).
+For more information about MariaDB isolation levels see [SET TRANSACTION](../../../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md).
 
 ### Locking Reads
 
@@ -155,15 +155,15 @@ As a general rule:
 * To force a read to acquire a shared lock, use [SELECT ... LOCK IN SHARE MODE](../../../../reference/sql-statements/data-manipulation/selecting-data/lock-in-share-mode.md).
 * To force a read to acquire an exclusive lock, use [SELECT ... FOR UPDATE](../../../../reference/sql-statements/data-manipulation/selecting-data/for-update.md).
 
-The locks that a locking read acquires do depend on the isolation level. InnoDB takes no [gap locks](../../../../server-usage/storage-engines/innodb/innodb-lock-modes.md#gap-locks) at `READ COMMITTED` or `READ UNCOMMITTED`, so a locking read at those levels locks the index records it examines but not the gaps between them. See [Gap Locking at READ COMMITTED](../../../../reference/sql-statements/transactions/set-transaction.md#gap-locking-at-read-committed).
+The locks that a locking read acquires do depend on the isolation level. InnoDB takes no [gap locks](../../../../server-usage/storage-engines/innodb/innodb-lock-modes.md#gap-locks) at `READ COMMITTED` or `READ UNCOMMITTED`, so a locking read at those levels locks the index records it examines but not the gaps between them. See [Gap Locking at READ COMMITTED](../../../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md#gap-locking-at-read-committed).
 
 `SERIALIZABLE` is the other level at which reads behave differently: within a transaction, InnoDB treats a plain `SELECT` as `LOCK IN SHARE MODE`. A consistent read run with `autocommit=1` is exempt, because a read-only transaction can be serialized as a consistent read.
 
 ### Changing the Isolation Level
 
-The default isolation level in MariaDB is `REPEATABLE READ`. This can be changed with the [transaction\_isolation](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#transaction_isolation) system variable. The older name `tx_isolation` still works, but has been deprecated since MariaDB 11.1 and produces a warning.
+The default isolation level in MariaDB is `REPEATABLE READ`. This can be changed with the [transaction\_isolation](../../../variables-and-modes/server-system-variables.md#transaction_isolation) system variable. The older name `tx_isolation` still works, but has been deprecated since MariaDB 11.1 and produces a warning.
 
-Applications developed for SQL Server and later ported to MariaDB may run with `READ COMMITTED` without problems, since it is the level closest to the SQL Server default. Do not switch to it as a scalability measure, though, because neither level is uniformly faster: `READ COMMITTED` creates a new read view at the start of every statement, which costs more in a transaction made of many short statements and less in a long-running transaction made of complex ones. See [Choosing an Isolation Level](../../../../reference/sql-statements/transactions/set-transaction.md#choosing-an-isolation-level).
+Applications developed for SQL Server and later ported to MariaDB may run with `READ COMMITTED` without problems, since it is the level closest to the SQL Server default. Do not switch to it as a scalability measure, though, because neither level is uniformly faster: `READ COMMITTED` creates a new read view at the start of every statement, which costs more in a transaction made of many short statements and less in a long-running transaction made of complex ones. See [Choosing an Isolation Level](../../../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md#choosing-an-isolation-level).
 
 To use `READ COMMITTED` by default, add the following line to the MariaDB configuration file:
 
@@ -284,7 +284,7 @@ It is important to note that this variable has two limitations (by design):
 * It only affects transactional statements, not statements like `ALTER TABLE` or `TRUNCATE TABLE`.
 * It only concerns row locks. It does not put a timeout on metadata locks, or table locks acquired - for example - with the [LOCK TABLES](../../../../reference/sql-statements/transactions/lock-tables.md) statement.
 
-Note however that [lock\_wait\_timeout](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lock_wait_timeout) can be used for metadata locks.
+Note however that [lock\_wait\_timeout](../../../variables-and-modes/server-system-variables.md#lock_wait_timeout) can be used for metadata locks.
 
 There is a special syntax that can be used with `SELECT` and some non-transactional statements including `ALTER TABLE`: the [WAIT and NOWAIT](../../../../reference/sql-statements/transactions/wait-and-nowait.md) clauses. This syntax puts a timeout in seconds for all lock types, including row locks, table locks, and metadata locks. For example:
 

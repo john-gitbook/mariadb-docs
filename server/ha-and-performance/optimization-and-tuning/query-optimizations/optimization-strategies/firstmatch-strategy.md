@@ -83,7 +83,7 @@ The general idea behind the `FirstMatch` strategy is the same as the one behind 
 * `EXPLAIN` shows `FirstMatch` as "`FirstMatch(tableN)`".
 * The strategy can handle correlated subqueries.
 * But it cannot be applied if the subquery has meaningful `GROUP BY` and/or aggregate functions.
-* Use of the `FirstMatch` strategy is controlled with the `firstmatch=on|off` flag in the [optimizer\_switch](../../system-variables/server-system-variables.md#optimizer_switch) variable.
+* Use of the `FirstMatch` strategy is controlled with the `firstmatch=on|off` flag in the [optimizer\_switch](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) variable.
 
 ## See Also
 

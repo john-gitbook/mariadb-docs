@@ -6,7 +6,7 @@ description: >-
 
 # Microseconds in MariaDB
 
-The [TIME](../../data-types/date-and-time-data-types/time.md), [DATETIME](../../data-types/date-and-time-data-types/datetime.md), and [TIMESTAMP](../../data-types/date-and-time-data-types/timestamp.md) types, along with the temporal functions, [CAST](../string-functions/cast.md) and [dynamic columns](../../sql-structure/nosql/dynamic-columns.md), support microseconds. The datetime precision of a column can be specified when creating the table with [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md), for example:
+The [TIME](../../data-types/date-and-time-data-types/time.md), [DATETIME](../../data-types/date-and-time-data-types/datetime.md), and [TIMESTAMP](../../data-types/date-and-time-data-types/timestamp.md) types, along with the temporal functions, [CAST](../string-functions/cast.md) and [dynamic columns](../../sql-structure/nosql/dynamic-columns.md), support microseconds. The datetime precision of a column can be specified when creating the table with [CREATE TABLE](../../../server-usage/tables/create-table.md), for example:
 
 ```sql
 CREATE TABLE example(

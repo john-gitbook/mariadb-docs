@@ -12,7 +12,7 @@
 
 ### log\_slow\_verbosity
 
-You can set the verbosity of what's logged to the slow query log by setting the [log\_slow\_verbosity](../../system-variables/server-system-variables.md#log_slow_verbosity) variable to a combination of the following values:
+You can set the verbosity of what's logged to the slow query log by setting the [log\_slow\_verbosity](../../../../server-management/variables-and-modes/server-system-variables.md#log_slow_verbosity) variable to a combination of the following values:
 
 * `All` (From [MariaDB 10.6.16](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.16))
   * Enable all verbosity options.
@@ -42,16 +42,15 @@ The default value for `log_slow_verbosity` is ' ', to be compatible with MySQL 5
 
 The possible values for `log_slow_verbosity are`innodb,query\_plan,explain,engine,warnings`. Multiple options are separated by ','.` log\_slow\_verbosity is not supported when log\_output='TABLE'.
 
-
 ### log\_slow\_filter
 
-You can define which queries to log to the slow query log by setting the variable [log\_slow\_filter](../../system-variables/server-system-variables.md#log_slow_filter) to a combination of the following values:
+You can define which queries to log to the slow query log by setting the variable [log\_slow\_filter](../../../../server-management/variables-and-modes/server-system-variables.md#log_slow_filter) to a combination of the following values:
 
 * `All` (From [MariaDB 10.6.16](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.16))
   * Enable all filter options. `log_slow_filter` will be shown as having all options set.
 * `admin`
   * Log administrative statements (create, optimize, drop etc...)
-  * [log\_slow\_admin\_statements](../../system-variables/server-system-variables.md#log_slow_admin_statements) maps to this option.
+  * [log\_slow\_admin\_statements](../../../../server-management/variables-and-modes/server-system-variables.md#log_slow_admin_statements) maps to this option.
 * `filesort`
   * Log statement if it uses filesort
 * `filesort_on_disk`
@@ -65,7 +64,7 @@ You can define which queries to log to the slow query log by setting the variabl
 * `not_using_index` (From [MariaDB 10.3.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.1))
   * Logs queries that don't use an index, or that perform a full index scan where the index doesn't limit the number of rows
   * Disregards long\_query\_time, unlike other options!
-  * [log\_queries\_not\_using\_indexes](../../system-variables/server-system-variables.md#log_queries_not_using_indexes) maps to this option
+  * [log\_queries\_not\_using\_indexes](../../../../server-management/variables-and-modes/server-system-variables.md#log_queries_not_using_indexes) maps to this option
 * `query_cache`
   * Log statements that are resolved by the query cache
 * `query_cache_miss`
@@ -79,7 +78,7 @@ Multiple options are separated by ','. If you don't specify any options everythi
 
 ### log\_slow\_rate\_limit
 
-The [log\_slow\_rate\_limit](../../system-variables/server-system-variables.md#log_slow_rate_limit) variable limits logging to the slow query log by not logging every query (only one query / log\_slow\_rate\_limit is logged). This is mostly useful when debugging and you get too much information to the slow query log.
+The [log\_slow\_rate\_limit](../../../../server-management/variables-and-modes/server-system-variables.md#log_slow_rate_limit) variable limits logging to the slow query log by not logging every query (only one query / log\_slow\_rate\_limit is logged). This is mostly useful when debugging and you get too much information to the slow query log.
 
 Note that in any case, only queries that takes longer than **log\_slow\_time** or**long\_query\_time**' are logged (as before).
 

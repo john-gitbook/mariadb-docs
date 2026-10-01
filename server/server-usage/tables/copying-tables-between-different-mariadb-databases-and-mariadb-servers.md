@@ -6,8 +6,7 @@ description: >-
 
 # Copying Tables Between Databases and Servers
 
-With MariaDB it's very easy to copy tables between different MariaDB databases
-and different MariaDB servers. This works for tables created with the [Archive](../storage-engines/archive.md), [Aria](../storage-engines/aria/), [CSV](../storage-engines/csv/), [InnoDB](../storage-engines/innodb/), [MyISAM](../storage-engines/myisam-storage-engine/), [MERGE](../storage-engines/merge.md), and [XtraDB](../storage-engines/innodb/) engines.
+With MariaDB it's very easy to copy tables between different MariaDB databases and different MariaDB servers. This works for tables created with the [Archive](../storage-engines/archive.md), [Aria](../storage-engines/aria/), [CSV](../storage-engines/csv/), [InnoDB](../storage-engines/innodb/), [MyISAM](../storage-engines/myisam-storage-engine/), [MERGE](../storage-engines/merge.md), and [XtraDB](../storage-engines/innodb/) engines.
 
 The normal procedures to copy a table is:
 
@@ -19,19 +18,10 @@ FLUSH TABLES db_name.table_name FOR EXPORT
 UNLOCK TABLES;
 ```
 
-The table files can be found in [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir)/databasename (you can execute`SELECT @@datadir` to find the correct directory).\
-When copying the files, you should copy all files with the same
-table\_name + various extensions. For example, for an Aria table of
-name foo, you will have files foo.frm, foo.MAI, foo.MAD and possibly
-foo.TRG if you have [triggers](../triggers-events/triggers/).
+The table files can be found in [datadir](../../server-management/variables-and-modes/server-system-variables.md#datadir)/databasename (you can execute`SELECT @@datadir` to find the correct directory).\
+When copying the files, you should copy all files with the same table\_name + various extensions. For example, for an Aria table of name foo, you will have files foo.frm, foo.MAI, foo.MAD and possibly foo.TRG if you have [triggers](../triggers-events/triggers/).
 
-If one wants to distribute a table to a user that doesn't need write
-access to the table and one wants to minimize the storage size of the
-table, the recommended engine to use is Aria or MyISAM as one can
-pack the table with [aria\_pack](../../clients-and-utilities/aria-clients-and-utilities/aria_pack.md) or [myisampack](../../clients-and-utilities/myisam-clients-and-utilities/myisampack.md) respectively to make it notablly
-smaller. MyISAM is the most portable format as it's not dependent on
-whether the server settings are different. Aria and InnoDB require the same
-block size on both servers.
+If one wants to distribute a table to a user that doesn't need write access to the table and one wants to minimize the storage size of the table, the recommended engine to use is Aria or MyISAM as one can pack the table with [aria\_pack](../../clients-and-utilities/aria-clients-and-utilities/aria_pack.md) or [myisampack](../../clients-and-utilities/myisam-clients-and-utilities/myisampack.md) respectively to make it notablly smaller. MyISAM is the most portable format as it's not dependent on whether the server settings are different. Aria and InnoDB require the same block size on both servers.
 
 ## Copying Tables When the MariaDB Server is Down
 
@@ -58,11 +48,9 @@ The advantage of [FLUSH TABLES table\_name FOR EXPORT](../../reference/sql-state
 
 ## An Efficient Way to Give Someone Else Access to a Read Only Table
 
-If you want to give a user access to some data in a table for the user to use in
-their MariaDB server, you can do the following:
+If you want to give a user access to some data in a table for the user to use in their MariaDB server, you can do the following:
 
-First let's create the table we want to export. To speed up things, we
-create this without any indexes. We use `TRANSACTIONAL=0 ROW_FORMAT=DYNAMIC` for Aria to use the smallest possible row format.
+First let's create the table we want to export. To speed up things, we create this without any indexes. We use `TRANSACTIONAL=0 ROW_FORMAT=DYNAMIC` for Aria to use the smallest possible row format.
 
 ```
 CREATE TABLE new_table ... ENGINE=ARIA TRANSACTIONAL=0;
@@ -77,8 +65,7 @@ FLUSH TABLE new_table WITH READ LOCK;
 UNLOCK TABLES;
 ```
 
-Then we pack it and generate the indexes. We use a big sort buffer to speed
-up generating the index.
+Then we pack it and generate the indexes. We use a big sort buffer to speed up generating the index.
 
 ```
 > ls -l /tmp/new_table.*
@@ -111,7 +98,7 @@ InnoDB's file-per-table tablespaces are transportable, which means that you can 
 
 ## Importing Tables
 
-Tables that use most storage engines are immediately usable when their files are copied to the new [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir).
+Tables that use most storage engines are immediately usable when their files are copied to the new [datadir](../../server-management/variables-and-modes/server-system-variables.md#datadir).
 
 However, this is not true for tables that use [InnoDB](../storage-engines/innodb/). InnoDB tables have to be imported with [ALTER TABLE ... IMPORT TABLESPACE](../../reference/sql-statements/data-definition/alter/alter-table/#import-tablespace). See [Copying Transportable Tablespaces](../storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md#copying-transportable-tablespaces) for more information.
 

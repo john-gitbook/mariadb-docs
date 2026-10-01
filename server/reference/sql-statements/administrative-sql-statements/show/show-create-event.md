@@ -22,7 +22,7 @@ This statement displays the [CREATE EVENT](../../data-definition/create/create-e
 From MariaDB 10.6.5:
 {% endhint %}
 
-`SHOW CREATE EVENT` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) system variable.
+`SHOW CREATE EVENT` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) system variable.
 {% endtab %}
 
 {% tab title="< 10.6.5" %}
@@ -30,7 +30,7 @@ From MariaDB 10.6.5:
 Before MariaDB 10.6.5:
 {% endhint %}
 
-`SHOW CREATE EVENT` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) system variable. Note, however, that the output of this statement is unreliably affected by the [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) system variable.
+`SHOW CREATE EVENT` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) system variable. Note, however, that the output of this statement is unreliably affected by the [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) system variable.
 {% endtab %}
 {% endtabs %}
 

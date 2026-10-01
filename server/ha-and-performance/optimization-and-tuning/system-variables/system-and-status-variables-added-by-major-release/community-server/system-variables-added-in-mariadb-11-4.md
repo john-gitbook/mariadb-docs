@@ -1,10 +1,10 @@
 # System Variables Added in MariaDB 11.4
 
-This is a list of [system variables](../../server-system-variables.md) that have been added in the [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114) series.
+This is a list of [system variables](../../../../../server-management/variables-and-modes/server-system-variables.md) that have been added in the [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114) series.
 
-| Variable                                                                                                                                                  | Added                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [analyze\_max\_length](../../server-system-variables.md#analyze_max_length)                                                                                  | [MariaDB 11.4.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.8) |
+| Variable                                                                                                                                                     | Added                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| [analyze\_max\_length](../../../../../server-management/variables-and-modes/server-system-variables.md#analyze_max_length)                                   | [MariaDB 11.4.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.8) |
 | [binlog\_gtid\_index](../../../../standard-replication/replication-and-binary-log-system-variables.md#binlog_gtid_index)                                     | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
 | [binlog\_gtid\_index\_page\_size](../../../../standard-replication/replication-and-binary-log-system-variables.md#binlog_gtid_index_page_size)               | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
 | [binlog\_gtid\_index\_span\_min](../../../../standard-replication/replication-and-binary-log-system-variables.md#binlog_gtid_index_span_min)                 | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
@@ -19,8 +19,8 @@ This is a list of [system variables](../../server-system-variables.md) that have
 | [innodb\_log\_write\_ahead\_size](../../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_log_write_ahead_size)                 | [MariaDB 11.4.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.3) |
 | [innodb\_snapshot\_isolation](../../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_snapshot_isolation)                       | [MariaDB 11.4.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.2) |
 | [max\_binlog\_total\_size](../../../../standard-replication/replication-and-binary-log-system-variables.md#max_binlog_total_size)                            | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
-| [optimizer\_join\_limit\_pref\_ratio](../../server-system-variables.md#optimizer_join_limit_pref_ratio)                                                      | [MariaDB 11.4.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.4) |
-| [server\_uid](../../server-system-variables.md#server_uid)                                                                                                   | [MariaDB 11.4.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.3) |
+| [optimizer\_join\_limit\_pref\_ratio](../../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_join_limit_pref_ratio)       | [MariaDB 11.4.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.4) |
+| [server\_uid](../../../../../server-management/variables-and-modes/server-system-variables.md#server_uid)                                                    | [MariaDB 11.4.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.3) |
 | [slave\_connections\_needed\_for\_purge](../../../../standard-replication/replication-and-binary-log-system-variables.md#slave_connections_needed_for_purge) | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
 
 For system variables added since the previous long-term release, [MariaDB 10.11](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.11/what-is-mariadb-1011), see:

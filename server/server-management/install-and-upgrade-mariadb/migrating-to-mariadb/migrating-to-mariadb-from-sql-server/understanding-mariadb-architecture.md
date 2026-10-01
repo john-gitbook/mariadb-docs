@@ -33,7 +33,7 @@ When we create a table, we specify its storage engine or use the default one. It
 
 Note that it is perfectly possible to use tables with different storage engines in the same transaction (even if some engines are not transactional). It is even possible to use different engines in the same query, for example with JOINs and subqueries.
 
-The default storage engine can be changed by changing the [default\_storage\_engine](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) variable. A different default can be specified for temporary tables by setting [default\_tmp\_storage\_engine](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_tmp_storage_engine). MariaDB uses [Aria](../../../../server-usage/storage-engines/aria/aria-storage-engine.md) for system tables and temporary tables created internally to store the intermediate results of a query.
+The default storage engine can be changed by changing the [default\_storage\_engine](../../../variables-and-modes/server-system-variables.md#default_storage_engine) variable. A different default can be specified for temporary tables by setting [default\_tmp\_storage\_engine](../../../variables-and-modes/server-system-variables.md#default_tmp_storage_engine). MariaDB uses [Aria](../../../../server-usage/storage-engines/aria/aria-storage-engine.md) for system tables and temporary tables created internally to store the intermediate results of a query.
 
 ### InnoDB
 
@@ -220,9 +220,9 @@ Storage engines are a special type of [plugin](../../../../reference/plugins/). 
 
 A plugin may add some server variables and some status variables. Server variables can be used to configure the plugin, and status variables can be used to monitor its activities and status. These variables generally use the plugin's name as a prefix. For example InnoDB has a server variable called innodb\_buffer\_pool\_size to configure the size of its buffer pool, and a status variable called Innodb\_pages\_read which indicates the number of memory pages read from the buffer pool. The category [system variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/) of the MariaDB documentation has specific pages for system and status variables associated with various plugins.
 
-Many plugins are installed by default, or available but not installed by default. They can be installed or uninstalled at runtime with SQL statements, like `INSTALL PLUGIN`, `UNINSTALL PLUGIN` and others; see [Plugin SQL Statements](../../../../reference/sql-statements/administrative-sql-statements/plugin-sql-statements/). 3rd party plugins can be made available for installation by simply copying them to the [plugin\_dir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#plugin_dir).
+Many plugins are installed by default, or available but not installed by default. They can be installed or uninstalled at runtime with SQL statements, like `INSTALL PLUGIN`, `UNINSTALL PLUGIN` and others; see [Plugin SQL Statements](../../../../reference/sql-statements/administrative-sql-statements/plugin-sql-statements/). 3rd party plugins can be made available for installation by simply copying them to the [plugin\_dir](../../../variables-and-modes/server-system-variables.md#plugin_dir).
 
-It is important to note that different plugins may have different maturity levels. It is possible to prevent the installation of plugins we don’t consider production-ready by setting the [plugin\_maturity](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#plugin_maturity) system variable. For plugins that are distributed with MariaDB, the maturity level is determined by the MariaDB team based on the bugs reported and fixed.
+It is important to note that different plugins may have different maturity levels. It is possible to prevent the installation of plugins we don’t consider production-ready by setting the [plugin\_maturity](../../../variables-and-modes/server-system-variables.md#plugin_maturity) system variable. For plugins that are distributed with MariaDB, the maturity level is determined by the MariaDB team based on the bugs reported and fixed.
 
 Some plugins are developed by 3rd parties. Even some 3rd party plugins are included in MariaDB official distributions - the ones available on mariadb.org.
 
@@ -234,14 +234,13 @@ Other plugins that can be very useful include [userstat](../../../../ha-and-perf
 
 MariaDB supports [thread pool](../../../../ha-and-performance/optimization-and-tuning/buffers-caches-and-threads/thread-pool/). It works differently on UNIX and on Windows. On Windows, it is enabled by default and its implementation is quite similar to SQL Server. It uses the Windows native CreateThreadpool API.
 
-If we don't use the thread pool, MariaDB will use its traditional method to handle connections. It consists of using a dedicated thread for each client connection. Creating a new thread has a cost in terms of CPU time. To mitigate this cost, after a client disconnects, the thread may be preserved for a certain time in the [thread cache](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#thread_cache_size).
+If we don't use the thread pool, MariaDB will use its traditional method to handle connections. It consists of using a dedicated thread for each client connection. Creating a new thread has a cost in terms of CPU time. To mitigate this cost, after a client disconnects, the thread may be preserved for a certain time in the [thread cache](../../../variables-and-modes/server-system-variables.md#thread_cache_size).
 
 Whichever connection method we use, MariaDB has a maximum number of simultaneous connections, which can be changed at runtime. When the limit is reached, if more clients try to connect they will receive an error. This prevents MariaDB from consuming all the server resources and freezing or crashing. See [Handling Too Many Connections](../../../../ha-and-performance/optimization-and-tuning/system-variables/handling-too-many-connections.md).
 
 ## Configuration
 
-MariaDB has many settings that
-control the server behavior. These can be set up when starting mysqld ([mysqld options](../../../starting-and-stopping-mariadb/mariadbd-options.md)), and the vast majority are also accessible as [server system variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md). These can be classified in these ways:
+MariaDB has many settings that control the server behavior. These can be set up when starting mysqld ([mysqld options](../../../starting-and-stopping-mariadb/mariadbd-options.md)), and the vast majority are also accessible as [server system variables](../../../variables-and-modes/server-system-variables.md). These can be classified in these ways:
 
 * Dynamic or static;
 * Global, session, or both.
@@ -262,7 +261,7 @@ The contents of each configuration file are organized by _option groups_. MariaD
 
 Dynamic variables have a value that can be changed at runtime, using the [SET](../../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md) SQL statement. Static variables have a value that is decided at startup (see below) and cannot be changed without a restart.
 
-The [Server System Variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) page states if variables are dynamic or static.
+The [Server System Variables](../../../variables-and-modes/server-system-variables.md) page states if variables are dynamic or static.
 
 ### Scope
 
@@ -270,7 +269,7 @@ A global system variable is one that affects the general behavior of MariaDB. Fo
 
 A variable could exist in both the global and session scopes. In this case, the session value is what affects the current connection. When a user connects, the current global value is copied to the session scope. Changing the global value afterward will not change existing connections.
 
-The [Server System Variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) page states the scope of each variable.
+The [Server System Variables](../../../variables-and-modes/server-system-variables.md) page states the scope of each variable.
 
 Global variables and some session variables can only be modified by a user with the [SUPER](../../../../reference/sql-statements/account-management-sql-statements/grant.md#global-privileges) privilege (typically root).
 
@@ -337,12 +336,12 @@ mysqld --print-defaults
 
 MariaDB status variables and some system tables allow external tools to monitor a server, building graphs on how they change over time, and allow the user to inspect what is happening inside the server.
 
-[Status variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md) cannot be directly modified by the user. Their values indicate how MariaDB is operating. Their scope can be:
+[Status variables](../../../variables-and-modes/server-status-variables.md) cannot be directly modified by the user. Their values indicate how MariaDB is operating. Their scope can be:
 
 * Global, meaning that the value is about some MariaDB activity.
 * Session, meaning that the value measures activities taking place in the current session.
 
-Many status variables exist in both scopes. For example,[Cpu\_time](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#cpu_time) at global level indicates how much time the CPU was used by the MariaDB process (including all user sessions and all the background threads). At session level, it indicates how much time the CPU was used by the current session.
+Many status variables exist in both scopes. For example,[Cpu\_time](../../../variables-and-modes/server-status-variables.md#cpu_time) at global level indicates how much time the CPU was used by the MariaDB process (including all user sessions and all the background threads). At session level, it indicates how much time the CPU was used by the current session.
 
 The status variables created by a plugin, usually, use the plugin name as a prefix.
 

@@ -81,7 +81,7 @@ EXPLAIN SELECT * FROM orders, users WHERE orders.user_name_mb3=users.user_name_m
 
 ## Controlling the Optimization
 
-The optimization is controlled by an [optimizer\_switch](../system-variables/server-system-variables.md#optimizer_switch) flag. Specify:
+The optimization is controlled by an [optimizer\_switch](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) flag. Specify:
 
 ```sql
 SET optimizer_switch='cset_narrowing=ON';

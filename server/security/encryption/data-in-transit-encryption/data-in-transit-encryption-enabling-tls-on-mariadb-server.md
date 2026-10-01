@@ -24,7 +24,7 @@ If it is a test or development server, self-signed certificates and keys should 
 {% step %}
 **Determine which system variables and you need to configure.**
 
-Mandatory [system variables and options](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for TLS include:
+Mandatory [system variables and options](../../../server-management/variables-and-modes/server-system-variables.md) for TLS include:
 
 | System Variable/Option                           | Description             |
 | ------------------------------------------------ | ----------------------- |
@@ -34,14 +34,14 @@ Mandatory [system variables and options](../../../ha-and-performance/optimizatio
 
 Other useful system variables and options for TLS include:
 
-| System Variable/Option                                                                                                                                 | Description                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [require\_secure\_transport](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#require_secure_transport) | When this option is enabled, connections attempted using insecure transport are rejected. Secure transports are SSL/TLS, Unix sockets, and named pipes. |
-| [ssl\_capath](ssltls-system-variables.md#ssl_capath)                                                                                                   | CA directory                                                                                                                                            |
-| [ssl\_cipher](ssltls-system-variables.md#ssl_cipher)                                                                                                   | SSL cipher to use                                                                                                                                       |
-| [ssl\_crl](ssltls-system-variables.md#ssl_crl)                                                                                                         | CRL file in PEM format                                                                                                                                  |
-| [ssl\_crlpath](ssltls-system-variables.md#ssl_crlpath)                                                                                                 | CRL directory                                                                                                                                           |
-| [tls\_version](ssltls-system-variables.md#tls_version)                                                                                                 | TLS protocol version for secure connections                                                                                                             |
+| System Variable/Option                                                                                                           | Description                                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [require\_secure\_transport](../../../server-management/variables-and-modes/server-system-variables.md#require_secure_transport) | When this option is enabled, connections attempted using insecure transport are rejected. Secure transports are SSL/TLS, Unix sockets, and named pipes. |
+| [ssl\_capath](ssltls-system-variables.md#ssl_capath)                                                                             | CA directory                                                                                                                                            |
+| [ssl\_cipher](ssltls-system-variables.md#ssl_cipher)                                                                             | SSL cipher to use                                                                                                                                       |
+| [ssl\_crl](ssltls-system-variables.md#ssl_crl)                                                                                   | CRL file in PEM format                                                                                                                                  |
+| [ssl\_crlpath](ssltls-system-variables.md#ssl_crlpath)                                                                           | CRL directory                                                                                                                                           |
+| [tls\_version](ssltls-system-variables.md#tls_version)                                                                           | TLS protocol version for secure connections                                                                                                             |
 {% endstep %}
 
 {% step %}

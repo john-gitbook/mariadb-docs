@@ -43,13 +43,13 @@ Error message localization is supported for the following languages:
 
 ## Setting the `lc_messages` and `lc_messages_dir` System Variables
 
-The [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) and [lc\_messages\_dir](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variables can be used to set the [server locale](server-locale.md) used for error messages.
+The [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) and [lc\_messages\_dir](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages_dir) system variables can be used to set the [server locale](server-locale.md) used for error messages.
 
-The [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable can be specified as a [locale](server-locale.md) name. The language of the associated [locale](server-locale.md) will be used for error messages. See [Server Locales](server-locale.md) for a list of supported locales and their associated languages.
+The [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable can be specified as a [locale](server-locale.md) name. The language of the associated [locale](server-locale.md) will be used for error messages. See [Server Locales](server-locale.md) for a list of supported locales and their associated languages.
 
-The [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable is set to `en_US` by default, which means that error messages are in English by default.
+The [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable is set to `en_US` by default, which means that error messages are in English by default.
 
-If the [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable is set to a valid [locale](server-locale.md) name, but the server can't find an [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) for the language associated with the [locale](server-locale.md), then the default language will be used instead.
+If the [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable is set to a valid [locale](server-locale.md) name, but the server can't find an [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) for the language associated with the [locale](server-locale.md), then the default language will be used instead.
 
 This system variable can be specified as command-line arguments to [mariadbd](../../../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) or it can be specified in a relevant server [option group](../../../../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../../../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md). For example:
 
@@ -59,24 +59,24 @@ This system variable can be specified as command-line arguments to [mariadbd](..
 lc_messages=fr_CA
 ```
 
-The [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable can also be changed dynamically with [SET GLOBAL](../../../../sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+The [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable can also be changed dynamically with [SET GLOBAL](../../../../sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```sql
 SET GLOBAL lc_messages='fr_CA';
 ```
 
-If a server has the [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable set to the `fr_CA` locale like the above example, then error messages would be in French. For example:
+If a server has the [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable set to the `fr_CA` locale like the above example, then error messages would be in French. For example:
 
 ```sql
 SELECT blah;
 ERROR 1054 (42S22): Champ 'blah' inconnu dans field list
 ```
 
-The [lc\_messages\_dir](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variable can be specified either as the path to the directory storing the server's [error message files](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) or as the path to the directory storing the specific language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file).
+The [lc\_messages\_dir](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages_dir) system variable can be specified either as the path to the directory storing the server's [error message files](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) or as the path to the directory storing the specific language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file).
 
-The server initially tries to interpret the value of the [lc\_messages\_dir](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variable as a path to the directory storing the server's [error message files](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file). Therefore, it constructs the path to the language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) by concatenating the value of the [lc\_messages\_dir](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variable with the language name of the [locale](server-locale.md) specified by the [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable .
+The server initially tries to interpret the value of the [lc\_messages\_dir](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages_dir) system variable as a path to the directory storing the server's [error message files](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file). Therefore, it constructs the path to the language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) by concatenating the value of the [lc\_messages\_dir](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages_dir) system variable with the language name of the [locale](server-locale.md) specified by the [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable .
 
-If the server does not find the [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) for the language, then it tries to interpret the value of the [lc\_messages\_dir](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variable as a direct path to the directory storing the specific language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file).
+If the server does not find the [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file) for the language, then it tries to interpret the value of the [lc\_messages\_dir](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages_dir) system variable as a direct path to the directory storing the specific language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file).
 
 This system variable can be specified as command-line arguments to [mariadbd](../../../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) or it can be specified in a relevant server [option group](../../../../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../../../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md).
 
@@ -96,11 +96,11 @@ Or to specify the path to the directory storing the specific language's [error m
 lc_messages_dir=/usr/share/mysql/french/
 ```
 
-The [lc\_messages\_dir](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variable can not be changed dynamically.
+The [lc\_messages\_dir](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages_dir) system variable can not be changed dynamically.
 
 ## Setting the --language Option
 
-The [--language](../../../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#language) option can also be used to set the server's language for error messages, but it is deprecated. It is recommended to set the [lc\_messages](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable instead.
+The [--language](../../../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#language) option can also be used to set the server's language for error messages, but it is deprecated. It is recommended to set the [lc\_messages](../../../../../server-management/variables-and-modes/server-system-variables.md#lc_messages) system variable instead.
 
 The [--language](../../../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#language) option can be specified either as a language name or as the path to the directory storing the language's [error message file](../../../../../server-management/server-monitoring-logs/error-log.md#error-messages-file). See [Server Locales](server-locale.md) for a list of supported locales and their associated languages.
 
@@ -124,7 +124,7 @@ language=/usr/share/mysql/french/
 
 ## Character Set
 
-The character set that the error messages are returned in is determined by the [character\_set\_results](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_results) variable, which defaults to UTF8.
+The character set that the error messages are returned in is determined by the [character\_set\_results](../../../../../server-management/variables-and-modes/server-system-variables.md#character_set_results) variable, which defaults to UTF8.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

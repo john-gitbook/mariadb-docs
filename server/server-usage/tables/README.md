@@ -12,8 +12,6 @@ description: >-
 {% content-ref url="copying-tables-between-different-mariadb-databases-and-mariadb-servers.md" %}
 [copying-tables-between-different-mariadb-databases-and-mariadb-servers.md](copying-tables-between-different-mariadb-databases-and-mariadb-servers.md)
 {% endcontent-ref %}
-
-
 {% endcolumn %}
 
 {% column %}
@@ -26,8 +24,6 @@ This guide explains various methods for copying tables between MariaDB databases
 {% content-ref url="../../reference/sql-statements/data-definition/alter/alter-table/" %}
 [alter-table](../../reference/sql-statements/data-definition/alter/alter-table/)
 {% endcontent-ref %}
-
-
 {% endcolumn %}
 
 {% column %}
@@ -37,11 +33,9 @@ Complete `ALTER TABLE` guide for MariaDB. Complete syntax for modifying columns,
 
 {% columns %}
 {% column %}
-{% content-ref url="../../reference/sql-statements/data-definition/create/create-table.md" %}
-[create-table.md](../../reference/sql-statements/data-definition/create/create-table.md)
+{% content-ref url="create-table.md" %}
+[create-table.md](create-table.md)
 {% endcontent-ref %}
-
-
 {% endcolumn %}
 
 {% column %}
@@ -51,11 +45,9 @@ Complete guide to creating tables in MariaDB. Complete `CREATE TABLE` syntax for
 
 {% columns %}
 {% column %}
-{% content-ref url="../../reference/sql-statements/data-definition/drop/drop-table.md" %}
-[drop-table.md](../../reference/sql-statements/data-definition/drop/drop-table.md)
+{% content-ref url="drop-table.md" %}
+[drop-table.md](drop-table.md)
 {% endcontent-ref %}
-
-
 {% endcolumn %}
 
 {% column %}
@@ -68,8 +60,6 @@ Complete `DROP TABLE` syntax: `TEMPORARY`, `IF EXISTS`, `WAIT/NOWAIT`, `RESTRICT
 {% content-ref url="../../reference/data-types/" %}
 [data-types](../../reference/data-types/)
 {% endcontent-ref %}
-
-
 {% endcolumn %}
 
 {% column %}
@@ -82,8 +72,6 @@ Comprehensive MariaDB data types reference. Complete guide for numeric, string, 
 {% content-ref url="../storage-engines/" %}
 [storage-engines](../storage-engines/)
 {% endcontent-ref %}
-
-
 {% endcolumn %}
 
 {% column %}
@@ -92,7 +80,7 @@ Understand MariaDB Server's storage engines. Explore the features and use cases 
 {% endcolumns %}
 
 {% hint style="info" %}
-The task-oriented table tutorials now live in the [Quickstart Guides](../../mariadb-quickstart-guides/README.md):
+The task-oriented table tutorials now live in the [Quickstart Guides](../../mariadb-quickstart-guides/):
 
 * [Altering Tables](../../mariadb-quickstart-guides/mariadb-alter-table-guide-1.md)
 * [Getting Started with Indexes](../../mariadb-quickstart-guides/mariadb-indexes-guide.md)

@@ -31,7 +31,7 @@ LOOP OVER ALL tables
   DROP TABLE tbl
 ```
 
-Each individual [DROP TABLE](drop-table.md) is atomic while `DROP DATABASE` as a whole is crash-safe.
+Each individual [DROP TABLE](../../../../server-usage/tables/drop-table.md) is atomic while `DROP DATABASE` as a whole is crash-safe.
 
 ## Examples
 

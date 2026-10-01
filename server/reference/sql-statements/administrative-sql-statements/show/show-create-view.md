@@ -16,7 +16,7 @@ SHOW CREATE VIEW [view-name]
 
 This statement shows a [CREATE VIEW](../../../../server-usage/views/create-view.md) statement that creates the given [view](../../../../server-usage/views/), as well as the character set used by the connection when the view was created. This statement also works with views.
 
-`SHOW CREATE VIEW` quotes table, column and stored function names according to the value of the [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) server system variable.
+`SHOW CREATE VIEW` quotes table, column and stored function names according to the value of the [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) server system variable.
 
 ## Examples
 
@@ -31,7 +31,7 @@ character_set_client: cp850
 collation_connection: cp850_general_ci
 ```
 
-With [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) off:
+With [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) off:
 
 ```sql
 SHOW CREATE VIEW example\G

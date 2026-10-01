@@ -1,6 +1,6 @@
 # System Variables Added in MariaDB 10.9
 
-This is a list of [system variables](../../server-system-variables.md) that have been added in the [MariaDB 10.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.9/what-is-mariadb-109) series.
+This is a list of [system variables](../../../../../server-management/variables-and-modes/server-system-variables.md) that have been added in the [MariaDB 10.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.9/what-is-mariadb-109) series.
 
 | Variable                                                                                                                          | Added                                                                                                      |
 | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |

@@ -28,8 +28,8 @@ These messages indicate that the table definition allows rows that InnoDB row fo
 
 These messages are raised in the following cases:
 
-* If [InnoDB strict mode](../innodb-strict-mode.md) is enabled and if a [DDL](../../../../reference/sql-statements/data-definition/) statement is executed that touches the table, such as [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/), InnoDB raises an error with the above message.
-* If [InnoDB strict mode](../innodb-strict-mode.md) is disabled and if a [DDL](../../../../reference/sql-statements/data-definition/) statement is executed that touches the table, such as [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/), InnoDB raises a warning with the above message.
+* If [InnoDB strict mode](../innodb-strict-mode.md) is enabled and if a [DDL](../../../../reference/sql-statements/data-definition/) statement is executed that touches the table, such as [CREATE TABLE](../../../tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/), InnoDB raises an error with the above message.
+* If [InnoDB strict mode](../innodb-strict-mode.md) is disabled and if a [DDL](../../../../reference/sql-statements/data-definition/) statement is executed that touches the table, such as [CREATE TABLE](../../../tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/), InnoDB raises a warning with the above message.
 * Regardless of whether [InnoDB strict mode](../innodb-strict-mode.md) is enabled, if a [DML](../../../../reference/sql-statements/data-manipulation/) statement is executed that attempts to write a row that the table's InnoDB row format can't store, InnoDB raises an error with the above message.
 
 ## Does the Problem Affect me?
@@ -48,7 +48,7 @@ Take into account that the `Row size too large` error can come up for a good rea
 {% hint style="info" %}
 For tables created in old MariaDB versions, an additional issue could come up: Tables were created whose row size wasn't calculated correctly. Creating those tables should have failed with the `Row size too large error`, but didn't.
 
-With such tables, you can get failures, both for DML (when inserted or updated data actually exceed the row size limit), and for DDL operations that should not affect the row size, like [`TRUNCATE TABLE`](../../../../reference/sql-statements/table-statements/truncate-table.md), [`CREATE TABLE LIKE`](../../../../reference/sql-statements/data-definition/create/create-table.md#create-table-...-like), or [`OPTIMIZE TABLE`](../../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md), or even dropping columns with [`ALTER TABLE ... DROP COLUMN`](../../../../reference/sql-statements/data-definition/alter/alter-table/#drop-column) which makes the row size shorter.
+With such tables, you can get failures, both for DML (when inserted or updated data actually exceed the row size limit), and for DDL operations that should not affect the row size, like [`TRUNCATE TABLE`](../../../../reference/sql-statements/table-statements/truncate-table.md), [`CREATE TABLE LIKE`](../../../tables/create-table.md#create-table-...-like), or [`OPTIMIZE TABLE`](../../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md), or even dropping columns with [`ALTER TABLE ... DROP COLUMN`](../../../../reference/sql-statements/data-definition/alter/alter-table/#drop-column) which makes the row size shorter.
 {% endhint %}
 
 ## Example of the Problem
@@ -282,7 +282,7 @@ The InnoDB row formats work around this limit by storing certain kinds of variab
 
 InnoDB does not have an easy way to check all existing tables to determine which tables have this problem. See [MDEV-20400](https://jira.mariadb.org/browse/MDEV-20400) for more information.
 
-One method to check a single existing table for this problem is to enable [InnoDB strict mode](../innodb-strict-mode.md), and then try to create a duplicate of the table with [CREATE TABLE ... LIKE](../../../../reference/sql-statements/data-definition/create/create-table.md#create-table-...-like). If the table has this problem, then the operation fails:
+One method to check a single existing table for this problem is to enable [InnoDB strict mode](../innodb-strict-mode.md), and then try to create a duplicate of the table with [CREATE TABLE ... LIKE](../../../tables/create-table.md#create-table-...-like). If the table has this problem, then the operation fails:
 
 ```sql
 SET SESSION innodb_strict_mode=ON;

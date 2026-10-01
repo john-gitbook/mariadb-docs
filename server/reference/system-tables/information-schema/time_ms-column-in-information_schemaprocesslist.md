@@ -23,7 +23,7 @@ SELECT id, TIME, time_ms, command, state FROM
 +----+------+----------+---------+-----------+
 ```
 
-Note that as a difference to MySQL, in MariaDB the `TIME` column (and also the `TIME_MS` column) are not affected by any setting of [@TIMESTAMP](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#timestamp). This means that it can be reliably used also for threads that change `@TIMESTAMP` (such as the [replication](../../../ha-and-performance/standard-replication/) SQL thread). See also [MySQL Bug #22047](https://bugs.mysql.com/bug.php?id=22047).
+Note that as a difference to MySQL, in MariaDB the `TIME` column (and also the `TIME_MS` column) are not affected by any setting of [@TIMESTAMP](../../../server-management/variables-and-modes/server-system-variables.md#timestamp). This means that it can be reliably used also for threads that change `@TIMESTAMP` (such as the [replication](../../../ha-and-performance/standard-replication/) SQL thread). See also [MySQL Bug #22047](https://bugs.mysql.com/bug.php?id=22047).
 
 As a consequence of this, the `TIME` column of`SHOW FULL PROCESSLIST` and`INFORMATION_SCHEMA.PROCESSLIST` cannot be used to determine if a slave is lagging behind. For this, use instead the`Seconds_Behind_Master` column in the output of [SHOW SLAVE STATUS](../../sql-statements/administrative-sql-statements/show/show-replica-status.md).
 

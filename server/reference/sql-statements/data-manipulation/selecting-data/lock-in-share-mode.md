@@ -14,7 +14,7 @@ InnoDB locks index records rather than logical rows. If a `SELECT` is satisfied 
 
 For further information and an example, see [InnoDB Lock Modes](../../../../server-usage/storage-engines/innodb/innodb-lock-modes.md).
 
-If [autocommit](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) is set to 1 (the default), the LOCK IN SHARE MODE and [FOR UPDATE](for-update.md) clauses have no effect in InnoDB. For non-transactional storage engines like MyISAM and ARIA, a table level lock will be taken even if autocommit is set to 1.
+If [autocommit](../../../../server-management/variables-and-modes/server-system-variables.md#autocommit) is set to 1 (the default), the LOCK IN SHARE MODE and [FOR UPDATE](for-update.md) clauses have no effect in InnoDB. For non-transactional storage engines like MyISAM and ARIA, a table level lock will be taken even if autocommit is set to 1.
 
 ## See Also
 

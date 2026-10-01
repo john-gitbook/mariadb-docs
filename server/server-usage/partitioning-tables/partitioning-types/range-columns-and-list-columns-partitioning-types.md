@@ -19,7 +19,7 @@ A `RANGE COLUMNS` table can also extend its own partitions as data is written, b
 
 ## Syntax
 
-The last part of a [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statement can be definition of the new table's partitions. In the case of `RANGE COLUMNS` partitioning, the syntax is as follows:
+The last part of a [CREATE TABLE](../../tables/create-table.md) statement can be definition of the new table's partitions. In the case of `RANGE COLUMNS` partitioning, the syntax is as follows:
 
 ```bnf
 PARTITION BY RANGE COLUMNS (col1, col2, ...)

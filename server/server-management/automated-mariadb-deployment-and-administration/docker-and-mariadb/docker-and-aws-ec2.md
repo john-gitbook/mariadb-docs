@@ -122,7 +122,7 @@ MariaDB [(none)]> SHOW GRANTS FOR yourappname;
 
 Obviously replace these passwords with something that is a bit more secure than you see in this example for anything other than development purposes.
 
-25. Load up your database from your preexisting SQL script that contains [CREATE DATABASE](../../../reference/sql-statements/data-definition/create/create-database.md); [USE DATABASE](../../../reference/sql-statements/administrative-sql-statements/use-database.md); and [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statements.
+25. Load up your database from your preexisting SQL script that contains [CREATE DATABASE](../../../reference/sql-statements/data-definition/create/create-database.md); [USE DATABASE](../../../reference/sql-statements/administrative-sql-statements/use-database.md); and [CREATE TABLE](../../../server-usage/tables/create-table.md) statements.
 
 Open a new terminal window (not your SSH session) and navigate to the directory containing your database creation script, for example, `init.sql`. Then, enter the command:
 

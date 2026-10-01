@@ -14,7 +14,7 @@ Firstly, remember that CONNECT implements MED (Management of External Data). Thi
 
 Therefore, their data is "precious" and should not be modified except by specific commands such as [INSERT](../../../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md), [UPDATE](../../../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md), or [DELETE](../../../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md). For other commands such as [CREATE](../../../../reference/sql-statements/data-definition/create/), [DROP](../../../../reference/sql-statements/data-definition/drop/), or [ALTER](../../../../reference/sql-statements/data-definition/alter/) their data is never modified or erased.
 
-Outward tables can be created on existing files or external tables. When they are dropped, only the local description is dropped, the file or external table is not dropped or erased. Also, [DROP TABLE](../../../../reference/sql-statements/data-definition/drop/drop-table.md) does not erase the indexes.
+Outward tables can be created on existing files or external tables. When they are dropped, only the local description is dropped, the file or external table is not dropped or erased. Also, [DROP TABLE](../../../tables/drop-table.md) does not erase the indexes.
 
 [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) produces the following warning, as a reminder:
 
@@ -44,10 +44,9 @@ Of course, all changes are acceptable for empty tables.
 
 ## Inward Tables
 
-A special type of file-based CONNECT tables are “inward” tables. They are file-based tables whose file name is not specified in the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement (no _file\_name_ option).
+A special type of file-based CONNECT tables are “inward” tables. They are file-based tables whose file name is not specified in the [CREATE TABLE](../../../tables/create-table.md) statement (no _file\_name_ option).
 
-Their file are located in the current database directory and their name will default to tablename.type where tablename is the table name and type is the table type folded to lower case. When they are created without using a`CREATE TABLE ... SELECT ...` statement, an empty file is made at create
-time and they can be populated by further inserts.
+Their file are located in the current database directory and their name will default to tablename.type where tablename is the table name and type is the table type folded to lower case. When they are created without using a`CREATE TABLE ... SELECT ...` statement, an empty file is made at create time and they can be populated by further inserts.
 
 They behave like tables of other storage engines and, unlike outward CONNECT tables, they are erased when the table is dropped. Of course they should not be read-only to be usable. Even though their utility is limited, they can be used for testing purposes or when the user does not have the [FILE](../../../../reference/sql-statements/account-management-sql-statements/grant.md#global-privileges) privilege.
 

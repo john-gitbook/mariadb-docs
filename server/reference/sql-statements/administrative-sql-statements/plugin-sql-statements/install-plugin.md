@@ -20,14 +20,14 @@ This statement installs an individual [plugin](../../../plugins/) from the speci
 
 `plugin_library` is the name of the shared library thatcontains the plugin code. The file name extension can be omitted (which makes the statement look the same on all architectures).
 
-The shared library must be located in the plugin directory (that is,the directory named by the [plugin\_dir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#plugin_dir) system variable). The library must be in the plugin directory itself, not in a subdirectory. Bydefault, `plugin_dir` is plugin directory under the directory named bythe `pkglibdir` configuration variable, but it can be changed by settingthe value of `plugin_dir` at server startup. For example, setits value in a `my.cnf` file:
+The shared library must be located in the plugin directory (that is,the directory named by the [plugin\_dir](../../../../server-management/variables-and-modes/server-system-variables.md#plugin_dir) system variable). The library must be in the plugin directory itself, not in a subdirectory. Bydefault, `plugin_dir` is plugin directory under the directory named bythe `pkglibdir` configuration variable, but it can be changed by settingthe value of `plugin_dir` at server startup. For example, setits value in a `my.cnf` file:
 
 ```ini
 [mariadbd]
 plugin_dir=/path/to/plugin/directory
 ```
 
-If the value of [plugin\_dir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#plugin_dir) is a relative path name, it istaken to be relative to the base directory (the value of the [basedir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#basedir) system variable).
+If the value of [plugin\_dir](../../../../server-management/variables-and-modes/server-system-variables.md#plugin_dir) is a relative path name, it istaken to be relative to the base directory (the value of the [basedir](../../../../server-management/variables-and-modes/server-system-variables.md#basedir) system variable).
 
 `INSTALL PLUGIN` adds a line to the `mysql.plugin` table thatdescribes the plugin. This table contains the plugin name and library filename.
 
@@ -76,7 +76,7 @@ SHOW WARNINGS;
 
 ## See Also
 
-* [List of Plugins](../../../plugins/information-on-plugins/list-of-plugins.md)
+* [List of Plugins](../../../plugins/list-of-plugins.md)
 * [Plugin Overview](../../../plugins/plugin-overview.md)
 * [INFORMATION\_SCHEMA.PLUGINS Table](../../../system-tables/information-schema/information-schema-tables/plugins-table-information-schema.md)
 * [mariadb-plugin](../../../../clients-and-utilities/administrative-tools/mariadb-plugin.md)

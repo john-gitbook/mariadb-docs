@@ -1,22 +1,20 @@
 ---
 description: >-
-  Compress MyISAM tables into read-only form that is typically 40 to 70
-  percent smaller with myisampack.
+  Compress MyISAM tables into read-only form that is typically 40 to 70 percent
+  smaller with myisampack.
 ---
 
 # myisampack
 
 ## myisampack
 
-`myisampack` is a tool for compressing [MyISAM](../../server-usage/storage-engines/myisam-storage-engine/README.md) tables. The resulting tables
-are read-only, and usually about 40% to 70% smaller. It is run as follows:
+`myisampack` is a tool for compressing [MyISAM](../../server-usage/storage-engines/myisam-storage-engine/) tables. The resulting tables are read-only, and usually about 40% to 70% smaller. It is run as follows:
 
 ```
 myisampack [options] file_name [file_name2...]
 ```
 
-The `file_name` is the `.MYI` index file. The extension can be omitted,
-although keeping it permits wildcards, such as:
+The `file_name` is the `.MYI` index file. The extension can be omitted, although keeping it permits wildcards, such as:
 
 ```
 myisampack *.MYI
@@ -24,17 +22,14 @@ myisampack *.MYI
 
 ...to compress all the files.
 
-`myisampack` compresses each column separately, and, when the resulting data
-is read, only the individual rows and columns required need to be decompressed,
-allowing for quicker reading.
+`myisampack` compresses each column separately, and, when the resulting data is read, only the individual rows and columns required need to be decompressed, allowing for quicker reading.
 
-Once a table has been packed, use [myisamchk -rq](myisamchk.md) (the quick
-and recover options) to rebuild its indexes.
+Once a table has been packed, use [myisamchk -rq](myisamchk.md) (the quick and recover options) to rebuild its indexes.
 
 `myisampack` does not support partitioned tables or vector indexes.
 
 {% hint style="danger" %}
-Do not run myisampack if the tables could be updated during the operation, and [skip\_external\_locking](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#skip_external_locking) has been set.
+Do not run myisampack if the tables could be updated during the operation, and [skip\_external\_locking](../../server-management/variables-and-modes/server-system-variables.md#skip_external_locking) has been set.
 {% endhint %}
 
 ### Options

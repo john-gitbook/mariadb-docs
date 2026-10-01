@@ -6,19 +6,19 @@ description: >-
 
 # Transaction Timeouts
 
-MariaDB has always had the [wait\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#wait_timeout) and [interactive\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#interactive_timeout) settings, which close connections after a certain period of inactivity.
+MariaDB has always had the [wait\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#wait_timeout) and [interactive\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#interactive_timeout) settings, which close connections after a certain period of inactivity.
 
 However, these are by default set to a long wait period. In situations where transactions may be started, but not committed or rolled back, more granular control and a shorter timeout may be desirable so as to avoid locks being held for too long.
 
 These variables help handle this situation:
 
-* [idle\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_transaction_timeout) (all transactions)
-* [idle\_write\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_write_transaction_timeout) (write transactions)
-* [idle\_readonly\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_readonly_transaction_timeout) (read transactions)
+* [idle\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_transaction_timeout) (all transactions)
+* [idle\_write\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_write_transaction_timeout) (write transactions)
+* [idle\_readonly\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_readonly_transaction_timeout) (read transactions)
 
 These accept a time in seconds to time out, by closing the connection, transactions that are idle for longer than this period. By default all are set to zero, or no timeout.
 
-[idle\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_transaction_timeout) affects all transactions, [idle\_write\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_write_transaction_timeout) affects write transactions only and [idle\_readonly\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_readonly_transaction_timeout) affects read transactions only. The latter two variables work independently. However, if either is set along with [idle\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_transaction_timeout), the settings for [idle\_write\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_write_transaction_timeout) or [idle\_readonly\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_readonly_transaction_timeout) will take precedence.
+[idle\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_transaction_timeout) affects all transactions, [idle\_write\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_write_transaction_timeout) affects write transactions only and [idle\_readonly\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_readonly_transaction_timeout) affects read transactions only. The latter two variables work independently. However, if either is set along with [idle\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_transaction_timeout), the settings for [idle\_write\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_write_transaction_timeout) or [idle\_readonly\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_readonly_transaction_timeout) will take precedence.
 
 ## Examples
 

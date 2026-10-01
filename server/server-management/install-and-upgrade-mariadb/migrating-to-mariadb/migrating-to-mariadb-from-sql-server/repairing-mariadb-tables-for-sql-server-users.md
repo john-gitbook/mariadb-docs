@@ -67,7 +67,7 @@ Recovering existing data:
 1. Dump data from the corrupter table, ordered by primary key. MariaDB could crash when it finds damaged data. Repeat the process skipping damaged data.
 2. Save somewhere the table structure with [SHOW CREATE TABLE](../../../../reference/sql-statements/administrative-sql-statements/show/show-create-table.md).
 3. Restart MariaDB.
-4. Drop the table with [DROP TABLE](../../../../reference/sql-statements/data-definition/drop/drop-table.md).
+4. Drop the table with [DROP TABLE](../../../../server-usage/tables/drop-table.md).
 5. Recreate the table and restore the dump.
 
 For more details, see [InnoDB Recovery Modes](../../../../server-usage/storage-engines/innodb/innodb-troubleshooting/innodb-recovery-modes.md).

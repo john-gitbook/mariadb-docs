@@ -50,7 +50,7 @@ See [configuring Linux for MariaDB](../../../../../../server-management/install-
 
 ## General Settings
 
-[thread\_cache\_size](../../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#thread_cache_size) should be the same as [max\_connections](../../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_connections) (unless using thread pools).
+[thread\_cache\_size](../../../../../../server-management/variables-and-modes/server-system-variables.md#thread_cache_size) should be the same as [max\_connections](../../../../../../server-management/variables-and-modes/server-system-variables.md#max_connections) (unless using thread pools).
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

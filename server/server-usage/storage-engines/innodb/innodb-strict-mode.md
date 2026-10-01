@@ -38,7 +38,7 @@ innodb_strict_mode=ON
 
 ### Wrong Create Options
 
-If InnoDB strict mode is enabled, and if a DDL statement is executed and invalid or conflicting [table options](../../../reference/sql-statements/data-definition/create/create-table.md#table-options) are specified, then an error is raised. The error will only be a generic error that says the following:
+If InnoDB strict mode is enabled, and if a DDL statement is executed and invalid or conflicting [table options](../../tables/create-table.md#table-options) are specified, then an error is raised. The error will only be a generic error that says the following:
 
 ```sql
 ERROR 1005 (HY000): Can't create table `db1`.`tab` (errno: 140 "Wrong create options")
@@ -48,7 +48,7 @@ However, more details about the error can be found by executing [SHOW WARNINGS](
 
 For example, the error is raised in the following cases:
 
-* The [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is set to a non-zero value, but the [ROW\_FORMAT](../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to some row format other than the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format:
+* The [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) table option is set to a non-zero value, but the [ROW\_FORMAT](../../tables/create-table.md#row_format) table option is set to some row format other than the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format:
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -72,7 +72,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is set to a non-zero value, but the configured value is larger than either `16` or the value of the [innodb\_page\_size](innodb-system-variables.md#innodb_page_size) system variable, whichever is smaller.
+* The [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) table option is set to a non-zero value, but the configured value is larger than either `16` or the value of the [innodb\_page\_size](innodb-system-variables.md#innodb_page_size) system variable, whichever is smaller.
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -95,7 +95,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is set to a non-zero value, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
+* The [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) table option is set to a non-zero value, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
 
 ```sql
 SET GLOBAL innodb_file_per_table=OFF;
@@ -119,7 +119,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is set to a non-zero value, but it is not set to one of the supported values: \[1, 2, 4, 8, 16].
+* The [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) table option is set to a non-zero value, but it is not set to one of the supported values: \[1, 2, 4, 8, 16].
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -142,7 +142,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [ROW\_FORMAT](../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
+* The [ROW\_FORMAT](../../tables/create-table.md#row_format) table option is set to the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
 
 ```sql
 SET GLOBAL innodb_file_per_table=OFF;
@@ -166,7 +166,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [ROW\_FORMAT](../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to a value, but it is not set to one of the values supported by InnoDB: [REDUNDANT](innodb-row-formats/innodb-redundant-row-format.md), [COMPACT](innodb-row-formats/innodb-compact-row-format.md), [DYNAMIC](innodb-row-formats/innodb-dynamic-row-format.md), and [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md).
+* The [ROW\_FORMAT](../../tables/create-table.md#row_format) table option is set to a value, but it is not set to one of the values supported by InnoDB: [REDUNDANT](innodb-row-formats/innodb-redundant-row-format.md), [COMPACT](innodb-row-formats/innodb-compact-row-format.md), [DYNAMIC](innodb-row-formats/innodb-dynamic-row-format.md), and [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md).
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -189,7 +189,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* Either the [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is set to a non-zero value or the [ROW\_FORMAT](../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format, but the [innodb\_page\_size](innodb-system-variables.md#innodb_page_size) system variable is set to a value greater than `16k`.
+* Either the [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) table option is set to a non-zero value or the [ROW\_FORMAT](../../tables/create-table.md#row_format) table option is set to the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format, but the [innodb\_page\_size](innodb-system-variables.md#innodb_page_size) system variable is set to a value greater than `16k`.
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -212,7 +212,7 @@ SHOW WARNINGS;
 3 rows in set (0.00 sec)
 ```
 
-* The [DATA DIRECTORY](../../../reference/sql-statements/data-definition/create/create-table.md#data-directory-index-directory) table option is set, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
+* The [DATA DIRECTORY](../../tables/create-table.md#data-directory-index-directory) table option is set, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
 
 ```sql
 SET GLOBAL innodb_file_per_table=OFF;
@@ -236,7 +236,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [DATA DIRECTORY](../../../reference/sql-statements/data-definition/create/create-table.md#data-directory-index-directory) table option is set, but the table is a [temporary table](../../../reference/sql-statements/data-definition/create/create-table.md#create-temporary-table).
+* The [DATA DIRECTORY](../../tables/create-table.md#data-directory-index-directory) table option is set, but the table is a [temporary table](../../tables/create-table.md#create-temporary-table).
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -259,7 +259,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [INDEX DIRECTORY](../../../reference/sql-statements/data-definition/create/create-table.md#data-directory-index-directory) table option is set.
+* The [INDEX DIRECTORY](../../tables/create-table.md#data-directory-index-directory) table option is set.
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -282,7 +282,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [PAGE\_COMPRESSED](../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) table option is set to `1`, so [InnoDB page compression](innodb-page-compression.md) is enabled, but the [ROW\_FORMAT](../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to some row format other than the [COMPACT](innodb-row-formats/innodb-compact-row-format.md) or [DYNAMIC](innodb-row-formats/innodb-dynamic-row-format.md) row formats.
+* The [PAGE\_COMPRESSED](../../tables/create-table.md#page_compressed) table option is set to `1`, so [InnoDB page compression](innodb-page-compression.md) is enabled, but the [ROW\_FORMAT](../../tables/create-table.md#row_format) table option is set to some row format other than the [COMPACT](innodb-row-formats/innodb-compact-row-format.md) or [DYNAMIC](innodb-row-formats/innodb-dynamic-row-format.md) row formats.
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -306,7 +306,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [PAGE\_COMPRESSED](../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) table option is set to `1`, so [InnoDB page compression](innodb-page-compression.md) is enabled, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
+* The [PAGE\_COMPRESSED](../../tables/create-table.md#page_compressed) table option is set to `1`, so [InnoDB page compression](innodb-page-compression.md) is enabled, but the [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) system variable is not set to `ON`.
 
 ```sql
 SET GLOBAL innodb_file_per_table=OFF;
@@ -330,7 +330,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [PAGE\_COMPRESSED](../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) table option is set to `1`, so [InnoDB page compression](innodb-page-compression.md) is enabled, but the [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) table option is also specified.
+* The [PAGE\_COMPRESSED](../../tables/create-table.md#page_compressed) table option is set to `1`, so [InnoDB page compression](innodb-page-compression.md) is enabled, but the [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) table option is also specified.
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -354,8 +354,7 @@ SHOW WARNINGS;
 3 rows in set (0.000 sec)
 ```
 
-* The [PAGE\_COMPRESSION\_LEVEL](../../../reference/sql-statements/data-definition/create/create-table.md#page_compression_level) table option is set, but
-  the [PAGE\_COMPRESSED](../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) table option is set to `0`, so [InnoDB page compression](innodb-page-compression.md) is disabled.
+* The [PAGE\_COMPRESSION\_LEVEL](../../tables/create-table.md#page_compression_level) table option is set, but the [PAGE\_COMPRESSED](../../tables/create-table.md#page_compressed) table option is set to `0`, so [InnoDB page compression](innodb-page-compression.md) is disabled.
 
 ```sql
 SET SESSION innodb_strict_mode=ON;
@@ -381,7 +380,7 @@ SHOW WARNINGS;
 
 ### COMPRESSED Row Format
 
-If InnoDB strict mode is enabled, and if a table uses the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format, and if the table's [KEY\_BLOCK\_SIZE](../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) is too small to contain a row, then an error is returned by the statement.
+If InnoDB strict mode is enabled, and if a table uses the [COMPRESSED](innodb-row-formats/innodb-compressed-row-format.md) row format, and if the table's [KEY\_BLOCK\_SIZE](../../tables/create-table.md#key_block_size) is too small to contain a row, then an error is returned by the statement.
 
 ### Row Size Too Large
 

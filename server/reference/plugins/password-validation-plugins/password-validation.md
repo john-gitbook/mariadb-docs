@@ -1,7 +1,7 @@
 ---
 description: >-
-  General introduction into plugins that enforce specific security
-  policies and complexity rules for user passwords.
+  General introduction into plugins that enforce specific security policies and
+  complexity rules for user passwords.
 ---
 
 # Password Validation Plugin Overview
@@ -46,9 +46,9 @@ GRANT PRIVILEGES TO `user`@`host` IDENTIFIED VIA mysql_old_password USING 'passw
 
 These statements can not possibly use password validation — there is nothing to validate, the original plain-text password is not available.
 
-MariaDB introduces a **strict password validation** mode — controlled by a [strict\_password\_validation](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#strict_password_validation) global server variable.
+MariaDB introduces a **strict password validation** mode — controlled by a [strict\_password\_validation](../../../server-management/variables-and-modes/server-system-variables.md#strict_password_validation) global server variable.
 
-If the strict password validation is enabled and at least one password validation plugin is loaded, passwords that cannot be validated are rejected; otherwise, they're  accepted. By default, a strict password validation is enabled (but note that it has no effect if no password validation plugin is loaded).
+If the strict password validation is enabled and at least one password validation plugin is loaded, passwords that cannot be validated are rejected; otherwise, they're accepted. By default, a strict password validation is enabled (but note that it has no effect if no password validation plugin is loaded).
 
 ## Examples
 

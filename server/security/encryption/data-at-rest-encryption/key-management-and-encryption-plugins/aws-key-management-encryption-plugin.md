@@ -38,7 +38,7 @@ The AWS Key Management plugin depends on the [AWS SDK for C++](https://github.co
 
 ### Installing from Source
 
-When [compiling MariaDB from source](../../../../server-management/install-and-upgrade-mariadb/installing-mariadb/compiling-mariadb-from-source/), the AWS Key Management plugin is built by default, on systems that support it.
+When [compiling MariaDB from source](../../../../server-management/install-and-upgrade-mariadb/compiling-mariadb-from-source/), the AWS Key Management plugin is built by default, on systems that support it.
 
 Compilation is controlled by the following `cmake` arguments:
 
@@ -157,11 +157,11 @@ SET GLOBAL aws_key_management_rotate_key=-1;
 
 ## Versions
 
-| Version | Status       | Introduced                                                                                                                                                                                                                                       |
-| ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.0     | Stable       | [MariaDB 10.2.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.6), [MariaDB 10.1.24](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.24)                         |
-| 1.0     | Beta         | [MariaDB 10.1.18](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.18)                                                                                                                                     |
-| 1.0     | Experimental | MariaDB 10.1.13 |
+| Version | Status       | Introduced                                                                                                                                                                                                               |
+| ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1.0     | Stable       | [MariaDB 10.2.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.6), [MariaDB 10.1.24](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.24) |
+| 1.0     | Beta         | [MariaDB 10.1.18](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.18)                                                                                                             |
+| 1.0     | Experimental | MariaDB 10.1.13                                                                                                                                                                                                          |
 
 ## System Variables
 

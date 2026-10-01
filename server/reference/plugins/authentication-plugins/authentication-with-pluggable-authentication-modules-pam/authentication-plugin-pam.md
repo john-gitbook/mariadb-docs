@@ -284,7 +284,7 @@ Jan  9 05:35:41 ip-172-30-0-198 mysqld: pam_unix(mariadb:auth): authentication f
 
 ### PAM Authentication Plugin's Debug Logging
 
-MariaDB's `pam` authentication plugin can also log additional verbose debug logging to the [error log](../../../../server-management/server-monitoring-logs/error-log.md). This is only done if the plugin is a [debug build](../../../product-development/debugging-mariadb/compiling-mariadb-for-debugging.md) and if [pam\_debug](authentication-plugin-pam.md#pam_debug) is set.
+MariaDB's `pam` authentication plugin can also log additional verbose debug logging to the [error log](../../../../server-management/server-monitoring-logs/error-log.md). This is only done if the plugin is a [debug build](../../../product-development/mariadb-fault-finding/compiling-mariadb-for-debugging.md) and if [pam\_debug](authentication-plugin-pam.md#pam_debug) is set.
 
 The output looks like this:
 
@@ -420,7 +420,7 @@ The `pam` authentication plugin isolates PAM module code from the server address
 
 ### Conflicts with Password Validation
 
-When a [password validation plugin](../../password-validation-plugins/) is enabled, MariaDB won't allow an account to be created if the password validation plugin says that the account's password is too weak. This creates a problem for accounts that authenticate with the `pam` authentication plugin, since MariaDB has no knowledge of the user's password. When a user tries to create an account that authenticates with the `pam` authentication plugin, the password validation plugin would throw an error, even with [strict\_password\_validation=OFF](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#strict_password_validation) set.
+When a [password validation plugin](../../password-validation-plugins/) is enabled, MariaDB won't allow an account to be created if the password validation plugin says that the account's password is too weak. This creates a problem for accounts that authenticate with the `pam` authentication plugin, since MariaDB has no knowledge of the user's password. When a user tries to create an account that authenticates with the `pam` authentication plugin, the password validation plugin would throw an error, even with [strict\_password\_validation=OFF](../../../../server-management/variables-and-modes/server-system-variables.md#strict_password_validation) set.
 
 The workaround is to uninstall the [password validation plugin](../../password-validation-plugins/) with [UNINSTALL PLUGIN](../../../sql-statements/administrative-sql-statements/plugin-sql-statements/uninstall-plugin.md), and then create the account, and then reinstall the [password validation plugin](../../password-validation-plugins/) with [INSTALL PLUGIN](../../../sql-statements/administrative-sql-statements/plugin-sql-statements/install-plugin.md):
 
@@ -516,7 +516,7 @@ See also [MDEV-26212](https://jira.mariadb.org/browse/MDEV-26212) and [MDEV-3073
 ### `pam_debug`
 
 * Description: Enables verbose debug logging to the [error log](../../../../server-management/server-monitoring-logs/error-log.md) for all authentication handled by the plugin.
-  * This system variable is only available when the plugin is a [debug build](../../../product-development/debugging-mariadb/compiling-mariadb-for-debugging.md).
+  * This system variable is only available when the plugin is a [debug build](../../../product-development/mariadb-fault-finding/compiling-mariadb-for-debugging.md).
 * Command line: `--pam-debug`
 * Scope: Global
 * Dynamic: No

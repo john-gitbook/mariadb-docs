@@ -7,7 +7,7 @@ description: >-
 
 # CONSTRAINT
 
-MariaDB supports constraints at table level, using [CREATE TABLE](create/create-table.md) or [ALTER TABLE](alter/alter-table/) statements.
+MariaDB supports constraints at table level, using [CREATE TABLE](../../../server-usage/tables/create-table.md) or [ALTER TABLE](alter/alter-table/) statements.
 
 ## Syntax
 
@@ -45,15 +45,15 @@ reference_option:
 
 ![Railroad diagram of CONSTRAINT — equivalent to the BNF above](../../../.gitbook/assets/constraint-railroad.svg)
 
-![Railroad diagram of constraint_expression](../../../.gitbook/assets/constraint-expression-railroad.svg)
+![Railroad diagram of constraint\_expression](../../../.gitbook/assets/constraint-expression-railroad.svg)
 
-![Railroad diagram of index_type](../../../.gitbook/assets/constraint-index-type-railroad.svg)
+![Railroad diagram of index\_type](../../../.gitbook/assets/create-index-type-railroad.svg)
 
-![Railroad diagram of index_col_name](../../../.gitbook/assets/constraint-index-col-name-railroad.svg)
+![Railroad diagram of index\_col\_name](../../../.gitbook/assets/create-index-col-name-railroad.svg)
 
-![Railroad diagram of index_option](../../../.gitbook/assets/constraint-index-option-railroad.svg)
+![Railroad diagram of index\_option](../../../.gitbook/assets/constraint-index-option-railroad.svg)
 
-![Railroad diagram of reference_option](../../../.gitbook/assets/constraint-reference-option-railroad.svg)
+![Railroad diagram of reference\_option](../../../.gitbook/assets/constraint-reference-option-railroad.svg)
 
 ## Description
 
@@ -61,13 +61,13 @@ Constraints provide restrictions on the data you can add to a table. This allows
 
 There are four types of table constraints:
 
-* PRIMARY KEY – Sets the column for referencing rows. Values must be `UNIQUE` and `NOT NULL`.&#x20;
+* PRIMARY KEY – Sets the column for referencing rows. Values must be `UNIQUE` and `NOT NULL`.
   * This constraint is documented [here](../../../architecture/server-constraints/primary-key-constraints.md).
-* FOREIGN KEY – Sets the column to reference the primary key on another table.&#x20;
+* FOREIGN KEY – Sets the column to reference the primary key on another table.
   * This constraint is documented [here](constraint.md#foreign-key-constraints) and, in more detail, [here](../../../architecture/server-constraints/foreign-key-constraints.md) and [here](../../../ha-and-performance/optimization-and-tuning/optimization-and-indexes/foreign-keys.md).
-* UNIQUE – Requires values in column or columns only occur once in the table.&#x20;
+* UNIQUE – Requires values in column or columns only occur once in the table.
   * This constraint is documented [here](../../../architecture/server-constraints/unique-constraints-with-mariadb-enterprise-server.md).
-* CHECK – Checks whether the data meets the given condition.&#x20;
+* CHECK – Checks whether the data meets the given condition.
   * This constraint is documented [here](constraint.md#check-constraints) and, in more detail, [here](constraint.md#check-constraints).
 
 The [Information Schema TABLE\_CONSTRAINTS Table](../../system-tables/information-schema/information-schema-tables/information-schema-table_constraints-table.md) contains information about tables that have constraints:
@@ -103,7 +103,7 @@ reference_option:
 ```
 
 {% hint style="info" %}
-The symbol clause is optional. If you omit it, MariaDB automatically sets one.&#x20;
+The symbol clause is optional. If you omit it, MariaDB automatically sets one.
 {% endhint %}
 
 The [Information Schema REFERENTIAL\_CONSTRAINTS](../../system-tables/information-schema/information-schema-tables/information-schema-referential_constraints-table.md) table has more information about foreign keys:
@@ -176,7 +176,7 @@ CREATE TABLE t1 (a INT CHECK (a>2), b INT CHECK (b>2), CONSTRAINT a_greater CHEC
 
 If you use the `CONSTRAINT [constraint_name] CHECK (expression)` format and don't give a name to the constraint, the constraint gets an automatically generated name. This is done so that you can later delete it with [ALTER TABLE DROP _constraint_](alter/alter-table/).
 
-You can disable all constraint expression checks by setting the [check\_constraint\_checks](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#check_constraint_checks) variable to `OFF`. This is useful for example when loading a table that violates some constraints that you want to later find and fix in SQL.
+You can disable all constraint expression checks by setting the [check\_constraint\_checks](../../../server-management/variables-and-modes/server-system-variables.md#check_constraint_checks) variable to `OFF`. This is useful for example when loading a table that violates some constraints that you want to later find and fix in SQL.
 
 ### Replication
 

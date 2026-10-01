@@ -180,13 +180,13 @@ FLUSH TABLE_STATISTICS
 
 User Statistics introduced a number of new status variables:
 
-* [access\_denied\_errors](../../system-variables/server-status-variables.md#access_denied_errors)
+* [access\_denied\_errors](../../../../server-management/variables-and-modes/server-status-variables.md#access_denied_errors)
 * [binlog\_bytes\_written](../../../standard-replication/replication-and-binary-log-status-variables.md#binlog_bytes_written)
-* [busy\_time](../../system-variables/server-status-variables.md#busy_time) (requires [userstat](user-statistics.md#userstat) to be set to be recorded)
-* [cpu\_time](../../system-variables/server-status-variables.md#cpu_time) (requires [userstat](user-statistics.md#userstat) to be set to be recorded)
-* [empty\_queries](../../system-variables/server-status-variables.md#empty_queries)
-* [rows\_read](../../system-variables/server-status-variables.md#rows_read)
-* [rows\_sent](../../system-variables/server-status-variables.md#rows_sent)
+* [busy\_time](../../../../server-management/variables-and-modes/server-status-variables.md#busy_time) (requires [userstat](user-statistics.md#userstat) to be set to be recorded)
+* [cpu\_time](../../../../server-management/variables-and-modes/server-status-variables.md#cpu_time) (requires [userstat](user-statistics.md#userstat) to be set to be recorded)
+* [empty\_queries](../../../../server-management/variables-and-modes/server-status-variables.md#empty_queries)
+* [rows\_read](../../../../server-management/variables-and-modes/server-status-variables.md#rows_read)
+* [rows\_sent](../../../../server-management/variables-and-modes/server-status-variables.md#rows_sent)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

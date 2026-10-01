@@ -14,8 +14,7 @@ This means also that CONNECT is not designed to be used by centralized servers, 
 
 ### Performance
 
-Performances vary a great deal depending on the table type. For instance, ODBC tables are only
-retrieved as fast as the other DBMS can do. If you have a lot of queries to execute, the best way to optimize your work can be sometime to translate the data from one type to another. Fortunately this is very simple with CONNECT. Fixed formats like FIX, BIN or VEC tables can be created from slower ones by commands such as:
+Performances vary a great deal depending on the table type. For instance, ODBC tables are only retrieved as fast as the other DBMS can do. If you have a lot of queries to execute, the best way to optimize your work can be sometime to translate the data from one type to another. Fortunately this is very simple with CONNECT. Fixed formats like FIX, BIN or VEC tables can be created from slower ones by commands such as:
 
 ```
 CREATE TABLE fastable table_specs SELECT * FROM slowtable;
@@ -38,7 +37,7 @@ Be aware of the two broad kinds of CONNECT tables:
 
 ### Drop Table statement
 
-For outward tables, the [DROP TABLE](../../../../reference/sql-statements/data-definition/drop/drop-table.md) statement just removes the table definition but does not erase the table data. However, dropping an inward tables also erase the table data as well.
+For outward tables, the [DROP TABLE](../../../tables/drop-table.md) statement just removes the table definition but does not erase the table data. However, dropping an inward tables also erase the table data as well.
 
 ### Alter Table statement
 

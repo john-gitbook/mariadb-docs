@@ -74,8 +74,8 @@ Replication from MySQL 8.0 to MariaDB [requires more configuration](https://app.
 
 There are a number of options that may impact or break replication. Check the following settings to avoid problems.
 
-* [skip-networking](../optimization-and-tuning/system-variables/server-system-variables.md#skip_networking). If `skip-networking=1`, the server will limit connections to localhost only, and prevent all remote replicas from connecting.
-* [bind-address](../optimization-and-tuning/system-variables/server-system-variables.md#bind_address). Similarly, if the address the server listens for TCP/IP connections is `127.0.0.1` (localhost), remote replica connections will fail.
+* [skip-networking](../../server-management/variables-and-modes/server-system-variables.md#skip_networking). If `skip-networking=1`, the server will limit connections to localhost only, and prevent all remote replicas from connecting.
+* [bind-address](../../server-management/variables-and-modes/server-system-variables.md#bind_address). Similarly, if the address the server listens for TCP/IP connections is `127.0.0.1` (localhost), remote replica connections will fail.
 {% endstep %}
 
 {% step %}
@@ -137,7 +137,7 @@ It is generally recommended to use (GTIDs), as it has a number of benefits. All 
 CHANGE MASTER TO MASTER_USE_GTID = slave_pos
 ```
 
-See [Global Transaction ID](gtid/README.md) for a full description.
+See [Global Transaction ID](gtid/) for a full description.
 
 * Now start the replica with the [START REPLICA](../../reference/sql-statements/administrative-sql-statements/replication-statements/start-replica.md) statement:
 
@@ -176,7 +176,7 @@ Slave_SQL_Running: Yes
 * [Replication and Foreign Keys](replication-and-foreign-keys.md)
 * [Replication as a Backup Solution](../../server-usage/backup-and-restore/replication-as-a-backup-solution.md)
 * [Multi-source Replication](multi-source-replication.md)
-* [Global Transaction ID](gtid/README.md)
+* [Global Transaction ID](gtid/)
 * [Parallel Replication](parallel-replication.md)
 * [Replication and Binary Log System Variables](replication-and-binary-log-system-variables.md)
 * [Replication and Binary Log Status Variables](replication-and-binary-log-status-variables.md)

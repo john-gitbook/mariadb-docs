@@ -20,7 +20,7 @@ Each connection to mariadbd runs in a separate thread. You can see which threads
 * `KILL QUERY` terminates the statement that the connection `thread_id` is currently executing, but leaves the connection itself intact.
 * `KILL QUERY ID` terminates the query by `query_id`, leaving the connection intact.
 
-If a connection is terminated that has an active transaction, the transaction  is rolled back. If only a query is killed, the current transaction stays active. See also [idle\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_transaction_timeout).
+If a connection is terminated that has an active transaction, the transaction is rolled back. If only a query is killed, the current transaction stays active. See also [idle\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_transaction_timeout).
 
 If you have the [PROCESS](../account-management-sql-statements/grant.md#process) privilege, you can see all threads.
 
@@ -30,7 +30,7 @@ If you have the [CONNECTION ADMIN](../account-management-sql-statements/grant.md
 Killing queries that repair or create indexes on MyISAM and Aria tables may result in corrupted tables. Use the `SOFT` option to avoid this.
 {% endhint %}
 
-The `HARD` option (default) kills a statement as soon as possible. If you use`SOFT`,  critical operations that may leave a table in an inconsistent state are not interrupted. Such operations include `REPAIR` and `INDEX` creation for [MyISAM](../../../server-usage/storage-engines/myisam-storage-engine/) and [Aria](../../../server-usage/storage-engines/aria/) tables ([REPAIR TABLE](../table-statements/repair-table.md), [OPTIMIZE TABLE](../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md)).
+The `HARD` option (default) kills a statement as soon as possible. If you use`SOFT`, critical operations that may leave a table in an inconsistent state are not interrupted. Such operations include `REPAIR` and `INDEX` creation for [MyISAM](../../../server-usage/storage-engines/myisam-storage-engine/) and [Aria](../../../server-usage/storage-engines/aria/) tables ([REPAIR TABLE](../table-statements/repair-table.md), [OPTIMIZE TABLE](../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md)).
 
 `KILL ... USER username` kills all connections and queries for a given user. `USER` can be specified in one of the following ways:
 
@@ -70,7 +70,7 @@ You cannot use `KILL` with the Embedded MariaDB Server library because the embed
 
 * [Query limits and timeouts](../../../ha-and-performance/optimization-and-tuning/query-optimizations/query-limits-and-timeouts.md)
 * [Aborting statements that exceed a certain time to execute](../../../ha-and-performance/optimization-and-tuning/query-optimizations/aborting-statements.md)
-* [idle\_transaction\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#idle_transaction_timeout)
+* [idle\_transaction\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#idle_transaction_timeout)
 
 <sub>_This page is licensed: GPLv2, originally from_</sub> [<sub>_fill\_help\_tables.sql_</sub>](https://github.com/MariaDB/server/blob/main/scripts/fill_help_tables.sql)
 

@@ -6,11 +6,11 @@ This feature produces a trace as a JSON document for any [SELECT](../../../../re
 
 ## Associated System Variables
 
-* [optimizer\_trace=’enabled=on/off’](../../system-variables/server-system-variables.md#optimizer_trace)
+* [optimizer\_trace=’enabled=on/off’](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_trace)
   * Default value is off
-* [optimizer\_trace\_max\_mem\_size](../../system-variables/server-system-variables.md#optimizer_trace_max_mem_size)= value
+* [optimizer\_trace\_max\_mem\_size](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_trace_max_mem_size)= value
   * Default value: 1048576
-* [optimizer\_record\_context](../../system-variables/server-system-variables.md#optimizer_record_context){=1|0}
+* [optimizer\_record\_context](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_record_context){=1|0}
   * Default value: OFF. From [MariaDB 12.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/12.1/changes-and-improvements-in-mariadb-12.1).
 
 ## INFORMATION\_SCHEMA.OPTIMIZER\_TRACE
@@ -49,7 +49,7 @@ SET optimizer_trace='enabled=on';
 
 ## Memory Usage
 
-Each trace is stored as a string. It is extended (with realloc()) as the optimization progresses and appends data to it. The [optimizer\_trace\_max\_mem\_size](../../system-variables/server-system-variables.md#optimizer_trace_max_mem_size) variable sets a limit on the total amount of memory used by the current trace.
+Each trace is stored as a string. It is extended (with realloc()) as the optimization progresses and appends data to it. The [optimizer\_trace\_max\_mem\_size](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_trace_max_mem_size) variable sets a limit on the total amount of memory used by the current trace.
 
 \
 If this limit is reached, the current trace isn't extended (so it will be incomplete), and the MISSING\_BYTES\_BEYOND\_MAX\_MEM\_SIZE column will show the number of bytes missing from this trace.

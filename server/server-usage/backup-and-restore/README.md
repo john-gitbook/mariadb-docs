@@ -21,8 +21,8 @@ Complete MariaDB backup and recovery guide. Complete resource for backup methods
 
 {% columns %}
 {% column %}
-{% content-ref url="backup-and-restore-with-mariadb-enterprise-server/forming-a-backup-strategy.md" %}
-[forming-a-backup-strategy.md](backup-and-restore-with-mariadb-enterprise-server/forming-a-backup-strategy.md)
+{% content-ref url="forming-a-backup-strategy.md" %}
+[forming-a-backup-strategy.md](forming-a-backup-strategy.md)
 {% endcontent-ref %}
 {% endcolumn %}
 
@@ -33,8 +33,8 @@ Learn how to design a robust backup strategy tailored to your business needs, ba
 
 {% columns %}
 {% column %}
-{% content-ref url="backup-and-restore-with-mariadb-enterprise-server/backup-optimization.md" %}
-[backup-optimization.md](backup-and-restore-with-mariadb-enterprise-server/backup-optimization.md)
+{% content-ref url="backup-optimization.md" %}
+[backup-optimization.md](backup-optimization.md)
 {% endcontent-ref %}
 {% endcolumn %}
 
@@ -45,8 +45,8 @@ Discover techniques to optimize your backup processes, including multithreading,
 
 {% columns %}
 {% column %}
-{% content-ref url="backup-and-restore-with-mariadb-enterprise-server/mariadb-enterprise-backup.md" %}
-[mariadb-enterprise-backup.md](backup-and-restore-with-mariadb-enterprise-server/mariadb-enterprise-backup.md)
+{% content-ref url="mariadb-enterprise-backup.md" %}
+[mariadb-enterprise-backup.md](mariadb-enterprise-backup.md)
 {% endcontent-ref %}
 {% endcolumn %}
 

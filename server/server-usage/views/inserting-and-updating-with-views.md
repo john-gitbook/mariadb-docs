@@ -26,7 +26,7 @@ A view cannot be used for updating if it uses any of the following:
 * Multiple references to any base table column
 * An outer join
 * An inner join where more than one table in the view definition is being updated
-* If there's a `LIMIT` clause, the view does not contain all primary or not null unique key columns from the underlying table and the [updatable\_views\_with\_limit](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#updatable_views_with_limit) system variable is set to `0`.
+* If there's a `LIMIT` clause, the view does not contain all primary or not null unique key columns from the underlying table and the [updatable\_views\_with\_limit](../../server-management/variables-and-modes/server-system-variables.md#updatable_views_with_limit) system variable is set to `0`.
 
 ## Inserting with Views
 

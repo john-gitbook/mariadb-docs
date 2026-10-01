@@ -123,7 +123,7 @@ SELECT * FROM t WHERE m <=> DEFAULT(m);
 
 ## See Also
 
-* [CREATE TABLE DEFAULT Clause](../../../sql-statements/data-definition/create/create-table.md#default-column-option)
+* [CREATE TABLE DEFAULT Clause](../../../../server-usage/tables/create-table.md#default-column-option)
 
 <sub>_This page is licensed: GPLv2, originally from_</sub> [<sub>_fill\_help\_tables.sql_</sub>](https://github.com/MariaDB/server/blob/main/scripts/fill_help_tables.sql)
 

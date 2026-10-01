@@ -15,7 +15,7 @@ description: >-
 
 The plugin is used to prevent a user from reusing a password, which can be a requirement in some security policies. The [password\_reuse\_check\_interval](password_reuse_check_interval.md) system variable determines the retention period, in days, for a password. By default, this is zero, meaning unlimited retention. Old passwords are stored in the [mysql.password\_reuse\_check\_history table](../../system-tables/the-mysql-database-tables/mysqlpassword_reuse_check_history-table.md).
 
-Note that passwords can be directly set as a hash, bypassing the password validation, if the [strict\_password\_validation](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#strict_password_validation) variable is `OFF` (it is `ON` by default).
+Note that passwords can be directly set as a hash, bypassing the password validation, if the [strict\_password\_validation](../../../server-management/variables-and-modes/server-system-variables.md#strict_password_validation) variable is `OFF` (it is `ON` by default).
 
 ### Installing the Plugin
 

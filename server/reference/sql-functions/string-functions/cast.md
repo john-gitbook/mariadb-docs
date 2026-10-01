@@ -62,7 +62,7 @@ SELECT CAST(123 AS CHAR CHARACTER SET utf8)
 ```
 
 {% hint style="warning" %}
-When you casts to [CHAR](../../data-types/string-data-types/char.md) without specifying the character set, the [collation\_connection](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection) character set collation is used. When used with `CHAR CHARACTER SET`, the default collation for that character set is used.
+When you casts to [CHAR](../../data-types/string-data-types/char.md) without specifying the character set, the [collation\_connection](../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) character set collation is used. When used with `CHAR CHARACTER SET`, the default collation for that character set is used.
 {% endhint %}
 
 ```sql
@@ -124,7 +124,7 @@ ORDER BY CAST(enum_field AS CHAR);
 +------------+
 ```
 
-The following `CAST()` gives warnings, because  `x'aa'` and `'X'aa'` don't behave as a number. In all versions of MySQL, no warnings are triggered because they erroneously behave as a number:
+The following `CAST()` gives warnings, because `x'aa'` and `'X'aa'` don't behave as a number. In all versions of MySQL, no warnings are triggered because they erroneously behave as a number:
 
 ```sql
 SELECT CAST(0xAA AS UNSIGNED), CAST(x'aa' AS UNSIGNED), CAST(X'aa' AS UNSIGNED);

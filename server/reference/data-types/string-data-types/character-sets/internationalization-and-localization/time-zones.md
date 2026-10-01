@@ -11,9 +11,9 @@ MariaDB keeps track of several time zone settings.
 
 ## Setting the Time Zone
 
-The [time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#time_zone) system variable is the primary way to set the time zone. It can be specified in one of the following formats:
+The [time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#time_zone) system variable is the primary way to set the time zone. It can be specified in one of the following formats:
 
-* The default value is `SYSTEM`, which indicates that the system time zone defined in the [system\_time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#system_time_zone) system variable will be used. Note that if you are using `SYSTEM` with replication in either statement or mixed mode, you MUST use the same value for `system_time_zone` on all replicas (otherwise `TIMESTAMP` columns will not replicate correctly). See [System Time Zone](time-zones.md#system-time-zone) below for more information.
+* The default value is `SYSTEM`, which indicates that the system time zone defined in the [system\_time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#system_time_zone) system variable will be used. Note that if you are using `SYSTEM` with replication in either statement or mixed mode, you MUST use the same value for `system_time_zone` on all replicas (otherwise `TIMESTAMP` columns will not replicate correctly). See [System Time Zone](time-zones.md#system-time-zone) below for more information.
 * An offset from [Coordinated Universal Time (UTC)](coordinated-universal-time.md), such as `+5:00` or `-9:00`, can also be used.
 * If the time zone tables in the [mysql](../../../../system-tables/the-mysql-database-tables/) database were loaded, then a named time zone, such as `America/New_York`, `Africa/Johannesburg`, or `Europe/Helsinki`, is also permissible. See [mysql Time Zone Tables](time-zones.md#mysql-time-zone-tables) below for more information.
 
@@ -29,13 +29,13 @@ The global server time zone can be changed at server startup by setting the `--d
 default_time_zone = 'America/New_York'
 ```
 
-The global server time zone can also be changed dynamically by setting the [time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#time_zone) system variable as a user account that has the [SUPER](../../../../sql-statements/account-management-sql-statements/grant.md#super) privilege. For example:
+The global server time zone can also be changed dynamically by setting the [time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#time_zone) system variable as a user account that has the [SUPER](../../../../sql-statements/account-management-sql-statements/grant.md#super) privilege. For example:
 
 ```sql
 SET GLOBAL time_zone = 'America/New_York';
 ```
 
-The current global server time zone can be viewed by looking at the global value of the [time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#time_zone) system variable. For example:
+The current global server time zone can be viewed by looking at the global value of the [time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#time_zone) system variable. For example:
 
 ```sql
 SHOW GLOBAL VARIABLES LIKE 'time_zone';
@@ -48,15 +48,15 @@ SHOW GLOBAL VARIABLES LIKE 'time_zone';
 
 ### Session Time Zone
 
-Each session that connects to the server will also have its own time zone. This time zone is initially inherited from the global value of the [time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#time_zone) system variable, which sets the session value of the same variable.
+Each session that connects to the server will also have its own time zone. This time zone is initially inherited from the global value of the [time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#time_zone) system variable, which sets the session value of the same variable.
 
-A session's time zone can be changed dynamically by setting the [time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#time_zone) system variable. For example:
+A session's time zone can be changed dynamically by setting the [time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#time_zone) system variable. For example:
 
 ```sql
 SET time_zone = 'America/New_York';
 ```
 
-The current session time zone can be viewed by looking at the session value of the [time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#time_zone) system variable. For example:
+The current session time zone can be viewed by looking at the session value of the [time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#time_zone) system variable. For example:
 
 ```sql
 SHOW SESSION VARIABLES LIKE 'time_zone';
@@ -69,7 +69,7 @@ SHOW SESSION VARIABLES LIKE 'time_zone';
 
 ### System Time Zone
 
-The system time zone is determined when the server starts, and it sets the value of the [system\_time\_zone](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#system_time_zone) system variable. The system time zone is usually read from the operating system's environment. You can change the system time zone in several different ways, such as:
+The system time zone is determined when the server starts, and it sets the value of the [system\_time\_zone](../../../../../server-management/variables-and-modes/server-system-variables.md#system_time_zone) system variable. The system time zone is usually read from the operating system's environment. You can change the system time zone in several different ways, such as:
 
 * If you are starting the server with [mariadbd-safe](../../../../../server-management/starting-and-stopping-mariadb/mariadbd-safe.md), then you can set the system time zone with the `--timezone` option either on the command-line or in the \[mariadbd-safe] [option group](../../../../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../../../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md). For example:
 
@@ -98,7 +98,7 @@ $ sudo ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo dpkg-reconfigure tzdata
 ```
 
-* On Linux operating systems that use [systemd](../../../../../server-management/starting-and-stopping-mariadb/systemd/README.md), you can change the default time zone for the whole system by using the [timedatectl](https://www.freedesktop.org/software/systemd/man/timedatectl.html) utility. For example:
+* On Linux operating systems that use [systemd](../../../../../server-management/starting-and-stopping-mariadb/systemd/), you can change the default time zone for the whole system by using the [timedatectl](https://www.freedesktop.org/software/systemd/man/timedatectl.html) utility. For example:
 
 ```bash
 sudo timedatectl set-timezone America/New_York

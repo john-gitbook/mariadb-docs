@@ -56,23 +56,23 @@ lock_option:
 
 ![Railroad diagram of ALTER USER — equivalent to the BNF above](../../../.gitbook/assets/alter-user-railroad.svg)
 
-![Railroad diagram of user_specification](../../../.gitbook/assets/alter-user-specification-railroad.svg)
+![Railroad diagram of user\_specification](../../../.gitbook/assets/alter-user-specification-railroad.svg)
 
-![Railroad diagram of authentication_option](../../../.gitbook/assets/alter-user-authentication-option-railroad.svg)
+![Railroad diagram of authentication\_option](../../../.gitbook/assets/alter-user-authentication-option-railroad.svg)
 
-![Railroad diagram of authentication_rule](../../../.gitbook/assets/alter-user-authentication-rule-railroad.svg)
+![Railroad diagram of authentication\_rule](../../../.gitbook/assets/alter-user-authentication-rule-railroad.svg)
 
-![Railroad diagram of tls_option](../../../.gitbook/assets/alter-user-tls-option-railroad.svg)
+![Railroad diagram of tls\_option](../../../.gitbook/assets/alter-user-tls-option-railroad.svg)
 
-![Railroad diagram of resource_option](../../../.gitbook/assets/alter-user-resource-option-railroad.svg)
+![Railroad diagram of resource\_option](../../../.gitbook/assets/alter-user-resource-option-railroad.svg)
 
-![Railroad diagram of password_option](../../../.gitbook/assets/alter-user-password-option-railroad.svg)
+![Railroad diagram of password\_option](../../../.gitbook/assets/alter-user-password-option-railroad.svg)
 
-![Railroad diagram of lock_option](../../../.gitbook/assets/alter-user-lock-option-railroad.svg)
+![Railroad diagram of lock\_option](../../../.gitbook/assets/alter-user-lock-option-railroad.svg)
 
 ## Description
 
-The `ALTER USER` statement modifies existing MariaDB accounts. To use it, you must have the global [CREATE USER](grant.md#global-privileges) privilege or the [UPDATE](grant.md#table-privileges) privilege for the [mysql](../../system-tables/the-mysql-database-tables/) database. The global [READ\_ONLY ADMIN](grant.md#read_only-admin) privilege is also required if the [read\_only](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#read_only) system variable is enabled.
+The `ALTER USER` statement modifies existing MariaDB accounts. To use it, you must have the global [CREATE USER](grant.md#global-privileges) privilege or the [UPDATE](grant.md#table-privileges) privilege for the [mysql](../../system-tables/the-mysql-database-tables/) database. The global [READ\_ONLY ADMIN](grant.md#read_only-admin) privilege is also required if the [read\_only](../../../server-management/variables-and-modes/server-system-variables.md#read_only) system variable is enabled.
 
 If any of the specified user accounts do not yet exist, an error results. If an error occurs, `ALTER USER` will still modify the accounts that do not result in an error. Only one error is produced for all users which have not been modified.
 
@@ -141,10 +141,7 @@ For example, if our password is `mariadb`, then we can set the account's passwor
 ALTER USER foo2@test IDENTIFIED BY 'mariadb';
 ```
 
-If you do not specify a password with the `IDENTIFIED BY` clause, the user
-will be able to connect without a password. A blank password is not a wildcard
-to match any password. The user must connect without providing a password if no
-password is set.
+If you do not specify a password with the `IDENTIFIED BY` clause, the user will be able to connect without a password. A blank password is not a wildcard to match any password. The user must connect without providing a password if no password is set.
 
 The only [authentication plugins](../../plugins/authentication-plugins/) that this clause supports are [mysql\_native\_password](../../plugins/authentication-plugins/authentication-plugin-mysql_native_password.md) and [mysql\_old\_password](../../plugins/authentication-plugins/authentication-plugin-mysql_old_password.md).
 
@@ -173,9 +170,7 @@ ALTER USER foo2@test
   IDENTIFIED BY PASSWORD '*54958E764CE10E50764C2EECBB71D01F08549980';
 ```
 
-If you do not specify a password with the `IDENTIFIED BY` clause, the user
-will be able to connect without a password. A blank password is not a wildcard
-to match any password. The user must connect without providing a password if no password is set.
+If you do not specify a password with the `IDENTIFIED BY` clause, the user will be able to connect without a password. A blank password is not a wildcard to match any password. The user must connect without providing a password if no password is set.
 
 The only [authentication plugins](../../plugins/authentication-plugins/) that this clause supports are [mysql\_native\_password](../../plugins/authentication-plugins/authentication-plugin-mysql_native_password.md) and [mysql\_old\_password](../../plugins/authentication-plugins/authentication-plugin-mysql_old_password.md).
 
@@ -267,7 +262,7 @@ Per account resource limits are stored in the [user](../../system-tables/the-mys
 
 ## Password Expiry
 
-Besides automatic password expiry, as determined by [default\_password\_lifetime](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_password_lifetime), password expiry times can be set on an individual user basis, overriding the global setting, for example:
+Besides automatic password expiry, as determined by [default\_password\_lifetime](../../../server-management/variables-and-modes/server-system-variables.md#default_password_lifetime), password expiry times can be set on an individual user basis, overriding the global setting, for example:
 
 ```sql
 ALTER USER 'monty'@'localhost' PASSWORD EXPIRE INTERVAL 120 DAY;

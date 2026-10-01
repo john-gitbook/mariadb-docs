@@ -13,7 +13,7 @@ The `server_audit` plugin logs the server's activity. For each client session, i
 
 The `server_audit` plugin's shared library is included in MariaDB packages as the `server_audit.so` or `server_audit.dll` shared library on systems where it can be built.
 
-The plugin must be located in the plugin directory, the directory containing all plugin libraries for MariaDB. The path to this directory is configured by the [plugin\_dir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#plugin_dir) system variable. To see the value of this variable and thereby determine the file path of the plugin library, execute the following SQL statement:
+The plugin must be located in the plugin directory, the directory containing all plugin libraries for MariaDB. The path to this directory is configured by the [plugin\_dir](../../../server-management/variables-and-modes/server-system-variables.md#plugin_dir) system variable. To see the value of this variable and thereby determine the file path of the plugin library, execute the following SQL statement:
 
 ```sql
 SHOW GLOBAL VARIABLES LIKE 'plugin_dir';

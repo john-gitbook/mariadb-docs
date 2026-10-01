@@ -15,8 +15,7 @@ expr REGEXP pat, expr RLIKE pat
 
 ## Description
 
-Performs a pattern match of a string expression `expr` against a pattern`pat`. The pattern can be an extended regular expression. See [Regular Expressions Overview](regular-expressions-overview.md) for details on the syntax for
-regular expressions (see also [PCRE Regular Expressions](pcre.md)).
+Performs a pattern match of a string expression `expr` against a pattern`pat`. The pattern can be an extended regular expression. See [Regular Expressions Overview](regular-expressions-overview.md) for details on the syntax for regular expressions (see also [PCRE Regular Expressions](pcre.md)).
 
 Returns `1` if `expr` matches `pat` or `0` if it doesn't match. If either `expr` or `pat` are `NULL`, the result is `NULL`.
 
@@ -28,7 +27,7 @@ The pattern need not be a literal string. For example, it can be specified as a 
 
 `REGEXP` is not case sensitive, except when used with binary strings.
 
-The [default\_regex\_flags](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_regex_flags) variable addresses the remaining compatibilities between PCRE and the old regex library.
+The [default\_regex\_flags](../../../../server-management/variables-and-modes/server-system-variables.md#default_regex_flags) variable addresses the remaining compatibilities between PCRE and the old regex library.
 
 ## Examples
 
@@ -69,11 +68,11 @@ SELECT 'a' REGEXP '^[a-d]';
 +---------------------+
 ```
 
-In the `'new*\n*line'` example, doubling the backslashes makes the pattern match literal asterisks, but the statement still returns `0`, because `.` does not match a newline character unless the `DOTALL` flag is set with [default\_regex\_flags](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_regex_flags).
+In the `'new*\n*line'` example, doubling the backslashes makes the pattern match literal asterisks, but the statement still returns `0`, because `.` does not match a newline character unless the `DOTALL` flag is set with [default\_regex\_flags](../../../../server-management/variables-and-modes/server-system-variables.md#default_regex_flags).
 
 ### default\_regex\_flags examples
 
-MariaDB uses the [default\_regex\_flags](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_regex_flags) variable to address the remaining compatibilities between PCRE and the old regex library.
+MariaDB uses the [default\_regex\_flags](../../../../server-management/variables-and-modes/server-system-variables.md#default_regex_flags) variable to address the remaining compatibilities between PCRE and the old regex library.
 
 The default behavior (multiline match is off)
 

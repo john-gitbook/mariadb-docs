@@ -50,7 +50,7 @@ OPTIONS (
 
 The Data Node runs MariaDB Enterprise Server, so the `FOREIGN DATA WRAPPER` is set to mariadb.
 
-Using a server object for connection details is optional. Alternatively, the connection details for the Data Node can be specified in the `COMMENT` table option of the [CREATE TABLE](../../../../../../reference/sql-statements/data-definition/create/create-table.md) statement when creating the Spider Table.
+Using a server object for connection details is optional. Alternatively, the connection details for the Data Node can be specified in the `COMMENT` table option of the [CREATE TABLE](../../../../../tables/create-table.md) statement when creating the Spider Table.
 
 ## Create the Data Table
 
@@ -97,7 +97,7 @@ GRANT ALL PRIVILEGES ON southern_sales.invoices TO 'spider_user'@'192.0.2.1';
 
 ### Privileges for Spider BKA Mode
 
-By default, the Spider user also requires the [CREATE TEMPORARY TABLES](../../../../../../reference/sql-statements/data-definition/create/create-table.md) privilege on the database containing the Data Table. The [CREATE TEMPORARY TABLES](../../../../../../reference/sql-statements/data-definition/create/create-table.md) privilege is required, because Spider uses temporary tables to optimize read queries when Spider BKA Mode is 1.
+By default, the Spider user also requires the [CREATE TEMPORARY TABLES](../../../../../tables/create-table.md) privilege on the database containing the Data Table. The [CREATE TEMPORARY TABLES](../../../../../tables/create-table.md) privilege is required, because Spider uses temporary tables to optimize read queries when Spider BKA Mode is 1.
 
 Spider BKA Mode is configured using the following methods:
 
@@ -106,7 +106,7 @@ Spider BKA Mode is configured using the following methods:
 
 The default spider\_bka\_mode value is -1, and the implicit Spider Table value is 1, so the default [Spider BKA Mode](../../../spider-system-variables.md#spider_bka_mode) is 1.
 
-On the Data Node hosting the new shard, grant the Spider user the [CREATE TEMPORARY TABLES](../../../../../../reference/sql-statements/data-definition/create/create-table.md) privilege on the database:
+On the Data Node hosting the new shard, grant the Spider user the [CREATE TEMPORARY TABLES](../../../../../tables/create-table.md) privilege on the database:
 
 ```sql
 GRANT CREATE TEMPORARY TABLES ON southern_sales.* TO 'spider_user'@'192.0.2.1';

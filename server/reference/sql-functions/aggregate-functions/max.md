@@ -30,7 +30,7 @@ MAX() can be used as a [window function](../special-functions/window-functions/)
 From MariaDB 11.4:
 {% endhint %}
 
-Not only ascending, but also [descending indexes](../../sql-statements/data-definition/create/create-table.md#index-types) can be used to optimize `MAX`.
+Not only ascending, but also [descending indexes](../../../server-usage/tables/create-table.md#index-types) can be used to optimize `MAX`.
 {% endtab %}
 
 {% tab title="< 11.4" %}

@@ -12,7 +12,7 @@ When a column is declared with a `NOT NULL` constraint, Enterprise Server reject
 
 ### CREATE TABLE and NOT NULL Constraints
 
-With MariaDB Server, the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement can be used to create a new table with a `NOT NULL` constraint on one or more columns:
+With MariaDB Server, the [CREATE TABLE](../../server-usage/tables/create-table.md) statement can be used to create a new table with a `NOT NULL` constraint on one or more columns:
 
 ```sql
 CREATE TABLE hq_sales.invoices (

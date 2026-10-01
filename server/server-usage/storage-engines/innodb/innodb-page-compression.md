@@ -41,15 +41,15 @@ When this system variable is changed, the InnoDB page compression algorithm does
 
 This system variable can be set to one of the following values:
 
-| System Variable Value | Description                                                                                                                                                                                                                                                                                                                                                                |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| none                  | Pages are not compressed. |
+| System Variable Value | Description                                                                                                            |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| none                  | Pages are not compressed.                                                                                              |
 | zlib                  | Pages are compressed using the bundled [zlib](https://www.zlib.net/) compression algorithm. This is the default value. |
-| lz4                   | Pages are compressed using the [lz4](https://lz4.org/) compression algorithm.                                                                                                                                                                                                                                                                                |
-| lzo                   | Pages are compressed using the [lzo](https://www.oberhumer.com/opensource/lzo/) compression algorithm.                                                                                                                                                                                                                                                                     |
-| lzma                  | Pages are compressed using the [lzma](https://tukaani.org/xz/) compression algorithm.                                                                                                                                                                                                                                                                                      |
-| bzip2                 | Pages are compressed using the [bzip2](https://www.bzip.org/) compression algorithm.                                                                                                                                                                                                                                                                                       |
-| snappy                | Pages are compressed using the [snappy](https://google.github.io/snappy/) algorithm.                                                                                                                                                                                                                                                                                       |
+| lz4                   | Pages are compressed using the [lz4](https://lz4.org/) compression algorithm.                                          |
+| lzo                   | Pages are compressed using the [lzo](https://www.oberhumer.com/opensource/lzo/) compression algorithm.                 |
+| lzma                  | Pages are compressed using the [lzma](https://tukaani.org/xz/) compression algorithm.                                  |
+| bzip2                 | Pages are compressed using the [bzip2](https://www.bzip.org/) compression algorithm.                                   |
+| snappy                | Pages are compressed using the [snappy](https://google.github.io/snappy/) algorithm.                                   |
 
 However, on many distributions, the standard MariaDB builds do not support all InnoDB page compression algorithms by default. From [MariaDB 10.7](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.7/what-is-mariadb-107), algorithms can be [installed as a plugin](../../../ha-and-performance/optimization-and-tuning/optimization-and-tuning-compression/compression-plugins.md).
 
@@ -77,7 +77,7 @@ A MariaDB build's support for other InnoDB page compression algorithms can be ch
 
 | Status Variable                                                                                                                            | Description                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| [Innodb\_have\_lz4](../../../ha-and-performance/optimization-and-tuning/system-variables/innodb-status-variables.md#innodb_have_lz4)       | Whether InnoDB supports the [lz4](https://lz4.org/) compression algorithm.            |
+| [Innodb\_have\_lz4](../../../ha-and-performance/optimization-and-tuning/system-variables/innodb-status-variables.md#innodb_have_lz4)       | Whether InnoDB supports the [lz4](https://lz4.org/) compression algorithm.                          |
 | [Innodb\_have\_lzo](../../../ha-and-performance/optimization-and-tuning/system-variables/innodb-status-variables.md#innodb_have_lzo)       | Whether InnoDB supports the [lzo](https://www.oberhumer.com/opensource/lzo/) compression algorithm. |
 | [Innodb\_have\_lzma](../../../ha-and-performance/optimization-and-tuning/system-variables/innodb-status-variables.md#innodb_have_lzma)     | Whether InnoDB supports the [lzma](https://tukaani.org/xz/) compression algorithm.                  |
 | [Innodb\_have\_bzip2](../../../ha-and-performance/optimization-and-tuning/system-variables/innodb-status-variables.md#innodb_have_bzip2)   | Whether InnoDB supports the [bzip2](https://www.bzip.org/) compression algorithm.                   |
@@ -122,7 +122,7 @@ tar -xvzf mariadb-11.4.8.tar.gz
 cd mariadb-11.4.8/
 ```
 
-* Configure the build using [cmake](../../../server-management/install-and-upgrade-mariadb/installing-mariadb/compiling-mariadb-from-source/compiling-mariadb-from-source-the-master-guide.md):
+* Configure the build using [cmake](../../../server-management/install-and-upgrade-mariadb/compiling-mariadb-from-source/compiling-mariadb-from-source-the-master-guide.md):
 
 ```bash
 cmake .
@@ -147,7 +147,7 @@ Or make a package to install:
 make package
 ```
 
-See [Compiling MariaDB From Source](../../../server-management/install-and-upgrade-mariadb/installing-mariadb/compiling-mariadb-from-source/) for more information.
+See [Compiling MariaDB From Source](../../../server-management/install-and-upgrade-mariadb/compiling-mariadb-from-source/) for more information.
 
 ## Enabling InnoDB Page Compression
 
@@ -207,7 +207,7 @@ innodb_compression_default=ON
 
 ### Enabling InnoDB Page Compression for Individual Tables
 
-InnoDB page compression can be enabled for individual tables by setting the [PAGE\_COMPRESSED](../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) table option to `1`:
+InnoDB page compression can be enabled for individual tables by setting the [PAGE\_COMPRESSED](../../tables/create-table.md#page_compressed) table option to `1`:
 
 ```sql
 SET GLOBAL innodb_file_per_table=ON;
@@ -262,7 +262,7 @@ innodb_compression_level=9
 
 ### Configuring the Compression Level for Individual Tables
 
-The compression level for individual tables can also be configured by setting the [PAGE\_COMPRESSION\_LEVEL](../../../reference/sql-statements/data-definition/create/create-table.md#page_compression_level) table option for the table:
+The compression level for individual tables can also be configured by setting the [PAGE\_COMPRESSION\_LEVEL](../../tables/create-table.md#page_compression_level) table option for the table:
 
 ```sql
 SET GLOBAL innodb_file_per_table=ON;
@@ -478,7 +478,7 @@ SHOW GLOBAL STATUS LIKE 'Innodb_num_pages_page_compressed';
 
 [mariadb-backup](../../backup-and-restore/mariadb-backup/mariadb-backup-overview.md) supports InnoDB page compression.
 
-[Percona XtraBackup](../../backup-and-restore/mariadb-backup/README.md) does not support InnoDB page compression.
+[Percona XtraBackup](../../backup-and-restore/mariadb-backup/) does not support InnoDB page compression.
 
 ## Acknowledgements
 

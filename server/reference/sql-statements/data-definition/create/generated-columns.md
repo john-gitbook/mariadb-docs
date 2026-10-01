@@ -46,7 +46,7 @@ ERROR 1910 (HY000): <storage engine> storage engine does not support generated c
 
 All data types are supported when defining generated columns.
 
-Using the [ZEROFILL](create-table.md#zerofill-column-option) column option is supported when defining generated columns.
+Using the [ZEROFILL](../../../../server-usage/tables/create-table.md#zerofill-column-option) column option is supported when defining generated columns.
 
 Using the [AUTO\_INCREMENT](../../../data-types/auto_increment.md) column option is not supported when defining generated columns.
 
@@ -104,7 +104,7 @@ Generated columns can be referenced in the [INSERT](../../data-manipulation/inse
 
 * However, `VIRTUAL` or `PERSISTENT` generated columns cannot be explicitly set to any other values than `NULL` or [DEFAULT](../../../sql-functions/secondary-functions/information-functions/default.md). If a generated column is explicitly set to any other value, then the outcome depends on whether [strict mode](../../../../server-management/variables-and-modes/sql_mode.md#strict-mode) is enabled in [sql\_mode](../../../../server-management/variables-and-modes/sql_mode.md). If it is not enabled, then a warning will be raised and the default generated value will be used instead. If it is enabled, then an error will be raised instead.
 
-The [CREATE TABLE](create-table.md) statement has limited support for generated columns.
+The [CREATE TABLE](../../../../server-usage/tables/create-table.md) statement has limited support for generated columns.
 
 * It supports defining generated columns in a new table.
 * It supports using generated columns to [partition tables](../../../../server-usage/partitioning-tables/).
@@ -157,7 +157,7 @@ Most [built-in functions](../../../sql-functions/) are supported in expressions 
 ERROR 1901 (HY000): Function or expression 'dayname()' cannot be used in the GENERATED ALWAYS AS clause of `v`
 ```
 
-[Subqueries](../../data-manipulation/selecting-data/joins-subqueries/subqueries/) are not supported in expressions for generated columns because the underlying data can change.
+[Subqueries](../../data-manipulation/selecting-data/subqueries/) are not supported in expressions for generated columns because the underlying data can change.
 
 Using anything that depends on data outside the row is not supported in expressions for generated columns.
 
@@ -261,10 +261,9 @@ Generated columns are subject to various constraints in other DBMSs that are not
 
 ### Implementation Differences Compared to Microsoft SQL Server
 
-MariaDB's generated columns implementation does not enforce the following
-restrictions that are present in [Microsoft SQL Server's computed columns](https://docs.microsoft.com/en-us/sql/relational-databases/tables/specify-computed-columns-in-a-table?view=sql-server-2017) implementation:
+MariaDB's generated columns implementation does not enforce the following restrictions that are present in [Microsoft SQL Server's computed columns](https://docs.microsoft.com/en-us/sql/relational-databases/tables/specify-computed-columns-in-a-table?view=sql-server-2017) implementation:
 
-* MariaDB allows [server variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/) in generated column expressions, including those that change dynamically, such as [warning\_count](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#warning_count).
+* MariaDB allows [server variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/) in generated column expressions, including those that change dynamically, such as [warning\_count](../../../../server-management/variables-and-modes/server-system-variables.md#warning_count).
 * MariaDB allows the [CONVERT\_TZ()](../../../sql-functions/date-time-functions/convert_tz.md) function to be called with a named [time zone](../../../data-types/string-data-types/character-sets/internationalization-and-localization/time-zones.md) as an argument, even though time zone names and time offsets are configurable.
 * MariaDB allows the [CAST()](../../../sql-functions/string-functions/cast.md) function to be used with non-unicode [character sets](../../../data-types/string-data-types/character-sets/), even though character sets are configurable and differ between binaries/versions.
 * MariaDB allows [FLOAT](../../../data-types/numeric-data-types/float.md) expressions to be used in generated columns. Microsoft SQL Server considers these expressions to be "imprecise" due to potential cross-platform differences in floating-point implementations and precision.

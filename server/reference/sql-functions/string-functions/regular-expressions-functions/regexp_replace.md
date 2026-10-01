@@ -24,7 +24,7 @@ The collation case sensitivity can be overwritten using the (?i) and (?-i) PCRE 
 
 MariaDB uses the [PCRE regular expression](pcre.md) library for enhanced regular expression performance, and `REGEXP_REPLACE` was introduced as part of this enhancement.
 
-The [default\_regex\_flags](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_regex_flags) variable addresses the remaining compatibilities between PCRE and the old regex library.
+The [default\_regex\_flags](../../../../server-management/variables-and-modes/server-system-variables.md#default_regex_flags) variable addresses the remaining compatibilities between PCRE and the old regex library.
 
 ## Examples
 

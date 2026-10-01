@@ -28,7 +28,7 @@ There are two kinds of CTEs:
 
 You can use `table_reference` as any normal table in the external `SELECT` part. You can also use `WITH` in subqueries, as well as with [EXPLAIN](../../../administrative-sql-statements/analyze-and-explain-statements/explain.md) and [SELECT](../select.md).
 
-Poorly-formed recursive CTEs can in theory cause infinite loops. The [max\_recursive\_iterations](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_recursive_iterations) system variable limits the number of recursions.
+Poorly-formed recursive CTEs can in theory cause infinite loops. The [max\_recursive\_iterations](../../../../../server-management/variables-and-modes/server-system-variables.md#max_recursive_iterations) system variable limits the number of recursions.
 
 #### CYCLE ... RESTRICT
 
@@ -105,7 +105,7 @@ SELECT * FROM t1;
 +-------+------+
 ```
 
-Given the above, the following query would theoretically result in an infinite loop due to the last record in t1 (note that [max\_recursive\_iterations](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_recursive_iterations) is set to 10 for the purposes of this example, to avoid the excessive number of cycles):
+Given the above, the following query would theoretically result in an infinite loop due to the last record in t1 (note that [max\_recursive\_iterations](../../../../../server-management/variables-and-modes/server-system-variables.md#max_recursive_iterations) is set to 10 for the purposes of this example, to avoid the excessive number of cycles):
 
 ```sql
 SET max_recursive_iterations=10;

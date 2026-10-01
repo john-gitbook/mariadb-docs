@@ -40,13 +40,13 @@ MariaDB uses three broad kinds of memory:
 
 * **Fixed global allocations**
   * Storage engine caches such as [innodb\_buffer\_pool\_size](../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_buffer_pool_size), [key\_buffer\_size](../server-usage/storage-engines/myisam-storage-engine/myisam-system-variables.md#key_buffer_size) and [aria\_pagecache\_buffer\_size](../server-usage/storage-engines/aria/aria-system-variables.md#aria_pagecache_buffer_size).
-  * Optional caches such as [query\_cache\_size](optimization-and-tuning/system-variables/server-system-variables.md#query_cache_size).
+  * Optional caches such as [query\_cache\_size](../server-management/variables-and-modes/server-system-variables.md#query_cache_size).
 * **Dynamic global structures**
-  * Metadata- and connection-related structures such as [table\_open\_cache](optimization-and-tuning/system-variables/server-system-variables.md#table_open_cache), [table\_definition\_cache](optimization-and-tuning/system-variables/server-system-variables.md#table_definition_cache), and [thread\_cache\_size](optimization-and-tuning/system-variables/server-system-variables.md#thread_cache_size).
-  * Limits such as [max\_connections](optimization-and-tuning/system-variables/server-system-variables.md#max_connections) do not allocate memory by themselves, but they raise the possible peak memory footprint.
+  * Metadata- and connection-related structures such as [table\_open\_cache](../server-management/variables-and-modes/server-system-variables.md#table_open_cache), [table\_definition\_cache](../server-management/variables-and-modes/server-system-variables.md#table_definition_cache), and [thread\_cache\_size](../server-management/variables-and-modes/server-system-variables.md#thread_cache_size).
+  * Limits such as [max\_connections](../server-management/variables-and-modes/server-system-variables.md#max_connections) do not allocate memory by themselves, but they raise the possible peak memory footprint.
 * **Per-connection and per-query allocations**
-  * Execution buffers such as [join\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#join_buffer_size), [mrr\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#mrr_buffer_size), [read\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#read_buffer_size), and [sort\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#sort_buffer_size).
-  * Temporary in-memory tables controlled by [max\_heap\_table\_size](optimization-and-tuning/system-variables/server-system-variables.md#max_heap_table_size) and [tmp\_memory\_table\_size](optimization-and-tuning/system-variables/server-system-variables.md#tmp_memory_table_size).
+  * Execution buffers such as [join\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#join_buffer_size), [mrr\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size), [read\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#read_buffer_size), and [sort\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#sort_buffer_size).
+  * Temporary in-memory tables controlled by [max\_heap\_table\_size](../server-management/variables-and-modes/server-system-variables.md#max_heap_table_size) and [tmp\_memory\_table\_size](../server-management/variables-and-modes/server-system-variables.md#tmp_memory_table_size).
   * Temporary blob storage and engine-specific work areas.
 
 {% hint style="warning" %}
@@ -116,15 +116,15 @@ Start with the variables that move total memory the most:
 * [innodb\_buffer\_pool\_size](../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_buffer_pool_size)
 * [key\_buffer\_size](../server-usage/storage-engines/myisam-storage-engine/myisam-system-variables.md#key_buffer_size)
 * [aria\_pagecache\_buffer\_size](../server-usage/storage-engines/aria/aria-system-variables.md#aria_pagecache_buffer_size)
-* [query\_cache\_size](optimization-and-tuning/system-variables/server-system-variables.md#query_cache_size)
+* [query\_cache\_size](../server-management/variables-and-modes/server-system-variables.md#query_cache_size)
 
 Then review per-connection buffers, especially if concurrency is high:
 
-* [join\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#join_buffer_size)
-* [mrr\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#mrr_buffer_size)
-* [sort\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#sort_buffer_size)
-* [read\_buffer\_size](optimization-and-tuning/system-variables/server-system-variables.md#read_buffer_size)
-* [max\_heap\_table\_size](optimization-and-tuning/system-variables/server-system-variables.md#max_heap_table_size)
+* [join\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#join_buffer_size)
+* [mrr\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size)
+* [sort\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#sort_buffer_size)
+* [read\_buffer\_size](../server-management/variables-and-modes/server-system-variables.md#read_buffer_size)
+* [max\_heap\_table\_size](../server-management/variables-and-modes/server-system-variables.md#max_heap_table_size)
 
 Large per-connection buffers are safe only when few sessions use them at the same time.
 {% endstep %}
@@ -171,7 +171,7 @@ The result is something like this:
 ```
 {% endcode %}
 
-Calculate [Key\_read\_requests](optimization-and-tuning/system-variables/server-status-variables.md#key_read_requests) / [Key\_reads](optimization-and-tuning/system-variables/server-status-variables.md#key_reads). If it is high (over 10), the key buffer is big enough, otherwise you should adjust the [key\_buffer\_size](../server-usage/storage-engines/myisam-storage-engine/myisam-system-variables.md#key_buffer_size) value.
+Calculate [Key\_read\_requests](../server-management/variables-and-modes/server-status-variables.md#key_read_requests) / [Key\_reads](../server-management/variables-and-modes/server-status-variables.md#key_reads). If it is high (over 10), the key buffer is big enough, otherwise you should adjust the [key\_buffer\_size](../server-usage/storage-engines/myisam-storage-engine/myisam-system-variables.md#key_buffer_size) value.
 
 ## What Is the Buffer Pool?
 
@@ -208,7 +208,7 @@ SELECT  ENGINE,
 
 ## Query Memory Allocation
 
-There are two variables that dictate how memory is allocated while MariaDB parses and executes a query. [query\_prealloc\_size](optimization-and-tuning/system-variables/server-system-variables.md#query_prealloc_size) defines the standard buffer for query execution, and [query\_alloc\_block\_size](optimization-and-tuning/system-variables/server-system-variables.md#query_alloc_block_size) defines the size of extra memory blocks if `query_prealloc_size` is not large enough. Getting these variables right can reduce memory fragmentation in the server.
+There are two variables that dictate how memory is allocated while MariaDB parses and executes a query. [query\_prealloc\_size](../server-management/variables-and-modes/server-system-variables.md#query_prealloc_size) defines the standard buffer for query execution, and [query\_alloc\_block\_size](../server-management/variables-and-modes/server-system-variables.md#query_alloc_block_size) defines the size of extra memory blocks if `query_prealloc_size` is not large enough. Getting these variables right can reduce memory fragmentation in the server.
 
 ## Legacy and Specialized Scenarios
 
@@ -269,7 +269,7 @@ This is the standard deployment target these days.
 
 Use the recommendations at the top of this page. They are more accurate than the old platform-specific rules of thumb.
 
-To find the values of the [max\_connections](optimization-and-tuning/system-variables/server-system-variables.md#max_connections) and [thread\_stack](optimization-and-tuning/system-variables/server-system-variables.md#thread_stack) variable, issue this:
+To find the values of the [max\_connections](../server-management/variables-and-modes/server-system-variables.md#max_connections) and [thread\_stack](../server-management/variables-and-modes/server-system-variables.md#thread_stack) variable, issue this:
 
 {% code overflow="wrap" expandable="true" %}
 ```sql
@@ -287,7 +287,7 @@ SELECT @@max_connections, @@thread_stack;
 ```
 {% endcode %}
 
-Each thread takes some amount of RAM. This used to be about 200KB; 100 threads would be 20MB, not a significant size. If you have [max\_connections](optimization-and-tuning/system-variables/server-system-variables.md#max_connections) > 1000, you are talking about 200MB, maybe more. Having that many connections, though, likely implies other issues that should be addressed.
+Each thread takes some amount of RAM. This used to be about 200KB; 100 threads would be 20MB, not a significant size. If you have [max\_connections](../server-management/variables-and-modes/server-system-variables.md#max_connections) > 1000, you are talking about 200MB, maybe more. Having that many connections, though, likely implies other issues that should be addressed.
 
 Thread pooling can change how concurrency behaves, but it does not remove the need to budget memory for peak active sessions.
 
@@ -299,13 +299,13 @@ The OS has some limit on the number of open files it will let a process have. Ea
 
 In Unix, ulimit tells you what the file limit is. The maximum value is in the tens of thousands, but sometimes it is set to only 1024. This limits you to about 300 tables. More discussion on ulimit
 
-You can see how well your system is performing via [SHOW GLOBAL STATUS](../reference/sql-statements/administrative-sql-statements/show/show-status.md); and computing the opens/second via [Opened\_files](optimization-and-tuning/system-variables/server-status-variables.md#opened_files) / [Uptime](optimization-and-tuning/system-variables/server-status-variables.md#uptime) If this is more than, say, 5, [table\_open\_cache](optimization-and-tuning/system-variables/server-system-variables.md#table_open_cache) should be increased. If it is less than, say, 1, you might get improvement by decreasing [table\_open\_cache](optimization-and-tuning/system-variables/server-system-variables.md#table_open_cache).
+You can see how well your system is performing via [SHOW GLOBAL STATUS](../reference/sql-statements/administrative-sql-statements/show/show-status.md); and computing the opens/second via [Opened\_files](../server-management/variables-and-modes/server-status-variables.md#opened_files) / [Uptime](../server-management/variables-and-modes/server-status-variables.md#uptime) If this is more than, say, 5, [table\_open\_cache](../server-management/variables-and-modes/server-system-variables.md#table_open_cache) should be increased. If it is less than, say, 1, you might get improvement by decreasing [table\_open\_cache](../server-management/variables-and-modes/server-system-variables.md#table_open_cache).
 
-[table\_open\_cache](optimization-and-tuning/system-variables/server-system-variables.md#table_open_cache) defaults to `2000`.
+[table\_open\_cache](../server-management/variables-and-modes/server-system-variables.md#table_open_cache) defaults to `2000`.
 
 ### Query Cache
 
-Set [query\_cache\_type](optimization-and-tuning/system-variables/server-system-variables.md#query_cache_type) to `OFF` and [query\_cache\_size](optimization-and-tuning/system-variables/server-system-variables.md#query_cache_size) to `0` unless measurements show a clear benefit.
+Set [query\_cache\_type](../server-management/variables-and-modes/server-system-variables.md#query_cache_type) to `OFF` and [query\_cache\_size](../server-management/variables-and-modes/server-system-variables.md#query_cache_size) to `0` unless measurements show a clear benefit.
 
 The [query cache](optimization-and-tuning/buffers-caches-and-threads/query-cache.md) can be very fast for repeated identical `SELECT` statements, but it has significant trade-offs:
 
@@ -315,8 +315,8 @@ The [query cache](optimization-and-tuning/buffers-caches-and-threads/query-cache
 
 If you decide to use it:
 
-* Keep [query\_cache\_size](optimization-and-tuning/system-variables/server-system-variables.md#query_cache_size) small, usually no more than `50M` .
-* Prefer [query\_cache\_type](optimization-and-tuning/system-variables/server-system-variables.md#query_cache_type) = `DEMAND` .
+* Keep [query\_cache\_size](../server-management/variables-and-modes/server-system-variables.md#query_cache_size) small, usually no more than `50M` .
+* Prefer [query\_cache\_type](../server-management/variables-and-modes/server-system-variables.md#query_cache_type) = `DEMAND` .
 * Use `SQL_CACHE` only on queries that benefit from reuse.
 
 To see whether it helps, issue this statement:
@@ -352,9 +352,9 @@ If that ratio stays low, disable the query cache.
 
 ### thread\_cache\_size
 
-The [thread\_cache\_size](optimization-and-tuning/system-variables/server-system-variables.md#thread_cache_size) rarely needs manual tuning. Keep it small but non-zero unless you have evidence that connection creation is a bottleneck.
+The [thread\_cache\_size](../server-management/variables-and-modes/server-system-variables.md#thread_cache_size) rarely needs manual tuning. Keep it small but non-zero unless you have evidence that connection creation is a bottleneck.
 
-This setting controls how many disconnected threads are kept ready for reuse. It does not limit concurrent connections; [max\_connections](optimization-and-tuning/system-variables/server-system-variables.md#max_connections) does.
+This setting controls how many disconnected threads are kept ready for reuse. It does not limit concurrent connections; [max\_connections](../server-management/variables-and-modes/server-system-variables.md#max_connections) does.
 
 A very high value usually wastes memory without helping throughput.
 
@@ -422,7 +422,7 @@ Do not enable huge pages blindly on small or memory-constrained systems.
 
 ### ENGINE=MEMORY
 
-The [Memory Storage Engine](../server-usage/storage-engines/memory-storage-engine.md) is a little-used alternative to [MyISAM](../server-usage/storage-engines/myisam-storage-engine/) and [InnoDB](../server-usage/storage-engines/innodb/). The data is not persistent, so it has limited uses. The size of a MEMORY table is limited to [max\_heap\_table\_size](optimization-and-tuning/system-variables/server-system-variables.md#max_heap_table_size), which defaults to 16MB. I mention it in case you have changed the value to something huge; this would be stealing from other possible uses of RAM.
+The [Memory Storage Engine](../server-usage/storage-engines/memory-storage-engine.md) is a little-used alternative to [MyISAM](../server-usage/storage-engines/myisam-storage-engine/) and [InnoDB](../server-usage/storage-engines/innodb/). The data is not persistent, so it has limited uses. The size of a MEMORY table is limited to [max\_heap\_table\_size](../server-management/variables-and-modes/server-system-variables.md#max_heap_table_size), which defaults to 16MB. I mention it in case you have changed the value to something huge; this would be stealing from other possible uses of RAM.
 
 ### How to Set Variables
 
@@ -471,7 +471,7 @@ You may want to do both (SET and modify my.cnf) in order to make the change imme
 Application servers and web servers can create far more database connections than MariaDB can use efficiently.
 
 * Size the application pool explicitly.
-* Keep [max\_connections](optimization-and-tuning/system-variables/server-system-variables.md#max_connections) high enough for real traffic, but not so high that worst-case per-connection buffers can exhaust RAM.
+* Keep [max\_connections](../server-management/variables-and-modes/server-system-variables.md#max_connections) high enough for real traffic, but not so high that worst-case per-connection buffers can exhaust RAM.
 * Prefer connection pooling over one-connection-per-request patterns.
 
 ## Tools
@@ -489,7 +489,7 @@ Maximum possible memory usage: 31.3G (266% of installed RAM)
 ```
 {% endcode %}
 
-Treat that as an upper bound, not a prediction. It usually assumes all [max\_connections](optimization-and-tuning/system-variables/server-system-variables.md#max_connections) are active and all are using large per-query buffers at the same time.
+Treat that as an upper bound, not a prediction. It usually assumes all [max\_connections](../server-management/variables-and-modes/server-system-variables.md#max_connections) are active and all are using large per-query buffers at the same time.
 
 Another warning can look like this:
 
@@ -505,7 +505,7 @@ This implies that [OPTIMIZE TABLE](optimization-and-tuning/optimizing-tables/opt
 
 * [Configuring MariaDB for Optimal Performance](../server-management/install-and-upgrade-mariadb/configuring-mariadb/mariadb-performance-advanced-configurations/configuring-mariadb-for-optimal-performance.md)
 * [InnoDB Buffer Pool](../server-usage/storage-engines/innodb/innodb-buffer-pool.md)
-* [Server System Variables](optimization-and-tuning/system-variables/server-system-variables.md)
+* [Server System Variables](../server-management/variables-and-modes/server-system-variables.md)
 * [What to Do if MariaDB Doesn't Start](../server-management/starting-and-stopping-mariadb/what-to-do-if-mariadb-doesnt-start.md)
 
 ### Attribution

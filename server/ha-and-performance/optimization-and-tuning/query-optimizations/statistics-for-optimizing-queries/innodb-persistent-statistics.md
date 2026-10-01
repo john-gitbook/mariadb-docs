@@ -8,7 +8,7 @@ There are a number of variables that control persistent statistics:
 * [innodb\_stats\_auto\_recalc](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_stats_auto_recalc) - when set (the default), persistent statistics are automatically recalculated when the table changes significantly (more than 10% of the rows)
 * [innodb\_stats\_persistent\_sample\_pages](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_stats_persistent_sample_pages) - Number of index pages sampled (default 20) when estimating cardinality and statistics for indexed columns. Increasing this value will increases index statistics accuracy, but use more I/O resources when running [ANALYZE TABLE](../../../../reference/sql-statements/table-statements/analyze-table.md).
 
-These settings can be overwritten on a per-table basis by use of the [STATS\_PERSISTENT](../../../../reference/sql-statements/data-definition/create/create-table.md#stats_persistent), [STATS\_AUTO\_RECALC](../../../../reference/sql-statements/data-definition/create/create-table.md#stats_auto_recalc) and [STATS\_SAMPLE\_PAGES](../../../../reference/sql-statements/data-definition/create/create-table.md#stats_sample_pages) clauses in a [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement.
+These settings can be overwritten on a per-table basis by use of the [STATS\_PERSISTENT](../../../../server-usage/tables/create-table.md#stats_persistent), [STATS\_AUTO\_RECALC](../../../../server-usage/tables/create-table.md#stats_auto_recalc) and [STATS\_SAMPLE\_PAGES](../../../../server-usage/tables/create-table.md#stats_sample_pages) clauses in a [CREATE TABLE](../../../../server-usage/tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement.
 
 Details of the statistics are stored in two system tables in the [mysql database](../../../../reference/system-tables/the-mysql-database-tables/):
 
@@ -19,7 +19,7 @@ The [ANALYZE TABLE](../../../../reference/sql-statements/table-statements/analyz
 
 The [RENAME TABLE](../../../../reference/sql-statements/data-definition/rename-table.md) statement triggers a reload of the statistics.
 
-**MariaDB starting with** [**10.11.12**](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.11/10.11.12)
+**MariaDB starting with** [**10.11.12**](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.11/10.11.12)
 
 Prior to [MariaDB 10.11.12](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.11/10.11.12), [MariaDB 11.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.6) and [MariaDB 11.8.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.8/11.8.2), [FLUSH TABLES](../../../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md) also caused InnoDB statistics to be reloaded. From [MariaDB 10.11.12](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.11/10.11.12), [MariaDB 11.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.6) and [MariaDB 11.8.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.8/11.8.2), this is no longer the case.
 

@@ -48,7 +48,7 @@ OPTIONS (
 
 The Data Node runs MariaDB Enterprise Server, so the `FOREIGN DATA WRAPPER` is set to `mariadb`.
 
-Using a server object for connection details is optional. Alternatively, the connection details for the Data Node can be specified in the `COMMENT` table option of the [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statement when [creating the Spider Table](step-2-configure-spider-node-and-data-node.md#create-the-spider-table).
+Using a server object for connection details is optional. Alternatively, the connection details for the Data Node can be specified in the `COMMENT` table option of the [CREATE TABLE](../../../server-usage/tables/create-table.md) statement when [creating the Spider Table](step-2-configure-spider-node-and-data-node.md#create-the-spider-table).
 
 ## Create the Data Table
 
@@ -95,7 +95,7 @@ GRANT ALL PRIVILEGES ON hq_sales.invoices TO 'spider_user'@'192.0.2.1';
 
 ### Privileges for Spider BKA Mode
 
-By default, the Spider user also requires the [CREATE TEMPORARY TABLES](../../../reference/sql-statements/data-definition/create/create-table.md#create-temporary-table) privilege on the database containing the Data Table. The `CREATE TEMPORARY TABLES` privilege is required, because Spider uses temporary tables to optimize read queries when Spider BKA Mode is `1`.
+By default, the Spider user also requires the [CREATE TEMPORARY TABLES](../../../server-usage/tables/create-table.md#create-temporary-table) privilege on the database containing the Data Table. The `CREATE TEMPORARY TABLES` privilege is required, because Spider uses temporary tables to optimize read queries when Spider BKA Mode is `1`.
 
 Spider BKA Mode is configured using the following methods:
 

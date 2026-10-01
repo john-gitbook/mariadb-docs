@@ -1,6 +1,5 @@
 ---
-description: >-
-  Techniques for inserting data into MariaDB as quickly as possible.
+description: Techniques for inserting data into MariaDB as quickly as possible.
 ---
 
 # How to Quickly Insert Data Into MariaDB
@@ -31,13 +30,11 @@ COMMIT;
 ALTER TABLE table_name ENABLE KEYS;
 ```
 
-In many storage engines (at least MyISAM and Aria),`ENABLE KEYS` works by scanning through the row data and collecting keys, sorting them and then creating the index blocks. This is an order of magnitude
-faster than creating the index one row at a time and it also uses less key buffer memory.
+In many storage engines (at least MyISAM and Aria),`ENABLE KEYS` works by scanning through the row data and collecting keys, sorting them and then creating the index blocks. This is an order of magnitude faster than creating the index one row at a time and it also uses less key buffer memory.
 
-**Note:** When you insert into an **empty table** with [INSERT](../../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) or [LOAD DATA](../../../reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile.md), MariaDB **automatically** does a [DISABLE KEYS](../../../reference/sql-statements/data-definition/alter/alter-table/) before and an [ENABLE KEYS](../../../reference/sql-statements/data-definition/alter/alter-table/)
-afterwards.
+**Note:** When you insert into an **empty table** with [INSERT](../../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) or [LOAD DATA](../../../reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile.md), MariaDB **automatically** does a [DISABLE KEYS](../../../reference/sql-statements/data-definition/alter/alter-table/) before and an [ENABLE KEYS](../../../reference/sql-statements/data-definition/alter/alter-table/) afterwards.
 
-When inserting big amounts of data, integrity checks are sensibly time-consuming. It is possible to disable the `UNIQUE` indexes and the [foreign keys](../optimization-and-indexes/foreign-keys.md) checks using the [unique\_checks](../system-variables/server-system-variables.md#unique_checks) and the [foreign\_key\_checks](../system-variables/server-system-variables.md#foreign_key_checks) system variables:
+When inserting big amounts of data, integrity checks are sensibly time-consuming. It is possible to disable the `UNIQUE` indexes and the [foreign keys](../optimization-and-indexes/foreign-keys.md) checks using the [unique\_checks](../../../server-management/variables-and-modes/server-system-variables.md#unique_checks) and the [foreign\_key\_checks](../../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) system variables:
 
 ```sql
 SET @@session.unique_checks = 0;
@@ -120,7 +117,7 @@ You can insert many rows at once with multi-value row inserts:
 INSERT INTO table_name VALUES(1,"row 1"),(2, "row 2"),...;
 ```
 
-The limit for how much data you can have in one statement is controlled by the [max\_allowed\_packet](../system-variables/server-system-variables.md#max_allowed_packet) server variable.
+The limit for how much data you can have in one statement is controlled by the [max\_allowed\_packet](../../../server-management/variables-and-modes/server-system-variables.md#max_allowed_packet) server variable.
 
 ## Inserting Data Into Several Tables at Once
 
@@ -151,10 +148,10 @@ delimiter ;
 | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | [innodb\_buffer\_pool\_size](../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_buffer_pool_size) | Increase this if you have many indexes in InnoDB/XtraDB tables |
 | [key\_buffer\_size](../../../server-usage/storage-engines/myisam-storage-engine/myisam-system-variables.md#key_buffer_size)   | Increase this if you have many indexes in MyISAM tables        |
-| [max\_allowed\_packet](../system-variables/server-system-variables.md#max_allowed_packet)                                     | Increase this to allow bigger multi-insert statements          |
-| [read\_buffer\_size](../system-variables/server-system-variables.md#read_buffer_size)                                         | Read block size when reading a file with LOAD DATA             |
+| [max\_allowed\_packet](../../../server-management/variables-and-modes/server-system-variables.md#max_allowed_packet)          | Increase this to allow bigger multi-insert statements          |
+| [read\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#read_buffer_size)              | Read block size when reading a file with LOAD DATA             |
 
-See [Server System Variables](../system-variables/server-system-variables.md) for the full list of server variables.
+See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for the full list of server variables.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

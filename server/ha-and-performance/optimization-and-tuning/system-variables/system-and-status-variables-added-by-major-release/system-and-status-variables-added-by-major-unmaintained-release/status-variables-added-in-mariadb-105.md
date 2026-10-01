@@ -1,6 +1,6 @@
 # Status Variables Added in MariaDB 10.5
 
-This is a list of [status variables](../../server-status-variables.md) that were added in the [MariaDB 10.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/what-is-mariadb-105) series.
+This is a list of [status variables](../../../../../server-management/variables-and-modes/server-status-variables.md) that were added in the [MariaDB 10.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/what-is-mariadb-105) series.
 
 | Variable                                                                                                                                                                                        | Added                                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |

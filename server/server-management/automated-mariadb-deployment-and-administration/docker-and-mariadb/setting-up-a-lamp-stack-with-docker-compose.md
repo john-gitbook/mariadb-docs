@@ -64,7 +64,7 @@ Let's see the properties of the services:
 
 It is good practice to create volumes for:
 
-* The [data directory](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir), so we don't lose data when a container is created or replaced, perhaps to upgrade MariaDB.
+* The [data directory](../../variables-and-modes/server-system-variables.md#datadir), so we don't lose data when a container is created or replaced, perhaps to upgrade MariaDB.
 * The directory where we put all the logs, if it is not the datadir.
 * The directory containing all configuration files (for development environments), so we can edit those files with the editor installed in the host system. Normally no editor is installed in containers. In production we don't need to do this, because we can copy files from a repository located in the host system to the containers.
 

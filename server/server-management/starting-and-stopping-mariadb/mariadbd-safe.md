@@ -8,7 +8,7 @@ description: >-
 
 The `mariadbd-safe` startup script is in MariaDB distributions on Linux and Unix. It is a wrapper that starts `mariadbd` with some extra safety features. For example, if `mariadbd-safe` notices that `mariadbd` has crashed, then `mariadbd-safe` automatically restarts `mariadbd`.
 
-`mariadbd-safe` is the recommended way to start `mariadbd` on Linux and Unix distributions that do not support [systemd](systemd/README.md). Additionally, the [mysql.server](mysql-server.md) init script used by [sysVinit](sysvinit.md) starts `mariadbd` with `mariadbd-safe` by default.
+`mariadbd-safe` is the recommended way to start `mariadbd` on Linux and Unix distributions that do not support [systemd](systemd/). Additionally, the [mysql.server](mysql-server.md) init script used by [sysVinit](sysvinit.md) starts `mariadbd` with `mariadbd-safe` by default.
 
 {% hint style="info" %}
 Previously, the client used to be called `mysqld_safe`, and can still be accessed under this name, via a symlink in Linux, or an alternate binary in Windows.
@@ -26,8 +26,7 @@ mariadbd-safe [ --no-defaults | --defaults-file | --defaults-extra-file | --defa
 
 ### Options
 
-Many of the options supported by `mariadbd-safe` are identical to
-options supported by [mariadbd](mariadbd-options.md). If an unknown option is provided to `mariadbd-safe` on the command-line, then it is passed to `mariadbd`.
+Many of the options supported by `mariadbd-safe` are identical to options supported by [mariadbd](mariadbd-options.md). If an unknown option is provided to `mariadbd-safe` on the command-line, then it is passed to `mariadbd`.
 
 `mariadbd-safe` supports the following options:
 
@@ -45,7 +44,7 @@ options supported by [mariadbd](mariadbd-options.md). If an unknown option is pr
 | --flush-caches                           | Flush and purge buffers/caches before starting the server.                                                                                                                                                                                                                                                                                                                                 |
 | --ledir=path                             | If mariadbd-safe cannot find the server, use this option to indicate the path name to the directory where the server is located.                                                                                                                                                                                                                                                           |
 | --log-error=file\_name                   | Write the error log to the given file.                                                                                                                                                                                                                                                                                                                                                     |
-| --malloc-lib=lib                         | Preload shared library lib if available. See [debugging MariaDB](../../reference/product-development/debugging-mariadb/debugging-a-running-server-on-linux.md) for an example.                                                                                                                                                                                                                                           |
+| --malloc-lib=lib                         | Preload shared library lib if available. See [debugging MariaDB](../../reference/product-development/mariadb-fault-finding/debugging-a-running-server-on-linux.md) for an example.                                                                                                                                                                                                         |
 | --mysqld=prog\_nam                       | The name of the server program (in the ledir directory) that you want to start. This option is needed if you use the MariaDB binary distribution but have the data directory outside of the binary distribution. If mariadbd-safe cannot find the server, use the --ledir option to indicate the path name to the directory where the server is located.                                   |
 | --mysqld-version=suffix                  | This option is similar to the --mysqld option, but you specify only the suffix for the server program name. The basename is assumed to be mysqld. For example, if you use--mysqld-version=debug, mariadbd-safe starts the mariadbd-debug program in the ledir directory. If the argument to --mysqld-version is empty, mariadbd-safe uses mysqld in the ledir directory.                   |
 | --nice=priority                          | Use the nice program to set the server´s scheduling priority to the given value.                                                                                                                                                                                                                                                                                                           |
@@ -103,7 +102,7 @@ The `[safe_mariadbd]` option group is primarily supported for backward compatibi
 | \[client-server] | Options read by all MariaDB [client programs](../../clients-and-utilities/mariadb-client/) and the MariaDB Server. This is useful for options like socket and port, which is common between the server and the clients. |
 | \[galera]        | Options read by a galera-capable MariaDB Server. Available on systems compiled with Galera support.                                                                                                                     |
 
-For example, if you specify the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) option in a server option group in an option file, like this:
+For example, if you specify the [log\_error](../variables-and-modes/server-system-variables.md#log_error) option in a server option group in an option file, like this:
 
 ```ini
 [mariadb]
@@ -123,11 +122,11 @@ open_files_limit=4294967295
 
 The option value is passed to `ulimit -n`. Note that you need to start `mariadbd-safe` as root for this to work properly. However, you can't set this to `unlimited`. See [MDEV-18410](https://jira.mariadb.org/browse/MDEV-18410) about that.
 
-When `mariadbd-safe` starts `mariadbd`, it also uses this option to set the value of the [open\_files\_limit](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#open_files_limit) system variable for `mariadbd`.
+When `mariadbd-safe` starts `mariadbd`, it also uses this option to set the value of the [open\_files\_limit](../variables-and-modes/server-system-variables.md#open_files_limit) system variable for `mariadbd`.
 
 ### Configuring the Core File Size
 
-When using `mariadbd-safe`, if you would like to [enable core dumps](../../reference/product-development/debugging-mariadb/enabling-core-dumps.md), the system's core file size limit can be changed by providing the `--core-file-size` option either on the command-line or in an option file. For example:
+When using `mariadbd-safe`, if you would like to [enable core dumps](../../reference/product-development/mariadb-fault-finding/enabling-core-dumps.md), the system's core file size limit can be changed by providing the `--core-file-size` option either on the command-line or in an option file. For example:
 
 ```ini
 [mariadbd-safe]
@@ -161,7 +160,7 @@ By default, it will look for `mariadbd` in the following locations in the follow
 * `$PWD/sbin/mysqld`
 * `@libexecdir@/mysql`
 
-Where `$BASEDIR` is set by the `--basedir` option, `$PWD` is the current working directory where `mariadbd-safe` was invoked, and `@libexecdir@` is set at compile-time by the `INSTALL_BINDIR` option for [cmake](../install-and-upgrade-mariadb/installing-mariadb/compiling-mariadb-from-source/compiling-mariadb-from-source-the-master-guide.md#common-cmake-configuration-flags).
+Where `$BASEDIR` is set by the `--basedir` option, `$PWD` is the current working directory where `mariadbd-safe` was invoked, and `@libexecdir@` is set at compile-time by the `INSTALL_BINDIR` option for [cmake](../install-and-upgrade-mariadb/compiling-mariadb-from-source/compiling-mariadb-from-source-the-master-guide.md#common-cmake-configuration-flags).
 
 You can also specify where the executable is located by providing the `--ledir` option either on the command-line or in an option file.
 
@@ -175,7 +174,7 @@ By default, `mariadbd-safe` will look for the `datadir` in the following locatio
 * `$BASEDIR/var`
 * `@localstatedir@`
 
-Where `$BASEDIR` is set by the `--basedir` option, and `@localstatedir@` is set at compile-time by the `INSTALL_MYSQLDATADIR` option for [cmake](../install-and-upgrade-mariadb/installing-mariadb/compiling-mariadb-from-source/compiling-mariadb-from-source-the-master-guide.md#common-cmake-configuration-flags).
+Where `$BASEDIR` is set by the `--basedir` option, and `@localstatedir@` is set at compile-time by the `INSTALL_MYSQLDATADIR` option for [cmake](../install-and-upgrade-mariadb/compiling-mariadb-from-source/compiling-mariadb-from-source-the-master-guide.md#common-cmake-configuration-flags).
 
 You can also specify where the `datadir` is located by providing the `--datadir` option either on the command-line or in an option file.
 
@@ -185,14 +184,10 @@ When you use `mariadbd-safe` to start `mariadbd`, `mariadbd-safe` logs to the sa
 
 `mariadbd-safe` has several log-related options:
 
-* `--syslog`: Write error messages to syslog on systems that
-  support the logger program.
+* `--syslog`: Write error messages to syslog on systems that support the logger program.
 * `--skip-syslog`: Do not write error messages to syslog.\
-  Messages are written to the default error log file (host\_name.err in the data
-  directory), or to a named file if the `--log-error` option
-  is given.
-* `--log-error=file_name`: Write error messages to the named
-  error file.
+  Messages are written to the default error log file (host\_name.err in the data directory), or to a named file if the `--log-error` option is given.
+* `--log-error=file_name`: Write error messages to the named error file.
 
 If none of these options is provided, then the default is `--skip-syslog`.
 
@@ -208,23 +203,20 @@ If you do edit `mariadbd-safe`, then you should be aware of the fact that a pack
 
 ## NetWare
 
-On NetWare, mariadbd-safe is a NetWare Loadable Module (NLM)
-that is ported from the original Unix shell script. It starts the server as
-follows:
+On NetWare, mariadbd-safe is a NetWare Loadable Module (NLM) that is ported from the original Unix shell script. It starts the server as follows:
 
 1. Runs a number of system and option checks.
 2. Runs a check on MyISAM tables.
 3. Provides a screen presence for the MariaDB server.
 4. Starts mariadbd, monitors it, and restarts it if it terminates in error.
 5. Sends error messages from mariadbd to the host\_name.err file in the data directory.
-6. Sends mariadbd-safe screen output to the host\_name.safe file
-   in the data directory.
+6. Sends mariadbd-safe screen output to the host\_name.safe file in the data directory.
 
 ## See Also
 
 * [How to increase max number of open files on Linux](https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files). This can be used to solve issues like this warning from mariadbd: `Changed limits: max_open_files: 1024 (requested 5000)"`
 * [mariadbd Options](mariadbd-options.md)
-* [systemd](systemd/README.md)
+* [systemd](systemd/)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

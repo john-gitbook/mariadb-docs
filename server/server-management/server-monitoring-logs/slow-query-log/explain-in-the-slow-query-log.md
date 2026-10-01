@@ -14,11 +14,11 @@ When a user manually executes the standard `EXPLAIN` statement, these columns ar
 
 MariaDB uses `ANALYZE` statement internally to generate the `EXPLAIN` output when a query is stored in the slow query log. As a result, the slow query log may contain both estimated and actual execution statistics.
 
-For more information about `r_rows` and `r_filtered`  columns, see the [ANALYZE Statement](../../../reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/analyze-statement.md) page.
+For more information about `r_rows` and `r_filtered` columns, see the [ANALYZE Statement](../../../reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/analyze-statement.md) page.
 
 ### Switching it On
 
-[EXPLAIN](../../../reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/explain.md) output can be switched on by specifying the `explain` keyword in the [log\_slow\_verbosity](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_verbosity) system variable. Alternatively, you can set with the `log-slow-verbosity` command line argument.
+[EXPLAIN](../../../reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/explain.md) output can be switched on by specifying the `explain` keyword in the [log\_slow\_verbosity](../../variables-and-modes/server-system-variables.md#log_slow_verbosity) system variable. Alternatively, you can set with the `log-slow-verbosity` command line argument.
 
 ```ini
 [mysqld]

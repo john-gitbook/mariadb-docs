@@ -32,7 +32,7 @@ Let's [create an InnoDB table with a single column primary](primary-key-constrai
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -51,7 +51,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement and specify the primary key with the PRIMARY KEY() clause:
+4. Create the table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement and specify the primary key with the PRIMARY KEY() clause:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -88,7 +88,7 @@ Let's create an InnoDB table with a composite (multi-column) primary key after c
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -107,7 +107,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement and specify the primary key with the PRIMARY KEY() clause:
+4. Create the table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement and specify the primary key with the PRIMARY KEY() clause:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -131,7 +131,7 @@ Let's [create an InnoDB table without a primary key](primary-key-constraints.md#
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -150,7 +150,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table without a primary key using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
+4. Create the table without a primary key using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -203,7 +203,7 @@ Let's create an InnoDB table without a primary key, and then use a [SELECT](../.
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -222,7 +222,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table without a primary key using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
+4. Create the table without a primary key using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.invoices (

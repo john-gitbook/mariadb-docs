@@ -86,14 +86,13 @@ Posted Jan, 2014; Refreshed Feb, 2016.
 
 This looks very promising; I will need to do more research to see how much of this article is obviated by it: [Using MySQL as a Document Store in 5.7](https://dev.mysql.com/doc/refman/5.7/en/document-store.html),[more DocStore discussion](https://web.archive.org/web/20160823135933/https://mysqlserverteam.com/mysql-5-7-12-part-6-mysql-document-store-a-new-chapter-in-the-mysql-story/)
 
-If you insist on EAV, set [optimizer\_search\_depth=1](../system-variables/server-system-variables.md#optimizer_search_depth).
+If you insist on EAV, set [optimizer\_search\_depth=1](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_search_depth).
 
 ## See also
 
 Rick James graciously allowed us to use this article in the documentation.
 
-[Rick James' site](https://mysql.rjweb.org/) has other useful tips, how-tos,
-optimizations, and debugging tips.
+[Rick James' site](https://mysql.rjweb.org/) has other useful tips, how-tos, optimizations, and debugging tips.
 
 Original source: [eav](https://mysql.rjweb.org/doc.php/eav)
 

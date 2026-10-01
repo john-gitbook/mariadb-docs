@@ -34,7 +34,7 @@ For more details on replication formats, see [binary log formats](../../../serve
 
 The replicas have an [I/O thread](../../../../ha-and-performance/standard-replication/replication-threads.md#replica-i-o-thread) that receives the binary log events and writes them to the [relay log](../../../server-monitoring-logs/binary-log/relay-log.md). These events are then read by the [SQL thread](../../../../ha-and-performance/standard-replication/replication-threads.md#replica-sql-thread). This thread could directly apply the changes to the local databases, and this was the only option before [MariaDB 10.0.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.0/10.0.5). If [parallel replication](mariadb-replication-overview-for-sql-server-users.md#parallel-replication-and-group-commit) is enabled, the SQL thread hands the events to the worker thread, that apply them to the databases. The latter method is recommended for performance reasons.
 
-When a replica cannot apply an event to the local data, the SQL thread stops. This happens, for example, if the event is a row deletion but that row doesn't exist on the replica. There can be several reasons for this, for example non-deterministic statements, or a user deleted the row in the replica. To reduce the risk, it is recommended to set [read\_only](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#read_only) to 1 in the replicas.
+When a replica cannot apply an event to the local data, the SQL thread stops. This happens, for example, if the event is a row deletion but that row doesn't exist on the replica. There can be several reasons for this, for example non-deterministic statements, or a user deleted the row in the replica. To reduce the risk, it is recommended to set [read\_only](../../../variables-and-modes/server-system-variables.md#read_only) to 1 in the replicas.
 
 [SHOW SLAVE STATUS](../../../../reference/sql-statements/administrative-sql-statements/show/show-replica-status.md) has columns named `Slave_SQL_State` and `Slave_IO_State` that show, respectively, if the SQL thread and the IO thread are running. If they are not, the column `Last_IO_Errno` and `Last_IO_Error` (for the IO thread) or `Last_SQL_Errno` and `Last_SQL_Error` (for the SQL thread) show what the problem is.
 
@@ -56,7 +56,7 @@ To easily find out how far the replica is lagging behind the primary, we can loo
 
 Coordinates represented in this way have a problem: they are different on each server. Each server can use files with different (or the same) names, depending on its configuration. And files can be rotated at different times, including when a user runs [FLUSH LOGS](../../../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md). By enabling the GTID (global transaction id) an event will have the same id on the primary and on all the replicas.
 
-When [GTID](../../../../ha-and-performance/standard-replication/gtid/README.md) is enabled, `SHOW SLAVE STATUS` shows two GTIDs: `Gtid_IO_Pos` is the last event written into the relay log, and `Gtid_Slave_Pos` is the last event applied by the SQL thread. There is no need for a column identifying the same event in the primary, because the id is the same.
+When [GTID](../../../../ha-and-performance/standard-replication/gtid/) is enabled, `SHOW SLAVE STATUS` shows two GTIDs: `Gtid_IO_Pos` is the last event written into the relay log, and `Gtid_Slave_Pos` is the last event applied by the SQL thread. There is no need for a column identifying the same event in the primary, because the id is the same.
 
 ### Provisioning a Replica
 
@@ -116,7 +116,7 @@ As a general rule, we want the primary and the replicas to contain exactly the s
 
 To reduce the possible causes of conflicts, the following best practices are recommended:
 
-* Users must not change data in the replica directly. Set [read\_only](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#read_only) to 1. Note that this won't prevent root from making changes.
+* Users must not change data in the replica directly. Set [read\_only](../../../variables-and-modes/server-system-variables.md#read_only) to 1. Note that this won't prevent root from making changes.
 * Use the same table definitions in the primary and in the replica.
 * Use `ROW` binary log format on the primary.
 
@@ -227,7 +227,7 @@ The timeout is set via the [rpl\_semi\_sync\_master\_timeout](../../../../ha-and
 
 ## Galera Cluster
 
-[Galera](../../../../architecture/topologies/galera-cluster/README.md) is a technology that implements virtually synchronous, primary-primary replication for a cluster of MariaDB servers.
+[Galera](../../../../architecture/topologies/galera-cluster/) is a technology that implements virtually synchronous, primary-primary replication for a cluster of MariaDB servers.
 
 ### Raft and the Primary Cluster
 

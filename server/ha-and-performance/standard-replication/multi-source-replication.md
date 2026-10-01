@@ -46,11 +46,11 @@ The connection name may include any characters and should be less than 64 charac
 
 The new syntax was introduced to handle many connections:
 
-* [CHANGE MASTER \['connection\_name'\] TO ....](../../reference/sql-statements/administrative-sql-statements/replication-statements/change-master-to.md) \
+* [CHANGE MASTER \['connection\_name'\] TO ....](../../reference/sql-statements/administrative-sql-statements/replication-statements/change-master-to.md)\
   Creates or modifies a connection to a primary.
 * [FLUSH RELAY LOGS \['connection\_name'\]](../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md#flush-relay-logs)
 * [MASTER\_POS\_WAIT(....,\['connection\_name'\])](../../reference/sql-functions/secondary-functions/miscellaneous-functions/master_pos_wait.md)
-* [\[RESET SLAVE \['connection\_name'\] \[ALL\]](../../reference/sql-statements/administrative-sql-statements/replication-statements/reset-replica.md) \
+* [\[RESET SLAVE \['connection\_name'\] \[ALL\]](../../reference/sql-statements/administrative-sql-statements/replication-statements/reset-replica.md)\
   Used to reset a replica's replication position or to remove a replica permanently.
 * [SHOW RELAYLOG \['connection\_name'\] EVENTS](../../reference/sql-statements/administrative-sql-statements/show/show-relaylog-events.md)
 * [SHOW SLAVE \['connection\_name'\] STATUS](../../reference/sql-statements/administrative-sql-statements/show/show-replica-status.md)
@@ -102,7 +102,7 @@ If `@@default_master_connection` contains a non existing name, you will get a wa
 
 All other primary-related variables are global and affect either only the default (`''`) connections or all connections. For example, [Slave\_retried\_transactions](replication-and-binary-log-status-variables.md#slave_retried_transactions) now shows the total number of retried transactions over all replicas.
 
-If you need to set [gtid\_slave\_pos](gtid/README.md), you need to set this for all primaries at the same time.
+If you need to set [gtid\_slave\_pos](gtid/), you need to set this for all primaries at the same time.
 
 New status variables:
 
@@ -142,7 +142,7 @@ When you are using multi-source, the following new files are created:
 When creating the file, the connection name is converted to lowercase, and all special characters in the connection name are converted, the same way as MySQL table names are converted. This is done to make the file name portable across different systems.
 
 {% hint style="info" %}
-Instead of specifying names for `mysqld` with [--relay-log](replication-and-binary-log-system-variables.md#relay_log), [--relay-log-index](replication-and-binary-log-system-variables.md#relay_log_index), [--general-log-file](../optimization-and-tuning/system-variables/server-system-variables.md#general_log_file), [--slow-query-log-file](../optimization-and-tuning/system-variables/server-system-variables.md#slow_query_log_file),[--log-bin](replication-and-binary-log-system-variables.md#log_bin), and [--log-bin-index](replication-and-binary-log-system-variables.md#log_bin_index), you can just specify [--log-basename](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md), and all the other variables are set with this as a prefix.
+Instead of specifying names for `mysqld` with [--relay-log](replication-and-binary-log-system-variables.md#relay_log), [--relay-log-index](replication-and-binary-log-system-variables.md#relay_log_index), [--general-log-file](../../server-management/variables-and-modes/server-system-variables.md#general_log_file), [--slow-query-log-file](../../server-management/variables-and-modes/server-system-variables.md#slow_query_log_file),[--log-bin](replication-and-binary-log-system-variables.md#log_bin), and [--log-bin-index](replication-and-binary-log-system-variables.md#log_bin_index), you can just specify [--log-basename](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md), and all the other variables are set with this as a prefix.
 {% endhint %}
 
 ## Other Things
@@ -186,7 +186,7 @@ One can also use this syntax to set `replicate-rewrite-db` for a given connectio
 ## See Also
 
 * [Multi-master ring replication](multi-master-ring-replication.md).
-* Using multi-source with [global transaction id](gtid/README.md).
+* Using multi-source with [global transaction id](gtid/).
 * The work in MariaDB is based on the project description at [MDEV-253](https://jira.mariadb.org/browse/MDEV-253).
 * The original code base comes from [Taobao, developed by Peng Lixun](https://mysql.taobao.org/index.php/Patch_source_code#Multi-master_replication). A big thanks to them for this important feature!
 

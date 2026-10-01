@@ -10,7 +10,7 @@ It is possible to run multiple MariaDB Server processes on the same server, but 
 
 ## Configuring Multiple MariaDB Server Processes
 
-If multiple MariaDB Server process are running on the same server, then at minimum, you will need to ensure that the different instances do not use the same [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir), [port](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#port), and [socket](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#socket). The following example shows these options set in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md):
+If multiple MariaDB Server process are running on the same server, then at minimum, you will need to ensure that the different instances do not use the same [datadir](../variables-and-modes/server-system-variables.md#datadir), [port](../variables-and-modes/server-system-variables.md#port), and [socket](../variables-and-modes/server-system-variables.md#socket). The following example shows these options set in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md):
 
 ```ini
 [client]
@@ -47,11 +47,11 @@ If you want to run different MariaDB versions on the same machine, using [binary
 
 ### Service Managers
 
-[sysVinit](sysvinit.md) and [systemd](systemd/README.md) are the most common Linux service managers. [launchd](launchd.md) is used in MacOS X. [Upstart](https://en.wikipedia.org/wiki/Upstart_\(software\)) is a less common service manager.
+[sysVinit](sysvinit.md) and [systemd](systemd/) are the most common Linux service managers. [launchd](launchd.md) is used in MacOS X. [Upstart](https://en.wikipedia.org/wiki/Upstart_\(software\)) is a less common service manager.
 
 #### Systemd
 
-RHEL/CentOS 7 and above, Debian 8 Jessie and above, and Ubuntu 15.04 and above use [systemd](systemd/README.md) by default.
+RHEL/CentOS 7 and above, Debian 8 Jessie and above, and Ubuntu 15.04 and above use [systemd](systemd/) by default.
 
 For information on how to start and stop multiple MariaDB Server processes on the same server with this service manager, see [systemd: Interacting with Multiple MariaDB Server Processes](systemd/starting.md#interacting-with-multiple-mariadb-server-processes).
 

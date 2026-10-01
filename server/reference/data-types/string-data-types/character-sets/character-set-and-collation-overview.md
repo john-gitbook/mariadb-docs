@@ -79,7 +79,7 @@ SELECT 'Mueller' = 'Müller';
 +----------------------+
 ```
 
-By using the [collation\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection) system variable to change the connection character set to `latin1_german2_ci`, or German phone book, the same two characters will evaluate as equivalent.
+By using the [collation\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) system variable to change the connection character set to `latin1_german2_ci`, or German phone book, the same two characters will evaluate as equivalent.
 
 ```sql
 SET collation_connection = latin1_german2_ci;

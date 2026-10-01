@@ -27,7 +27,7 @@ CREATE EVENT test_event
 
 ## Executing Events
 
-Events are only executed if the event scheduler is running. This is determined by the value of the [event\_scheduler](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#event_scheduler) system variable, which needs to be set to `On` for the event scheduler to be running.
+Events are only executed if the event scheduler is running. This is determined by the value of the [event\_scheduler](../../../server-management/variables-and-modes/server-system-variables.md#event_scheduler) system variable, which needs to be set to `On` for the event scheduler to be running.
 
 You can check if the Event scheduler is running with:
 
@@ -50,7 +50,7 @@ SET GLOBAL event_scheduler = ON;
 
 to activate it. If `event_scheduler` has been set to `Disabled`, you cannot change the value at runtime. Changing the value of the `event_scheduler` variable requires the SUPER privilege.
 
-Setting the [event\_scheduler](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#event_scheduler) system variable will also try to reload the [mysql.event table](../../../reference/system-tables/the-mysql-database-tables/mysql-event-table.md) if it was not properly loaded at startup.
+Setting the [event\_scheduler](../../../server-management/variables-and-modes/server-system-variables.md#event_scheduler) system variable will also try to reload the [mysql.event table](../../../reference/system-tables/the-mysql-database-tables/mysql-event-table.md) if it was not properly loaded at startup.
 
 ## Viewing Current Events
 

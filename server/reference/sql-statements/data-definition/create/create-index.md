@@ -42,19 +42,19 @@ lock_option:
 
 ![Railroad diagram of CREATE INDEX — equivalent to the BNF above](../../../../.gitbook/assets/create-index-railroad.svg)
 
-![Railroad diagram of index_col_name](../../../../.gitbook/assets/create-index-col-name-railroad.svg)
+![Railroad diagram of index\_col\_name](../../../../.gitbook/assets/create-index-col-name-railroad.svg)
 
-![Railroad diagram of index_type](../../../../.gitbook/assets/create-index-type-railroad.svg)
+![Railroad diagram of index\_type](../../../../.gitbook/assets/create-index-type-railroad.svg)
 
-![Railroad diagram of index_option](../../../../.gitbook/assets/create-index-option-railroad.svg)
+![Railroad diagram of index\_option](../../../../.gitbook/assets/create-index-option-railroad.svg)
 
-![Railroad diagram of algorithm_option](../../../../.gitbook/assets/create-index-algorithm-option-railroad.svg)
+![Railroad diagram of algorithm\_option](../../../../.gitbook/assets/create-index-algorithm-option-railroad.svg)
 
-![Railroad diagram of lock_option](../../../../.gitbook/assets/create-index-lock-option-railroad.svg)
+![Railroad diagram of lock\_option](../../../../.gitbook/assets/create-index-lock-option-railroad.svg)
 
 ## Description
 
-The `CREATE INDEX` statement is used to add indexes to a table. Indexes can be created at the same as the table, with the [CREATE TABLE](create-table.md) statement. In some cases, such as for InnoDB primary keys, doing so during creation is preferable, as adding a primary key will involve rebuilding the table.
+The `CREATE INDEX` statement is used to add indexes to a table. Indexes can be created at the same as the table, with the [CREATE TABLE](../../../../server-usage/tables/create-table.md) statement. In some cases, such as for InnoDB primary keys, doing so during creation is preferable, as adding a primary key will involve rebuilding the table.
 
 The statement is mapped to an `ALTER TABLE` statement to create [indexes](../../../../mariadb-quickstart-guides/mariadb-indexes-guide.md). See [ALTER TABLE](../alter/alter-table/). `CREATE INDEX` cannot be used to create a [PRIMARY KEY](../../../../mariadb-quickstart-guides/mariadb-indexes-guide.md#primary-key); use `ALTER TABLE` instead.
 
@@ -88,7 +88,7 @@ If the `IF NOT EXISTS` clause is used, then the index will only be created if an
 
 ## Index Definitions
 
-See [CREATE TABLE: Index Definitions](create-table.md#index-definitions) for information about index definitions.
+See [CREATE TABLE: Index Definitions](../../../../server-usage/tables/create-table.md#index-definitions) for information about index definitions.
 
 ## WAIT/NOWAIT
 

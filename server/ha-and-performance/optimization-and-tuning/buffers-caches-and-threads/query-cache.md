@@ -15,7 +15,7 @@ Note that the query cache cannot be enabled in certain environments. See [Limita
 
 ## Setting Up the Query Cache
 
-Unless MariaDB has been specifically built without the query cache, the query cache will always be available, although inactive. The [have\_query\_cache](../system-variables/server-system-variables.md#have_query_cache) server variable will show whether the query cache is available.
+Unless MariaDB has been specifically built without the query cache, the query cache will always be available, although inactive. The [have\_query\_cache](../../../server-management/variables-and-modes/server-system-variables.md#have_query_cache) server variable will show whether the query cache is available.
 
 ```sql
 SHOW VARIABLES LIKE 'have_query_cache';
@@ -28,7 +28,7 @@ SHOW VARIABLES LIKE 'have_query_cache';
 
 If this is set to `NO`, you cannot enable the query cache unless you rebuild or reinstall a version of MariaDB with the cache available.
 
-To see if the cache is enabled, view the [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) server variable. It is disabled by default — enable it by setting `query_cache_type` to `ON`:
+To see if the cache is enabled, view the [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) server variable. It is disabled by default — enable it by setting `query_cache_type` to `ON`:
 
 ```sql
 SET GLOBAL query_cache_type = ON;
@@ -36,7 +36,7 @@ SET GLOBAL query_cache_type = ON;
 
 `ON` is one of three values the variable accepts. See [Query Cache Types](query-cache.md#query-cache-types) below for all of them, and for the difference between the global and the session value.
 
-The [query\_cache\_size](../system-variables/server-system-variables.md#query_cache_size) is set to 1MB by default. Set the cache to a larger size if needed, for example:
+The [query\_cache\_size](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_size) is set to 1MB by default. Set the cache to a larger size if needed, for example:
 
 ```sql
 SET GLOBAL query_cache_size = 2000000;
@@ -48,13 +48,13 @@ See [Limiting the size of the Query Cache](query-cache.md#limiting-the-size-of-t
 
 ## Query Cache Types
 
-The [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) server variable takes three values. Each can be given by name or by the equivalent number, so `SET GLOBAL query_cache_type = ON` and `SET GLOBAL query_cache_type = 1` are the same statement. The name is what gets reported back:
+The [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) server variable takes three values. Each can be given by name or by the equivalent number, so `SET GLOBAL query_cache_type = ON` and `SET GLOBAL query_cache_type = 1` are the same statement. The name is what gets reported back:
 
-| Value    | Number | Behavior                                                                                                                                                                                              |
-| -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OFF`    | `0`    | Results are neither stored in nor retrieved from the query cache. This is the default.                                                                                                                 |
-| `ON`     | `1`    | Every cacheable query is stored and retrieved, except one that specifies [SQL\_NO\_CACHE](query-cache.md#sql_no_cache-and-sql_cache).                                                                   |
-| `DEMAND` | `2`    | Only a query that specifies [SQL\_CACHE](query-cache.md#sql_no_cache-and-sql_cache) is stored and retrieved. Every other query bypasses the cache.                                                      |
+| Value    | Number | Behavior                                                                                                                                           |
+| -------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OFF`    | `0`    | Results are neither stored in nor retrieved from the query cache. This is the default.                                                             |
+| `ON`     | `1`    | Every cacheable query is stored and retrieved, except one that specifies [SQL\_NO\_CACHE](query-cache.md#sql_no_cache-and-sql_cache).              |
+| `DEMAND` | `2`    | Only a query that specifies [SQL\_CACHE](query-cache.md#sql_no_cache-and-sql_cache) is stored and retrieved. Every other query bypasses the cache. |
 
 Any other value is rejected:
 
@@ -63,7 +63,7 @@ SET GLOBAL query_cache_type = 3;
 ERROR 1231 (42000): Variable 'query_cache_type' can't be set to the value of '3'
 ```
 
-`ON` and `DEMAND` both still require memory to store results in. If [query\_cache\_size](../system-variables/server-system-variables.md#query_cache_size) is `0`, setting `query_cache_type` to `ON` or `DEMAND` is accepted without error but nothing is cached.
+`ON` and `DEMAND` both still require memory to store results in. If [query\_cache\_size](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_size) is `0`, setting `query_cache_type` to `ON` or `DEMAND` is accepted without error but nothing is cached.
 
 See [Queries Stored in the Query Cache](query-cache.md#queries-stored-in-the-query-cache) for the conditions a query must meet to be cacheable at all.
 
@@ -96,7 +96,7 @@ SET GLOBAL query_cache_type = DEMAND;
 SET SESSION query_cache_type = DEMAND;
 ```
 
-A session can move between `ON` and `DEMAND` as it likes, and can always set its own value to `OFF` to opt out of a cache that is enabled globally. It cannot opt *in* while the cache is globally disabled:
+A session can move between `ON` and `DEMAND` as it likes, and can always set its own value to `OFF` to opt out of a cache that is enabled globally. It cannot opt _in_ while the cache is globally disabled:
 
 ```sql
 SET SESSION query_cache_type = ON;
@@ -144,7 +144,7 @@ Is different from :
 /* retry2 */SELECT * FROM t
 ```
 
-See the [query\_cache\_strip\_comments](../system-variables/server-system-variables.md#query_cache_strip_comments) server variable for an option to strip comments before searching.
+See the [query\_cache\_strip\_comments](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_strip_comments) server variable for an option to strip comments before searching.
 
 Each time changes are made to the data in a table, all affected results in the query cache are cleared. It is not possible to retrieve stale data from the query cache.
 
@@ -156,7 +156,7 @@ When using `query_cache_type=DEMAND` and the query specifies `SQL_CACHE`, the se
 
 ## Queries Stored in the Query Cache
 
-If the [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) system variable is set to `ON`, all queries fitting the size constraints will be stored in the cache unless they contain a `SQL_NO_CACHE` clause, or are of a nature that caching makes no sense, for example making use of a function that returns the current time. Queries with `SQL_NO_CACHE` will not attempt to acquire query cache lock.
+If the [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) system variable is set to `ON`, all queries fitting the size constraints will be stored in the cache unless they contain a `SQL_NO_CACHE` clause, or are of a nature that caching makes no sense, for example making use of a function that returns the current time. Queries with `SQL_NO_CACHE` will not attempt to acquire query cache lock.
 
 If any of the following functions are present in a query, it will not be cached. Queries with these functions are sometimes called 'non-deterministic' — don't get confused with the use of this term in other contexts.
 
@@ -197,15 +197,15 @@ A query will also not be added to the cache if:
 
 The query itself can also specify that it is not to be stored in the cache by using the `SQL_NO_CACHE` attribute. Query-level control is an effective way to use the cache more optimally.
 
-It is also possible to specify that _no_ queries must be stored in the cache unless the query requires it. To do this, the [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) server variable must be set to `DEMAND`. Then, only queries with the `SQL_CACHE` attribute are cached.
+It is also possible to specify that _no_ queries must be stored in the cache unless the query requires it. To do this, the [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) server variable must be set to `DEMAND`. Then, only queries with the `SQL_CACHE` attribute are cached.
 
 ## Limiting the Size of the Query Cache
 
-There are two main ways to limit the size of the query cache. First, the overall size in bytes is determined by the [query\_cache\_size](../system-variables/server-system-variables.md#query_cache_size) server variable. About 40KB is needed for various query cache structures.
+There are two main ways to limit the size of the query cache. First, the overall size in bytes is determined by the [query\_cache\_size](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_size) server variable. About 40KB is needed for various query cache structures.
 
 The query cache size is allocated in 1024 byte-blocks, thus it should be set to a multiple of 1024.
 
-The query result is stored using a minimum block size of [query\_cache\_min\_res\_unit](../system-variables/server-system-variables.md#query_cache_min_res_unit). Check two conditions to use a good value of this variable: Query cache insert result blocks with locks, each new block insert lock query cache, a small value will increase locks and fragmentation and waste less memory for small results, a big value will increase memory use wasting more memory for small results but it reduce locks. Test with your workload for fine tune this variable.
+The query result is stored using a minimum block size of [query\_cache\_min\_res\_unit](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_min_res_unit). Check two conditions to use a good value of this variable: Query cache insert result blocks with locks, each new block insert lock query cache, a small value will increase locks and fragmentation and waste less memory for small results, a big value will increase memory use wasting more memory for small results but it reduce locks. Test with your workload for fine tune this variable.
 
 If the [strict mode](../../../server-management/variables-and-modes/sql_mode.md) is enabled, setting the query cache size to an invalid value will cause an error. Otherwise, it will be set to the nearest permitted value, and a warning will be triggered.
 
@@ -230,7 +230,7 @@ SHOW VARIABLES LIKE 'query_cache_size';
 
 The ideal size of the query cache is very dependent on the specific needs of each system. Setting a value too small will result in query results being dropped from the cache when they could potentially be reused later. Setting a value too high could result in reduced performance due to lock contention, as the query cache is locked during updates.
 
-The second way to limit the cache is to have a maximum size for each set of query results. This prevents a single query with a huge result set taking up most of the available memory and knocking a large number of smaller queries out of the cache. This is determined by the [query\_cache\_limit](../system-variables/server-system-variables.md#query_cache_limit) server variable.
+The second way to limit the cache is to have a maximum size for each set of query results. This prevents a single query with a huge result set taking up most of the available memory and knocking a large number of smaller queries out of the cache. This is determined by the [query\_cache\_limit](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_limit) server variable.
 
 If you attempt to set a query cache that is too small (the amount depends on the architecture), the resizing will fail and the query cache will be set to zero, for example :
 
@@ -305,7 +305,7 @@ SHOW STATUS LIKE 'Qcache%';
 
 To empty or clear all results from the query cache, use [RESET QUERY CACHE](../../../reference/sql-statements/administrative-sql-statements/reset.md). [FLUSH TABLES](../../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md) will have the same effect.
 
-Setting [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) to `OFF`, or [query\_cache\_size](../system-variables/server-system-variables.md#query_cache_size) to `0`, will disable the query cache. To free up the most resources, set both when you wish to disable caching.
+Setting [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) to `OFF`, or [query\_cache\_size](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_size) to `0`, will disable the query cache. To free up the most resources, set both when you wish to disable caching.
 
 ## Limitations
 
@@ -315,7 +315,7 @@ Setting [query\_cache\_type](../system-variables/server-system-variables.md#quer
 
 ## LOCK TABLES and the Query Cache
 
-The query cache can be used when tables have a write lock (which may seem confusing since write locks should avoid table reads). This behaviour can be changed by setting the [query\_cache\_wlock\_invalidate](../system-variables/server-system-variables.md#query_cache_wlock_invalidate) system variable to `ON`, in which case each write lock will invalidate the table query cache. Setting to `OFF`, the default, means that cached queries can be returned even when a table lock is being held. For example:
+The query cache can be used when tables have a write lock (which may seem confusing since write locks should avoid table reads). This behaviour can be changed by setting the [query\_cache\_wlock\_invalidate](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_wlock_invalidate) system variable to `ON`, in which case each write lock will invalidate the table query cache. Setting to `OFF`, the default, means that cached queries can be returned even when a table lock is being held. For example:
 
 ```sql
 1> SELECT * FROM T1
@@ -439,19 +439,19 @@ Some fields that differentiate queries are (from "Query\_cache\_query\_flags" in
 * protocol type (internal value)
 * more results exists (protocol flag)
 * in trans (inside transaction or not)
-* autocommit ([autocommit](../system-variables/server-system-variables.md#autocommit) session variable)
+* autocommit ([autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) session variable)
 * pkt\_nr (protocol flag)
-* character set client ([character\_set\_client](../system-variables/server-system-variables.md#character_set_client) session variable)
-* character set results ([character\_set\_results](../system-variables/server-system-variables.md#character_set_results) session variable)
-* collation connection ([collation\_connection](../system-variables/server-system-variables.md#collation_connection) session variable)
-* limit ([sql\_select\_limit](../system-variables/server-system-variables.md#sql_select_limit) session variable)
-* time zone ([time\_zone](../system-variables/server-system-variables.md#time_zone) session variable)
-* sql\_mode ([sql\_mode](../system-variables/server-system-variables.md#sql_mode) session variable)
-* max\_sort\_length ([max\_sort\_length](../system-variables/server-system-variables.md#max_sort_length) session variable)
-* group\_concat\_max\_len ([group\_concat\_max\_len](../system-variables/server-system-variables.md#group_concat_max_len) session variable)
-* default\_week\_format ([default\_week\_format](../system-variables/server-system-variables.md#default_week_format) session variable)
-* div\_precision\_increment ([div\_precision\_increment](../system-variables/server-system-variables.md#div_precision_increment) session variable)
-* lc\_time\_names ([lc\_time\_names](../system-variables/server-system-variables.md#lc_time_names) session variable)
+* character set client ([character\_set\_client](../../../server-management/variables-and-modes/server-system-variables.md#character_set_client) session variable)
+* character set results ([character\_set\_results](../../../server-management/variables-and-modes/server-system-variables.md#character_set_results) session variable)
+* collation connection ([collation\_connection](../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) session variable)
+* limit ([sql\_select\_limit](../../../server-management/variables-and-modes/server-system-variables.md#sql_select_limit) session variable)
+* time zone ([time\_zone](../../../server-management/variables-and-modes/server-system-variables.md#time_zone) session variable)
+* sql\_mode ([sql\_mode](../../../server-management/variables-and-modes/server-system-variables.md#sql_mode) session variable)
+* max\_sort\_length ([max\_sort\_length](../../../server-management/variables-and-modes/server-system-variables.md#max_sort_length) session variable)
+* group\_concat\_max\_len ([group\_concat\_max\_len](../../../server-management/variables-and-modes/server-system-variables.md#group_concat_max_len) session variable)
+* default\_week\_format ([default\_week\_format](../../../server-management/variables-and-modes/server-system-variables.md#default_week_format) session variable)
+* div\_precision\_increment ([div\_precision\_increment](../../../server-management/variables-and-modes/server-system-variables.md#div_precision_increment) session variable)
+* lc\_time\_names ([lc\_time\_names](../../../server-management/variables-and-modes/server-system-variables.md#lc_time_names) session variable)
 
 ## Timeout and Mutex Contention
 
@@ -470,13 +470,13 @@ struct timespec waittime;
 
 When inserting a query inside the query cache or aborting a query cache insert (using the [KILL](../../../reference/sql-statements/administrative-sql-statements/kill.md) command for example), a try\_lock function waits until the query cache returns; no timeout is used in this case.
 
-When two processes execute the same query, only the last process stores the query result. All other processes increase the [Qcache\_not\_cached](../system-variables/server-status-variables.md#qcache_not_cached) status variable.
+When two processes execute the same query, only the last process stores the query result. All other processes increase the [Qcache\_not\_cached](../../../server-management/variables-and-modes/server-status-variables.md#qcache_not_cached) status variable.
 
 ## SQL\_NO\_CACHE and SQL\_CACHE
 
 There are two aspects to the query cache: placing a query in the cache, and retrieving it from the cache.
 
-1. Adding a query to the query cache. This is done automatically for cacheable queries (see ([Queries Stored in the Query Cache](query-cache.md#queries-stored-in-the-query-cache)) when the [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) system variable is set to `ON` and the query contains no `SQL_NO_CACHE` clause, or when the [query\_cache\_type](../system-variables/server-system-variables.md#query_cache_type) system variable is set to `DEMAND`, and the query contains the `SQL_CACHE` clause.
+1. Adding a query to the query cache. This is done automatically for cacheable queries (see ([Queries Stored in the Query Cache](query-cache.md#queries-stored-in-the-query-cache)) when the [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) system variable is set to `ON` and the query contains no `SQL_NO_CACHE` clause, or when the [query\_cache\_type](../../../server-management/variables-and-modes/server-system-variables.md#query_cache_type) system variable is set to `DEMAND`, and the query contains the `SQL_CACHE` clause.
 2. Retrieving a query from the cache. This is done after the server receives the query and before the query parser. In this case one point should be considered:
 
 When using `SQL_NO_CACHE`, it should be after the first `SELECT` hint:

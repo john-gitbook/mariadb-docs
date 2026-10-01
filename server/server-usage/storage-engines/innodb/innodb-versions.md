@@ -12,18 +12,17 @@ This page is outdated. It's left in place because release notes for old MariaDB 
 
 The InnoDB implementation has diverged substantially from the InnoDB in MySQL. Therefore, in these versions, the InnoDB version is no longer associated with a MySQL release version.
 
-The default InnoDB implementation is based on InnoDB from MySQL 5.7. See [Why MariaDB uses InnoDB instead of XtraDB from MariaDB 10.2](innodb-unmaintained/using-innodb-instead-of-xtradb.md) for more information.
+The default InnoDB implementation is based on InnoDB from MySQL 5.7. See [Why MariaDB uses InnoDB instead of XtraDB from MariaDB 10.2](mariadb-enterprise-server-innodb-operations/innodb-unmaintained/using-innodb-instead-of-xtradb.md) for more information.
 
 #### Note
 
-XtraDB is a performance enhanced fork of InnoDB. For compatibility reasons, the [system variables](innodb-system-variables.md) still retain their original `innodb` prefixes. If the documentation says that something applies to InnoDB, then it usually also applies to the XtraDB fork, unless explicitly stated otherwise. In these versions, it is still possible to use InnoDB instead of XtraDB. See [Using InnoDB instead of XtraDB](innodb-unmaintained/using-innodb-instead-of-xtradb.md) for more information.
+XtraDB is a performance enhanced fork of InnoDB. For compatibility reasons, the [system variables](innodb-system-variables.md) still retain their original `innodb` prefixes. If the documentation says that something applies to InnoDB, then it usually also applies to the XtraDB fork, unless explicitly stated otherwise. In these versions, it is still possible to use InnoDB instead of XtraDB. See [Using InnoDB instead of XtraDB](mariadb-enterprise-server-innodb-operations/innodb-unmaintained/using-innodb-instead-of-xtradb.md) for more information.
 
 ## Divergences
 
 Some examples of divergences between MariaDB's InnoDB and MySQL's InnoDB are:
 
-* [MariaDB 10.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/changes-improvements-in-mariadb-10-1) (which is based on MySQL 5.6) included encryption and
-  variable-size page compression before MySQL 5.7 introduced them.
+* [MariaDB 10.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/changes-improvements-in-mariadb-10-1) (which is based on MySQL 5.6) included encryption and variable-size page compression before MySQL 5.7 introduced them.
 * [MariaDB 10.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/what-is-mariadb-102) (based on MySQL 5.7) introduced persistent AUTO\_INCREMENT ([MDEV-6076](https://jira.mariadb.org/browse/MDEV-6076)) in a GA release before MySQL 8.0.
 * [MariaDB 10.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/what-is-mariadb-103) (based on MySQL 5.7) introduced instant ADD COLUMN ([MDEV-11369](https://jira.mariadb.org/browse/MDEV-11369)) before MySQL.
 
@@ -102,8 +101,8 @@ Some examples of divergences between MariaDB's InnoDB and MySQL's InnoDB are:
 
 ## See Also
 
-* [Why MariaDB uses InnoDB instead of XtraDB from MariaDB 10.2](innodb-unmaintained/using-innodb-instead-of-xtradb.md)
-* [XtraDB Versions](innodb-unmaintained/about-xtradb.md)
+* [Why MariaDB uses InnoDB instead of XtraDB from MariaDB 10.2](mariadb-enterprise-server-innodb-operations/innodb-unmaintained/using-innodb-instead-of-xtradb.md)
+* [XtraDB Versions](mariadb-enterprise-server-innodb-operations/innodb-unmaintained/about-xtradb.md)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

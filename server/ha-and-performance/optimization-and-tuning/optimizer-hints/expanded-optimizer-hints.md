@@ -12,7 +12,7 @@ New-style optimizer hints were introduced in MariaDB 12.0 and 12.1.
 
 ## Description
 
-In order to control optimizer choices of query plans, one can use [optimizer\_switch](../system-variables/server-system-variables.md#optimizer_switch), [join cache level](../system-variables/server-system-variables.md#join_cache_level) and other system variables. However, these variables affect execution of all queries but not some specific ones. To get more granular control, you can:
+In order to control optimizer choices of query plans, one can use [optimizer\_switch](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch), [join cache level](../../../server-management/variables-and-modes/server-system-variables.md#join_cache_level) and other system variables. However, these variables affect execution of all queries but not some specific ones. To get more granular control, you can:
 
 * Specify server variables before execution of every query (or group of queries);
 * Use [SET STATEMENT ... FOR](../../../reference/sql-statements/administrative-sql-statements/set-commands/set-statement.md) to temporarily change server variables for a specific query;
@@ -155,7 +155,7 @@ This table provides an overview of optimizer hints supported in MariaDB, showing
 | [`MAX_EXECUTION_TIME`](expanded-optimizer-hints.md#max_execution_time)                                                                         | Query execution time limit               | Global             |
 | [`MERGE`, `NO_MERGE`](table-level-hints.md#merge-no_merge)                                                                                     | Derived table/CTE merging                | Query block, Table |
 | [`MRR`, `NO_MRR`](index-level-hints.md#mrr-no_mrr)                                                                                             | Multi-Range Read                         | Table, Index       |
-| [`NO_ICP`](index-level-hints.md#no_icp)                                                                                                 | Index Condition Pushdown                 | Table, Index       |
+| [`NO_ICP`](index-level-hints.md#no_icp)                                                                                                        | Index Condition Pushdown                 | Table, Index       |
 | [`NO_RANGE_OPTIMIZATION`](index-level-hints.md#no_range_optimization)                                                                          | Range optimization                       | Table, Index       |
 | [`ORDER_INDEX`, `NO_ORDER_INDEX`](index-level-hints.md)                                                                                        | Use of indexes for sorting               | Table, Index       |
 | [`QB_NAME`](query-block-naming.md#explicit-query-block-names)                                                                                  | Assigns name to query block              | Query block        |

@@ -63,7 +63,7 @@ The [PASSWORD()](../../../../reference/sql-functions/secondary-functions/encrypt
 SET PASSWORD FOR tom@'%.example.com' = PASSWORD 'secret hash';
 ```
 
-Passwords can have an expiry date, set by [default\_password\_lifetime](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_password_lifetime). To set a different date for a particular user:
+Passwords can have an expiry date, set by [default\_password\_lifetime](../../../variables-and-modes/server-system-variables.md#default_password_lifetime). To set a different date for a particular user:
 
 ```sql
 CREATE USER 'tom'@'%.example.com' PASSWORD EXPIRE INTERVAL 365 DAY;

@@ -1,6 +1,5 @@
 ---
-description: >-
-  Tuning key_buffer_size for servers with mostly MyISAM tables.
+description: Tuning key_buffer_size for servers with mostly MyISAM tables.
 ---
 
 # Optimizing key\_buffer\_size
@@ -9,7 +8,7 @@ description: >-
 
 A good rule of thumb for servers consisting particularly of MyISAM tables is for about 25% or more of the available server memory to be dedicated to the key buffer.
 
-A good way to determine whether to adjust the value is to compare the [key\_read\_requests](server-status-variables.md#key_read_requests) value, which is the total value of requests to read an index, and the [key\_reads](server-status-variables.md#key_reads) values, the total number of requests that had to be read from disk.
+A good way to determine whether to adjust the value is to compare the [key\_read\_requests](../../../server-management/variables-and-modes/server-status-variables.md#key_read_requests) value, which is the total value of requests to read an index, and the [key\_reads](../../../server-management/variables-and-modes/server-status-variables.md#key_reads) values, the total number of requests that had to be read from disk.
 
 The ratio of key\_reads to key\_read\_requests should be as low as possible, 1:100 is the highest acceptable, 1:1000 is better, and 1:10 is terrible.
 

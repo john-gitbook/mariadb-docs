@@ -183,7 +183,7 @@ The following options relate to how MariaDB command line tools handles option fi
 
 ### Installing System Tables From a Source Tree
 
-If you have just [compiled MariaDB from source](../../server-management/install-and-upgrade-mariadb/installing-mariadb/compiling-mariadb-from-source/), and if you want to use `mariadb-install-db` from your source tree, then that can be done without having to actually install MariaDB. This is very useful if you want to test your changes to MariaDB without disturbing any existing installations of MariaDB.
+If you have just [compiled MariaDB from source](../../server-management/install-and-upgrade-mariadb/compiling-mariadb-from-source/), and if you want to use `mariadb-install-db` from your source tree, then that can be done without having to actually install MariaDB. This is very useful if you want to test your changes to MariaDB without disturbing any existing installations of MariaDB.
 
 To do so, you would have to provide the `--srcdir` option. For example:
 
@@ -193,9 +193,7 @@ To do so, you would have to provide the `--srcdir` option. For example:
 
 ### Installing System Tables From a Binary Tarball
 
-If you install a [binary tarball](../../server-management/install-and-upgrade-mariadb/installing-mariadb/binary-packages/installing-mariadb-binary-tarballs.md) package in a non standard path, like your home directory, and if you already have a MariaDB / MySQL package installed, then you may get conflicts
-with the default `/etc/my.cnf`. This often results in permissions
-errors.
+If you install a [binary tarball](../../server-management/install-and-upgrade-mariadb/installing-mariadb/binary-packages/installing-mariadb-binary-tarballs.md) package in a non standard path, like your home directory, and if you already have a MariaDB / MySQL package installed, then you may get conflicts with the default `/etc/my.cnf`. This often results in permissions errors.
 
 One possible solution is to use the `--no-defaults` option, so that it does not read any [option files](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md). For example:
 
@@ -213,7 +211,7 @@ Another possible solution is to use the `defaults-file` option, so that you can 
 
 `mariadb-install-db` sets `--auth-root-authentication-method=socket` by default. When this is set, the default `root@localhost` user account is created with the ability to use two [authentication plugins](../../reference/plugins/authentication-plugins/):
 
-* First, it is configured to try to use the [unix\_socket](../../reference/plugins/authentication-plugins/authentication-plugin-unix-socket.md) authentication plugin. This allows the `root@localhost` user to login without a password via the local Unix socket file defined by the [socket](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#socket) system variable, as long as the login is attempted from a process owned by the operating system `root` user account.
+* First, it is configured to try to use the [unix\_socket](../../reference/plugins/authentication-plugins/authentication-plugin-unix-socket.md) authentication plugin. This allows the `root@localhost` user to login without a password via the local Unix socket file defined by the [socket](../../server-management/variables-and-modes/server-system-variables.md#socket) system variable, as long as the login is attempted from a process owned by the operating system `root` user account.
 * Second, if authentication fails with the [unix\_socket](../../reference/plugins/authentication-plugins/authentication-plugin-unix-socket.md) authentication plugin, then it is configured to try to use the [mysql\_native\_password](../../reference/plugins/authentication-plugins/authentication-plugin-mysql_native_password.md) authentication plugin.
 
 The definition of the default `root@localhost` user account is:
@@ -281,10 +279,7 @@ MariaDB [mysql]> show tables
 The following only apply in the exceptional case that you are using a mariadbd server which is configured with the `--disable-grant-options` option:
 
 `mariadb-install-db` needs to invoke `mariadbd` with the`--bootstrap` and `--skip-grant-tables` options.\
-A MariaDB configured with the `--disable-grant-options`
-option has `--bootstrap` and `--skip-grant-tables`
-disabled. To handle this case, set the `MYSQLD_BOOTSTRAP` environment
-variable to the full path name of a mariadbd server that is configured without `--disable-grant-options`. `mariadb-install-db` will use that server.
+A MariaDB configured with the `--disable-grant-options` option has `--bootstrap` and `--skip-grant-tables` disabled. To handle this case, set the `MYSQLD_BOOTSTRAP` environment variable to the full path name of a mariadbd server that is configured without `--disable-grant-options`. `mariadb-install-db` will use that server.
 
 ## The test and test\_% Databases
 

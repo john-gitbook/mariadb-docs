@@ -9,7 +9,7 @@ description: >-
 
 In order to enable data-at-rest encryption for tables using the InnoDB storage engines, you first need to configure the server to use an [Encryption Key Management](../key-management-and-encryption-plugins/encryption-key-management.md) plugin. Once this is done, you can enable encryption by setting the [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) system variable to encrypt the InnoDB [system](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-system-tablespaces.md) and [file](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md) tablespaces and setting the [innodb\_encrypt\_log](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_log) system variable to encrypt the InnoDB [Redo Log](../../../../server-usage/storage-engines/innodb/innodb-redo-log.md).
 
-Setting these system variables enables the encryption feature for InnoDB tables on your server. To use the feature, you need to use the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option to set what encryption key you want to use and set the [ENCRYPTED](../../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option to enable encryption.
+Setting these system variables enables the encryption feature for InnoDB tables on your server. To use the feature, you need to use the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option to set what encryption key you want to use and set the [ENCRYPTED](../../../../server-usage/tables/create-table.md#encrypted) table option to enable encryption.
 
 When encrypting any InnoDB tables, the best practice is also enable encryption for the Redo Log. If you have encrypted InnoDB tables and have not encrypted the Redo Log, data written to an encrypted table may be found unencrypted in the Redo Log.
 
@@ -47,7 +47,7 @@ WHERE NAME='db1/tab1';
 +----------+-------------------+----------------+
 ```
 
-When [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) is set to `ON`, an unencrypted InnoDB table can be created by setting the [ENCRYPTED](../../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option to `NO` for the table. For example, the following statements create an unencrypted table and confirm that it is not encrypted:
+When [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) is set to `ON`, an unencrypted InnoDB table can be created by setting the [ENCRYPTED](../../../../server-usage/tables/create-table.md#encrypted) table option to `NO` for the table. For example, the following statements create an unencrypted table and confirm that it is not encrypted:
 
 ```sql
 SET GLOBAL innodb_encryption_threads=4;
@@ -71,7 +71,7 @@ WHERE NAME='db1/tab1';
 +----------+-------------------+----------------+
 ```
 
-When [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) is set to `FORCE`, InnoDB tables are automatically encrypted by default, and unencrypted InnoDB tables can **not** be created. In this scenario, if you set the [ENCRYPTED](../../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option to `NO` for a table, then you will encounter an error. For example:
+When [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) is set to `FORCE`, InnoDB tables are automatically encrypted by default, and unencrypted InnoDB tables can **not** be created. In this scenario, if you set the [ENCRYPTED](../../../../server-usage/tables/create-table.md#encrypted) table option to `NO` for a table, then you will encounter an error. For example:
 
 ```sql
 SET GLOBAL innodb_encryption_threads=4;
@@ -102,18 +102,18 @@ When [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/i
 
 ### Enabling Encryption for Manually Encrypted Tablespaces
 
-If you do not want to automatically encrypt every InnoDB table, then it is possible to manually enable encryption for just the subset of InnoDB tables that you would like to encrypt. MariaDB provides the [ENCRYPTED](../../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) and [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table options that can be used to manually enable encryption for specific InnoDB tables. These table options can be used with [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) and [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statements. These table options can only be used with InnoDB tables that have their own [InnoDB's file-per-table tablespaces](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md), meaning that tables that were created with [innodb\_file\_per\_table=ON](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_file_per_table) set.
+If you do not want to automatically encrypt every InnoDB table, then it is possible to manually enable encryption for just the subset of InnoDB tables that you would like to encrypt. MariaDB provides the [ENCRYPTED](../../../../server-usage/tables/create-table.md#encrypted) and [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table options that can be used to manually enable encryption for specific InnoDB tables. These table options can be used with [CREATE TABLE](../../../../server-usage/tables/create-table.md) and [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statements. These table options can only be used with InnoDB tables that have their own [InnoDB's file-per-table tablespaces](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md), meaning that tables that were created with [innodb\_file\_per\_table=ON](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_file_per_table) set.
 
 | Table Option        | Value              | Description                                                                                                                                                                                                                                |
 | ------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ENCRYPTED           | YES / NO / DEFAULT | Defines whether or not to encrypt the table. `DEFAULT` means that the decision is based on the global [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) setting. |
 | ENCRYPTION\_KEY\_ID | 32-bit integer     | Defines the identifier for the encryption key to use                                                                                                                                                                                       |
 
-You can manually enable or disable encryption for a table by using the [ENCRYPTED](../../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option. If you only need to protect a subset of InnoDB tables with encryption, then it can be a good idea to manually encrypt each table that needs the extra protection, rather than encrypting all InnoDB tables globally with [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables). This allows you to balance security with speed, as it means the encryption and decryption performance overhead only applies to those tables that require the additional security.
+You can manually enable or disable encryption for a table by using the [ENCRYPTED](../../../../server-usage/tables/create-table.md#encrypted) table option. If you only need to protect a subset of InnoDB tables with encryption, then it can be a good idea to manually encrypt each table that needs the extra protection, rather than encrypting all InnoDB tables globally with [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables). This allows you to balance security with speed, as it means the encryption and decryption performance overhead only applies to those tables that require the additional security.
 
 If a manually encrypted InnoDB table contains a [FULLTEXT INDEX](../../../../ha-and-performance/optimization-and-tuning/optimization-and-indexes/full-text-indexes/), then the internal table for the full-text index will not also be manually encrypted. To encrypt internal tables for InnoDB full-text indexes, you must [enable automatic InnoDB encryption](innodb-enabling-encryption.md#enabling-encryption-for-automatically-encrypted-tablespaces) by setting [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) to `ON` or `FORCE`.
 
-You can also manually specify a [encryption key](innodb-encryption-overview.md) for a table by using the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option. This allows you to use different encryption keys for different tables. For example, you might create a table using a statement like this:
+You can also manually specify a [encryption key](innodb-encryption-overview.md) for a table by using the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option. This allows you to use different encryption keys for different tables. For example, you might create a table using a statement like this:
 
 ```sql
 CREATE TABLE tab1 (
@@ -131,7 +131,7 @@ WHERE NAME='db1/tab1';
 +----------+-------------------+----------------+
 ```
 
-If the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option is not specified, then the table will be encrypted with the key identified by the [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id) system variable. For example, you might create a table using a statement like this:
+If the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option is not specified, then the table will be encrypted with the key identified by the [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id) system variable. For example, you might create a table using a statement like this:
 
 ```sql
 SET SESSION innodb_default_encryption_key_id=100;

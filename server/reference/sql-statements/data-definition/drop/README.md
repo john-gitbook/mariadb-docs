@@ -93,8 +93,8 @@ Remove a server definition. This command deletes the connection details for a re
 
 {% columns %}
 {% column %}
-{% content-ref url="drop-table.md" %}
-[drop-table.md](drop-table.md)
+{% content-ref url="../../../../server-usage/tables/drop-table.md" %}
+[drop-table.md](../../../../server-usage/tables/drop-table.md)
 {% endcontent-ref %}
 {% endcolumn %}
 

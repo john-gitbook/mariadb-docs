@@ -6,7 +6,7 @@ description: >-
 
 # WAIT and NOWAIT
 
-Extended syntax so that it is possible to set [innodb\_lock\_wait\_timeout](../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_lock_wait_timeout) and [lock\_wait\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lock_wait_timeout) for the following statements:
+Extended syntax so that it is possible to set [innodb\_lock\_wait\_timeout](../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_lock_wait_timeout) and [lock\_wait\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#lock_wait_timeout) for the following statements:
 
 ## Syntax
 
@@ -33,7 +33,7 @@ The lock wait timeout can be explicitly set in the statement by using either `WA
 * [ALTER TABLE](../data-definition/alter/alter-table/)
 * [CREATE INDEX](../data-definition/create/create-index.md)
 * [DROP INDEX](../data-definition/drop/drop-index.md)
-* [DROP TABLE](../data-definition/drop/drop-table.md)
+* [DROP TABLE](../../../server-usage/tables/drop-table.md)
 * [LOCK TABLES and UNLOCK TABLES](lock-tables.md)
 * [OPTIMIZE TABLE](../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md)
 * [RENAME TABLE](../data-definition/rename-table.md)

@@ -9,7 +9,7 @@ description: >-
 
 The SQL function [RAND()](../../sql-functions/numeric-functions/rand.md) generates a random number.
 
-A `RAND_EVENT` contains two seed values that set the [rand\_seed1](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#rand_seed1) and [rand\_seed2](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#rand_seed2) system variables that are used to compute the random number.
+A `RAND_EVENT` contains two seed values that set the [rand\_seed1](../../../server-management/variables-and-modes/server-system-variables.md#rand_seed1) and [rand\_seed2](../../../server-management/variables-and-modes/server-system-variables.md#rand_seed2) system variables that are used to compute the random number.
 
 {% hint style="info" %}
 It is written only before a `QUERY_EVENT` , and not used with row-based logging.

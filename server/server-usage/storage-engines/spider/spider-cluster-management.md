@@ -139,7 +139,7 @@ SET GLOBAL spider_log_result_error_with_sql=3;
 
 ## Compiling in Debug Mode
 
-See [Compiling MariaDB for Debugging](../../../reference/product-development/debugging-mariadb/compiling-mariadb-for-debugging.md) and [Creating a Trace File](../../../reference/product-development/debugging-mariadb/creating-a-trace-file.md).
+See [Compiling MariaDB for Debugging](../../../reference/product-development/mariadb-fault-finding/compiling-mariadb-for-debugging.md) and [Creating a Trace File](../../../reference/product-development/mariadb-fault-finding/creating-a-trace-file.md).
 
 Report the issue in [MariaDB JIRA](https://jira.mariadb.org) (see [Reporting Bugs](https://app.gitbook.com/s/WCInJQ9cmGjq1lsTG91E/community/community/bug-tracking/reporting-bugs)) or to the MariaDB Corporation support center.
 
@@ -153,7 +153,7 @@ Note that Spider UDF functions will not work with such settings.
 
 ## Status Variables
 
-A number of new [status variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md) have been introduced, see [Spider Status Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/spider-status-variables.md) for a complete list.
+A number of new [status variables](../../../server-management/variables-and-modes/server-status-variables.md) have been introduced, see [Spider Status Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/spider-status-variables.md) for a complete list.
 
 ## Information Schema Tables
 

@@ -38,8 +38,8 @@ Both limits are checked on every write that grows a temporary file or temporary 
 
 ## Status Variables
 
-* [tmp\_space\_used](../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#tmp_space_used)
-* [max\_tmp\_space\_used](../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#max_tmp_space_used)
+* [tmp\_space\_used](../../server-management/variables-and-modes/server-status-variables.md#tmp_space_used)
+* [max\_tmp\_space\_used](../../server-management/variables-and-modes/server-status-variables.md#max_tmp_space_used)
 
 ## Information Schema
 

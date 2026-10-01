@@ -7,7 +7,7 @@ description: >-
 
 # OLD\_MODE
 
-The [old\_mode](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_mode) system variable was introduced to replace the [old](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old) variable with a new one with better granularity.
+The [old\_mode](server-system-variables.md#old_mode) system variable was introduced to replace the [old](server-system-variables.md#old) variable with a new one with better granularity.
 
 MariaDB supports several different modes which allow you to tune it to suit your needs.
 
@@ -29,7 +29,7 @@ You can check the variable's local and global value with:
 SELECT @@OLD_MODE, @@GLOBAL.OLD_MODE;
 ```
 
-You can set the `OLD_MODE` either from the [command line](../starting-and-stopping-mariadb/mariadbd-options.md) (option `--old-mode`) or by setting the [old\_mode](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_mode) system variable.
+You can set the `OLD_MODE` either from the [command line](../starting-and-stopping-mariadb/mariadbd-options.md) (option `--old-mode`) or by setting the [old\_mode](server-system-variables.md#old_mode) system variable.
 
 Non-default old mode features are deprecated by design, and a warning is issued when set.
 
@@ -43,11 +43,11 @@ From MariaDB 13.0, restores support for the two-digit [`YEAR(2)`](../../referenc
 
 ### COMPAT\_5\_1\_CHECKSUM
 
-From [MariaDB 10.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.9/what-is-mariadb-109), the [--old option](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old) is deprecated. This option allows behaviour of the --old option for enabling the old-style checksum for `CHECKSUM TABLE` that MySQL 5.1 supports
+From [MariaDB 10.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.9/what-is-mariadb-109), the [--old option](server-system-variables.md#old) is deprecated. This option allows behaviour of the --old option for enabling the old-style checksum for `CHECKSUM TABLE` that MySQL 5.1 supports
 
 ### IGNORE\_INDEX\_ONLY\_FOR\_JOIN
 
-From [MariaDB 10.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.9/what-is-mariadb-109), the [--old option](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old) is deprecated. This option allows behaviour of the --old option for disabling the index only for joins, but allow it for ORDER BY.
+From [MariaDB 10.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.9/what-is-mariadb-109), the [--old option](server-system-variables.md#old) is deprecated. This option allows behaviour of the --old option for disabling the index only for joins, but allow it for ORDER BY.
 
 ### LOCK\_ALTER\_TABLE\_COPY
 

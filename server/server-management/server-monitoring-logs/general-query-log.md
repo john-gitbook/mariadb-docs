@@ -14,7 +14,7 @@ However, if you only want a record of queries that change data, it might be bett
 
 The general query log is disabled by default.
 
-To enable the general query log, set the [general\_log](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#general_log) system variable to `1`. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+To enable the general query log, set the [general\_log](../variables-and-modes/server-system-variables.md#general_log) system variable to `1`. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```
 SET GLOBAL general_log=1;
@@ -30,9 +30,9 @@ general_log
 
 ## Configuring the General Query Log Filename
 
-By default, the general query log is written to `${hostname}.log` in the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory. However, this can be changed.
+By default, the general query log is written to `${hostname}.log` in the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory. However, this can be changed.
 
-One way to configure the general query log filename is to set the [general\_log\_file](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#general_log_file) system variable. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+One way to configure the general query log filename is to set the [general\_log\_file](../variables-and-modes/server-system-variables.md#general_log_file) system variable. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```
 SET GLOBAL general_log_file='mariadb.log';
@@ -47,9 +47,9 @@ general_log
 general_log_file=mariadb.log
 ```
 
-If it is a relative path, then the [general\_log\_file](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#general_log_file) is relative to the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory.
+If it is a relative path, then the [general\_log\_file](../variables-and-modes/server-system-variables.md#general_log_file) is relative to the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory.
 
-However, the [general\_log\_file](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#general_log_file) system variable can also be an absolute path. For example:
+However, the [general\_log\_file](../variables-and-modes/server-system-variables.md#general_log_file) system variable can also be an absolute path. For example:
 
 ```
 [mariadb]
@@ -67,15 +67,15 @@ log-basename=mariadb
 general_log
 ```
 
-The [log-basename](../starting-and-stopping-mariadb/mariadbd-options.md#log-basename) cannot be an absolute path. The log file name is relative to the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory.
+The [log-basename](../starting-and-stopping-mariadb/mariadbd-options.md#log-basename) cannot be an absolute path. The log file name is relative to the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory.
 
 ## Choosing the General Query Log Output Destination
 
-The general query log can either be written to a file on disk, or it can be written to the [general\_log](../../reference/system-tables/the-mysql-database-tables/mysqlgeneral_log-table.md) table in the [mysql](../../reference/system-tables/the-mysql-database-tables/) database. To choose the general query log output destination, set the [log\_output](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) system variable.
+The general query log can either be written to a file on disk, or it can be written to the [general\_log](../../reference/system-tables/the-mysql-database-tables/mysqlgeneral_log-table.md) table in the [mysql](../../reference/system-tables/the-mysql-database-tables/) database. To choose the general query log output destination, set the [log\_output](../variables-and-modes/server-system-variables.md#log_output) system variable.
 
 ### Writing the General Query Log to a File
 
-The general query log is output to a file by default. However, it can be explicitly chosen by setting the [log\_output](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) system variable to `FILE`. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+The general query log is output to a file by default. However, it can be explicitly chosen by setting the [log\_output](../variables-and-modes/server-system-variables.md#log_output) system variable to `FILE`. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```
 SET GLOBAL log_output='FILE';
@@ -93,7 +93,7 @@ general_log_file=queries.log
 
 ### Writing the General Query Log to a Table
 
-The general query log can either be written to the [general\_log](../../reference/system-tables/the-mysql-database-tables/mysqlgeneral_log-table.md) table in the [mysql](../../reference/system-tables/the-mysql-database-tables/) database by setting the [log\_output](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) system variable to `TABLE`. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+The general query log can either be written to the [general\_log](../../reference/system-tables/the-mysql-database-tables/mysqlgeneral_log-table.md) table in the [mysql](../../reference/system-tables/the-mysql-database-tables/) database by setting the [log\_output](../variables-and-modes/server-system-variables.md#log_output) system variable to `TABLE`. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```
 SET GLOBAL log_output='TABLE';
@@ -152,7 +152,7 @@ When the General Query Log is written to a file, it follows a positional format.
 
 ## Disabling the General Query Log for a Session
 
-A user with the [SUPER](../../reference/sql-statements/account-management-sql-statements/grant.md#global-privileges) privilege can disable logging to the general query log for a connection by setting the [SQL\_LOG\_OFF](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_log_off) system variable to `1`. For example:
+A user with the [SUPER](../../reference/sql-statements/account-management-sql-statements/grant.md#global-privileges) privilege can disable logging to the general query log for a connection by setting the [SQL\_LOG\_OFF](../variables-and-modes/server-system-variables.md#sql_log_off) system variable to `1`. For example:
 
 ```
 SET SESSION SQL_LOG_OFF=1;
@@ -160,7 +160,7 @@ SET SESSION SQL_LOG_OFF=1;
 
 ## Disabling the General Query Log for Specific Statements
 
-In [MariaDB 10.3.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.1) and later, it is possible to disable logging to the general query log for specific types of statements by setting the [log\_disabled\_statements](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_disabled_statements) system variable. This option cannot be set dynamically. It can be set in a server [option group](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior to starting up the server. For example:
+In [MariaDB 10.3.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.1) and later, it is possible to disable logging to the general query log for specific types of statements by setting the [log\_disabled\_statements](../variables-and-modes/server-system-variables.md#log_disabled_statements) system variable. This option cannot be set dynamically. It can be set in a server [option group](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior to starting up the server. For example:
 
 ```
 [mariadb]

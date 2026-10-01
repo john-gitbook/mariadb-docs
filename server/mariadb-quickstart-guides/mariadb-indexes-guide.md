@@ -242,7 +242,7 @@ Remove an index if:
 * It is rarely or never used. Unused indexes still incur overhead during data modification operations.
 * **Identifying Unused Indexes:**
   * If [user statistics](../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/user-statistics.md) are enabled, query the `information_schema.INDEX_STATISTICS` table.
-  * If the [slow query log](../server-management/server-monitoring-logs/slow-query-log/) is enabled and the `log_queries_not_using_indexes` [server system variable](../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) is `ON`, queries performing full table scans will be logged, which can indicate missing or ineffective indexes.
+  * If the [slow query log](../server-management/server-monitoring-logs/slow-query-log/) is enabled and the `log_queries_not_using_indexes` [server system variable](../server-management/variables-and-modes/server-system-variables.md) is `ON`, queries performing full table scans will be logged, which can indicate missing or ineffective indexes.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

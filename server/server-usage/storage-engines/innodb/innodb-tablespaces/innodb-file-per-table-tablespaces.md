@@ -14,9 +14,9 @@ InnoDB versions in MySQL 5.7 and above also support an additional type of tables
 
 ## File-Per-Table Tablespace Locations
 
-By default, InnoDB's file-per-table tablespaces are created in the system's data directory, which is defined by the [datadir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) system variable. The system variable [innodb\_data\_home\_dir](../innodb-system-variables.md#innodb_data_home_dir) will not change the location of file-per-table tablespaces.
+By default, InnoDB's file-per-table tablespaces are created in the system's data directory, which is defined by the [datadir](../../../../server-management/variables-and-modes/server-system-variables.md#datadir) system variable. The system variable [innodb\_data\_home\_dir](../innodb-system-variables.md#innodb_data_home_dir) will not change the location of file-per-table tablespaces.
 
-In the event that you have a specific tablespace that you need stored in a dedicated path, you can set the location using the [DATA DIRECTORY](../../../../reference/sql-statements/data-definition/create/create-table.md#data-directory-index-directory) table option when you create the table.
+In the event that you have a specific tablespace that you need stored in a dedicated path, you can set the location using the [DATA DIRECTORY](../../../tables/create-table.md#data-directory-index-directory) table option when you create the table.
 
 For instance,
 
@@ -96,7 +96,7 @@ You can import a non-partitioned table by discarding the table's original tables
 
 For example, the process would go like this:
 
-* First, on the destination server, you need to create a copy of the table. Use the same [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement that was used to create the table on the original server.
+* First, on the destination server, you need to create a copy of the table. Use the same [CREATE TABLE](../../../tables/create-table.md) statement that was used to create the table on the original server.
 
 ```sql
 CREATE TABLE test.t1 (
@@ -219,7 +219,7 @@ PARTITION BY RANGE (employee_id) (
 );
 ```
 
-* Then, using this table as a model, we need to create a placeholder of this table with the same structure that does not use partitioning. This can be done with a [CREATE TABLE... AS SELECT](../../../../reference/sql-statements/data-definition/create/create-table.md#create-table-...-select) statement:
+* Then, using this table as a model, we need to create a placeholder of this table with the same structure that does not use partitioning. This can be done with a [CREATE TABLE... AS SELECT](../../../tables/create-table.md#create-table-...-select) statement:
 
 ```sql
 CREATE TABLE test.t2_placeholder LIKE test.t2;
@@ -311,7 +311,7 @@ DROP TABLE test.t2_placeholder;
 
 #### Differing Storage Formats for Temporal Columns
 
-The [mysql56\_temporal\_format](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) system variable enables a MySQL 5.6-compatible storage format for the [TIME](../../../../reference/data-types/date-and-time-data-types/time.md), [DATETIME](../../../../reference/data-types/date-and-time-data-types/datetime.md) and [TIMESTAMP](../../../../reference/data-types/date-and-time-data-types/timestamp.md) data types.
+The [mysql56\_temporal\_format](../../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) system variable enables a MySQL 5.6-compatible storage format for the [TIME](../../../../reference/data-types/date-and-time-data-types/time.md), [DATETIME](../../../../reference/data-types/date-and-time-data-types/datetime.md) and [TIMESTAMP](../../../../reference/data-types/date-and-time-data-types/timestamp.md) data types.
 
 If a file-per-tablespace file contains columns that use one or more of these temporal data types and if the tablespace file's original table was created with a certain storage format for these columns, then the tablespace file can only be imported into tables that were also created with the same storage format for these columns as the original table. Otherwise, you will see errors like the following:
 
@@ -322,11 +322,11 @@ ERROR 1808 (HY000): Schema mismatch (Column dt precise type mismatch.)
 
 See [MDEV-15225](https://jira.mariadb.org/browse/MDEV-15225) for more information.
 
-See the pages for the [TIME](../../../../reference/data-types/date-and-time-data-types/time.md), [DATETIME](../../../../reference/data-types/date-and-time-data-types/datetime.md) and [TIMESTAMP](../../../../reference/data-types/date-and-time-data-types/timestamp.md) data types to determine how to update the storage format for temporal columns in tables that use the old storage format, for example because they were created with [mysql56\_temporal\_format=OFF](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format).
+See the pages for the [TIME](../../../../reference/data-types/date-and-time-data-types/time.md), [DATETIME](../../../../reference/data-types/date-and-time-data-types/datetime.md) and [TIMESTAMP](../../../../reference/data-types/date-and-time-data-types/timestamp.md) data types to determine how to update the storage format for temporal columns in tables that use the old storage format, for example because they were created with [mysql56\_temporal\_format=OFF](../../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format).
 
 #### Differing ROW\_FORMAT Values
 
-InnoDB file-per-table tablespaces can use different [row formats](../innodb-row-formats/innodb-row-formats-overview.md). A specific row format can be specified when creating a table either by setting the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option or by the setting the [innodb\_default\_row\_format](../innodb-system-variables.md#innodb_default_row_format) system variable. See [Setting a Table's Row Format](../innodb-row-formats/innodb-row-formats-overview.md) for more information on how to set an InnoDB table's row format.
+InnoDB file-per-table tablespaces can use different [row formats](../innodb-row-formats/innodb-row-formats-overview.md). A specific row format can be specified when creating a table either by setting the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option or by the setting the [innodb\_default\_row\_format](../innodb-system-variables.md#innodb_default_row_format) system variable. See [Setting a Table's Row Format](../innodb-row-formats/innodb-row-formats-overview.md) for more information on how to set an InnoDB table's row format.
 
 If a file-per-tablespace file was created with a certain row format, then the tablespace file can only be imported into tables that were created with the same row format as the original table. Otherwise, you will see errors like the following:
 
@@ -348,7 +348,7 @@ See [MDEV-15049](https://jira.mariadb.org/browse/MDEV-15049) and [MDEV-16851](ht
 
 #### Foreign Key Constraints
 
-DISCARD on a table with foreign key constraints is only possible after disabling [foreign\_key\_checks](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks):
+DISCARD on a table with foreign key constraints is only possible after disabling [foreign\_key\_checks](../../../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks):
 
 ```sql
 SET SESSION foreign_key_checks=0;

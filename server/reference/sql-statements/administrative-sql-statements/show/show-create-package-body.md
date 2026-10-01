@@ -32,7 +32,7 @@ The `SHOW CREATE PACKAGE BODY` statement shows the `CREATE PACKAGE BODY` stateme
 {% endtab %}
 {% endtabs %}
 
-`SHOW CREATE PACKAGE BODY` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) system variable.
+`SHOW CREATE PACKAGE BODY` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) system variable.
 
 ## Examples
 

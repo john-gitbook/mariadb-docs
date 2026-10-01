@@ -20,13 +20,13 @@ sys.format_path(path)
 
 The system variables that are matched are, in order:
 
-* [datadir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir)
-* [tmpdir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#tmpdir)
+* [datadir](../../../../server-management/variables-and-modes/server-system-variables.md#datadir)
+* [tmpdir](../../../../server-management/variables-and-modes/server-system-variables.md#tmpdir)
 * [slave\_load\_tmpdir](../../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#slave_load_tmpdir)
 * [innodb\_data\_home\_dir](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_data_home_dir)
 * [innodb\_log\_group\_home\_dir](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_log_group_home_dir)
 * [innodb\_undo\_directory](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_undo_directory)
-* [basedir](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#basedir)
+* [basedir](../../../../server-management/variables-and-modes/server-system-variables.md#basedir)
 
 ## Examples
 

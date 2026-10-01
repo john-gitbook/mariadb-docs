@@ -60,7 +60,7 @@ Semi-join operations are similar to regular relational joins. There is a differe
 
 ## Semi-Join Optimizations in MariaDB
 
-MariaDB uses semi-join optimizations to run IN subqueries.The optimizations are enabled by default. You can disable them by turning off their [optimizer\_switch](../../system-variables/server-system-variables.md#optimizer_switch) like so:
+MariaDB uses semi-join optimizations to run IN subqueries.The optimizations are enabled by default. You can disable them by turning off their [optimizer\_switch](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) like so:
 
 ```sql
 SET optimizer_switch='semijoin=off'

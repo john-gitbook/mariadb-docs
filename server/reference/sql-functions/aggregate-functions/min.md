@@ -30,7 +30,7 @@ It is an [aggregate function](./), and so can be used with the [GROUP BY](../../
 From MariaDB 11.4:
 {% endhint %}
 
-Not only ascending, but also [descending indexes](../../sql-statements/data-definition/create/create-table.md#index-types) can be used to optimize `MIN`.
+Not only ascending, but also [descending indexes](../../../server-usage/tables/create-table.md#index-types) can be used to optimize `MIN`.
 {% endtab %}
 
 {% tab title="< 11.4" %}

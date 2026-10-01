@@ -2,7 +2,7 @@
 description: >-
   The tls_certificate authentication plugin authenticates an account from its
   TLS client certificate alone, with no password, by requiring the certificate
-  subject to match the account's REQUIRE SUBJECT clause.
+  subject to match the account's REQUIRE SUBJECT
 ---
 
 # Authentication Plugin - tls\_certificate
@@ -65,7 +65,7 @@ Because these accounts authenticate with no password, several password-related f
 An account created with `IDENTIFIED VIA tls_certificate` but **without** `REQUIRE SUBJECT` is created successfully and cannot connect. The plugin API offers no hook at `CREATE USER` time for a passwordless plugin, so no warning can be raised. Add the clause with [`ALTER USER`](../../sql-statements/account-management-sql-statements/alter-user.md) and the account works.
 {% endhint %}
 
-When several authentication methods are combined with `OR`, the first one that succeeds wins. An account given both `tls_certificate` and a password method can therefore log in with the password alone if `REQUIRE SUBJECT` is absent. Requiring *both* a valid certificate and a password needs multi-factor authentication (several plugins combined with `AND`), which is not yet available.
+When several authentication methods are combined with `OR`, the first one that succeeds wins. An account given both `tls_certificate` and a password method can therefore log in with the password alone if `REQUIRE SUBJECT` is absent. Requiring _both_ a valid certificate and a password needs multi-factor authentication (several plugins combined with `AND`), which is not yet available.
 
 ## Options
 
