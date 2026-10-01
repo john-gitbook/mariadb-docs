@@ -1,0 +1,140 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+# Site structure for the "mariadb copy" test site (site_HdZoj), synced from copy-branch.
+# Mirrors the site's current layout: 11 top-level sections, one space each.
+# Inert until the site is switched to site-level Git Sync; today each space syncs on its own.
+site:
+  title: mariadb copy
+  structure:
+    - type: section
+      key: home-sec
+      title: Home
+      path: home
+      default: true
+      children:
+        - type: space
+          key: home
+          title: Home
+          path: home
+          default: true
+          content:
+            directory: ./home
+    - type: section
+      key: mariadb-platform-sec
+      title: Mariadb Platform
+      path: mariadb-platform
+      children:
+        - type: space
+          key: mariadb-platform
+          title: Mariadb Platform
+          path: mariadb-platform
+          default: true
+          content:
+            directory: ./platform
+    - type: section
+      key: server-sec
+      title: Server
+      path: server
+      children:
+        - type: space
+          key: server
+          title: Server
+          path: server
+          default: true
+          content:
+            directory: ./server
+    - type: section
+      key: maxscale-sec
+      title: MaxScale
+      path: maxscale
+      children:
+        - type: space
+          key: maxscale
+          title: MaxScale
+          path: maxscale
+          default: true
+          content:
+            directory: ./maxscale
+    - type: section
+      key: analytics-sec
+      title: Analytics
+      path: analytics
+      children:
+        - type: space
+          key: analytics
+          title: Analytics
+          path: analytics
+          default: true
+          content:
+            directory: ./analytics
+    - type: section
+      key: galera-cluster-sec
+      title: Galera Cluster
+      path: galera-cluster
+      children:
+        - type: space
+          key: galera-cluster
+          title: Galera Cluster
+          path: galera-cluster
+          default: true
+          content:
+            directory: ./galera-cluster
+    - type: section
+      key: connectors-sec
+      title: Connectors
+      path: connectors
+      children:
+        - type: space
+          key: connectors
+          title: Connectors
+          path: connectors
+          default: true
+          content:
+            directory: ./connectors
+    - type: section
+      key: enterprise-tools-sec
+      title: Enterprise Tools
+      path: enterprise-tools
+      children:
+        - type: space
+          key: enterprise-tools
+          title: Enterprise Tools
+          path: enterprise-tools
+          default: true
+          content:
+            directory: ./tools
+    - type: section
+      key: mariadb-cloud-sec
+      title: MariaDB Cloud
+      path: mariadb-cloud
+      children:
+        - type: space
+          key: mariadb-cloud
+          title: MariaDB Cloud
+          path: mariadb-cloud
+          default: true
+          content:
+            directory: ./mariadb-cloud
+    - type: section
+      key: release-notes-sec
+      title: Release Notes
+      path: release-notes
+      children:
+        - type: space
+          key: release-notes
+          title: Release Notes
+          path: release-notes
+          default: true
+          content:
+            directory: ./release-notes
+    - type: section
+      key: general-resources-sec
+      title: General Resources
+      path: general-resources
+      children:
+        - type: space
+          key: general-resources
+          title: General Resources
+          path: general-resources
+          default: true
+          content:
+            directory: ./general-resources
