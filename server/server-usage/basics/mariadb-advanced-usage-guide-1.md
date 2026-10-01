@@ -10,7 +10,7 @@ description: >-
 
 #### Connecting to MariaDB
 
-MariaDB is a database system, a database server. To interface with the MariaDB server, you can use a client program, or you can write a program or script with one of the popular programming languages (e.g., PHP) using an API (Application Programming Interface) to interface with the MariaDB server. For the purposes of this article, we will focus on using the default client that comes with MariaDB called `mariadb`. With this client, you can either enter queries from the command-line, or you can switch to a terminal, that is to say, monitor mode. To start, we'll use the latter.
+MariaDB is a database system, a database server. To interface with the MariaDB server, you can use a client program, or you can write a program or script with one of the popular programming languages (e.g., PHP) using an API (Application Programming Interface) to interface with the MariaDB server. For the purposes of this article, we will focus on using the default client that comes with MariaDB called `mariadb`. With this client, you can either enter queries from the command-line, or you can switch to a terminal, that is to say, monitor mode. To start, we'll use the latter. 
 
 From the Linux command-line, you would enter the following to log in as the root user and to enter monitor mode:
 
@@ -64,7 +64,7 @@ DESCRIBE books;
 +--------------+-------------+------+-----+---------+-------+
 ```
 
-To change the settings of a table, you can use the [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/) statement. I'll cover that statement in another article. To delete a table completely (including its data), you can use the [DROP TABLE](../tables/drop-table.md) statement, followed by the table name. Be careful with this statement since it's not reversible.
+To change the settings of a table, you can use the [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/) statement. I'll cover that statement in another article. To delete a table completely (including its data), you can use the [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md) statement, followed by the table name. Be careful with this statement since it's not reversible.
 
 The next table we'll create for our examples is the authors table to hold author information. This table will save us from having to enter the author's name and other related data for each book written by each author. It also helps to ensure consistency of data: there's less chance of inadvertent spelling deviations.
 

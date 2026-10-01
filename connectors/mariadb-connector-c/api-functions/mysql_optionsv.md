@@ -38,7 +38,7 @@ The following table shows the C variable type required for the `arg` parameter o
 | Variable type                 | Options                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `my_bool`, `unsigned char`    | `MYSQL_OPT_RECONNECT`, `MYSQL_SECURE_AUTH`, `MYSQL_REPORT_DATA_TRUNCATION`, `MYSQL_OPT_SSL_ENFORCE`, `MYSQL_OPT_SSL_VERIFY_SERVER_CERT`, `MARIADB_OPT_SKIP_READ_RESPONSE`, `MYSQL_OPT_ZSTD_COMPRESSION_LEVEL`                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `unsigned int`                | `MARIADB_OPT_PORT`, `MYSQL_OPT_LOCAL_INFILE`, `MYSQL_OPT_CONNECT_TIMEOUT`, `MYSQL_OPT_PROTOCOL`, `MYSQL_OPT_READ_TIMEOUT`, `MYSQL_OPT_WRITE_TIMEOUT`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `unsigned int`                | `MARIADB_OPT_PORT`, `MYSQL_OPT_LOCAL_INFILE`, `MYSQL_OPT_CONNECT_TIMEOUT`, `MYSQL_OPT_PROTOCOL`, `MYSQL_OPT_READ_TIMEOUT`, `MYSQL_OPT_WRITE_TIMEOUT`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `unsigned long`               | `MYSQL_OPT_NET_BUFFER_LENGTH`, `MYSQL_OPT_MAX_ALLOWED_PACKET`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `const char *`                | `MYSQL_INIT_COMMAND`, `MARIADB_OPT_UNIXSOCKET`, `MARIADB_OPT_PASSWORD` , `MARIADB_OPT_USER`, `MARIADB_OPT_HOST`, `MARIADB_OPT_SCHEMA`, `MYSQL_OPT_SSL_KEY`, `MYSQL_OPT_SSL_CERT`, `MYSQL_OPT_SSL_CA`, `MYSQL_OPT_SSL_CAPATH`, `MYSQL_SET_CHARSET_NAME`, `MYSQL_SET_CHARSET_DIR`, `MYSQL_OPT_SSL_CIPHER`, `MYSQL_SHARED_MEMORY_BASE_NAME`, `MYSQL_PLUGIN_DIR`, `MYSQL_DEFAULT_AUTH`, `MARIADB_OPT_SSL_FP`, `MARIADB_OPT_SSL_FP_LIST`, `MARIADB_OPT_TLS_PASSPHRASE`, `MARIADB_OPT_TLS_VERSION`, `MYSQL_OPT_BIND`, `MYSQL_OPT_CONNECT_ATTR_DELETE`, `MYSQL_OPT_CONNECT_ATTR_ADD`, `MARIADB_OPT_CONNECTION_HANDLER`, `MYSQL_SERVER_PUBLIC_KEY`, `MARIADB_OPT_RESTRICTED_AUTH` |
 | `const char*`, `unsigned int` | `MARIADB_OPT_RPL_REGISTER_REPLICA`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -64,7 +64,7 @@ The following table shows the C variable type required for the `arg` parameter o
     unsigned int timeout= 5;
     mysql_optionsv(mysql, MYSQL_OPT_CONNECT_TIMEOUT, (void *)&timeout);
     ```
-*   `MYSQL_PROGRESS_CALLBACK`: Specifies a callback function which will be able to visualize the progress of certain long running statements (i.e. [LOAD DATA LOCAL INFILE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile) or [ALTER TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/alter/alter-table)).
+*   `MYSQL_PROGRESS_CALLBACK`: Specifies a callback function which will be able to visualize the progress of certain long running statements (i.e. [LOAD DATA LOCAL INFILE](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile) or [ALTER TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/alter/alter-table)).
 
     ```c
     static void report_progress(const MYSQL *mysql __attribute__((unused)),
@@ -200,7 +200,7 @@ Some of these options can also be set as arguments to the [mysql\_real\_connect]
     mysql_optionsv(mysql, MYSQL_OPT_COMPRESS, NULL);
     ```
 * `MYSQL_OPT_ZSTD_COMPRESSION_LEVEL`: The compression level to use for connections that use the `zstd` compression algorithm. Acceptable values are integers in the range 1 (fastest) to 22 (maximum compression). This option has no effect if `zstd` compression is not in use. Added in MariaDB Connector/C 3.3.14 and 3.4.4 versions.
-*   `MYSQL_OPT_LOCAL_INFILE`: Enable or disable the use of [LOAD DATA LOCAL INFILE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile)
+*   `MYSQL_OPT_LOCAL_INFILE`: Enable or disable the use of [LOAD DATA LOCAL INFILE](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile)
 
     ```c
     unsigned int enable= 1, disable= 0;
@@ -305,7 +305,8 @@ Some of these options can also be set as arguments to the [mysql\_real\_connect]
     my_bool enforce_tls= 1;
     mysql_optionsv(mysql, MYSQL_OPT_SSL_ENFORCE, (void *)&enforce_tls);
     ```
-* **Note**: Despite the option name, this does **not** enforce TLS. If the server does not support TLS, the connection falls back to unencrypted communication without error. To prevent fallback and enforce TLS, use `MYSQL_OPT_SSL_VERIFY_SERVER_CERT` instead.
+* **Note**: Despite the option name, this does **not** enforce TLS. If the server does not support TLS, the
+  connection falls back to unencrypted communication without error. To prevent fallback and enforce TLS, use `MYSQL_OPT_SSL_VERIFY_SERVER_CERT` instead.
 *   `MARIADB_OPT_TLS_CIPHER_STRENGTH`: **Deprecated**. This option is no longer in use and has no effect. Cipher strength. This value will be passed as an unsigned `int` parameter.
 
     ```c
@@ -347,7 +348,7 @@ Some of these options can also be set as arguments to the [mysql\_real\_connect]
     my_bool read_only= 1;
     mysql_optionsv(mysql, MARIADB_OPT_CONNECTION_READ_ONLY, (void *)&read_only);
     ```
-* `MARIADB_OPT_SKIP_READ_RESPONSE`: Disables server response packet reading in the binary protocol. Designed for specialized connection handlers, not for typical application use. Added in Connector/C 3.1.13 version.
+* `MARIADB_OPT_SKIP_READ_RESPONSE`: Disables server response packet reading in the binary protocol. Designed for specialized connection handlers, not for typical application use. Added in Connector/C 3.1.13 version.&#x20;
 *   `MYSQL_PLUGIN_DIR`: Specify the location of client plugins. The plugin directory can also be specified with the `MARIADB_PLUGIN_DIR` environment variable.
 
     ```c
@@ -366,7 +367,9 @@ Some of these options can also be set as arguments to the [mysql\_real\_connect]
 
 #### Callback Options
 
-*   `MARIADB_OPT_STATUS_CALLBACK`: Specifies a callback function that is invoked whenever the server sends a status change or session tracking information to the client. This can be used to monitor server status flags and session variable changes without polling.
+*   `MARIADB_OPT_STATUS_CALLBACK`: Specifies a callback function that is invoked whenever the server sends a status change or session tracking information to the client. This can be used to monitor server status flags and session variable changes without polling.&#x20;
+
+
 
     ```c
     mysql_optionsv(mysql, MARIADB_OPT_STATUS_CALLBACK, (void *)my_status_callback, (void *)user_data);
@@ -379,7 +382,7 @@ Some of these options can also be set as arguments to the [mysql\_real\_connect]
     void status_callback(void *data, enum enum_mariadb_status_info type, ..)
     ```
 
-**Parameters**
+&#x20;**Parameters**
 
 | Parameter | Type                            | Description                                                                                                                    |
 | --------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -396,7 +399,7 @@ When type is `STATUS_TYPE`:
 
 When type is `SESSION_TRACK_TYPE`:
 
-<table><thead><tr><th width="211.22222900390625">Position</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>1st</td><td><code>enum enum_session_state_type</code></td><td>The session tracking type.</td></tr><tr><td>2nd</td><td><code>MARIADB_CONST_STRING *</code></td><td>If <code>track_type</code> is <code>SESSION_TRACK_SYSTEM_VARIABLES</code>: the variable name.</td></tr><tr><td>3rd</td><td><code>MARIADB_CONST_STRING *</code></td><td>If <code>track_type</code> is <code>SESSION_TRACK_SYSTEM_VARIABLES</code>: the variable value.</td></tr></tbody></table>
+<table><thead><tr><th width="211.22222900390625">Position</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>1st</td><td><code>enum enum_session_state_type</code></td><td>The session tracking type.</td></tr><tr><td>2nd</td><td><code>MARIADB_CONST_STRING *</code></td><td>If <code>track_type</code> is <code>SESSION_TRACK_SYSTEM_VARIABLES</code>: the variable name.</td></tr><tr><td>3rd </td><td><code>MARIADB_CONST_STRING *</code></td><td>If <code>track_type</code> is <code>SESSION_TRACK_SYSTEM_VARIABLES</code>: the variable value.</td></tr></tbody></table>
 
 {% hint style="info" %}
 When a status callback is registered, the connector’s built‑in session tracking functions are disabled. After calling `mysql_optionsv()` with `MARIADB_OPT_STATUS_CALLBACK`, the functions `mysql_session_track_get_first()` and `mysql_session_track_get_next()` will no longer provide session tracking data. Instead, all session tracking must be managed within the callback itself.
@@ -406,14 +409,14 @@ An example implementation can be found in the Connector/C source tree at `unitte
 
 #### Replication/Binlog API Options
 
-*   `MARIADB_OPT_RPL_REGISTER_REPLICA`: Specifies the host name and port that the Binlog API will report when registering this client as a replica with the connected server. When this option is set, `mariadb_rpl_open()` will register the client using the provided host, port, and the server ID configured via `mariadb_rpl_optionsv()`. The registration is visible in the output of `SHOW SLAVE STATUS` on the server.<br>
+*   `MARIADB_OPT_RPL_REGISTER_REPLICA`: Specifies the host name and port that the Binlog API will report when registering this client as a replica with the connected server. When this option is set, `mariadb_rpl_open()` will register the client using the provided host, port, and the server ID configured via `mariadb_rpl_optionsv()`. The registration is visible in the output of `SHOW SLAVE STATUS` on the server. <br>
 
     ```c
     mysql_optionsv(mysql, MARIADB_OPT_RPL_REGISTER_REPLICA, (void *)"replica-host.example.com", (unsigned int)3306);
     ```
 
     \
-    Added in MariaDB Connector/C 3.3.1 version. See [Replication API Reference](../mariadb-binlogreplication-api-reference/).
+    Added in MariaDB Connector/C 3.3.1 version.  See [Replication API Reference](../mariadb-binlogreplication-api-reference/).
 
 #### Option File Options
 
@@ -428,12 +431,12 @@ These options work together, according to the following rules:
 * if `MYSQL_READ_DEFAULT_GROUP` is an empty string (or `NULL` and `MYSQL_READ_DEFAULT_FILE` is set) then only default groups — `[client]`, `[client-server]`, `[client-mariadb]` are read.
 * if `MYSQL_READ_DEFAULT_GROUP` is a non-empty string, then it is interpreted as a custom option group, and that custom option group is read in addition to default groups from above.
 
-#### Proxy Settings
+#### Proxy Settings&#x20;
 
-As defined by the [proxy protocol specification](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt), a client may prefix its first packet with a proxy protocol header. The server will parse this header and treat the IP address it contains as the client's actual IP address, rather than the address of the connecting process.
+As defined by the [proxy protocol specification](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt), a client may prefix its first packet with a proxy protocol header. The server will parse this header and treat the IP address it contains as the client's actual IP address, rather than the address of the connecting process.&#x20;
 
-* `MARIADB_OPT_PROXY_HEADER`: Specifies the proxy protocol header to prefix to the first packet sent to the server. The option requires two additional arguments:
-  * a `void *` pointer to the header buffer, and
+* `MARIADB_OPT_PROXY_HEADER`: Specifies the proxy protocol header to prefix to the first packet sent to the server. The option requires two additional arguments:&#x20;
+  * a `void *` pointer to the header buffer, and&#x20;
   * a `size_t` value for the buffer length.
 
 ```sql

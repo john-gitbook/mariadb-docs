@@ -5,7 +5,7 @@ description: >-
 hidden: true
 ---
 
-# My Cluster
+# My Cluster Screen
 
 **My Cluster** opens as the first tab of the **Dashboard** screen when you select **Dashboard** from the navigation menu. It displays numeric and tabular information for the "current" cluster (selected in the cluster selector tool on the main toolbar).
 
@@ -17,13 +17,13 @@ When GridGain 8 cluster is in a rolling upgrade mode, a banner indicating this s
 
 Use the widgets to view the relevant cluster information:
 
-| Widget         | Description                                                                                                                                                                                                                                                                        |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Health | <p>The cluster status:<br>- <code>Warnings</code> - at least one of the alerts for the cluster has been triggered<br>- <code>Errors</code> - partition loss, PME (Partition Map Exchange) errors, or both<br>- <code>Healthy</code> - neither warnings nor errors are observed</p> |
-| Storage        | <p>The amount of memory the cluster uses:<br>- <code>In-memory</code><br>- <code>On disk</code></p>                                                                                                                                                                                |
-| Connections    | The cluster connection counters for thin and thick clients. A set of chips for adding connections.                                                                                                                                                                                 |
-| Details        | A table of the cluster details, including `Edition`, `Owner`, `CLuster Security`, `License expiry date`, `Cluster ID` and `Connection ID`.                                                                                                                                         |
-| Nodes          | A list of cluster's nodes.                                                                                                                                                                                                                                                         |
+| Widget | Description |
+|---|---|
+| Cluster Health | The cluster status:<br>- `Warnings` - at least one of the alerts for the cluster has been triggered<br>- `Errors` - partition loss, PME (Partition Map Exchange) errors, or both<br>- `Healthy` - neither warnings nor errors are observed |
+| Storage | The amount of memory the cluster uses:<br>- `In-memory`<br>- `On disk` |
+| Connections | The cluster connection counters for thin and thick clients. A set of chips for adding connections. |
+| Details | A table of the cluster details, including `Edition`, `Owner`, `CLuster Security`, `License expiry date`, `Cluster ID` and `Connection ID`. |
+| Nodes | A list of cluster's nodes. |
 
 ### Viewing Cluster Health Details
 
@@ -33,13 +33,13 @@ To view details of the cluster health (status), in the **Cluster Health** widget
 
 The following health checks are available for GridGain 8 and Apache Ignite 2 clusters:
 
-| Check                          | Condition | Description                                                                                                                       |
-| ------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Alerts                         | WARNING   | One or more configured alerts have been triggered. Each active alert appears as a separate entry showing the alert's own message. |
-| Nodes in the baseline topology | WARNING   | One or more baseline nodes are offline. The message lists the affected node IDs.                                                  |
-| Write availability             | WARNING   | The cluster is in read-only mode (`ACTIVE_READ_ONLY`). Only cache read operations are allowed.                                    |
-| Partition loss                 | ERROR     | One or more cache partitions have zero copies.                                                                                    |
-| Partition map exchange (PME)   | ERROR     | Partition map exchange is running longer than expected, or cache operations are blocked waiting for PME to finish.                |
+| Check | Condition | Description |
+|---|---|---|
+| Alerts | WARNING | One or more configured alerts have been triggered. Each active alert appears as a separate entry showing the alert's own message. |
+| Nodes in the baseline topology | WARNING | One or more baseline nodes are offline. The message lists the affected node IDs. |
+| Write availability | WARNING | The cluster is in read-only mode (`ACTIVE_READ_ONLY`). Only cache read operations are allowed. |
+| Partition loss | ERROR | One or more cache partitions have zero copies. |
+| Partition map exchange (PME) | ERROR | Partition map exchange is running longer than expected, or cache operations are blocked waiting for PME to finish. |
 
 Failed health checks are highlighted by severity: red for errors and yellow for warnings. Each item describes the issue and, when applicable, includes a button to investigate or resolve it.
 
@@ -51,19 +51,19 @@ The **Nodes** widget provides information about the nodes that are in the baseli
 
 ![My Cluster screen](../../../.gitbook/assets/cc-gg8-my-cluster-nodes.png)
 
-The term _baseline topology_ refers to a set of nodes that are meant to hold data.
+The term *baseline topology* refers to a set of nodes that are meant to hold data.
 
 To add columns to the table or remove them from the table, select the **Table Columns** option from the table's context menu, then select or clear check boxes for the columns on the list that opens.
 
 To define the auto-adjustment timeout, click the **Configuration** icon above the node list, toggle the auto-adjustment on, then enter the timeout value (in seconds).
 
-| Column        | Description                                                                                                                                                                                     |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Consistent ID | The consistent ID of the node.                                                                                                                                                                  |
-| Node ID       | The ID of the node.                                                                                                                                                                             |
-| Status        | Whether the node is online. A node that goes down remains registered in the baseline topology until you manually remove it or until it's removed automatically through baseline autoadjustment. |
-| Node Type     | The type of the node: `Coordinator` or `Server`. To display `Client` nodes, toggle on **Show client nodes** in the context menu.                                                                |
-| Baseline      | A toggle that enables removing the node from the baseline or adding it to the baseline.                                                                                                         |
+| Column | Description |
+|---|---|
+| Consistent ID | The consistent ID of the node. |
+| Node ID | The ID of the node. |
+| Status | Whether the node is online. A node that goes down remains registered in the baseline topology until you manually remove it or until it's removed automatically through baseline autoadjustment. |
+| Node Type | The type of the node: `Coordinator` or `Server`. To display `Client` nodes, toggle on **Show client nodes** in the context menu. |
+| Baseline | A toggle that enables removing the node from the baseline or adding it to the baseline. |
 
 By default, the widget displays only server nodes. To add client nodes to the widget, in the **Nodes** context menu, toggle on **Show client nodes**.
 
@@ -107,7 +107,7 @@ You can modify cluster-wide settings by clicking the ⋮ in the top-right corner
 For the full reference of available cluster properties, see the Cluster Properties section in the GridGain 8 documentation.
 
 {% hint style="success" %}
-You can also set cluster properties, and run other control script commands, from the [Cluster terminal](../cluster-terminal.md).
+You can also set cluster properties, and run other control script commands, from the [Cluster terminal](../terminal/cluster-terminal.md).
 {% endhint %}
 
 ## Viewing Graphic Dashboards
@@ -140,8 +140,8 @@ To view the cluster license, select **View license** from the context menu in th
 
 The **View license** dialog opens and displays the current license used by each server node in the cluster. Nodes that report the same license are grouped together. For each group, the dialog shows:
 
-* **Count** - the number of nodes in the group out of the total number of nodes that responded.
-* **Node** - the IDs of the nodes in the group, or **All** if every responding node reports the same license.
+- **Count** - the number of nodes in the group out of the total number of nodes that responded.
+- **Node** - the IDs of the nodes in the group, or **All** if every responding node reports the same license.
 
 The license for each group is shown below the group details in JSON format.
 
@@ -168,8 +168,8 @@ To add a connection to the cluster, in the **Connections** widget:
 
 You can have access to a cluster as:
 
-* _User_ - a regular user who can view the cluster that has been shared with them individually or via a team, as well as use the actions that appear in the cluster's context menu.
-* _Owner_ - the user who created or attached the cluster. Owners have extended cluster access rights, including sharing the cluster with teams or users, suspension, removal, etc.
+- *User* - a regular user who can view the cluster that has been shared with them individually or via a team, as well as use the actions that appear in the cluster's context menu.
+- *Owner* - the user who created or attached the cluster. Owners have extended cluster access rights, including sharing the cluster with teams or users, suspension, removal, etc.
 
 As a cluster owner, you can share that cluster with individual users and/or teams.
 
@@ -190,7 +190,7 @@ In the entry field across the top of the **Share Cluster** dialog, start typing 
 The users and teams you have entered appear in the corresponding sections of the **Share Cluster** dialog. The system notifies the users and team members that a cluster has been shared with them. To close the **Share Cluster** dialog, click **Close**.
 
 {% hint style="info" %}
-If you have shared a [secured cluster](../authorization-permissions.md), users might perform cluster-level authentication for some (or all) of the actions with that cluster.
+If you have shared a [secured cluster](../auth/authorization-permissions.md), users might perform cluster-level authentication for some (or all) of the actions with that cluster.
 {% endhint %}
 
 ### Stopping a Cluster Share
@@ -211,11 +211,11 @@ If your current cluster is inactive, you can activate it by clicking the **Activ
 
 To attach a cluster, click **+** on the top toolbar, then follow the procedure that corresponds to your cluster:
 
-* [Apache Ignite](../../getting-started/connect/connect-ignite-cluster.md)
-* [GridGain 8](../../getting-started/connect/connect-gridgain-cluster.md)
-* [GridGain 9](../../getting-started/connect/connect-gridgain9-cluster.md)
+- [Apache Ignite](../../getting-started/connect/connect-ignite-cluster.md)
+- [GridGain 8](../../getting-started/connect/connect-gridgain-cluster.md)
+- [GridGain 9](../../getting-started/connect/connect-gridgain9-cluster.md)
 
 ## Next Steps
 
-* [Querying](../queries/querying.md)
-* [Tracing](../tracing.md)
+- [Querying](../queries/querying.md)
+- [Tracing](../tracing/tracing.md)

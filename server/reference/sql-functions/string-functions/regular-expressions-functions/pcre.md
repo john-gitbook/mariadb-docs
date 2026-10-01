@@ -657,7 +657,7 @@ Enhanced regex was implemented as a GSoC 2013 project by Sudheera Palihakkara.
 
 #### default\_regex\_flags Examples
 
-The [default\_regex\_flags](../../../../server-management/variables-and-modes/server-system-variables.md#default_regex_flags) variable was introduced to address the remaining incompatibilities between PCRE and the old regex library. Here are some examples of its usage:
+The [default\_regex\_flags](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_regex_flags) variable was introduced to address the remaining incompatibilities between PCRE and the old regex library. Here are some examples of its usage:
 
 The default behaviour (multiline match is off)
 

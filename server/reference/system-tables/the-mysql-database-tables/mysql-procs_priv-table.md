@@ -27,9 +27,9 @@ The `mysql.procs_priv` table contains the following fields:
 | Proc\_priv    | set('Execute','Alter Routine','Grant')                  | NO   |     |                    | The routine privilege. See [Function Privileges](../../sql-statements/account-management-sql-statements/grant.md#function-privileges) and [Procedure Privileges](../../sql-statements/account-management-sql-statements/grant.md#procedure-privileges) for details.                                                                                |
 | Timestamp     | timestamp                                               | NO   |     | CURRENT\_TIMESTAMP |                                                                                                                                                                                                                                                                                                                                                    |
 
-The [Acl\_function\_grants](../../../server-management/variables-and-modes/server-status-variables.md#acl_function_grants) status variable indicates how many rows the `mysql.columns_priv` table contains with the `FUNCTION` routine type.
+The [Acl\_function\_grants](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#acl_function_grants) status variable indicates how many rows the `mysql.columns_priv` table contains with the `FUNCTION` routine type.
 
-The [Acl\_procedure\_grants](../../../server-management/variables-and-modes/server-status-variables.md#acl_procedure_grants) status variable indicates how many rows the `mysql.columns_priv` table contains with the `PROCEDURE` routine type.
+The [Acl\_procedure\_grants](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#acl_procedure_grants) status variable indicates how many rows the `mysql.columns_priv` table contains with the `PROCEDURE` routine type.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

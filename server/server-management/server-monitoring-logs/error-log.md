@@ -16,9 +16,9 @@ MariaDB always writes its error log, but the destination is configurable.
 
 ### Writing the Error Log to a File
 
-To configure the error log to be written to a file, you can set the [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable. You can configure a specific file name. However, if a specific file name is not configured, the log will be written to the `${hostname}.err` file in the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory by default.
+To configure the error log to be written to a file, you can set the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable. You can configure a specific file name. However, if a specific file name is not configured, the log will be written to the `${hostname}.err` file in the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory by default.
 
-The [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable can be set in a server [option group](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior to starting up the server. For example, to write the error log to the default `${hostname}.err` file, you could configure the following:
+The [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable can be set in a server [option group](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior to starting up the server. For example, to write the error log to the default `${hostname}.err` file, you could configure the following:
 
 ```ini
 [mariadb]
@@ -26,7 +26,7 @@ The [log\_error](../variables-and-modes/server-system-variables.md#log_error) sy
 log_error
 ```
 
-If you configure a specific file name as the [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable, and if it is not an absolute path, then it will be relative to the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory. For example, if you configured the following, then the error log would be written to `mariadb.err` in the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory:
+If you configure a specific file name as the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable, and if it is not an absolute path, then it will be relative to the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory. For example, if you configured the following, then the error log would be written to `mariadb.err` in the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory:
 
 ```ini
 [mariadb]
@@ -34,9 +34,9 @@ If you configure a specific file name as the [log\_error](../variables-and-modes
 log_error=mariadb.err
 ```
 
-If it is a relative path, then the [log\_error](../variables-and-modes/server-system-variables.md#log_error) is relative to the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory.
+If it is a relative path, then the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) is relative to the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory.
 
-However, the [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable can also be an absolute path:
+However, the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable can also be an absolute path:
 
 ```ini
 [mariadb]
@@ -44,7 +44,7 @@ However, the [log\_error](../variables-and-modes/server-system-variables.md#log_
 log_error=/var/log/mysql/mariadb.err
 ```
 
-Another way to configure the error log file name is to set the [log-basename](../starting-and-stopping-mariadb/mariadbd-options.md) option, which configures MariaDB to use a common prefix for all log files (e.g. [general query log](general-query-log.md), [slow query log](slow-query-log/), error log, [binary logs](binary-log/), etc.). The error log file name will be built by adding a `.err` extension to this prefix. For example, if you configured the following, then the error log would still be written to `mariadb.err` in the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory:
+Another way to configure the error log file name is to set the [log-basename](../starting-and-stopping-mariadb/mariadbd-options.md) option, which configures MariaDB to use a common prefix for all log files (e.g. [general query log](general-query-log.md), [slow query log](slow-query-log/), error log, [binary logs](binary-log/), etc.). The error log file name will be built by adding a `.err` extension to this prefix. For example, if you configured the following, then the error log would still be written to `mariadb.err` in the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory:
 
 ```ini
 [mariadb]
@@ -53,13 +53,13 @@ log-basename=mariadb
 log_error
 ```
 
-The [log-basename](../starting-and-stopping-mariadb/mariadbd-options.md) cannot be an absolute path. The log file name is relative to the [datadir](../variables-and-modes/server-system-variables.md#datadir) directory.
+The [log-basename](../starting-and-stopping-mariadb/mariadbd-options.md) cannot be an absolute path. The log file name is relative to the [datadir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory.
 
 ### Writing the Error Log to Stderr on Unix
 
-On Unix, if the [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable is not set, errors are written to `stderr`, which usually means that the log messages are output to the terminal that started `mariadbd`.
+On Unix, if the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable is not set, errors are written to `stderr`, which usually means that the log messages are output to the terminal that started `mariadbd`.
 
-If the [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable was set in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) or on the command-line, it can still be unset by specifying `--skip-log-error`.
+If the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable was set in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) or on the command-line, it can still be unset by specifying `--skip-log-error`.
 
 ### Writing the Error Log to Syslog on Unix
 
@@ -71,13 +71,13 @@ If you [start](../starting-and-stopping-mariadb/) MariaDB with [mariadbd-safe](.
 
 #### Syslog with Systemd
 
-If you [start](../starting-and-stopping-mariadb/) MariaDB with [systemd](../starting-and-stopping-mariadb/systemd/), the error log can also be redirected to the syslog. See [Systemd: Configuring MariaDB to Write the Error Log to Syslog](../starting-and-stopping-mariadb/systemd/configuring.md#configuring-mariadb-to-write-the-error-log-to-syslog) for more information.
+If you [start](../starting-and-stopping-mariadb/) MariaDB with [systemd](../starting-and-stopping-mariadb/systemd/README.md), the error log can also be redirected to the syslog. See [Systemd: Configuring MariaDB to Write the Error Log to Syslog](../starting-and-stopping-mariadb/systemd/configuring.md#configuring-mariadb-to-write-the-error-log-to-syslog) for more information.
 
-[systemd](../starting-and-stopping-mariadb/systemd/) also has its own logging system called the `journal`, and some errors may get logged there instead. See [Systemd:Systemd Journal](../starting-and-stopping-mariadb/systemd/starting.md#systemd-journal) for more information.
+[systemd](../starting-and-stopping-mariadb/systemd/README.md) also has its own logging system called the `journal`, and some errors may get logged there instead. See [Systemd:Systemd Journal](../starting-and-stopping-mariadb/systemd/starting.md#systemd-journal) for more information.
 
 ### Writing the Error Log to Console on Windows
 
-On Windows, if the [console](../starting-and-stopping-mariadb/mariadbd-options.md) option is specified, and if the [log\_error](../variables-and-modes/server-system-variables.md#log_error) system variable is not used, errors are written to the console. If both options are specified, the last option takes precedence.
+On Windows, if the [console](../starting-and-stopping-mariadb/mariadbd-options.md) option is specified, and if the [log\_error](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) system variable is not used, errors are written to the console. If both options are specified, the last option takes precedence.
 
 ### Writing the Error Log to the Windows Event Viewer
 
@@ -109,9 +109,9 @@ If the above don't help, check also if your system is set to [write to syslog](.
 
 ## Configuring the Error Log Verbosity
 
-The default value of the [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) system variable is `2`.
+The default value of the [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) system variable is `2`.
 
-The [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) system variable can be used to configure the verbosity of the error log. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+The [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) system variable can be used to configure the verbosity of the error log. It can be changed dynamically with [SET GLOBAL](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```sql
 SET GLOBAL log_warnings=3;
@@ -127,11 +127,11 @@ log_warnings=3
 
 Some of the warnings included in each verbosity level are described below.
 
-The [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) system variable only has an effect on some log messages. Some log messages are **always** written to the error log, regardless of the error log verbosity. For example, most warnings from the InnoDB storage engine are not affected by [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings). For a complete list of log messages affected by [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings), see the description of the [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) system variable.
+The [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) system variable only has an effect on some log messages. Some log messages are **always** written to the error log, regardless of the error log verbosity. For example, most warnings from the InnoDB storage engine are not affected by [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings). For a complete list of log messages affected by [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings), see the description of the [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) system variable.
 
 ### Verbosity Level 0
 
-If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) is `0`, many optional warnings will not be logged. However, this does not prevent all warnings from being logged, because there are certain core warnings that will always be written to the error log. For example:
+If [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is `0`, many optional warnings will not be logged. However, this does not prevent all warnings from being logged, because there are certain core warnings that will always be written to the error log. For example:
 
 * If [InnoDB strict mode](../../server-usage/storage-engines/innodb/innodb-strict-mode.md) is disabled, and if DDL is performed on a table that triggers a ["Row size too large" error](../../server-usage/storage-engines/innodb/innodb-row-formats/troubleshooting-row-size-too-large-errors-with-innodb.md), InnoDB logs a warning:
 
@@ -145,7 +145,7 @@ However, if [InnoDB strict mode](../../server-usage/storage-engines/innodb/innod
 
 ### Verbosity Level 1
 
-Default until [MariaDB 10.2.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.3). If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) is `1`, many types of warnings are logged. Some useful warnings are:
+Default until [MariaDB 10.2.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.3). If [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is `1`, many types of warnings are logged. Some useful warnings are:
 
 * Replication-related messages:
 
@@ -186,7 +186,7 @@ Frequent warnings about [unsafe statements for statement-based replication](../.
 
 ### Verbosity Level 2
 
-Default from [MariaDB 10.2.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.4). If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) is `2`, a couple other different kinds of warnings are printed. For example:
+Default from [MariaDB 10.2.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.4). If [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is `2`, a couple other different kinds of warnings are printed. For example:
 
 * Messages related to access denied errors:
 
@@ -240,7 +240,7 @@ Default from [MariaDB 10.2.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/com
 
 ### Verbosity Level 3
 
-If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) is `3`, a couple other different kinds of warnings are printed. For example:
+If [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is `3`, a couple other different kinds of warnings are printed. For example:
 
 * Messages related to old-style language options:
 
@@ -295,7 +295,7 @@ If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warning
 
 ### Verbosity Level 4
 
-If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) is `4`, a couple other different kinds of warnings are printed. For example:
+If [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is `4`, a couple other different kinds of warnings are printed. For example:
 
 * Messages related to killed connections:
 
@@ -311,7 +311,7 @@ If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warning
   'user2' host: '192.168.1.50' (CLOSE_CONNECTION)
 ```
 
-* Messages related to released connections, such as when a transaction is committed and [completion\_type](../variables-and-modes/server-system-variables.md#completion_type) is set to `RELEASE`:
+* Messages related to released connections, such as when a transaction is committed and [completion\_type](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#completion_type) is set to `RELEASE`:
 
 ```
 [Warning] Aborted connection 58 to db: 'db1' user: 
@@ -320,7 +320,7 @@ If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warning
 
 ### Verbosity Level 9
 
-If [log\_warnings](../variables-and-modes/server-system-variables.md#log_warnings) is `9`, some **very** verbose warnings are printed. For example:
+If [log\_warnings](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is `9`, some **very** verbose warnings are printed. For example:
 
 * Messages about initializing plugins:
 
@@ -402,7 +402,7 @@ Many error messages are read from an error message file that contains localized 
 [ERROR] Can't find messagefile '/usr/share/errmsg.sys'
 ```
 
-If this error is occurring because the file is in a custom location, you can configure this location by setting the [lc\_messages\_dir](../variables-and-modes/server-system-variables.md#lc_messages_dir) system variable either on the command-line or in a server [option group](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior to starting up the server:
+If this error is occurring because the file is in a custom location, you can configure this location by setting the [lc\_messages\_dir](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages_dir) system variable either on the command-line or in a server [option group](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior to starting up the server:
 
 ```ini
 [mariadb]
@@ -410,7 +410,7 @@ If this error is occurring because the file is in a custom location, you can con
 lc_messages_dir=/usr/share/mysql/
 ```
 
-If you want to use a different locale for error messages, you can also set the [lc\_messages](../variables-and-modes/server-system-variables.md#lc_messages) system variable:
+If you want to use a different locale for error messages, you can also set the [lc\_messages](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_messages) system variable:
 
 ```ini
 [mariadb]
@@ -419,7 +419,8 @@ lc_messages_dir=/usr/share/mysql/
 lc_messages=en_US
 ```
 
-See [Setting the Language for Error Messages](../../reference/data-types/string-data-types/character-sets/internationalization-and-localization/setting-the-language-for-error-messages.md) for more information.
+See [Setting the Language for Error Messages](../../reference/data-types/string-data-types/character-sets/internationalization-and-localization/setting-the-language-for-error-messages.md) for more
+information.
 
 ## See Also
 

@@ -9,7 +9,7 @@ description: >-
 
 MariaDB supports several different modes which allow you to tune it to suit your needs.
 
-The most important ways for doing this are using `SQL_MODE` (controlled by the [sql\_mode](server-system-variables.md#sql_mode) system variable) and [OLD\_MODE](old_mode.md) (the [old\_mode](server-system-variables.md#old_mode) system variable). `SQL_MODE` is used for getting MariaDB to emulate behavior from other SQL servers, while [OLD\_MODE](old_mode.md) is used for emulating behavior from older MariaDB or MySQL versions.
+The most important ways for doing this are using `SQL_MODE` (controlled by the [sql\_mode](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_mode) system variable) and [OLD\_MODE](old_mode.md) (the [old\_mode](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_mode) system variable). `SQL_MODE` is used for getting MariaDB to emulate behavior from other SQL servers, while [OLD\_MODE](old_mode.md) is used for emulating behavior from older MariaDB or MySQL versions.
 
 `SQL_MODE`is a string with different options separated by commas ('`,`') without spaces. The options are case insensitive.
 
@@ -29,7 +29,7 @@ SELECT @@SQL_MODE, @@GLOBAL.SQL_MODE;
 | [MariaDB 10.1.7](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.7)    | NO\_ENGINE\_SUBSTITUTION, NO\_AUTO\_CREATE\_USER                                                         |
 | <= [MariaDB 10.1.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.6) | No value                                                                                                 |
 
-You can set the `SQL_MODE` either from the [command line](../starting-and-stopping-mariadb/mariadbd-options.md) (the `--sql-mode` option) or by setting the [sql\_mode](server-system-variables.md#sql_mode) system variable.
+You can set the `SQL_MODE` either from the [command line](../starting-and-stopping-mariadb/mariadbd-options.md) (the `--sql-mode` option) or by setting the [sql\_mode](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_mode) system variable.
 
 ```sql
 SET sql_mode = 'modes';
@@ -130,7 +130,7 @@ Ignore all INDEX DIRECTORY and DATA DIRECTORY directives when creating a table. 
 
 #### NO\_ENGINE\_SUBSTITUTION
 
-If not set, if the available storage engine specified by a CREATE TABLE or ALTER TABLE is not available, a warning is given and the default storage engine is used instead. If set, generate a 1286 error when creating a table if the specified [storage engine](../../server-usage/storage-engines/) is not available. See also [enforce\_storage\_engine](server-system-variables.md#enforce_storage_engine). Default since [MariaDB 10.1.7](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.7).
+If not set, if the available storage engine specified by a CREATE TABLE or ALTER TABLE is not available, a warning is given and the default storage engine is used instead. If set, generate a 1286 error when creating a table if the specified [storage engine](../../server-usage/storage-engines/) is not available. See also [enforce\_storage\_engine](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#enforce_storage_engine). Default since [MariaDB 10.1.7](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.7).
 
 #### NO\_FIELD\_OPTIONS
 

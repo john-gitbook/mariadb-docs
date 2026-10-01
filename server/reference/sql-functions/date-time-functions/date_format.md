@@ -17,7 +17,7 @@ DATE_FORMAT(date, format[, locale])
 
 Formats the date value according to the format string.
 
-The language used for the names is controlled by the value of the [lc\_time\_names](../../../server-management/variables-and-modes/server-system-variables.md#lc_time_names) system variable. See [server locale](../../data-types/string-data-types/character-sets/internationalization-and-localization/server-locale.md) for more on the supported locales.
+The language used for the names is controlled by the value of the [lc\_time\_names](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_time_names) system variable. See [server locale](../../data-types/string-data-types/character-sets/internationalization-and-localization/server-locale.md) for more on the supported locales.
 
 ### Date Formatting Options
 
@@ -25,7 +25,7 @@ The options that can be used by `DATE_FORMAT()`, as well as its inverse [STR\_TO
 
 | Option | Description                                                                                                                                                                                      |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| %a     | Short weekday name in current locale (Variable [lc\_time\_names](../../../server-management/variables-and-modes/server-system-variables.md#lc_time_names)).                                      |
+| %a     | Short weekday name in current locale (Variable [lc\_time\_names](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_time_names)).                |
 | %b     | Short form month name in current locale. For locale `en_US` this is one of: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, or Dec.                                                       |
 | %c     | Month with 1 or 2 digits.                                                                                                                                                                        |
 | %D     | Day with English suffix 'th', 'nd', 'st' or 'rd''. (1st, 2nd, 3rd...).                                                                                                                           |
@@ -39,9 +39,9 @@ The options that can be used by `DATE_FORMAT()`, as well as its inverse [STR\_TO
 | %j     | Day of the year (001-366)                                                                                                                                                                        |
 | %k     | Hour with 1 digits between 0-23.                                                                                                                                                                 |
 | %l     | Hour with 1 digits between 1-12.                                                                                                                                                                 |
-| %M     | Full month name in current locale (Variable [lc\_time\_names](../../../server-management/variables-and-modes/server-system-variables.md#lc_time_names)).                                         |
+| %M     | Full month name in current locale (Variable [lc\_time\_names](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_time_names)).                   |
 | %m     | Month with 2 digits.                                                                                                                                                                             |
-| %p     | AM/PM according to current locale (Variable [lc\_time\_names](../../../server-management/variables-and-modes/server-system-variables.md#lc_time_names)).                                         |
+| %p     | AM/PM according to current locale (Variable [lc\_time\_names](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_time_names)).                   |
 | %r     | Time in 12 hour format, followed by AM/PM. Short for '%I:%i:%S %p'.                                                                                                                              |
 | %S     | Seconds with 2 digits.                                                                                                                                                                           |
 | %s     | Seconds with 2 digits.                                                                                                                                                                           |
@@ -50,7 +50,7 @@ The options that can be used by `DATE_FORMAT()`, as well as its inverse [STR\_TO
 | %u     | Week number (00-53), when first day of the week is Monday.                                                                                                                                       |
 | %V     | Week number (01-53), when first day of the week is Sunday. Used with %X.                                                                                                                         |
 | %v     | Week number (01-53), when first day of the week is Monday. Used with %x.                                                                                                                         |
-| %W     | Full weekday name in current locale (Variable [lc\_time\_names](../../../server-management/variables-and-modes/server-system-variables.md#lc_time_names)).                                       |
+| %W     | Full weekday name in current locale (Variable [lc\_time\_names](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lc_time_names)).                 |
 | %w     | Day of the week. 0 = Sunday, 6 = Saturday.                                                                                                                                                       |
 | %X     | Year with 4 digits when first day of the week is Sunday. Used with %V.                                                                                                                           |
 | %x     | Year with 4 digits when first day of the week is Monday. Used with %v.                                                                                                                           |
@@ -59,7 +59,7 @@ The options that can be used by `DATE_FORMAT()`, as well as its inverse [STR\_TO
 | %Z     | Timezone abbreviation. From [MariaDB 11.3.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.3/11.3.0).                                                          |
 | %z     | Numeric timezone +hhmm or -hhmm presenting the hour and minute offset from UTC. From [MariaDB 11.3.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.3/11.3.0). |
 | %#     | For [str\_to\_date](str_to_date.md)(), skip all numbers.                                                                                                                                         |
-| %.     | For [str\_to\_date](str_to_date.md)(), skip all punctuation characters.                                                                                                                          |
+| %.     | For [str\_to\_date](str_to_date.md)(), skip all punctuation characters.                                                                                                                           |
 | %@     | For [str\_to\_date](str_to_date.md)(), skip all alpha characters.                                                                                                                                |
 | %%     | A literal % character.                                                                                                                                                                           |
 

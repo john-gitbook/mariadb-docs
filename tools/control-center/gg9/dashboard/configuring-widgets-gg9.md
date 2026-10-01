@@ -5,7 +5,7 @@ description: >-
 hidden: true
 ---
 
-# Widgets
+# Configuring Widgets for GridGain 9 Clusters
 
 ## Adding Widgets
 
@@ -13,15 +13,15 @@ To add a widget, select a tab in the Tab bar and click **Add widget**.
 
 You can add widgets of the following types:
 
-* **Gauge chart** - the selected metric as a gauge.
-* **Nodes** — a table containing information about cluster nodes.
-* **Metrics (single value)** - the current value of the selected metric.
-* **Metrics (chart)** — the selected metric as a time series.
-* **Metrics (table)** — multiple metrics in tabular form.
-* **Heat map** — the selected metric as a heat map.
-* **SQL query** - the results of an SQL query, updated at a specified frequency (`SELECT` only)
-* **System view** - the selected system view table, updated at a specified frequency
-* **DCR Topology** – shows a visual representation of a [data replication](../dcr.md) topology
+- **Gauge chart** - the selected metric as a gauge.
+- **Nodes** — a table containing information about cluster nodes.
+- **Metrics (single value)** - the current value of the selected metric.
+- **Metrics (chart)** — the selected metric as a time series.
+- **Metrics (table)** — multiple metrics in tabular form.
+- **Heat map** — the selected metric as a heat map.
+- **SQL query** - the results of an SQL query, updated at a specified frequency (`SELECT` only)
+- **System view** - the selected system view table, updated at a specified frequency
+- **DCR Topology** – shows a visual representation of a [data replication](../dcr/dcr.md) topology
 
 ## Widget Types
 
@@ -50,12 +50,12 @@ Hidden columns will be copied and exported too.
 
 The following information is available in the **Nodes** widget:
 
-| Column  | Description                          |
-| ------- | ------------------------------------ |
-| Name    | The name of the node.                |
-| Node ID | The ID of the node.                  |
+| Column | Description |
+|---|---|
+| Name | The name of the node. |
+| Node ID | The ID of the node. |
 | Address | The `host:port` address of the node. |
-| Uptime  | The uptime of the node.              |
+| Uptime | The uptime of the node. |
 
 To add the **Nodes** widget:
 
@@ -74,15 +74,15 @@ There are three types of widgets: single value, chart, and table. A table and ch
 To add a widget to a tab:
 
 1. Click **Add widget**.
-2.  From the list that opens, select **Metrics (chart)**, **Metrics (table)**, or **Single value**.
+2. From the list that opens, select **Metrics (chart)**, **Metrics (table)**, or **Single value**.
 
-    The **Select metric** dialog opens.
+   The **Select metric** dialog opens.
 3. If the widget type you chose is **Single value**, select a node and a metric.
 4. If the widget type you chose is **Metrics (chart)** or **Metrics (table)**:
    1. On the **Basic view** tab of the dialog, select a metric.
-   2.  Optionally, to add multiple metrics to the chart or table, open the **Advanced view** tab and use the **Add metric** button for each new metric.
+   2. Optionally, to add multiple metrics to the chart or table, open the **Advanced view** tab and use the **Add metric** button for each new metric.
 
-       ![Advanced view](../../../.gitbook/assets/cc-gg9-advanced-view.png)
+      ![Advanced view](../../../.gitbook/assets/cc-gg9-advanced-view.png)
 5. Click **OK**.
 
 By default, the Metrics widgets are updated every 5 seconds.
@@ -93,39 +93,39 @@ GridGain 9 also provides monotonic rate metrics, which can be found among other 
 
 ![Search for rate metrics](../../../.gitbook/assets/cc-gg9-search_rate_metrics.png)
 
-| Metric name                                   | Description                                                             |
-| --------------------------------------------- | ----------------------------------------------------------------------- |
-| client.handler.BytesReceived rate             | The number of bytes received per second.                                |
-| client.handler.BytesSent rate                 | The number of bytes sent per second.                                    |
-| client.handler.ConnectionsInitiated rate      | The number of initiated connections per second.                         |
-| client.handler.RequestsProcessed rate         | The number of processed requests per second.                            |
-| client.handler.RequestsFailed rate            | The number of failed requests per second.                               |
-| client.handler.SessionsAccepted rate          | The number of accepted sessions per second.                             |
-| client.handler.SessionsRejected rate          | The number of rejected sessions per second.                             |
-| client.handler.SessionsRejectedTls rate       | The number of sessions rejected due to TLS handshake errors per second. |
-| client.handler.SessionsRejectedTimeout rate   | The number of sessions rejected due to timeout per second.              |
-| dcr.EntriesObserved rate                      | The number of entries received from the source cluster per second.      |
-| dcr.EntriesSent rate                          | The number of entries sent to receiver clusters per second.             |
-| expiration.TotalDeletedExpiredRowsCount rate  | The number of deleted expired rows per second.                          |
-| sql.queries.Canceled rate                     | The number of canceled queries per second.                              |
-| sql.queries.ExceededMemoryQuota rate          | The number of queries exceeding memory quota per second.                |
-| sql.queries.Failed rate                       | The number of failed queries per second.                                |
-| sql.queries.Succeeded rate                    | The number of successful queries per second.                            |
-| sql.queries.TimedOut rate                     | The number of queries that failed due to timeout per second.            |
-| sql.offloading.TotalOffloadedQueries rate     | The number of queries spilled to disk per second.                       |
-| sql.offloading.TotalBytesRead rate            | The number of bytes read from disk by offloading per second.            |
-| sql.offloading.TotalBytesWritten rate         | The number of bytes written to disk by offloading per second.           |
-| sql.offloading.TotalWriteOperationsCount rate | The number of write operations performed by offloading per second.      |
-| sql.offloading.TotalReadOperationsCount rate  | The number of read operations performed by offloading per second.       |
-| tables.\*.\*.RwReads rate                     | The number of reads within read-write transactions per second.          |
-| tables.\*.\*.RoReads rate                     | The number of reads within read-only transactions per second.           |
-| tables.\*.\*.Writes rate                      | The number of write operations per second.                              |
-| transactions.RwCommits rate                   | The number of read-write transaction commits per second.                |
-| transactions.RoCommits rate                   | The number of read-only transaction commits per second.                 |
-| transactions.RwRollbacks rate                 | The number of read-write transaction rollbacks per second.              |
-| transactions.RoRollbacks rate                 | The number of read-only transaction rollbacks per second.               |
-| transactions.TotalCommits rate                | The number of transaction commits per second.                           |
-| transactions.TotalRollbacks rate              | The number of transaction rollbacks per second.                         |
+| Metric name | Description |
+|---|---|
+| client.handler.BytesReceived rate | The number of bytes received per second. |
+| client.handler.BytesSent rate | The number of bytes sent per second. |
+| client.handler.ConnectionsInitiated rate | The number of initiated connections per second. |
+| client.handler.RequestsProcessed rate | The number of processed requests per second. |
+| client.handler.RequestsFailed rate | The number of failed requests per second. |
+| client.handler.SessionsAccepted rate | The number of accepted sessions per second. |
+| client.handler.SessionsRejected rate | The number of rejected sessions per second. |
+| client.handler.SessionsRejectedTls rate | The number of sessions rejected due to TLS handshake errors per second. |
+| client.handler.SessionsRejectedTimeout rate | The number of sessions rejected due to timeout per second. |
+| dcr.EntriesObserved rate | The number of entries received from the source cluster per second. |
+| dcr.EntriesSent rate | The number of entries sent to receiver clusters per second. |
+| expiration.TotalDeletedExpiredRowsCount rate | The number of deleted expired rows per second. |
+| sql.queries.Canceled rate | The number of canceled queries per second. |
+| sql.queries.ExceededMemoryQuota rate | The number of queries exceeding memory quota per second. |
+| sql.queries.Failed rate | The number of failed queries per second. |
+| sql.queries.Succeeded rate | The number of successful queries per second. |
+| sql.queries.TimedOut rate | The number of queries that failed due to timeout per second. |
+| sql.offloading.TotalOffloadedQueries rate | The number of queries spilled to disk per second. |
+| sql.offloading.TotalBytesRead rate | The number of bytes read from disk by offloading per second. |
+| sql.offloading.TotalBytesWritten rate | The number of bytes written to disk by offloading per second. |
+| sql.offloading.TotalWriteOperationsCount rate | The number of write operations performed by offloading per second. |
+| sql.offloading.TotalReadOperationsCount rate | The number of read operations performed by offloading per second. |
+| tables.\*.\*.RwReads rate | The number of reads within read-write transactions per second. |
+| tables.\*.\*.RoReads rate | The number of reads within read-only transactions per second. |
+| tables.\*.\*.Writes rate | The number of write operations per second. |
+| transactions.RwCommits rate | The number of read-write transaction commits per second. |
+| transactions.RoCommits rate | The number of read-only transaction commits per second. |
+| transactions.RwRollbacks rate | The number of read-write transaction rollbacks per second. |
+| transactions.RoRollbacks rate | The number of read-only transaction rollbacks per second. |
+| transactions.TotalCommits rate | The number of transaction commits per second. |
+| transactions.TotalRollbacks rate | The number of transaction rollbacks per second. |
 
 ![Search for rate metrics](../../../.gitbook/assets/cc-gg9-rate_metrics_details.png)
 
@@ -158,9 +158,9 @@ The **Heat map** widget displays a selected metric in temperature-related colors
 To add the **Heat map** widget:
 
 1. Click **Add widget**.
-2.  From the list that opens, select **Heat map**.
+2. From the list that opens, select **Heat map**.
 
-    The **Select metric** dialog opens.
+   The **Select metric** dialog opens.
 3. Select a metric to display.
 4. Click **OK**.
 
@@ -174,16 +174,16 @@ Only `SELECT` SQL expressions are allowed.
 
 To add the widget:
 
-1.  From the **Add a widget** menu, select **SQL query**.
+1. From the **Add a widget** menu, select **SQL query**.
 
-    The **Edit widget** dialog opens.
+   The **Edit widget** dialog opens.
 
-    ![SQL Query](../../../.gitbook/assets/cc-gg9-sql_widget_query_1_gg9.png)
+   ![SQL Query](../../../.gitbook/assets/cc-gg9-sql_widget_query_1_gg9.png)
 2. From the **Limit rows** drop-down list, select the maximum number of rows for the query to return.
 3. From the **Update interval** drop-down list, select an interval for the query to run.
-4.  If you want your query to run on a system view table, on the **System view** tab, from the **System view table** drop-down list, select the required system view.
+4. If you want your query to run on a system view table, on the **System view** tab, from the **System view table** drop-down list, select the required system view.
 
-    ![System Views](../../../.gitbook/assets/cc-gg9-sql_widget_query_2_gg9.png)
+   ![System Views](../../../.gitbook/assets/cc-gg9-sql_widget_query_2_gg9.png)
 5. On the **Query** tab, enter the required SQL expression. Note that `FROM` and `LIMIT` values are automatically populated based on **Limit rows** and **System view table** if you defined them before.
 6. Click **OK**.
 
@@ -191,15 +191,15 @@ To add the widget:
 
 ### System View Widget
 
-This widget displays data from the selected _system view_ and refreshes it at the specified interval. Any updates in the underlying table will appear in the widget.
+This widget displays data from the selected *system view* and refreshes it at the specified interval. Any updates in the underlying table will appear in the widget.
 
 To add the widget:
 
-1.  From the **Add a widget** menu, select **System view**.
+1. From the **Add a widget** menu, select **System view**.
 
-    The **Edit widget** dialog opens to the **System view** tab.
+   The **Edit widget** dialog opens to the **System view** tab.
 
-    ![System Views](../../../.gitbook/assets/cc-gg9-sql_widget_query_2_gg9.png)
+   ![System Views](../../../.gitbook/assets/cc-gg9-sql_widget_query_2_gg9.png)
 2. From the **Limit rows** drop-down list, select the maximum number of rows to return.
 3. From the **Update interval** drop-down list, select an interval for the query to run.
 4. From the **System view table** drop-down list, select the required system view.
@@ -223,13 +223,13 @@ You can also cancel tasks that are in the `QUEUED` or `EXECUTING` status.
 
 #### Transactions System View
 
-Control Center supports terminating transactions on the cluster through the Transactions _system view_ widget.
+Control Center supports terminating transactions on the cluster through the Transactions *system view* widget.
 
 ![TX View](../../../.gitbook/assets/cc-gg9-tx_view_actions_gg9.png)
 
 ### DCR Topology Widget
 
-The DCR Topology widget displays the [data replication](../dcr.md) topology of the current cluster.
+The DCR Topology widget displays the [data replication](../dcr/dcr.md) topology of the current cluster.
 
 ![DCR Topology](../../../.gitbook/assets/cc-gg9-dcr_gg9_topology.png)
 
@@ -247,9 +247,9 @@ To change the name of a widget:
 
 To edit a gauge or heat map widget:
 
-1.  Open the widget's context menu.
+1. Open the widget's context menu.
 
-    ![Edit Gauge or Heat Map](../../../.gitbook/assets/cc-gg8-widget-edit-1.png)
+   ![Edit Gauge or Heat Map](../../../.gitbook/assets/cc-gg8-widget-edit-1.png)
 2. To change the static Min and/or Max value(s):
    1. Make sure the selector to the right of the **Min** and/or **Max** field(s) is on "value" (rather than "metric").
    2. Edit the value(s) in the **Min** and/or **Max** field(s).
@@ -274,9 +274,9 @@ To edit the SQL Query or System View widget:
 
 To edit all other widgets (except gauge and heat map):
 
-1.  Open the widget's context menu.
+1. Open the widget's context menu.
 
-    ![Edit Chart](../../../.gitbook/assets/cc-gg8-widget-edit-2.png)
+   ![Edit Chart](../../../.gitbook/assets/cc-gg8-widget-edit-2.png)
 2. For Chart widgets, to show the widget's legend (included metrics and their colors), toggle on **Show legend**.
 3. To select another metric(s) to be displayed in the widget, select **Select metric(s)**, then proceed as you would when adding a new widget.
 

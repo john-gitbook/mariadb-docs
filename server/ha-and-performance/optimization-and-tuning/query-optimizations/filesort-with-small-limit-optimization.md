@@ -1,7 +1,7 @@
 ---
 description: >-
-  The filesort optimization that uses a priority queue when sorting with a small
-  LIMIT.
+  The filesort optimization that uses a priority queue when sorting with a
+  small LIMIT.
 ---
 
 # Filesort with Small LIMIT Optimization
@@ -18,11 +18,11 @@ There are two ways to check whether filesort has used a priority queue.
 
 ### Status Variable
 
-The first way is to check the [Sort\_priority\_queue\_sorts](../../../server-management/variables-and-modes/server-status-variables.md#sort_priority_queue_sorts) status variable. It shows the number of times that sorting was done through a priority queue. Every such sort is also counted by [Sort\_range](../../../server-management/variables-and-modes/server-status-variables.md#sort_range) or [Sort\_scan](../../../server-management/variables-and-modes/server-status-variables.md#sort_scan), so the total number of sorts is the sum of `Sort_range` and `Sort_scan` alone — adding `Sort_priority_queue_sorts` counts those sorts twice.
+The first way is to check the [Sort\_priority\_queue\_sorts](../system-variables/server-status-variables.md#sort_priority_queue_sorts) status variable. It shows the number of times that sorting was done through a priority queue. Every such sort is also counted by [Sort\_range](../system-variables/server-status-variables.md#sort_range) or [Sort\_scan](../system-variables/server-status-variables.md#sort_scan), so the total number of sorts is the sum of `Sort_range` and `Sort_scan` alone — adding `Sort_priority_queue_sorts` counts those sorts twice.
 
 ### Slow Query Log
 
-The second way is to check the slow query log. When one uses [Extended statistics in the slow query log](statistics-for-optimizing-queries/slow-query-log-extended-statistics.md) and specifies [log\_slow\_verbosity=query\_plan](../../../server-management/variables-and-modes/server-system-variables.md#log_slow_verbosity), [slow query log](../../../server-management/server-monitoring-logs/slow-query-log/) entries look like this
+The second way is to check the slow query log. When one uses [Extended statistics in the slow query log](statistics-for-optimizing-queries/slow-query-log-extended-statistics.md) and specifies [log\_slow\_verbosity=query\_plan](../system-variables/server-system-variables.md#log_slow_verbosity), [slow query log](../../../server-management/server-monitoring-logs/slow-query-log/) entries look like this
 
 ```sql
 # Time: 140714 18:30:39

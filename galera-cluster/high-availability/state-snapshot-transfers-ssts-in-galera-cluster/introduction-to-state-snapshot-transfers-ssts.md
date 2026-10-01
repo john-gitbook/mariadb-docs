@@ -43,7 +43,7 @@ MariaDB Galera Cluster comes with the following built-in SST methods:
 This SST method uses the [mariadb-backup](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/backup-and-restore/mariadb-backup) utility for performing SSTs. It is one of the two non-locking methods. This is the recommended SST method if you require the ability to run queries on the donor node during the SST. Note that if you use the `mariadb-backup` SST method, then you also need to have `socat` installed on the server. This is needed to stream the backup from the donor to the joiner. This is a limitation inherited from the `xtrabackup-v2` SST method.
 
 * This SST method supports [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid)
-* This SST method supports [Data at Rest Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
+* This SST method supports [Data at Rest Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
 * This SST method is available from [MariaDB 10.1.26](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.26) and [MariaDB 10.2.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.10).
 
 With this SST method, it is impossible to upgrade the cluster between some major versions; see [MDEV-27437](https://jira.mariadb.org/browse/MDEV-27437).
@@ -57,13 +57,13 @@ See [mariadb-backup SST method](mariadb-backup-sst-method.md) for more informati
 The `rsync` method runs `rsync` in `--whole-file` mode, assuming that nodes are connected by fast local network links so that the default delta transfer mode would consume more processing time than it may save on data transfer bandwidth. When having a distributed cluster with slow links between nodes, the `rsync_wan` method runs `rsync` in the default delta transfer mode, which may reduce data transfer time substantially when an older datadir state is already present on the joiner node. Both methods are actually implemented by the same script, `wsrep_sst_rsync_wan` is just a symlink to the `wsrep_sst_rsync` script and the actual `rsync` mode to use is determined by the name the script was called by.
 
 * This SST method supports [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid)
-* This SST method supports [Data at Rest Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
+* This SST method supports [Data at Rest Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
 
 The rsync SST method does not support tables created with the [DATA DIRECTORY or INDEX DIRECTORY](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/create-table#data-directory-index-directory) clause. Use the [mariadb-backup SST method](mariadb-backup-sst-method.md) as an alternative to support this feature.
 
-When using the mariadb-backup SST method with tables that contain a `DATA DIRECTORY` clause, ensure the joiner node has enough disk space to stage the entire SST payload, including data files located outside of `datadir`. The SST will fail if there is insufficient free space in the `datadir`.
+When using the mariadb-backup SST method with tables that contain a `DATA DIRECTORY` clause, ensure the joiner node has enough disk space to stage the entire SST payload, including data files located outside of `datadir`. The SST will fail if there is insufficient free space in the `datadir`.&#x20;
 
-Starting with MariaDB 13.0, the SST staging area can be moved to a different filesystem with enough space by configuring `wsrep_sst_tmp_dir` system variable. See [mariadb-backup SST method](mariadb-backup-sst-method.md).
+Starting with MariaDB 13.0, the SST staging area can be moved to a different filesystem with enough space by configuring `wsrep_sst_tmp_dir` system variable. See [mariadb-backup SST method](mariadb-backup-sst-method.md).&#x20;
 
 **Note**: This behavior, along with the `wsrep_sst_tmp_dir` variable, applies only when `wsrep_sst_method=mariabackup`**.** The `rsync` SST method does not support `DATA DIRECTORY` tables.
 
@@ -106,7 +106,7 @@ You also need to run the certificate directory through [openssl rehash](mariadb-
 This SST method runs mysqldump on the donor node and pipes the output to the [mariadb](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/clients-and-utilities/mariadb-client) client connected to the joiner node. The `mysqldump` SST method needs a username/password pair set in the [wsrep\_sst\_auth](../../reference/galera-cluster-system-variables.md#wsrep_sst_auth) variable in order to get the dump. The donor node is blocked with a read lock during the SST. This is the slowest SST method.
 
 * This SST method supports [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid).
-* This SST method supports [Data at Rest Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
+* This SST method supports [Data at Rest Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
 
 ### xtrabackup-v2
 
@@ -115,7 +115,7 @@ Percona XtraBackup is **not supported** in MariaDB. [mariadb-backup](https://app
 This SST method uses the Percona XtraBackup utility for performing SSTs. It is one of the two non-blocking methods. Note that if you use the `xtrabackup-v2` SST method, you also need to have `socat` installed on the server. Since Percona XtraBackup is a third-party product, this SST method requires an additional installation and some additional configuration. Please refer to [Percona's xtrabackup SST documentation](https://www.percona.com/doc/percona-xtradb-cluster/5.7/manual/xtrabackup_sst.html) for information from the vendor.
 
 * This SST method does **not** support [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid)
-* This SST method does **not** support [Data at Rest Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
+* This SST method does **not** support [Data at Rest Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
 
 This SST method is available from MariaDB Galera Cluster 5.5.37 and MariaDB Galera Cluster 10.0.10.
 
@@ -128,7 +128,7 @@ Percona XtraBackup is **not supported** in MariaDB. [mariadb-backup](https://app
 This SST method is an older SST method that uses the Percona XtraBackup utility for performing SSTs. The `xtrabackup-v2` SST method should be used instead of the `xtrabackup` SST method starting from [MariaDB 5.5.33](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/5.5.33).
 
 * This SST method does **not** support [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid)
-* This SST method does **not** support [Data at Rest Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
+* This SST method does **not** support [Data at Rest Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
 
 ## Authentication
 
@@ -194,13 +194,13 @@ Restarting a node after a `mysqldump` SST failure may require manual restoration
 
 ## SSTs and Data at Rest Encryption
 
-Look at the description of each SST method to determine which methods support [Data at Rest Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
+Look at the description of each SST method to determine which methods support [Data at Rest Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals).
 
-For logical SST methods like `mysqldump`, each node should be able to have different [encryption keys](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals). For physical SST methods, all nodes need to have the same [encryption keys](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals), since the donor node will copy encrypted data files to the joiner node, and the joiner node will need to be able to decrypt them.
+For logical SST methods like `mysqldump`, each node should be able to have different [encryption keys](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals). For physical SST methods, all nodes need to have the same [encryption keys](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals), since the donor node will copy encrypted data files to the joiner node, and the joiner node will need to be able to decrypt them.
 
 ## Certificate Requirements for TLS
 
-During an SST or IST, the donor node connects _to_ the joiner node. Each node therefore acts as both a TLS server and a TLS client at different times, so a node certificate that sets an Extended Key Usage (EKU) extension must include **both** the `serverAuth` and `clientAuth` values (certificates with no EKU extension also work). Certificates issued from a web-server template (which restrict EKU to `serverAuth` only) cause the TLS handshake to abort during state transfer, even when replication itself works. For details, see [Choosing a Certificate Authority for Galera Cluster](../../galera-security/choosing-a-certificate-authority-for-galera-cluster.md).
+During an SST or IST, the donor node connects *to* the joiner node. Each node therefore acts as both a TLS server and a TLS client at different times, so a node certificate that sets an Extended Key Usage (EKU) extension must include **both** the `serverAuth` and `clientAuth` values (certificates with no EKU extension also work). Certificates issued from a web-server template (which restrict EKU to `serverAuth` only) cause the TLS handshake to abort during state transfer, even when replication itself works. For details, see [Choosing a Certificate Authority for Galera Cluster](../../galera-security/choosing-a-certificate-authority-for-galera-cluster.md).
 
 ## Minimal Cluster Size
 

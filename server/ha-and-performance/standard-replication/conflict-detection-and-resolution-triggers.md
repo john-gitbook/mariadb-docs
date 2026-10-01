@@ -450,7 +450,7 @@ CDR is especially useful in multi-primary and [ring](multi-master-ring-replicati
 * **Define triggers on servers that act as replicas.** A server that only acts as a primary does not need CDR triggers — a CDR trigger only fires on a replica's applier thread. For topologies where every server accepts writes, see [Using CDR in Multi-Writer Topologies](conflict-detection-and-resolution-triggers.md#using-cdr-in-multi-writer-topologies).
 * **You can write to other tables.** The `NEW`/`OLD`/`ORG` accessors act on the conflicting table, but the trigger body may run DML against other tables (for example, an audit or exception log). Keep this lightweight — it runs inline on the applier thread.
 * **Monitor the SQL thread.** A `51CDR` halt, an unhandled trigger error, or a before-image mismatch (error 6001) stops the SQL thread. Watch `Last_SQL_Errno` and `Last_SQL_Error` in [SHOW REPLICA STATUS](../../reference/sql-statements/administrative-sql-statements/show/show-replica-status.md).
-* **The** [**Executed\_triggers**](../../server-management/variables-and-modes/server-status-variables.md#executed_triggers) **status variable** increments for each trigger invocation (CDR triggers included), which is useful for confirming the feature is firing.
+* **The** [**Executed\_triggers**](../optimization-and-tuning/system-variables/server-status-variables.md#executed_triggers) **status variable** increments for each trigger invocation (CDR triggers included), which is useful for confirming the feature is firing.
 
 ## Limitations and Beta Caveats
 

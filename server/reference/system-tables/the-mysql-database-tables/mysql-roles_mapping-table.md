@@ -21,7 +21,7 @@ The `mysql.roles_mapping` table contains the following fields:
 | Role          | char(80)      | NO   | PRI |         | Role (together with Host and User makes up the unique identifier for this record.                                                                 |
 | Admin\_option | enum('N','Y') | NO   |     | N       | Whether the role can be granted (see the [CREATE ROLE](../../sql-statements/account-management-sql-statements/create-role.md) WITH ADMIN clause). |
 
-The [Acl\_role\_grants](../../../server-management/variables-and-modes/server-status-variables.md#acl_role_grants) status variable indicates how many rows the `mysql.roles_mapping` table contains.
+The [Acl\_role\_grants](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#acl_role_grants) status variable indicates how many rows the `mysql.roles_mapping` table contains.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

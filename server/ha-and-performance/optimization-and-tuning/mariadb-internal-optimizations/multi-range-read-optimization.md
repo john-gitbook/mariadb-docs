@@ -229,11 +229,21 @@ possible_keys: key1
 
 ### Why a Clustered Primary Key Uses Key-Ordered, Not Rowid-Ordered, Scan
 
-For InnoDB, the clustered primary key _is_ the table, so sorting lookup keys and sorting rowids look like the same operation. `EXPLAIN` nonetheless reports only `Key-ordered scan` for a scan of the clustered primary key, never `Rowid-ordered scan`.
+For InnoDB, the clustered primary key *is* the table, so sorting lookup keys and sorting rowids
+look like the same operation. `EXPLAIN` nonetheless reports only `Key-ordered scan` for a scan of
+the clustered primary key, never `Rowid-ordered scan`.
 
-The reason is that for a clustered primary key the key already **is** the row's physical location. Once the lookup keys are sorted, the table accesses are in physical order, and there is no separate rowid left to collect and sort — gathering rowids would only re-sort the same values in a second pass. So MRR sorts the keys and deliberately skips the rowid-sorting step.
+The reason is that for a clustered primary key the key already **is** the row's physical location.
+Once the lookup keys are sorted, the table accesses are in physical order, and there is no separate
+rowid left to collect and sort — gathering rowids would only re-sort the same values in a second
+pass. So MRR sorts the keys and deliberately skips the rowid-sorting step.
 
-MariaDB implements this as a distinct DS-MRR/CPK strategy, which applies when the index is the clustering key, the lookups are single-point (as they are for `ref` access and [Batched Key Access](../query-optimizer/block-based-join-algorithms.md#batch-key-access-join)), and `mrr_sort_keys=on`. In that case key sorting is switched on and rowid sorting is explicitly left off; for a range scan on the clustered primary key, DS-MRR is not used at all, since the index scan already returns rows in physical order.
+MariaDB implements this as a distinct DS-MRR/CPK strategy, which applies when the index is the
+clustering key, the lookups are single-point (as they are for `ref` access and
+[Batched Key Access](../query-optimizer/block-based-join-algorithms.md#batch-key-access-join)), and
+`mrr_sort_keys=on`. In that case key sorting is switched on and rowid sorting is explicitly left
+off; for a range scan on the clustered primary key, DS-MRR is not used at all, since the index scan
+already returns rows in physical order.
 
 ## Buffer Space Management
 
@@ -241,30 +251,30 @@ As was shown above, Multi Range Read requires sort buffers to operate. The size 
 
 ### Range Access
 
-When MRR is used for `range` access, the size of its buffer is controlled by the [mrr\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size) system variable. Its value specifies how much space can be used for each table. For example, if there is a query which is a 10-way join and MRR is used for each table, `10*@@mrr_buffer_size` bytes may be used.
+When MRR is used for `range` access, the size of its buffer is controlled by the [mrr\_buffer\_size](../system-variables/server-system-variables.md#mrr_buffer_size) system variable. Its value specifies how much space can be used for each table. For example, if there is a query which is a 10-way join and MRR is used for each table, `10*@@mrr_buffer_size` bytes may be used.
 
 ### Batched Key Access
 
 When Multi Range Read is used by Batched Key Access, then buffer space is managed by BKA code, which will automatically provide a part of its buffer space to MRR. You can control the amount of space used by BKA by setting
 
-* [join\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_size) to limit how much memory BKA uses for each table, and
-* [join\_buffer\_space\_limit](../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_space_limit) to limit the total amount of memory used by BKA in the join.
+* [join\_buffer\_size](../system-variables/server-system-variables.md#join_buffer_size) to limit how much memory BKA uses for each table, and
+* [join\_buffer\_space\_limit](../system-variables/server-system-variables.md#join_buffer_space_limit) to limit the total amount of memory used by BKA in the join.
 
 ## Status Variables
 
 There are three status variables related to Multi Range Read:
 
-| Variable name                                                                                                                       | Meaning                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [Handler\_mrr\_init](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_init)                    | Counts how many Multi Range Read scans were performed                     |
-| [Handler\_mrr\_key\_refills](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_key_refills)     | Number of times key buffer was refilled (not counting the initial fill)   |
-| [Handler\_mrr\_rowid\_refills](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_rowid_refills) | Number of times rowid buffer was refilled (not counting the initial fill) |
+| Variable name                                                                                            | Meaning                                                                   |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [Handler\_mrr\_init](../system-variables/server-status-variables.md#handler_mrr_init)                    | Counts how many Multi Range Read scans were performed                     |
+| [Handler\_mrr\_key\_refills](../system-variables/server-status-variables.md#handler_mrr_key_refills)     | Number of times key buffer was refilled (not counting the initial fill)   |
+| [Handler\_mrr\_rowid\_refills](../system-variables/server-status-variables.md#handler_mrr_rowid_refills) | Number of times rowid buffer was refilled (not counting the initial fill) |
 
-Non-zero values of `Handler_mrr_key_refills` and/or `Handler_mrr_rowid_refills` mean that Multi Range Read scan did not have enough memory and had to do multiple key/rowid sort-and-sweep passes. The greatest speedup is achieved when Multi Range Read runs everything in one pass, if you see lots of refills it may be beneficial to increase sizes of relevant buffers [mrr\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size) [join\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_size) and [join\_buffer\_space\_limit](../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_space_limit)
+Non-zero values of `Handler_mrr_key_refills` and/or `Handler_mrr_rowid_refills` mean that Multi Range Read scan did not have enough memory and had to do multiple key/rowid sort-and-sweep passes. The greatest speedup is achieved when Multi Range Read runs everything in one pass, if you see lots of refills it may be beneficial to increase sizes of relevant buffers [mrr\_buffer\_size](../system-variables/server-system-variables.md#mrr_buffer_size) [join\_buffer\_size](../system-variables/server-system-variables.md#join_buffer_size) and [join\_buffer\_space\_limit](../system-variables/server-system-variables.md#join_buffer_space_limit)
 
 ### Effect on Other Status Variables
 
-When a Multi Range Read scan makes an index lookup (or some other "basic" operation), the counter of the "basic" operation, e.g. [Handler\_read\_key](../../../server-management/variables-and-modes/server-status-variables.md#handler_read_key), will also be incremented. This way, you can still see total number of index accesses, including those made by MRR. [Per-user/table/index statistics](../query-optimizations/statistics-for-optimizing-queries/user-statistics.md) counters also include the row reads made by Multi Range Read scans.
+When a Multi Range Read scan makes an index lookup (or some other "basic" operation), the counter of the "basic" operation, e.g. [Handler\_read\_key](../system-variables/server-status-variables.md#handler_read_key), will also be incremented. This way, you can still see total number of index accesses, including those made by MRR. [Per-user/table/index statistics](../query-optimizations/statistics-for-optimizing-queries/user-statistics.md) counters also include the row reads made by Multi Range Read scans.
 
 ### Why Using Multi Range Read Can Cause Higher Values in Status Variables
 
@@ -278,7 +288,7 @@ Multi Range Read will make separate calls for steps #1 and #2, causing TWO incre
 
 ## Tuning `mrr_buffer_size`
 
-Multi Range Read only pays off when it can sort a whole batch of row references in one pass, so [mrr\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size) is a workload-dependent setting rather than a value to raise across the board. Before increasing it, confirm that the affected query actually uses MRR, that the buffer really is the limiting factor, and that the server has the memory headroom for the larger allocation at the concurrency the workload runs at.
+Multi Range Read only pays off when it can sort a whole batch of row references in one pass, so [mrr\_buffer\_size](../system-variables/server-system-variables.md#mrr_buffer_size) is a workload-dependent setting rather than a value to raise across the board. Before increasing it, confirm that the affected query actually uses MRR, that the buffer really is the limiting factor, and that the server has the memory headroom for the larger allocation at the concurrency the workload runs at.
 
 ### Tuning Decision Flow
 
@@ -351,7 +361,7 @@ _Part 2: keep a workload-specific gain at session level; a global change is the 
 
 ### Check That MRR Is Enabled
 
-MRR is **off by default**: `mrr`, `mrr_sort_keys`, and `mrr_cost_based` are all absent from the default [optimizer\_switch](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch). Check the current setting before anything else:
+MRR is **off by default**: `mrr`, `mrr_sort_keys`, and `mrr_cost_based` are all absent from the default [optimizer\_switch](../system-variables/server-system-variables.md#optimizer_switch). Check the current setting before anything else:
 
 ```sql
 SELECT @@optimizer_switch, @@mrr_buffer_size;
@@ -411,7 +421,7 @@ EXPLAIN FORMAT=JSON SELECT COUNT(filler) FROM tbl WHERE key1 BETWEEN 1000 AND 80
 }
 ```
 
-The plan is only a prediction. [Handler\_mrr\_init](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_init) tells you whether MRR actually ran:
+The plan is only a prediction. [Handler\_mrr\_init](../system-variables/server-status-variables.md#handler_mrr_init) tells you whether MRR actually ran:
 
 ```sql
 FLUSH STATUS;
@@ -427,12 +437,12 @@ SHOW STATUS LIKE 'Handler_mrr_init';
 If `Handler_mrr_init` stays at zero, MRR did not run and `mrr_buffer_size` has no effect on the query.
 
 {% hint style="info" %}
-MariaDB never prints `Using MRR` — that is the MySQL wording. MariaDB shows `Rowid-ordered scan`, `Key-ordered scan`, or `Key-ordered Rowid-ordered scan`. The fields `using_mrr` and `rowid_ordered` come from [Optimizer Trace](../query-optimizer/optimizer-trace/), not from `EXPLAIN FORMAT=JSON`.
+MariaDB never prints `Using MRR` — that is the MySQL wording. MariaDB shows `Rowid-ordered scan`, `Key-ordered scan`, or `Key-ordered Rowid-ordered scan`. The fields `using_mrr` and `rowid_ordered` come from [Optimizer Trace](../query-optimizer/optimizer-trace/README.md), not from `EXPLAIN FORMAT=JSON`.
 {% endhint %}
 
 ### Confirm That the Buffer Is the Limiting Factor
 
-This is the measurement that decides whether raising `mrr_buffer_size` can help at all. When a scan does not fit in the buffer, MRR breaks it into several sort-and-sweep passes and counts each refill in [Handler\_mrr\_key\_refills](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_key_refills) and [Handler\_mrr\_rowid\_refills](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_rowid_refills).
+This is the measurement that decides whether raising `mrr_buffer_size` can help at all. When a scan does not fit in the buffer, MRR breaks it into several sort-and-sweep passes and counts each refill in [Handler\_mrr\_key\_refills](../system-variables/server-status-variables.md#handler_mrr_key_refills) and [Handler\_mrr\_rowid\_refills](../system-variables/server-status-variables.md#handler_mrr_rowid_refills).
 
 With the buffer at its 8 KB minimum, a 7,000-row range scan needs four passes:
 
@@ -529,10 +539,10 @@ An improvement seen by one application is not a reason to make that value global
 
 The two use different buffers, and tuning the wrong one has no effect:
 
-| Access pattern                                                                                                                       | Buffer controlled by                                                                                                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MRR for `range` access                                                                                                               | [mrr\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size)                                                                                                                                       |
-| MRR under [Batched Key Access](../query-optimizer/block-based-join-algorithms.md#batch-key-access-join) for `ref` and `eq_ref` joins | [join\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_size) and [join\_buffer\_space\_limit](../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_space_limit) |
+| Access pattern | Buffer controlled by |
+| -------------- | -------------------- |
+| MRR for `range` access | [mrr\_buffer\_size](../system-variables/server-system-variables.md#mrr_buffer_size) |
+| MRR under [Batched Key Access](../query-optimizer/block-based-join-algorithms.md#batch-key-access-join) for `ref` and `eq_ref` joins | [join\_buffer\_size](../system-variables/server-system-variables.md#join_buffer_size) and [join\_buffer\_space\_limit](../system-variables/server-system-variables.md#join_buffer_space_limit) |
 
 A slow join that uses index lookups is a BKA question, not an `mrr_buffer_size` one. And in either case, a larger buffer is not a substitute for fixing the query, the indexes, or the optimizer statistics.
 
@@ -549,7 +559,7 @@ In short: confirm MRR is used by the affected query, confirm the refill counters
 * There are two strategies, and you can tell which one is used by checking the `Extra` column in `EXPLAIN` output:
   * Rowid-ordered scan
   * Key-ordered scan
-* All three MRR [optimizer\_switch](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) flags are off by default, and you can switch them ON:
+* All three MRR [optimizer\_switch](../system-variables/server-system-variables.md#optimizer_switch) flags are off by default, and you can switch them ON:
   * `mrr=on` - enable MRR and rowid ordered scans
   * `mrr_sort_keys=on` - enable Key-ordered scans (you must also set `mrr=on` for this to have any effect)
   * `mrr_cost_based=on` - enable cost-based choice whether to use MRR. Not recommended, because the cost model is not sufficiently tuned.
@@ -561,8 +571,8 @@ In short: confirm MRR is used by the affected query, confirm the refill counters
   * `Rowid-ordered scan`
   * `Key-ordered scan`
   * `Key-ordered Rowid-ordered scan`
-* MariaDB uses [mrr\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#mrr_buffer_size) as a limit of MRR buffer size for `range` access, while MySQL uses [read\_rnd\_buffer\_size](../../../server-management/variables-and-modes/server-system-variables.md#read_rnd_buffer_size).
-* MariaDB has three MRR counters: [Handler\_mrr\_init](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_init), [Handler\_mrr\_key\_refills](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_key_refills), and [Handler\_mrr\_rowid\_refills](../../../server-management/variables-and-modes/server-status-variables.md#handler_mrr_rowid_refills), while MySQL has only `Handler_mrr_init`, and it will only count MRR scans that were used by BKA. MRR scans used by range access are not counted.
+* MariaDB uses [mrr\_buffer\_size](../system-variables/server-system-variables.md#mrr_buffer_size) as a limit of MRR buffer size for `range` access, while MySQL uses [read\_rnd\_buffer\_size](../system-variables/server-system-variables.md#read_rnd_buffer_size).
+* MariaDB has three MRR counters: [Handler\_mrr\_init](../system-variables/server-status-variables.md#handler_mrr_init), [Handler\_mrr\_key\_refills](../system-variables/server-status-variables.md#handler_mrr_key_refills), and [Handler\_mrr\_rowid\_refills](../system-variables/server-status-variables.md#handler_mrr_rowid_refills), while MySQL has only `Handler_mrr_init`, and it will only count MRR scans that were used by BKA. MRR scans used by range access are not counted.
 
 ##
 

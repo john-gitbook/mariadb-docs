@@ -23,13 +23,13 @@ Alternatively, MariaDB Enterprise Server can use [sequences](../../reference/sql
 
 When designing a schema, `AUTO_INCREMENT` columns should use integer data types. The following types can be used:
 
-| Data Type                                                               | Signed Range                               | Unsigned Range           |
-| ----------------------------------------------------------------------- | ------------------------------------------ | ------------------------ |
-| [TINYINT](../../reference/data-types/numeric-data-types/tinyint.md)     | -128 - 127                                 | 0 - 255                  |
-| [SMALLINT](../../reference/data-types/numeric-data-types/smallint.md)   | -32768 - 32767                             | 0 - 65535                |
-| [MEDIUMINT](../../reference/data-types/numeric-data-types/mediumint.md) | -8388608 - 8388607                         | 0 - 16777215             |
-| [INT](../../reference/data-types/numeric-data-types/int.md)             | -2147483648 - 2147483647                   | 0 - 4294967295           |
-| [BIGINT](../../reference/data-types/numeric-data-types/bigint.md)       | -9223372036854775808 - 9223372036854775807 | 0 - 18446744073709551615 |
+| Data Type                                                                                                                                                                                            | Signed Range                               | Unsigned Range           |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------ |
+| [TINYINT](../../reference/data-types/numeric-data-types/tinyint.md)                                                                                                                                  | -128 - 127                                 | 0 - 255                  |
+| [SMALLINT](../../reference/data-types/numeric-data-types/smallint.md)                                                                                                                                | -32768 - 32767                             | 0 - 65535                |
+| [MEDIUMINT](../../reference/data-types/numeric-data-types/mediumint.md)                                                                                                                              | -8388608 - 8388607                         | 0 - 16777215             |
+| [INT](../../reference/data-types/numeric-data-types/int.md)       | -2147483648 - 2147483647                   | 0 - 4294967295           |
+| [BIGINT](../../reference/data-types/numeric-data-types/bigint.md) | -9223372036854775808 - 9223372036854775807 | 0 - 18446744073709551615 |
 
 To determine which type to use, consider the following points:
 
@@ -41,19 +41,19 @@ InnoDB can't generate negative `AUTO_INCREMENT` values, so it is only beneficial
 
 If your `AUTO_INCREMENT` column is being used as the table's primary key, then the maximum value for the chosen data type should be considered the maximum number of rows that can fit in the table:
 
-| Data Type                                                               | Signed Range        | Unsigned Range       |
-| ----------------------------------------------------------------------- | ------------------- | -------------------- |
-| [TINYINT](../../reference/data-types/numeric-data-types/tinyint.md)     | 127                 | 255                  |
-| [SMALLINT](../../reference/data-types/numeric-data-types/smallint.md)   | 32767               | 65535                |
-| [MEDIUMINT](../../reference/data-types/numeric-data-types/mediumint.md) | 8388607             | 16777215             |
-| [INT](../../reference/data-types/numeric-data-types/int.md)             | 2147483647          | 4294967295           |
-| [BIGINT](../../reference/data-types/numeric-data-types/bigint.md)       | 9223372036854775807 | 18446744073709551615 |
+| Data Type                                                                                                                                                                                            | Signed Range        | Unsigned Range       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------- |
+| [TINYINT](../../reference/data-types/numeric-data-types/tinyint.md)                                                                                                                                  | 127                 | 255                  |
+| [SMALLINT](../../reference/data-types/numeric-data-types/smallint.md)                                                                                                                                | 32767               | 65535                |
+| [MEDIUMINT](../../reference/data-types/numeric-data-types/mediumint.md)                                                                                                                              | 8388607             | 16777215             |
+| [INT](../../reference/data-types/numeric-data-types/int.md)       | 2147483647          | 4294967295           |
+| [BIGINT](../../reference/data-types/numeric-data-types/bigint.md) | 9223372036854775807 | 18446744073709551615 |
 
 If you want to give your table the most room to grow, then it would be best to choose BIGINT UNSIGNED.
 
 ## Creating an InnoDB Table with an AUTO\_INCREMENT Column
 
-Let's [create an InnoDB table with an AUTO\_INCREMENT column](auto_increment-constraints.md#creating-an-innodb-table-with-an-auto_increment-column) after confirming that the [default storage engine](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) is InnoDB:
+Let's [create an InnoDB table with an AUTO\_INCREMENT column](auto_increment-constraints.md#creating-an-innodb-table-with-an-auto_increment-column) after confirming that the [default storage engine](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) is InnoDB:
 
 1. Connect to the server using MariaDB Client:
 
@@ -61,7 +61,7 @@ Let's [create an InnoDB table with an AUTO\_INCREMENT column](auto_increment-con
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -82,7 +82,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
+4. Create the table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.invoices (

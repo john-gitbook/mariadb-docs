@@ -22,7 +22,7 @@ $ sudo systemctl stop mariadb
 
 Enterprise Server nodes require that you set the following system variables and options:
 
-<table><thead><tr><th width="231.7777099609375">System Variable/Option</th><th>Description</th></tr></thead><tbody><tr><td><a href="../../../server-management/variables-and-modes/server-system-variables.md#list-of-server-system-variables">bind_address</a></td><td>The network socket Enterprise Server listens on for incoming TCP/IP client connections. On Debian or Ubuntu, this system variable must be set to override the 127.0.0.1 default configuration.</td></tr><tr><td><a href="../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#log_bin">log_bin</a></td><td>Enables binary logging and sets the name of the binlog file.</td></tr><tr><td><a href="../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#server_id">server_id</a></td><td>Unique numeric identifier for each Enterprise Server node.</td></tr></tbody></table>
+<table><thead><tr><th width="231.7777099609375">System Variable/Option</th><th>Description</th></tr></thead><tbody><tr><td><a href="../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#list-of-server-system-variables">bind_address</a></td><td>The network socket Enterprise Server listens on for incoming TCP/IP client connections. On Debian or Ubuntu, this system variable must be set to override the 127.0.0.1 default configuration.</td></tr><tr><td><a href="../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#log_bin">log_bin</a></td><td>Enables binary logging and sets the name of the binlog file.</td></tr><tr><td><a href="../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#server_id">server_id</a></td><td>Unique numeric identifier for each Enterprise Server node.</td></tr></tbody></table>
 
 MariaDB Enterprise Server also supports group commit.
 
@@ -81,20 +81,20 @@ Confirm successful completion of the prepare operation.
 $ sudo rsync -av /data/backup/replica_backup 192.0.2.11:/data/backup/
 ```
 
-2. **On the replica server**, move the default [datadir](../../../server-management/variables-and-modes/server-system-variables.md#list-of-server-system-variables) to another location:
+2. **On the replica server**, move the default [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#list-of-server-system-variables) to another location:
 
 ```bash
 $ sudo mv /var/lib/mysql /var/lib/mysql_backup
 ```
 
-3. **On the replica server**, use [MariaDB Backup](../../../server-usage/backup-and-restore/mariadb-backup/mariadb-backup-overview.md) to restore the backup to the [datadir](../../../server-management/variables-and-modes/server-system-variables.md#datadir):
+3. **On the replica server**, use [MariaDB Backup](../../../server-usage/backup-and-restore/mariadb-backup/mariadb-backup-overview.md) to restore the backup to the [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir):
 
 ```bash
 $ sudo mariadb-backup --copy-back \
    --target-dir=/data/backup/replica_backup
 ```
 
-4. **On the replica server**, set the file permissions for the [datadir](../../../server-management/variables-and-modes/server-system-variables.md#list-of-server-system-variables):
+4. **On the replica server**, set the file permissions for the [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#list-of-server-system-variables):
 
 ```bash
 $ sudo chown -R mysql:mysql /var/lib/mysql

@@ -176,7 +176,7 @@ You can encrypt a number of database objects by setting the respective variables
 * InnoDB temporary files – [innodb\_encrypt\_temporary\_tables](../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_temporary_tables)\
   MariaDB creates temporary files on disk, for instance, files used for file sorts. It is recommended to encrypt those, too.
 * Aria user tables – [aria\_encrypt\_tables](../../../server-usage/storage-engines/aria/aria-system-variables.md#aria_encrypt_tables)
-* Aria temporary tables – [encrypt\_tmp\_disk\_tables](../../../server-management/variables-and-modes/server-system-variables.md#encrypt_tmp_disk_tables)
+* Aria temporary tables – [encrypt\_tmp\_disk\_tables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#encrypt_tmp_disk_tables)
 
 To configure global encryption for all of those objects, add this to your configuration file (for instance, `my.cnf`), then restart the server:
 
@@ -195,7 +195,7 @@ innodb_encryption_threads = 4
 {% endcode %}
 
 {% hint style="info" %}
-[innodb\_encryption\_threads](../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encryption_threads) deserves attention on an existing database. The settings above encrypt InnoDB tables that are _created_ from now on, but converting tables that already exist is the job of the background encryption threads. The variable defaults to `0`, meaning no threads run, so without it your existing tables stay unencrypted and the next step has no progress to report.
+[innodb\_encryption\_threads](../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encryption_threads) deserves attention on an existing database. The settings above encrypt InnoDB tables that are *created* from now on, but converting tables that already exist is the job of the background encryption threads. The variable defaults to `0`, meaning no threads run, so without it your existing tables stay unencrypted and the next step has no progress to report.
 
 The same applies in reverse when you disable encryption: the threads are what decrypt existing tables. For details, see [InnoDB Background Encryption Threads](innodb-encryption/innodb-background-encryption-threads.md).
 {% endhint %}

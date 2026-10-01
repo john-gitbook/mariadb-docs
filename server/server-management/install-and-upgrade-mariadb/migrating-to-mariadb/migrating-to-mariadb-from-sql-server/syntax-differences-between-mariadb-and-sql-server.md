@@ -112,7 +112,7 @@ In MariaDB, most [names](../../../../reference/sql-structure/sql-language-struct
 
 By default, MariaDB names are case-sensitive if the operating system has case-sensitive file names (Linux), and case-insensitive if the operating system is case-insensitive (Windows). SQL Server is case-insensitive by default on all operating systems.
 
-When migrating a SQL Server database to MariaDB on Linux, to avoid problems, you may want to set the [lower\_case\_table\_names](../../../variables-and-modes/server-system-variables.md#lower_case_table_names) system variable to 1, making table names, database names, and aliases case-insensitive.
+When migrating a SQL Server database to MariaDB on Linux, to avoid problems, you may want to set the [lower\_case\_table\_names](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lower_case_table_names) system variable to 1, making table names, database names, and aliases case-insensitive.
 
 Names can be quoted inside backtick characters (\`\`\`). This character can be used in names, in which case it should be doubled. By default, this is the only way to quote names.
 
@@ -218,7 +218,7 @@ SELECT TABLE_SCHEMA, TABLE_NAME
 
 ### SHOW CREATE Statements
 
-In general, for each `CREATE` statement, MariaDB also supports a `SHOW CREATE` statement. For example, there is a [SHOW CREATE TABLE](../../../../reference/sql-statements/administrative-sql-statements/show/show-create-table.md) that returns the [CREATE TABLE](../../../../server-usage/tables/create-table.md) statement that can be used to recreate a table.
+In general, for each `CREATE` statement, MariaDB also supports a `SHOW CREATE` statement. For example, there is a [SHOW CREATE TABLE](../../../../reference/sql-statements/administrative-sql-statements/show/show-create-table.md) that returns the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement that can be used to recreate a table.
 
 Though SQL Server has no way to show the DDL statement to recreate an object, `SHOW CREATE` statements are functionally similar to `sp_helptext()`.
 

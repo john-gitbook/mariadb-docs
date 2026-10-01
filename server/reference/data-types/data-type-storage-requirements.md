@@ -87,7 +87,7 @@ Assuming a single-byte character-set:
 
 ### Microseconds
 
-MariaDB defaults to the MySQL format (by means of the [mysql56\_temporal\_format](../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) variable). Microseconds have the following additional storage requirements:
+MariaDB defaults to the MySQL format (by means of the [mysql56\_temporal\_format](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) variable). Microseconds have the following additional storage requirements:
 
 | Precision | Storage Requirement |
 | --------- | ------------------- |

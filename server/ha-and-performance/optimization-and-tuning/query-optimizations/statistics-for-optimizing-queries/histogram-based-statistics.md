@@ -43,17 +43,17 @@ There are a number of system variables that affect histograms.
 
 ### histogram\_size
 
-The [histogram\_size](../../../../server-management/variables-and-modes/server-system-variables.md#histogram_size) variable determines the size, in bytes, from 0 to 255, used for a histogram. This is effectively the number of bins for `histogram_type=SINGLE_PREC_HB` or number of bins/2 for `histogram_type=DOUBLE_PREC_HB`. If it is set to 0 (the default for [MariaDB 10.4.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.2) and below), no histograms are created when running an [ANALYZE TABLE](../../../../reference/sql-statements/table-statements/analyze-table.md).
+The [histogram\_size](../../system-variables/server-system-variables.md#histogram_size) variable determines the size, in bytes, from 0 to 255, used for a histogram. This is effectively the number of bins for `histogram_type=SINGLE_PREC_HB` or number of bins/2 for `histogram_type=DOUBLE_PREC_HB`. If it is set to 0 (the default for [MariaDB 10.4.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.2) and below), no histograms are created when running an [ANALYZE TABLE](../../../../reference/sql-statements/table-statements/analyze-table.md).
 
 ### histogram\_type
 
-The [histogram\_type](../../../../server-management/variables-and-modes/server-system-variables.md#histogram_type) variable determines whether single precision (`SINGLE_PREC_HB`) or double precision (`DOUBLE_PREC_HB`) height-balanced histograms are created. From [MariaDB 10.4.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.3), double precision is the default. For [MariaDB 10.4.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.2) and below, single precision is the default.
+The [histogram\_type](../../system-variables/server-system-variables.md#histogram_type) variable determines whether single precision (`SINGLE_PREC_HB`) or double precision (`DOUBLE_PREC_HB`) height-balanced histograms are created. From [MariaDB 10.4.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.3), double precision is the default. For [MariaDB 10.4.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.2) and below, single precision is the default.
 
 From [MariaDB 10.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/what-is-mariadb-108), `JSON_HB`, JSON-format histograms, are accepted.
 
 ### optimizer\_use\_condition\_selectivity
 
-The [optimizer\_use\_condition\_selectivity](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_use_condition_selectivity) controls which statistics can be used by the optimizer when looking for the best query execution plan.
+The [optimizer\_use\_condition\_selectivity](../../system-variables/server-system-variables.md#optimizer_use_condition_selectivity) controls which statistics can be used by the optimizer when looking for the best query execution plan.
 
 * `1` Use selectivity of predicates as in [MariaDB 5.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/changes-improvements-in-mariadb-5-5).
 * `2` Use selectivity of all range predicates supported by indexes.
@@ -141,7 +141,7 @@ SET use_stat_tables='preferably';
 (7 min 40.44 sec)
 ```
 
-The default flags for [optimizer\_switch](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) do not help much:
+The default flags for [optimizer\_switch](../../system-variables/server-system-variables.md#optimizer_switch) do not help much:
 
 ```sql
 SET optimizer_switch='materialization=DEFAULT,semijoin=DEFAULT';
@@ -201,7 +201,7 @@ SET optimizer_switch='expensive_pred_static_pushdown=ON';
 (49.89 sec)
 ```
 
-Finally, using [join\_buffer](../../../../server-management/variables-and-modes/server-system-variables.md#join_buffer_size) as well:
+Finally, using [join\_buffer](../../system-variables/server-system-variables.md#join_buffer_size) as well:
 
 ```sql
 SET optimizer_switch= 'materialization=DEFAULT,semijoin=DEFAULT';

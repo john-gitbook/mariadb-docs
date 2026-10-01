@@ -133,7 +133,7 @@ Stop the service with this command:
 systemctl stop mariadb.service
 ```
 
-Please refer to the [systemd](../../../starting-and-stopping-mariadb/systemd/) page for further information.
+Please refer to the [systemd](../../../starting-and-stopping-mariadb/systemd/README.md) page for further information.
 
 ### Post Installation
 
@@ -147,7 +147,7 @@ On systems using systemd, instead, enable automatic startup during system boot w
 systemctl enable mariadb.service
 ```
 
-For details on the exact steps used to build the binaries, see the [compiling MariaDB section](../../compiling-mariadb-from-source/).
+For details on the exact steps used to build the binaries, see the [compiling MariaDB section](../compiling-mariadb-from-source/).
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

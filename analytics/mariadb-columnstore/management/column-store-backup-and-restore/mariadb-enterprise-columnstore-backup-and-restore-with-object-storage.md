@@ -1,8 +1,8 @@
 ---
 description: >-
-  Backup and restore for MariaDB ColumnStore on S3 object storage: MariaDB data
-  directory via mariadb-backup, the S3 bucket via vendor snapshot, and the
-  Storage Manager directory.
+  Backup and restore for MariaDB ColumnStore on S3 object storage:
+  MariaDB data directory via mariadb-backup, the S3 bucket via vendor
+  snapshot, and the Storage Manager directory.
 ---
 
 # Backup and Restore with Object Storage
@@ -31,7 +31,7 @@ See the instructions below for more details.
 
 ## Backup
 
-![Enterprise-ColumnStore-Backup-with-S3-Flowchart](../../../.gitbook/assets/entcolstorebackups3flowchart.png)
+![Enterprise-ColumnStore-Backup-with-S3-Flowchart](<../../../.gitbook/assets/entcolstorebackups3flowchart (1).png>)
 
 Use the following process to take a backup:
 

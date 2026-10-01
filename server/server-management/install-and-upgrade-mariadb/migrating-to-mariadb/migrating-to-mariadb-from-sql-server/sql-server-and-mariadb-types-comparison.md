@@ -81,7 +81,8 @@ The [BIT](../../../../reference/data-types/numeric-data-types/bit.md) type is su
 In MariaDB, binary values can be written in one of the following ways:
 
 * `b'value'`
-* `0value` where `value` is a sequence of 0 and 1 digits. Hexadecimal syntax can also be used. For more details, see [Binary Literals](../../../../reference/sql-structure/sql-language-structure/binary-literals.md) and [Hexadecimal Literals](../../../../reference/sql-structure/sql-language-structure/hexadecimal-literals.md).
+* `0value`
+  where `value` is a sequence of 0 and 1 digits. Hexadecimal syntax can also be used. For more details, see [Binary Literals](../../../../reference/sql-structure/sql-language-structure/binary-literals.md) and [Hexadecimal Literals](../../../../reference/sql-structure/sql-language-structure/hexadecimal-literals.md).
 
 MariaDB and SQL Server have different sets of bitwise operators. See [Bit Functions and Operators](../../../../reference/sql-functions/secondary-functions/bit-functions-and-operators/).
 
@@ -143,7 +144,7 @@ For large binary strings, MariaDB has four `BLOB` types, with different sizes. S
 
 ### Character Strings
 
-One important difference between SQL Server and MariaDB is that **in MariaDB character sets do not depend on types and collations**. Character sets can be set at database, table or column level. If this is not done, the default character sets applies, which is specified by the [character\_set\_server](../../../variables-and-modes/server-system-variables.md#character_set_server) system variable.
+One important difference between SQL Server and MariaDB is that **in MariaDB character sets do not depend on types and collations**. Character sets can be set at database, table or column level. If this is not done, the default character sets applies, which is specified by the [character\_set\_server](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_server) system variable.
 
 To create a MariaDB table that is identical to a SQL Server table, **it may be necessary to specify a character set for each string column**. However, in many cases using UTF-8 will work.
 

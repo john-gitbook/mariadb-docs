@@ -4,9 +4,9 @@ description: Reference for the system variables that configure the CONNECT stora
 
 # CONNECT System Variables
 
-This page documents system variables related to the [CONNECT storage engine](./). See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for instructions on setting them.
+This page documents system variables related to the [CONNECT storage engine](./). See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for instructions on setting them.
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `connect_class_path`
 

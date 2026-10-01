@@ -40,7 +40,7 @@ plugin_load_add = file_key_management
 
 ## Uninstalling the Plugin
 
-Before you uninstall the plugin, you should ensure that [data-at-rest encryption](../) is completely disabled, and that MariaDB no longer needs the plugin to decrypt tables or other files.
+Before you uninstall the plugin, you should ensure that [data-at-rest encryption](../README.md) is completely disabled, and that MariaDB no longer needs the plugin to decrypt tables or other files.
 
 You can uninstall the plugin dynamically by executing [UNINSTALL SONAME](../../../../reference/sql-statements/administrative-sql-statements/plugin-sql-statements/uninstall-soname.md) or [UNINSTALL PLUGIN](../../../../reference/sql-statements/administrative-sql-statements/plugin-sql-statements/uninstall-plugin.md). For example:
 
@@ -163,7 +163,7 @@ Enterprise Server (ES) 11.8 and later:
 {% endtab %}
 {% endtabs %}
 
-The key identifiers give you a way to reference the encryption keys from MariaDB. In the example above, you could reference these encryption keys using the key identifiers `1`, `2` or `100` with the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option or with system variables such as [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id). You do not necessarily need multiple encryption keys; an encryption key with the key identifier `1` is the only mandatory one.
+The key identifiers give you a way to reference the encryption keys from MariaDB. In the example above, you could reference these encryption keys using the key identifiers `1`, `2` or `100` with the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option or with system variables such as [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id). You do not necessarily need multiple encryption keys; an encryption key with the key identifier `1` is the only mandatory one.
 
 If the key file is left unencrypted, the File Key Management plugin only requires the [file\_key\_management\_filename](file-key-management-encryption-plugin.md#file_key_management_filename) system variable to be configured.
 
@@ -333,13 +333,13 @@ Once the File Key Management Plugin is enabled, you can use it by creating an en
 CREATE TABLE t (i INT) ENGINE=InnoDB ENCRYPTED=YES
 ```
 
-Now, table `t` will be encrypted using the encryption key from the key file. For more information on how to use encryption, see [Data at Rest Encryption](../).
+Now, table `t` will be encrypted using the encryption key from the key file. For more information on how to use encryption, see [Data at Rest Encryption](../README.md).
 
 {% hint style="info" %}
 The following Information Schema table is available from MariaDB 11.8.
 {% endhint %}
 
-The [Information Schema FILE\_KEY\_MANAGEMENT\_KEYS table](../../../../reference/system-tables/information-schema/information-schema-tables/information-schema-file_key_management_keys.md) provides information about files stored in tablespaces, such as those used by the InnoDB storage engine.
+The [Information Schema FILE\_KEY\_MANAGEMENT\_KEYS table](../../../../reference/system-tables/information-schema/information-schema-tables/information-schema-files-table/information-schema-file_key_management_keys.md) provides information about files stored in tablespaces, such as those used by the InnoDB storage engine.
 
 ## Using Multiple Encryption Keys
 

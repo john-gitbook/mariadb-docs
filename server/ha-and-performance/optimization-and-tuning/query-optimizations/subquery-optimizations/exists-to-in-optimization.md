@@ -62,7 +62,7 @@ TODO: rephrase this:
 
 ## Control
 
-The optimization is controlled by the `exists_to_in` flag in [optimizer\_switch](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch). Before [MariaDB 10.0.12](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.0/10.0.12), the optimization was OFF by default. Since [MariaDB 10.0.12](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.0/10.0.12), it has been ON by default.
+The optimization is controlled by the `exists_to_in` flag in [optimizer\_switch](../../system-variables/server-system-variables.md#optimizer_switch). Before [MariaDB 10.0.12](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.0/10.0.12), the optimization was OFF by default. Since [MariaDB 10.0.12](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.0/10.0.12), it has been ON by default.
 
 ## Limitations
 

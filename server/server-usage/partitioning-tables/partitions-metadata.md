@@ -10,7 +10,7 @@ The [PARTITIONS](../../reference/system-tables/information-schema/information-sc
 
 The [SHOW TABLE STATUS](../../reference/sql-statements/administrative-sql-statements/show/show-table-status.md) statement contains a `Create_options` column, that contains the string 'partitioned' for partitioned tables.
 
-The [SHOW CREATE TABLE](../../reference/sql-statements/administrative-sql-statements/show/show-create-table.md) statement returns the [CREATE TABLE](../tables/create-table.md) statement that can be used to re-create a table, including the partitions definition.
+The [SHOW CREATE TABLE](../../reference/sql-statements/administrative-sql-statements/show/show-create-table.md) statement returns the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement that can be used to re-create a table, including the partitions definition.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

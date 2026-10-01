@@ -1,8 +1,8 @@
 ---
 description: >-
-  MariaDB ColumnStore architecture: a columnar storage engine for OLAP and HTAP
-  workloads with massively parallel processing, S3-compatible storage, and
-  MaxScale-based failover.
+  MariaDB ColumnStore architecture: a columnar storage engine for OLAP and
+  HTAP workloads with massively parallel processing, S3-compatible storage,
+  and MaxScale-based failover.
 ---
 
 # ColumnStore Architectural Overview
@@ -108,13 +108,13 @@ The ColumnStore nodes:
 
 ## Software Architecture
 
-| Software Component                                                                                           | Role                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| [MariaDB ColumnStore](columnstore-architectural-overview.md#mariadb-columnstore)                             | <ul><li>Columnar storage engine</li><li>Query execution</li><li>Data storage</li></ul>                             |
-| [MariaDB Enterprise Server](columnstore-architectural-overview.md#mariadb-enterprise-server)                 | <ul><li>Enterprise-grade database server</li></ul>                                                                 |
-| [ColumnStore Storage Engine Plugin](columnstore-architectural-overview.md#columnstore-storage-engine-plugin) | <ul><li>Storage engine plugin</li><li>Integrates MariaDB ColumnStore into MariaDB Enterprise Server</li></ul>      |
-| [Cluster Management API (CMAPI)](columnstore-architectural-overview.md#cluster-management-api-cmapi-server)  | <ul><li>REST API</li><li>Used for administrative tasks</li></ul>                                                   |
-| [MariaDB MaxScale](columnstore-architectural-overview.md#mariadb-maxscale)                                   | <ul><li>Database proxy</li><li>Accepts connections</li><li>Routes queries</li><li>Performs auto-failover</li></ul> |
+| Software Component                                                                                           | Role                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| [MariaDB ColumnStore](columnstore-architectural-overview.md#mariadb-columnstore)       | <ul><li>Columnar storage engine</li><li>Query execution</li><li>Data storage</li></ul>                                   |
+| [MariaDB Enterprise Server](columnstore-architectural-overview.md#mariadb-enterprise-server)                 | <ul><li>Enterprise-grade database server</li></ul>                                                                       |
+| [ColumnStore Storage Engine Plugin](columnstore-architectural-overview.md#columnstore-storage-engine-plugin) | <ul><li>Storage engine plugin</li><li>Integrates MariaDB ColumnStore into MariaDB Enterprise Server</li></ul> |
+| [Cluster Management API (CMAPI)](columnstore-architectural-overview.md#cluster-management-api-cmapi-server)  | <ul><li>REST API</li><li>Used for administrative tasks</li></ul>                                                         |
+| [MariaDB MaxScale](columnstore-architectural-overview.md#mariadb-maxscale)                                   | <ul><li>Database proxy</li><li>Accepts connections</li><li>Routes queries</li><li>Performs auto-failover</li></ul>       |
 
 ### MariaDB ColumnStore
 
@@ -237,7 +237,7 @@ The most common shared local storage option for GCP (Google Cloud Platform) depl
 
 ## Query Evaluation Architecture
 
-![ECStore-QueryExecutionwith-S3-FlowChart](../../.gitbook/assets/ecstore-queryexecutionwith-s3-flowchart.png)
+![ECStore-QueryExecutionwith-S3-FlowChart](<../../.gitbook/assets/ecstore-queryexecutionwith-s3-flowchart (1).png>)
 
 MariaDB ColumnStore uses distributed query execution and massively parallel processing (MPP) techniques to achieve vertical and horizontal scalability for production analytics and data warehousing.
 
@@ -245,7 +245,7 @@ For additional information, see "[MariaDB ColumnStore Query Evaluation](mariadb-
 
 ### Extent Elimination
 
-![ECStore-QueryExecutionExtentElimination](../../.gitbook/assets/ecstore-queryexecutionextentelimination.png)
+![ECStore-QueryExecutionExtentElimination](<../../.gitbook/assets/ecstore-queryexecutionextentelimination (1).png>)
 
 MariaDB ColumnStore uses extent elimination to scale query evaluation as the table size increases.
 
@@ -469,7 +469,7 @@ When a bulk data load is running:
 
 ## Backup and Restore
 
-![EntColStoreBackupS3FlowChart](../../.gitbook/assets/entcolstorebackups3flowchart.png)
+![EntColStoreBackupS3FlowChart](<../../.gitbook/assets/entcolstorebackups3flowchart (1).png>)
 
 MariaDB ColumnStore supports backup and restore using well-known tools and methods.
 

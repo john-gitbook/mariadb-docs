@@ -23,20 +23,20 @@ For this example, we will assume that Control Center is running on `http://mydom
 
 When starting the cluster, you need to prepare secret, cluster id and cluster tag:
 
-* Start your cluster and activate.
-*   Run the following commands in this order:
+- Start your cluster and activate.
+- Run the following commands in this order:
 
-    ```bash
-    control.bat --property set --name control-center-agent-cluster-secret --val 88f5ea3c-9e50-11ec-b909-0242ac120002 --yes
-    control.bat --change-id 11111111-1111-1111-1111-111111111111 --yes
-    control.bat --change-tag prod_cluster --yes
-    management.bat --uri http://somedomain.com:3000
-    ```
-*   Use the token command once and attach your cluster:
+  ```bash
+  control.bat --property set --name control-center-agent-cluster-secret --val 88f5ea3c-9e50-11ec-b909-0242ac120002 --yes
+  control.bat --change-id 11111111-1111-1111-1111-111111111111 --yes
+  control.bat --change-tag prod_cluster --yes
+  management.bat --uri http://somedomain.com:3000
+  ```
+- Use the token command once and attach your cluster:
 
-    ```bash
-    management.bat --token
-    ```
+  ```bash
+  management.bat --token
+  ```
 
 If you lose persistence, next time just run all commands except `--token` again.
 
@@ -44,14 +44,14 @@ If you lose persistence, next time just run all commands except `--token` again.
 
 First, you need to configure the [global team](profile/teams.md#global-team) in Control Center with the `account.globalTeam.enabled` and `account.globalTeam.attachCluster` properties. With it configured, you no longer need to create a token.
 
-* Start your cluster and activate it.
-*   Run the following commands in the order you see:
+- Start your cluster and activate it.
+- Run the following commands in the order you see:
 
-    ```bash
-    control.sh --property set --name control-center-agent-cluster-secret --val 88f5ea3c-9e50-11ec-b909-0242ac120002 --yes
-    control.sh --change-id 11111111-1111-1111-1111-111111111111 --yes
-    control.sh --change-tag prod_cluster --yes
-    ```
+  ```bash
+  control.sh --property set --name control-center-agent-cluster-secret --val 88f5ea3c-9e50-11ec-b909-0242ac120002 --yes
+  control.sh --change-id 11111111-1111-1111-1111-111111111111 --yes
+  control.sh --change-tag prod_cluster --yes
+  ```
 
 ## How can I automate connection of clusters to Control Center?
 
@@ -140,33 +140,33 @@ server {
 
 Control Center monitors Tracing and Compute activity of your cluster; it imposes activity limitations:
 
-* Soft limit: When the number or Tracing or Compute messages in the corresponding queue exceeds the "soft" threshold (by default, 200), Control Center attempts to automatically reduce message submission rate for your cluster.
-* Hard limit: When the number or Tracing or Compute messages in the corresponding queue exceeds the "hard" threshold (by default, 1000), your cluster enters the "limited" state wherein no new Tracing or Compute messages are added to the queues. In all other respects, your cluster remains active and functional. By default, the limited state (a.k.a., "ban") lasts 3 minutes. After that, Control Center checks the status of the Tracing and Compute queues. If it finds that the number of messages diminished below the threshold, the cluster resumes its normal operation. If the number of messages is still above the threshold, the cluster remains in the limited state for another 3 minutes.
+- Soft limit: When the number or Tracing or Compute messages in the corresponding queue exceeds the "soft" threshold (by default, 200), Control Center attempts to automatically reduce message submission rate for your cluster.
+- Hard limit: When the number or Tracing or Compute messages in the corresponding queue exceeds the "hard" threshold (by default, 1000), your cluster enters the "limited" state wherein no new Tracing or Compute messages are added to the queues. In all other respects, your cluster remains active and functional. By default, the limited state (a.k.a., "ban") lasts 3 minutes. After that, Control Center checks the status of the Tracing and Compute queues. If it finds that the number of messages diminished below the threshold, the cluster resumes its normal operation. If the number of messages is still above the threshold, the cluster remains in the limited state for another 3 minutes.
 
-To preclude your cluster from entering the limited state, [reduce the Tracing percentage](gg8/tracing.md) for one or more scopes. If this does not help, contact our support.
+To preclude your cluster from entering the limited state, [reduce the Tracing percentage](gg8/tracing/tracing.md) for one or more scopes. If this does not help, contact our support.
 
 You can override the default cluster activity thresholds:
 
-1.  Paste the following definitions in the application.yml file:
+1. Paste the following definitions in the application.yml file:
 
-    ```yaml
-    control.rate-limit.trace-hard-limit = 1000
-    control.rate-limit.trace-soft-limit = 200
-    control.rate-limit.compute-hard-limit = 1000
-    control.rate-limit.compute-soft-limit = 200
-    ```
+   ```yaml
+   control.rate-limit.trace-hard-limit = 1000
+   control.rate-limit.trace-soft-limit = 200
+   control.rate-limit.compute-hard-limit = 1000
+   control.rate-limit.compute-soft-limit = 200
+   ```
 2. Increase threshold values, e.g., from 200 to 500 and/or from 1000 to 2000.
 
 You can also modify the activity limitation parameters:
 
-1.  Add any of the following parameters to the application.yml file:
+1. Add any of the following parameters to the application.yml file:
 
-    | Parameter                                          | Description                                                                     | Default Value |
-    | -------------------------------------------------- | ------------------------------------------------------------------------------- | ------------- |
-    | `control.rate-limit.lower-threshold`               | Count of requests between the previous and the current checks.                  | 1000          |
-    | `control.rate-limit.update-interval-millis`        | Frequency of checks in milliseconds.                                            | 500           |
-    | `control.rate-limit.ban-duration-seconds`          | Duration of the ban (the "limited" state) in seconds.                           | 3\*60         |
-    | `control.rate-limit.block-connection-on-detection` | If "true," the cluster is disconnected instead of entering the "limited" state. | false         |
+   | Parameter | Description | Default Value |
+   |---|---|---|
+   | `control.rate-limit.lower-threshold` | Count of requests between the previous and the current checks. | 1000 |
+   | `control.rate-limit.update-interval-millis` | Frequency of checks in milliseconds. | 500 |
+   | `control.rate-limit.ban-duration-seconds` | Duration of the ban (the "limited" state) in seconds. | 3*60 |
+   | `control.rate-limit.block-connection-on-detection` | If "true," the cluster is disconnected instead of entering the "limited" state. | false |
 2. Change the parameter values as required.
 
 ## My Cache Gets Too Big Too Fast. How Can I Prevent This?
@@ -179,22 +179,22 @@ GridGain Control Center requires manual configuration of a mailing server to be 
 
 Configuration depends on the specific mailing server you use. The example below will be using [MailHog](https://hub.docker.com/r/mailhog/mailhog) server run in Docker:
 
-1.  Pull MailHog to your local server
+1. Pull MailHog to your local server
 
-    ```bash
-    docker pull mailhog/mailhog
-    ```
-2.  Start a container and expose ports to your local ones:
+   ```bash
+   docker pull mailhog/mailhog
+   ```
+2. Start a container and expose ports to your local ones:
 
-    ```bash
-    docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
-    ```
-3.  Create an `application.properties` file in the Control Center `libs` directory and specify mailing server host and port:
+   ```bash
+   docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+   ```
+3. Create an `application.properties` file in the Control Center `libs` directory and specify mailing server host and port:
 
-    ```properties
-    spring.mail.host=127.0.0.1
-    spring.mail.port=1024
-    ```
+   ```properties
+   spring.mail.host=127.0.0.1
+   spring.mail.port=1024
+   ```
 
 {% hint style="info" %}
 Depending on your mailing server, additional configuration properties may be required. Full list of properties is available in the [Configuration Parameters](admin-guide/configuration.md#mail-server) document.

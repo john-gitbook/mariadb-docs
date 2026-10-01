@@ -12,6 +12,8 @@ description: >-
 {% content-ref url="../data-definition/alter/" %}
 [alter](../data-definition/alter/)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -24,6 +26,8 @@ Access the reference for `ALTER` statements. This section lists commands to modi
 {% content-ref url="../data-definition/alter/alter-table/" %}
 [alter-table](../data-definition/alter/alter-table/)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -36,6 +40,8 @@ Complete `ALTER TABLE` guide for MariaDB. Complete syntax for modifying columns,
 {% content-ref url="analyze-table.md" %}
 [analyze-table.md](analyze-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -48,6 +54,8 @@ Analyze and store key distribution. This statement updates index statistics used
 {% content-ref url="check-table.md" %}
 [check-table.md](check-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -60,6 +68,8 @@ Check tables or views for errors. This statement verifies the integrity of table
 {% content-ref url="check-view.md" %}
 [check-view.md](check-view.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -72,6 +82,8 @@ Verify the validity of a view's algorithm. This statement checks if the view def
 {% content-ref url="checksum-table.md" %}
 [checksum-table.md](checksum-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -81,9 +93,11 @@ Report a checksum for table contents. This statement calculates a value to compa
 
 {% columns %}
 {% column %}
-{% content-ref url="../../../server-usage/tables/create-table.md" %}
-[create-table.md](../../../server-usage/tables/create-table.md)
+{% content-ref url="../data-definition/create/create-table.md" %}
+[create-table.md](../data-definition/create/create-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -96,6 +110,8 @@ Complete guide to creating tables in MariaDB. Complete `CREATE TABLE` syntax for
 {% content-ref url="../data-manipulation/changing-deleting-data/delete.md" %}
 [delete.md](../data-manipulation/changing-deleting-data/delete.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -105,9 +121,11 @@ Complete guide to deleting data in MariaDB. Complete `DELETE` syntax with `WHERE
 
 {% columns %}
 {% column %}
-{% content-ref url="../../../server-usage/tables/drop-table.md" %}
-[drop-table.md](../../../server-usage/tables/drop-table.md)
+{% content-ref url="../data-definition/drop/drop-table.md" %}
+[drop-table.md](../data-definition/drop/drop-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -120,6 +138,8 @@ Complete `DROP TABLE` syntax: `TEMPORARY`, `IF EXISTS`, `WAIT`/`NOWAIT`, `RESTRI
 {% content-ref url="../data-manipulation/inserting-loading-data/insert.md" %}
 [insert.md](../data-manipulation/inserting-loading-data/insert.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -132,6 +152,8 @@ Complete guide to inserting data in MariaDB. Complete `INSERT` syntax for single
 {% content-ref url="../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md" %}
 [optimize-table.md](../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -144,6 +166,8 @@ Complete MariaDB performance optimization guide. Complete reference for query tu
 {% content-ref url="../data-definition/rename-table.md" %}
 [rename-table.md](../data-definition/rename-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -168,6 +192,8 @@ Repair corrupted tables. This statement fixes errors in tables for supported sto
 {% content-ref url="repair-view.md" %}
 [repair-view.md](repair-view.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -180,6 +206,8 @@ Check and correct a view's algorithm. This statement is primarily used by upgrad
 {% content-ref url="../data-manipulation/changing-deleting-data/replace.md" %}
 [replace.md](../data-manipulation/changing-deleting-data/replace.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -192,6 +220,8 @@ Insert or replace rows based on unique keys. This statement acts like `INSERT`, 
 {% content-ref url="../administrative-sql-statements/show/show-columns.md" %}
 [show-columns.md](../administrative-sql-statements/show/show-columns.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -204,6 +234,8 @@ Complete guide to displaying table columns in MariaDB. Complete `SHOW COLUMNS` s
 {% content-ref url="../administrative-sql-statements/show/show-create-table.md" %}
 [show-create-table.md](../administrative-sql-statements/show/show-create-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -216,10 +248,12 @@ Get the SQL statement to recreate a table. This statement shows the complete `CR
 {% content-ref url="../administrative-sql-statements/show/show-index.md" %}
 [show-index.md](../administrative-sql-statements/show/show-index.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
-Complete `SHOW INDEX` reference: ` SHOW INDEX FROM`` `` `_`tbl_name`_ syntax, output fields, and `WHERE`/`LIKE` filters.
+Complete `SHOW INDEX` reference: `SHOW INDEX FROM`` `_`tbl_name`_ syntax, output fields, and `WHERE`/`LIKE` filters.
 {% endcolumn %}
 {% endcolumns %}
 
@@ -228,6 +262,8 @@ Complete `SHOW INDEX` reference: ` SHOW INDEX FROM`` `` `_`tbl_name`_ syntax, ou
 {% content-ref url="truncate-table.md" %}
 [truncate-table.md](truncate-table.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}
@@ -240,6 +276,8 @@ Complete `TRUNCATE TABLE` reference with `[WAIT n|NOWAIT]` syntax, InnoDB `FOREI
 {% content-ref url="../data-manipulation/changing-deleting-data/update.md" %}
 [update.md](../data-manipulation/changing-deleting-data/update.md)
 {% endcontent-ref %}
+
+
 {% endcolumn %}
 
 {% column %}

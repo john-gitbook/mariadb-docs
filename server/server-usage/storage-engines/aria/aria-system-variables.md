@@ -8,7 +8,7 @@ description: >-
 
 This page documents system variables related to the [Aria storage engine](./). For options that are not system variables, see [Aria Options](../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md).
 
-See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for instructions on setting system variables.
+See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for instructions on setting system variables.
 
 {% include "../../../.gitbook/includes/for-a-full-list-of-server-v....md" %}
 
@@ -44,7 +44,7 @@ See [Server System Variables](../../../server-management/variables-and-modes/ser
 
 #### `aria_encrypt_tables`
 
-* Description: Enables automatic encryption of all user-created Aria tables that have the [ROW\_FORMAT](../../tables/create-table.md#row_format) table option set to [PAGE](aria-storage-formats.md#page). See [Data at Rest Encryption](../../../security/encryption/data-at-rest-encryption/) and [Enabling Encryption for User-created Tables](../../../security/encryption/data-at-rest-encryption/aria-encryption/aria-encryption-overview.md).
+* Description: Enables automatic encryption of all user-created Aria tables that have the [ROW\_FORMAT](../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option set to [PAGE](aria-storage-formats.md#page). See [Data at Rest Encryption](../../../security/encryption/data-at-rest-encryption/README.md) and [Enabling Encryption for User-created Tables](../../../security/encryption/data-at-rest-encryption/aria-encryption/aria-encryption-overview.md).
 * Command line: `aria-encrypt-tables={0|1}`
 * Scope: Global
 * Dynamic: Yes
@@ -70,8 +70,14 @@ See [Server System Variables](../../../server-management/variables-and-modes/ser
 * Data Type: `string`
 * Valid values:
   * `none` - Group commit is disabled.
-  * `hard` - Wait the number of microseconds specified by aria\_group\_commit\_interval before actually doing the commit. If the interval is 0 then just check if any other threads have requested a commit during the time this commit was preparing (just before sync() file) and send their data to disk also before sync().
-  * `soft` - The service thread will wait the specified time and then sync() to the log. If the interval is 0 then it won't wait for any commits (this is dangerous and should generally not be used in production)
+  * `hard` - Wait the number of microseconds specified by
+    aria\_group\_commit\_interval before actually doing the commit. If the interval
+    is 0 then just check if any other threads have requested a commit during the
+    time this commit was preparing (just before sync() file) and send their data to
+    disk also before sync().
+  * `soft` - The service thread will wait the specified time and then sync()
+    to the log. If the interval is 0 then it won't wait for any commits (this is
+    dangerous and should generally not be used in production)
 * Default Value: `none`
 
 #### `aria_group_commit_interval`
@@ -127,7 +133,7 @@ See [Server System Variables](../../../server-management/variables-and-modes/ser
 
 #### `aria_page_checksum`
 
-* Description: Determines whether index and data should use page checksums for extra safety. Can be overridden per table with PAGE\_CHECKSUM clause in [CREATE TABLE](../../tables/create-table.md).
+* Description: Determines whether index and data should use page checksums for extra safety. Can be overridden per table with PAGE\_CHECKSUM clause in [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md).
 * Command line: `--aria-page-checksum=#`
 * Scope: Global
 * Dynamic: Yes

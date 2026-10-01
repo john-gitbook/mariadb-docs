@@ -1,8 +1,8 @@
 ---
 description: >-
   MariaDB Connector/C++ supports batch (bulk) operations by queuing commands on
-  a sql::Statement or sql::PreparedStatement with addBatch() and sending them to
-  the server in a single executeBatch() call.
+  a sql::Statement or sql::PreparedStatement with addBatch() and sending them
+  to the server in a single executeBatch() call.
 ---
 
 # Batch Operations with MariaDB Connector/C++
@@ -13,13 +13,13 @@ C++ developers can use MariaDB Connector/C++ to perform batch (bulk) operations 
 
 Batches are queued and executed with the following `sql::Statement` and `sql::PreparedStatement` methods:
 
-| Method                                           | Description                                                                                                                |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| `sql::Statement::addBatch(const SQLString& sql)` | Queues a literal SQL statement.                                                                                            |
-| `sql::PreparedStatement::addBatch()`             | Queues the parameter values currently set on the prepared statement.                                                       |
-| `sql::Statement::executeBatch()`                 | Sends the queued commands and returns a `const sql::Ints&` of update counts.                                               |
-| `sql::Statement::executeLargeBatch()`            | The same as `executeBatch()`, returning a `const sql::Longs&` for update counts that exceed the range of a 32-bit integer. |
-| `sql::Statement::clearBatch()`                   | Discards the queued commands without executing them.                                                                       |
+| Method | Description |
+| ------ | ----------- |
+| `sql::Statement::addBatch(const SQLString& sql)` | Queues a literal SQL statement. |
+| `sql::PreparedStatement::addBatch()` | Queues the parameter values currently set on the prepared statement. |
+| `sql::Statement::executeBatch()` | Sends the queued commands and returns a `const sql::Ints&` of update counts. |
+| `sql::Statement::executeLargeBatch()` | The same as `executeBatch()`, returning a `const sql::Longs&` for update counts that exceed the range of a 32-bit integer. |
+| `sql::Statement::clearBatch()` | Discards the queued commands without executing them. |
 
 `sql::PreparedStatement` derives from `sql::Statement`, so `executeBatch()`, `executeLargeBatch()`, and `clearBatch()` are available on both classes. `sql::Ints` and `sql::Longs` are the connector's array wrappers for `int32_t` and `int64_t`, and both support iteration with `begin()` and `end()`.
 
@@ -129,7 +129,7 @@ int main(int argc, char **argv)
 }
 ```
 
-Confirm the rows were inserted by using [MariaDB Client](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/clients-and-utilities/mariadb-client) to execute a [SELECT](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/selecting-data/select) statement:
+Confirm the rows were inserted by using [MariaDB Client](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/clients-and-utilities/mariadb-client) to execute a [SELECT](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/selecting-data/select) statement:
 
 ```sql
 SELECT * FROM test.contacts;
@@ -174,12 +174,12 @@ Empty strings are rejected: passing one to `addBatch()` raises an `sql::SQLExcep
 
 MariaDB Connector/C++ has several ways to send a batch to the server, and the strategy it chooses depends on the connection options, the statement, and whether the query can be rewritten. The relevant [connection parameters](connect-with-mariadb-connectorcpp.md) are:
 
-| Parameter                  | Default | Description                                                                                                                                                                                                                                                                        |
-| -------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `useBulkStmts`             | `false` | Uses the dedicated MariaDB bulk execution protocol, which sends the whole batch as a single command and can be much faster. Requires MariaDB Server 10.2.7 or later.                                                                                                               |
-| `rewriteBatchedStatements` | `false` | Rewrites a batch of `INSERT` statements into a single multi-values `INSERT`, or, where that is not possible, into semicolon-separated statements. Takes precedence over `useBulkStmts`.                                                                                            |
-| `useBatchMultiSend`        | `false` | Sends the batch to the server in groups, reading the results afterward, instead of waiting for each result before sending the next command. The group size is set by `useBatchMultiSendNumber`, which defaults to `100`. Mainly useful when the client is distant from the server. |
-| `continueBatchOnError`     | `true`  | Controls whether the connector executes the rest of the batch after a command fails, or stops at the first failure.                                                                                                                                                                |
+| Parameter | Default | Description |
+| --------- | ------- | ----------- |
+| `useBulkStmts` | `false` | Uses the dedicated MariaDB bulk execution protocol, which sends the whole batch as a single command and can be much faster. Requires MariaDB Server 10.2.7 or later. |
+| `rewriteBatchedStatements` | `false` | Rewrites a batch of `INSERT` statements into a single multi-values `INSERT`, or, where that is not possible, into semicolon-separated statements. Takes precedence over `useBulkStmts`. |
+| `useBatchMultiSend` | `false` | Sends the batch to the server in groups, reading the results afterward, instead of waiting for each result before sending the next command. The group size is set by `useBatchMultiSendNumber`, which defaults to `100`. Mainly useful when the client is distant from the server. |
+| `continueBatchOnError` | `true` | Controls whether the connector executes the rest of the batch after a command fails, or stops at the first failure. |
 
 By default MariaDB Connector/C++ uses client-side prepared statements, and for a batch on one of those it picks the first applicable strategy in this order:
 

@@ -6,9 +6,9 @@ description: >-
 
 # MyRocks System Variables
 
-This page documents system variables related to the [MyRocks](./) storage engine. See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting them.
+This page documents system variables related to the [MyRocks](./) storage engine. See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a complete list of system variables and instructions on setting them.
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `rocksdb_access_hint_on_compaction_start`
 
@@ -84,9 +84,11 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 * Default Value: `536870912`
 * Range: `1024` to `9223372036854775807`
 
-To see the statistics of block cache usage, check `SHOW ENGINE ROCKSDB STATUS` output (search for lines starting with `rocksdb.block.cache`).
+To see the statistics of block cache usage, check `SHOW ENGINE ROCKSDB STATUS` output
+(search for lines starting with `rocksdb.block.cache`).
 
-One can check the size of data of the block cache in `DB_BLOCK_CACHE_USAGE` column of the `INFORMATION_SCHEMA.ROCKSDB_DBSTATS` table.
+One can check the size of data of the block cache in `DB_BLOCK_CACHE_USAGE`
+column of the `INFORMATION_SCHEMA.ROCKSDB_DBSTATS` table.
 
 #### `rocksdb_block_restart_interval`
 
@@ -633,7 +635,7 @@ One can check the size of data of the block cache in `DB_BLOCK_CACHE_USAGE` colu
 * Data Type: `numeric`
 * Default Value: `0`
 * Range: `0` to `1`
-* Introduced: [MariaDB 10.6.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.6), [MariaDB 10.5.14](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.14), [MariaDB 10.4.23](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.23), [MariaDB 10.3.33](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.33), [MariaDB 10.2.42](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.42)
+* Introduced: [MariaDB 10.6.6](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.6), [MariaDB 10.5.14](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.14), [MariaDB 10.4.23](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.23), [MariaDB 10.3.33](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.33), [MariaDB 10.2.42](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.42)
 
 #### `rocksdb_ignore_unknown_options`
 

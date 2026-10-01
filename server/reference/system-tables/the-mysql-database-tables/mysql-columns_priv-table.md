@@ -26,7 +26,7 @@ The `mysql.columns_priv` table contains the following fields:
 | Timestamp    | timestamp                                       | NO   |     | CURRENT\_TIMESTAMP |                                                                                                                                             |
 | Column\_priv | set('Select', 'Insert', 'Update', 'References') | NO   |     |                    | The privilege type. See [Column Privileges](../../sql-statements/account-management-sql-statements/grant.md#column-privileges) for details. |
 
-The [Acl\_column\_grants](../../../server-management/variables-and-modes/server-status-variables.md#acl_column_grants) status variable indicates how many rows the `mysql.columns_priv` table contains.
+The [Acl\_column\_grants](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#acl_column_grants) status variable indicates how many rows the `mysql.columns_priv` table contains.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

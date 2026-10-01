@@ -1,8 +1,8 @@
 ---
 description: >-
   Async/await support in MariaDB Connector/Python 2.0 enables non-blocking
-  database operations via asyncConnect, AsyncCursor, and create_async_pool for
-  asyncio-based Python applications.
+  database operations via asyncConnect, AsyncCursor, and create_async_pool
+  for asyncio-based Python applications.
 ---
 
 # Async/Await Support
@@ -11,20 +11,19 @@ MariaDB Connector/Python 2.0 introduces native async/await support for asynchron
 
 ## API Reference
 
-* [**Connection API**](api/connection.md) - Connection parameters, methods, and attributes
-* [**Cursor API**](api/cursor.md) - Cursor parameters, methods, and attributes
-* [**Connection Pooling API**](pooling.md) - Pool configuration and usage
+- **[Connection API](connection.md)** - Connection parameters, methods, and attributes
+- **[Cursor API](cursor.md)** - Cursor parameters, methods, and attributes  
+- **[Connection Pooling API](pooling.md)** - Pool configuration and usage
 
 ## Overview
 
 The async API provides:
-
-* **Native asyncio integration**: No thread pool wrapping required
-* **Async connections**: `asyncConnect()` function and `AsyncConnection` class
-* **Async cursors**: `AsyncCursor` class with async methods
-* **Async connection pools**: `create_async_pool()` for connection pooling
-* **Context manager support**: Async `with` statements for resource management
-* **Same API surface**: Familiar interface matching the synchronous API
+- **Native asyncio integration**: No thread pool wrapping required
+- **Async connections**: `asyncConnect()` function and `AsyncConnection` class
+- **Async cursors**: `AsyncCursor` class with async methods
+- **Async connection pools**: `create_async_pool()` for connection pooling
+- **Context manager support**: Async `with` statements for resource management
+- **Same API surface**: Familiar interface matching the synchronous API
 
 Both the pure Python and C extension implementations support async operations.
 
@@ -478,10 +477,10 @@ for name, email in data:
 
 The async implementation provides:
 
-* **No GIL contention**: Pure Python async uses native asyncio I/O
-* **Efficient concurrency**: Handle thousands of concurrent connections
-* **Lower latency**: No thread pool overhead
-* **Better resource usage**: Event loop scheduling vs thread context switching
+- **No GIL contention**: Pure Python async uses native asyncio I/O
+- **Efficient concurrency**: Handle thousands of concurrent connections
+- **Lower latency**: No thread pool overhead
+- **Better resource usage**: Event loop scheduling vs thread context switching
 
 Note: Async excels in high-concurrency scenarios, not single-threaded throughput.
 

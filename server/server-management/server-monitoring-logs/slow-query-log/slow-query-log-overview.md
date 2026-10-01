@@ -16,7 +16,7 @@ While MariaDB natively encrypts Binary Logs and Data files, it does not provide 
 
 ## Enabling the Slow Query Log
 
-The slow query log is disabled by default. To enable it, set [log\_slow\_query](../../variables-and-modes/server-system-variables.md#log_slow_query) to `1`, using one of the following methods.
+The slow query log is disabled by default. To enable it, set [log\_slow\_query](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query) to `1`, using one of the following methods.
 
 This turns on slow query logging immediately, but only until the next server restart:
 
@@ -45,9 +45,9 @@ SHOW GLOBAL VARIABLES LIKE 'slow_query_log%';
 
 ## Configuring the Filename
 
-By default, the slow query log is written to `${hostname}-slow.log` (for instance, `c525d37c-b2ff-4543-b06f-87012d142d44-slow.log`), and stored in the [datadir](../../variables-and-modes/server-system-variables.md#datadir) directory. However, this can be changed.
+By default, the slow query log is written to `${hostname}-slow.log` (for instance, `c525d37c-b2ff-4543-b06f-87012d142d44-slow.log`), and stored in the [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory. However, this can be changed.
 
-Configure the slow query log filename by setting the [slow\_query\_log\_file](../../variables-and-modes/server-system-variables.md#slow_query_log_file) system variable (or, from MariaDB 10.11, [log\_slow\_query\_file](../../variables-and-modes/server-system-variables.md#log_slow_query_file)). It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+Configure the slow query log filename by setting the [slow\_query\_log\_file](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#slow_query_log_file) system variable (or, from MariaDB 10.11, [log\_slow\_query\_file](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query_file)). It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 ```sql
 SET GLOBAL slow_query_log_file='mariadb-slow.log';
@@ -61,7 +61,7 @@ slow_query_log
 slow_query_log_file=mariadb-slow.log
 ```
 
-Setting a relative path, or just the filename, puts the log file in the [datadir](../../variables-and-modes/server-system-variables.md#datadir) directory. You can put it somewhere else by using an absolute path:
+Setting a relative path, or just the filename, puts the log file in the [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory. You can put it somewhere else by using an absolute path:
 
 ```ini
 [mariadb]
@@ -79,12 +79,12 @@ slow_query_log
 ```
 
 {% hint style="info" %}
-If you configure all log file basenames using [--log-basename](../../starting-and-stopping-mariadb/mariadbd-options.md#log-basename), you cannot use an absolute path – the log file name is always relative to the [datadir](../../variables-and-modes/server-system-variables.md#datadir) directory.
+If you configure all log file basenames using [--log-basename](../../starting-and-stopping-mariadb/mariadbd-options.md#log-basename), you cannot use an absolute path – the log file name is always relative to the [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir) directory.
 {% endhint %}
 
 ## Choosing the Output Destination
 
-The slow query log can either be written to a file or to the [slow\_log](../../../reference/system-tables/the-mysql-database-tables/mysql-slow_log-table.md) table in the [mysql](../../../reference/system-tables/the-mysql-database-tables/) database. To choose the slow query log output destination, set the [log\_output](../../variables-and-modes/server-system-variables.md#log_output) system variable.
+The slow query log can either be written to a file or to the [slow\_log](../../../reference/system-tables/the-mysql-database-tables/mysql-slow_log-table.md) table in the [mysql](../../../reference/system-tables/the-mysql-database-tables/) database. To choose the slow query log output destination, set the [log\_output](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) system variable.
 
 To verify what logging method is used, issue this query:
 
@@ -99,7 +99,7 @@ SHOW GLOBAL VARIABLES LIKE 'log_output';
 
 ### File Logging
 
-File logging is the default. You can configure it explicitly by setting the [log\_output](../../variables-and-modes/server-system-variables.md#log_output) system variable to `FILE`. (For instance, to switch back from the [table logging](slow-query-log-overview.md#table-logging) method.)
+File logging is the default. You can configure it explicitly by setting the [log\_output](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) system variable to `FILE`. (For instance, to switch back from the [table logging](slow-query-log-overview.md#table-logging) method.)
 
 Enable file logging until server restart:
 
@@ -145,7 +145,7 @@ A standard parser regex should look for the following sequence:
 
 ### Table Logging
 
-The slow query log can either be written to the [slow\_log](../../../reference/system-tables/the-mysql-database-tables/mysql-slow_log-table.md) table in the [mysql](../../../reference/system-tables/the-mysql-database-tables/) database by setting the [log\_output](../../variables-and-modes/server-system-variables.md#log_output) system variable to `TABLE`. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
+The slow query log can either be written to the [slow\_log](../../../reference/system-tables/the-mysql-database-tables/mysql-slow_log-table.md) table in the [mysql](../../../reference/system-tables/the-mysql-database-tables/) database by setting the [log\_output](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) system variable to `TABLE`. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session). For example:
 
 ```sql
 SET GLOBAL log_output='TABLE';
@@ -184,7 +184,7 @@ See [Writing logs into tables](../writing-logs-into-tables.md) for more informat
 
 ## Disabling the Log for a Session
 
-Any user can disable logging for a connection by setting the [slow\_query\_log](../../variables-and-modes/server-system-variables.md#slow_query_log) system variable (or, from MariaDB 10.11, [log\_slow\_query](../../variables-and-modes/server-system-variables.md#log_slow_query)) to `0`:
+Any user can disable logging for a connection by setting the [slow\_query\_log](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#slow_query_log) system variable (or, from MariaDB 10.11, [log\_slow\_query](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query)) to `0`:
 
 ```sql
 SET SESSION slow_query_log=0;
@@ -192,7 +192,7 @@ SET SESSION slow_query_log=0;
 
 ## Disabling the Log for Specific Statements
 
-You can disable logging to the slow query log for specific types of statements by setting the [log\_slow\_disabled\_statements](../../variables-and-modes/server-system-variables.md#log_slow_disabled_statements) system variable. This option can only be set permanently, in a server [option group](../../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior, then restarting the server:
+You can disable logging to the slow query log for specific types of statements by setting the [log\_slow\_disabled\_statements](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_disabled_statements) system variable. This option can only be set permanently, in a server [option group](../../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md#option-groups) in an [option file](../../install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) prior, then restarting the server:
 
 ```ini
 [mariadb]
@@ -203,7 +203,7 @@ log_slow_disabled_statements='admin,call,slave,sp'
 
 ## Configuring the Slow Query Log Time
 
-The time that defines a slow query can be configured by setting the [long\_query\_time](../../variables-and-modes/server-system-variables.md#long_query_time) system variable (or, from MariaDB 10.11, [log\_slow\_query\_time](../../variables-and-modes/server-system-variables.md#log_slow_query_time)). It uses a units of seconds, with an optional milliseconds component. The default value is `10`. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+The time that defines a slow query can be configured by setting the [long\_query\_time](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#long_query_time) system variable (or, from MariaDB 10.11, [log\_slow\_query\_time](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query_time)). It uses a units of seconds, with an optional milliseconds component. The default value is `10`. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 ```sql
 SET GLOBAL long_query_time=5.0;
@@ -272,7 +272,7 @@ If you use [FILE logging](slow-query-log-overview.md#file-logging), check the co
 
 ## Logging Queries That Don't Use Indexes
 
-It can be beneficial to log queries that don't use indexes to the slow query log, since such queries can usually be optimized, either by adding an index or by doing a slight rewrite. The slow query log can be configured to log queries that don't use indexes regardless of their execution time, by adding the option `not_using_index` to [log\_slow\_filter](../../variables-and-modes/server-system-variables.md#log_slow_filter), or by setting the [log\_queries\_not\_using\_indexes](../../variables-and-modes/server-system-variables.md#log_queries_not_using_indexes) system variable to `1`. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+It can be beneficial to log queries that don't use indexes to the slow query log, since such queries can usually be optimized, either by adding an index or by doing a slight rewrite. The slow query log can be configured to log queries that don't use indexes regardless of their execution time, by adding the option `not_using_index` to [log\_slow\_filter](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_filter), or by setting the [log\_queries\_not\_using\_indexes](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_queries_not_using_indexes) system variable to `1`. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 ```sql
 SET @@log_slow_filter=concat(@@log_slow_filter,",not_using_index");
@@ -290,11 +290,11 @@ long_query_time=5.0
 log_queries_not_using_indexes=ON
 ```
 
-As a significant number of queries can run quickly even without indexes, you can use the [min\_examined\_row\_limit](../../variables-and-modes/server-system-variables.md#min_examined_row_limit) system variable (or, from MariaDB 10.11, [log\_slow\_min\_examined\_row\_limit](../../variables-and-modes/server-system-variables.md#log_slow_min_examined_row_limit)) with [log\_queries\_not\_using\_indexes](../../variables-and-modes/server-system-variables.md#log_queries_not_using_indexes), to limit the logged queries to those having a material performance impact on the server.
+As a significant number of queries can run quickly even without indexes, you can use the [min\_examined\_row\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#min_examined_row_limit) system variable (or, from MariaDB 10.11, [log\_slow\_min\_examined\_row\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_min_examined_row_limit)) with [log\_queries\_not\_using\_indexes](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_queries_not_using_indexes), to limit the logged queries to those having a material performance impact on the server.
 
 ## Excluding Queries That Examine Fewer Than a Minimum Row Limit
 
-It can be beneficial to exclude queries that examine fewer than a minimum number of rows from the log. This can be done by setting the [min\_examined\_row\_limit](../../variables-and-modes/server-system-variables.md#min_examined_row_limit) system variable, or, from MariaDB 10.11, [log\_slow\_min\_examined\_row\_limit](../../variables-and-modes/server-system-variables.md#log_slow_min_examined_row_limit). It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+It can be beneficial to exclude queries that examine fewer than a minimum number of rows from the log. This can be done by setting the [min\_examined\_row\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#min_examined_row_limit) system variable, or, from MariaDB 10.11, [log\_slow\_min\_examined\_row\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_min_examined_row_limit). It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 ```sql
 SET GLOBAL min_examined_row_limit=100000;
@@ -313,7 +313,7 @@ min_examined_row_limit=100000
 
 ## Logging Slow Administrative Statements
 
-By default, the slow query log logs administrative statements. To disable that, remove `admin` from the [log\_slow\_filter](../../variables-and-modes/server-system-variables.md#log_slow_filter) system variable. Alternatively, set the [log\_slow\_admin\_statements](../../variables-and-modes/server-system-variables.md#log_slow_admin_statements) system variable to `OFF`. The slow query log considers the following statements administrative: [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/), [ANALYZE TABLE](../../../reference/sql-statements/table-statements/analyze-table.md), [CHECK TABLE](../../../reference/sql-statements/table-statements/check-table.md), [CREATE INDEX](../../../reference/sql-statements/data-definition/create/create-index.md), [DROP INDEX](../../../reference/sql-statements/data-definition/drop/drop-index.md), [OPTIMIZE TABLE](../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md), and [REPAIR TABLE](../../../reference/sql-statements/table-statements/repair-table.md). This also includes [ALTER SEQUENCE](../../../reference/sql-structure/sequences/alter-sequence.md) statements.
+By default, the slow query log logs administrative statements. To disable that, remove `admin` from the [log\_slow\_filter](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_filter) system variable. Alternatively, set the [log\_slow\_admin\_statements](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_admin_statements) system variable to `OFF`. The slow query log considers the following statements administrative: [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/), [ANALYZE TABLE](../../../reference/sql-statements/table-statements/analyze-table.md), [CHECK TABLE](../../../reference/sql-statements/table-statements/check-table.md), [CREATE INDEX](../../../reference/sql-statements/data-definition/create/create-index.md), [DROP INDEX](../../../reference/sql-statements/data-definition/drop/drop-index.md), [OPTIMIZE TABLE](../../../ha-and-performance/optimization-and-tuning/optimizing-tables/optimize-table.md), and [REPAIR TABLE](../../../reference/sql-statements/table-statements/repair-table.md). This also includes [ALTER SEQUENCE](../../../reference/sql-structure/sequences/alter-sequence.md) statements.
 
 You can dynamically enable this feature using a [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session) statement and setting it for just the current connection with `LOCAL`. Some examples:
 
@@ -336,7 +336,7 @@ log_slow_admin_statements=ON
 
 ## Enabling the Slow Query Log for Specific Criteria
 
-It is possible to enable logging to the slow query log for queries that meet specific criteria by configuring the [log\_slow\_filter](../../variables-and-modes/server-system-variables.md#log_slow_filter) system variable. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+It is possible to enable logging to the slow query log for queries that meet specific criteria by configuring the [log\_slow\_filter](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_filter) system variable. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 {% code overflow="wrap" %}
 ```sql
@@ -355,11 +355,11 @@ long_query_time=5.0
 log_slow_filter=filesort,filesort_on_disk,tmp_table,tmp_table_on_disk
 ```
 
-You can find all options for log\_slow\_filter at [log\_slow\_filter system variable](../../variables-and-modes/server-system-variables.md#log_slow_filter) or at [Slow Query Log Extended Statistics](../../../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/slow-query-log-extended-statistics.md#log_slow_filter).
+You can find all options for log\_slow\_filter at [log\_slow\_filter system variable](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_filter) or at [Slow Query Log Extended Statistics](../../../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/slow-query-log-extended-statistics.md#log_slow_filter).
 
 ## Throttling the Slow Query Log
 
-The slow query log can create a lot of I/O[^1], so it can be beneficial to throttle it in some cases. The slow query log can be throttled by configuring the [log\_slow\_rate\_limit](../../variables-and-modes/server-system-variables.md#log_slow_rate_limit) system variable. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+The slow query log can create a lot of I/O[^1], so it can be beneficial to throttle it in some cases. The slow query log can be throttled by configuring the [log\_slow\_rate\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_rate_limit) system variable. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 ```sql
 SET GLOBAL log_slow_rate_limit=5;
@@ -378,7 +378,7 @@ log_slow_rate_limit=5
 
 ## Configuring the Verbosity
 
-There are a few optional pieces of information that can be included in the slow query log for each query. This optional information can be included by configuring the [log\_slow\_verbosity](../../variables-and-modes/server-system-variables.md#log_slow_verbosity) system variable. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
+There are a few optional pieces of information that can be included in the slow query log for each query. This optional information can be included by configuring the [log\_slow\_verbosity](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_verbosity) system variable. It can be changed dynamically with [SET GLOBAL](../../../reference/sql-statements/administrative-sql-statements/set-commands/set.md#global-session):
 
 ```sql
 SET GLOBAL log_slow_verbosity='full';
@@ -410,18 +410,18 @@ Slow query logs written to table can be viewed by querying the [slow\_log](../..
 
 ## Variables Related to the Slow Query Log
 
-* [slow\_query\_log](../../variables-and-modes/server-system-variables.md#slow_query_log) - enable/disable the slow query log. Renamed to [log\_slow\_query](../../variables-and-modes/server-system-variables.md#log_slow_query) from MariaDB 10.11.
-* [log\_output](../../variables-and-modes/server-system-variables.md#log_output) - how the output will be written.
-* [log\_slow\_admin\_statements](../../variables-and-modes/server-system-variables.md#log_slow_admin_statements). Whether to log `OPTIMIZE`, `ANALYZE`, `ALTER`, and other administrative statements to the slow log. Deprecated from [MariaDB 11.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.0/what-is-mariadb-110), use [log\_slow\_filter](../../variables-and-modes/server-system-variables.md#log_slow_filter) without admin.
-* [slow\_query\_log\_file](../../variables-and-modes/server-system-variables.md#slow_query_log_file) - name of the slow query log file. Renamed to [log\_slow\_query\_file](../../variables-and-modes/server-system-variables.md#log_slow_query_file) from MariaDB 10.11.0.
-* [long\_query\_time](../../variables-and-modes/server-system-variables.md#long_query_time) - time in seconds/microseconds defining a slow query. Renamed to [log\_slow\_query\_time](../../variables-and-modes/server-system-variables.md#log_slow_query_time) from MariaDB 10.11.0.
-* [log\_queries\_not\_using\_indexes](../../variables-and-modes/server-system-variables.md#log_queries_not_using_indexes) - whether or not to log queries that don't use indexes.
-* [log\_slow\_admin\_statements](../../variables-and-modes/server-system-variables.md#log_slow_admin_statements) - whether or not to log certain admin statements.
-* [log\_slow\_disabled\_statements](../../variables-and-modes/server-system-variables.md#log_slow_disabled_statements) - types of statements that should not be logged in the slow query log.
-* [min\_examined\_row\_limit](../../variables-and-modes/server-system-variables.md#min_examined_row_limit) - minimum rows a query must examine to be slow. Renamed to [log\_slow\_min\_examined\_row\_limit](../../variables-and-modes/server-system-variables.md#log_slow_min_examined_row_limit) from MariaDB 10.11.0.
-* [log\_slow\_rate\_limit](../../variables-and-modes/server-system-variables.md#log_slow_rate_limit) - permits a fraction of slow queries to be logged.
-* [log\_slow\_verbosity](../../variables-and-modes/server-system-variables.md#log_slow_verbosity) - amount of detail in the log.
-* [log\_slow\_filter](../../variables-and-modes/server-system-variables.md#log_slow_filter) - limit which queries to log.
+* [slow\_query\_log](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#slow_query_log) - enable/disable the slow query log. Renamed to [log\_slow\_query](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query) from MariaDB 10.11.
+* [log\_output](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) - how the output will be written.
+* [log\_slow\_admin\_statements](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_admin_statements). Whether to log `OPTIMIZE`, `ANALYZE`, `ALTER`, and other administrative statements to the slow log. Deprecated from [MariaDB 11.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.0/what-is-mariadb-110), use [log\_slow\_filter](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_filter) without admin.
+* [slow\_query\_log\_file](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#slow_query_log_file) - name of the slow query log file. Renamed to [log\_slow\_query\_file](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query_file) from MariaDB 10.11.0.
+* [long\_query\_time](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#long_query_time) - time in seconds/microseconds defining a slow query. Renamed to [log\_slow\_query\_time](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_query_time) from MariaDB 10.11.0.
+* [log\_queries\_not\_using\_indexes](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_queries_not_using_indexes) - whether or not to log queries that don't use indexes.
+* [log\_slow\_admin\_statements](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_admin_statements) - whether or not to log certain admin statements.
+* [log\_slow\_disabled\_statements](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_disabled_statements) - types of statements that should not be logged in the slow query log.
+* [min\_examined\_row\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#min_examined_row_limit) - minimum rows a query must examine to be slow. Renamed to [log\_slow\_min\_examined\_row\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_min_examined_row_limit) from MariaDB 10.11.0.
+* [log\_slow\_rate\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_rate_limit) - permits a fraction of slow queries to be logged.
+* [log\_slow\_verbosity](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_verbosity) - amount of detail in the log.
+* [log\_slow\_filter](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_slow_filter) - limit which queries to log.
 * [log\_slow\_slave\_statements](../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#log_slow_slave_statements) - log slow statements executed by replica thread to the slow log if it is open.
 
 ## Rotating the Slow Query Log on Unix and Linux

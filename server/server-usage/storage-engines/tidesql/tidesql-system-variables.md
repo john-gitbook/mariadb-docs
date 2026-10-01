@@ -2,7 +2,7 @@
 description: >-
   A complete reference for TideSQL system variables, grouped by scope, covering
   the flush and compaction pool, block cache, memtable, durability, full-text
-  search, and the per-session table-option defau
+  search, and the per-session table-option defaults.
 ---
 
 # TideSQL System Variables

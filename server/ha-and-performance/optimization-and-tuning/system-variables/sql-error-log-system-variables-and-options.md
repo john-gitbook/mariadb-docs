@@ -1,12 +1,13 @@
 ---
-description: System variables and options for the SQL Error Log plugin.
+description: >-
+  System variables and options for the SQL Error Log plugin.
 ---
 
 # SQL Error Log System Variables and Options
 
-This page documents system variables and options related to the [SQL\_Error\_Log Plugin](../../../server-management/server-monitoring-logs/sql-error-log-plugin.md). See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting them.
+This page documents system variables and options related to the [SQL\_Error\_Log Plugin](../../../server-management/server-monitoring-logs/sql-error-log-plugin.md). See [Server System Variables](server-system-variables.md) for a complete list of system variables and instructions on setting them.
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 ## Options
 
@@ -28,7 +29,7 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 
 #### `sql_error_log_filename`
 
-* Description: The name (and optionally path) of the logfile containing the errors. Rotation will use a naming convention such as `sql_error_log_filename.001`. If no path is specified, the log file will be written to the [data directory](../../../server-management/variables-and-modes/server-system-variables.md#datadir).
+* Description: The name (and optionally path) of the logfile containing the errors. Rotation will use a naming convention such as `sql_error_log_filename.001`. If no path is specified, the log file will be written to the [data directory](server-system-variables.md#datadir).
 * Command line: `--sql-error-log-filename=value`
 * Scope: Global
 * Dynamic: No

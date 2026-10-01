@@ -7,9 +7,9 @@ description: >-
 
 # Performance Schema System Variables
 
-The following variables are used with MariaDB's [Performance Schema](./). See [Performance Schema Options](../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) for Performance Schema options that are not system variables. See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting them.
+The following variables are used with MariaDB's [Performance Schema](./). See [Performance Schema Options](../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) for Performance Schema options that are not system variables. See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a complete list of system variables and instructions on setting them.
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `performance_schema`
 
@@ -174,7 +174,7 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 
 #### `performance_schema_max_file_handles`
 
-* Description: Specifies the maximum number of opened file objects. Should always be higher than [open\_files\_limit](../../../server-management/variables-and-modes/server-system-variables.md#open_files_limit).
+* Description: Specifies the maximum number of opened file objects. Should always be higher than [open\_files\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#open_files_limit).
 * Command line: `--performance-schema-max-file-handles=#`
 * Scope: Global
 * Dynamic: No
@@ -392,7 +392,7 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 
 #### `performance_schema_max_thread_instances`
 
-* Description: Specifies how many of the running server threads (see [max\_connections](../../../server-management/variables-and-modes/server-system-variables.md#max_connections) and [max\_delayed\_threads](../../../server-management/variables-and-modes/server-system-variables.md#max_delayed_threads)) can be instrumented. Should be greater than the sum of max\_connections and max\_delayed\_threads. `0` for disabling, `-1` (the default) for automated sizing.
+* Description: Specifies how many of the running server threads (see [max\_connections](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_connections) and [max\_delayed\_threads](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_delayed_threads)) can be instrumented. Should be greater than the sum of max\_connections and max\_delayed\_threads. `0` for disabling, `-1` (the default) for automated sizing.
 * Command line: `--performance-schema-max-thread-instances=#`
 * Scope: Global
 * Dynamic: No

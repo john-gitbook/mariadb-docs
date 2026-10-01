@@ -70,7 +70,7 @@ If you convert an [InnoDB](innodb/) table which contains [virtual columns](../..
 
 ### Using with AUTO\_INCREMENT
 
-Because a BLACKHOLE table does not store data, it will not maintain the [AUTO\_INCREMENT](../../reference/data-types/auto_increment.md) value. If you are replicating to a table that can handle `AUTO_INCREMENT` columns, and are not explicitly setting the primary key auto-increment value in the [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) query, or using the [SET](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md) [INSERT\_ID](../../server-management/variables-and-modes/server-system-variables.md#insert_id) statement, inserts will fail on the slave due to duplicate keys.
+Because a BLACKHOLE table does not store data, it will not maintain the [AUTO\_INCREMENT](../../reference/data-types/auto_increment.md) value. If you are replicating to a table that can handle `AUTO_INCREMENT` columns, and are not explicitly setting the primary key auto-increment value in the [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) query, or using the [SET](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md) [INSERT\_ID](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#insert_id) statement, inserts will fail on the slave due to duplicate keys.
 
 ## Limits
 

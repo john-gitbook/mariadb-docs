@@ -5,26 +5,26 @@ description: >-
 hidden: true
 ---
 
-# My Cluster
+# My Cluster Tab
 
 **My cluster** opens as the first tab of the **Dashboard** screen when you select **Dashboard** from the navigation menu. It displays numeric and tabular information for the "current" cluster (selected in the cluster selector tool on the main toolbar).
 
 ![](../../../.gitbook/assets/cc-gg9-my-cluster-gg9.png)
 
 {% hint style="info" %}
-Depending on configuration, [secured clusters](../authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions.
+Depending on configuration, [secured clusters](../auth/authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions.
 {% endhint %}
 
 ## Viewing Cluster Information
 
 Use the widgets to view the relevant cluster information:
 
-| Widget         | Description                                                                                                                                                                                                                          |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Cluster Health | <p>The cluster status:<br>- <code>Warnings</code> - at least one of the alerts for the cluster has been triggered<br>- <code>Errors</code> - partition loss<br>- <code>Healthy</code> - neither warnings nor errors are observed</p> |
-| Connections    | A set of chips for adding connections.                                                                                                                                                                                               |
-| Details        | A table of the cluster details, including `Type`, `ID`, `Owner`, etc.                                                                                                                                                                |
-| Nodes          | A list of cluster's nodes.                                                                                                                                                                                                           |
+| Widget | Description |
+|---|---|
+| Cluster Health | The cluster status:<br>- `Warnings` - at least one of the alerts for the cluster has been triggered<br>- `Errors` - partition loss<br>- `Healthy` - neither warnings nor errors are observed |
+| Connections | A set of chips for adding connections. |
+| Details | A table of the cluster details, including `Type`, `ID`, `Owner`, etc. |
+| Nodes | A list of cluster's nodes. |
 
 ### Viewing Cluster Health Details
 
@@ -34,13 +34,13 @@ To view details of the cluster health (status), in the **Cluster Health** widget
 
 The following health checks are available:
 
-| Check                          | Condition | Description                                                                                                                           |
-| ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Alerts                         | WARNING   | One or more configured alerts have been triggered. Each active alert appears as a separate entry showing the alert's own message.     |
-| Metric monitoring              | WARNING   | Metric monitoring is not enabled for this cluster. Update the cluster configuration to enable the metric exporter.                    |
-| Cluster Management Group (CMG) | WARNING   | One or more CMG nodes are offline. The message lists the affected node IDs.                                                           |
-| Metastorage Group (MG)         | WARNING   | One or more Metastorage nodes are offline. The message lists the affected node IDs.                                                   |
-| Partition loss                 | ERROR     | One or more partitions are in a degraded, read-only, or unavailable state. The message lists the affected zones and partition counts. |
+| Check | Condition | Description |
+|---|---|---|
+| Alerts | WARNING | One or more configured alerts have been triggered. Each active alert appears as a separate entry showing the alert's own message. |
+| Metric monitoring | WARNING | Metric monitoring is not enabled for this cluster. Update the cluster configuration to enable the metric exporter. |
+| Cluster Management Group (CMG) | WARNING | One or more CMG nodes are offline. The message lists the affected node IDs. |
+| Metastorage Group (MG) | WARNING | One or more Metastorage nodes are offline. The message lists the affected node IDs. |
+| Partition loss | ERROR | One or more partitions are in a degraded, read-only, or unavailable state. The message lists the affected zones and partition counts. |
 
 You can also retrieve cluster health information via the [REST API](../../admin-guide/rest-api.md).
 
@@ -54,16 +54,16 @@ To add columns to the table or remove them from the table, select the **Table Co
 
 For GridGain 9 clusters, the **Nodes** widget displays the following columns:
 
-| Column            | Description                                               |
-| ----------------- | --------------------------------------------------------- |
-| Name              | The node name.                                            |
-| Node ID           | The ID of the node.                                       |
-| Host              | The cluster host IP address.                              |
-| Port              | The cluster host port.                                    |
-| CMG               | Whether the node is included in Cluster Management Group. |
-| MS                | Whether the node is included in the Metastorage Group.    |
-| HTTP, HTTPS ports | The ports the node exposes.                               |
-| Status            | `Running` or `Validating` - see explanation.              |
+| Column | Description |
+|---|---|
+| Name | The node name. |
+| Node ID | The ID of the node. |
+| Host | The cluster host IP address. |
+| Port | The cluster host port. |
+| CMG | Whether the node is included in Cluster Management Group. |
+| MS | Whether the node is included in the Metastorage Group. |
+| HTTP, HTTPS ports | The ports the node exposes. |
+| Status | `Running` or `Validating` - see explanation. |
 
 ## Renaming the Cluster
 
@@ -86,11 +86,11 @@ You initialize GridGain 9 clusters.
 
 To initialize the attached GridGain 9 cluster:
 
-1.  Click **Initialize** in the top right corner.
+1. Click **Initialize** in the top right corner.
 
-    The **Initialize cluster** dialog opens.
+   The **Initialize cluster** dialog opens.
 
-    ![Initialize cluster](../../../.gitbook/assets/cc-gg9-initialize-cluster.png)
+   ![Initialize cluster](../../../.gitbook/assets/cc-gg9-initialize-cluster.png)
 2. Add configuration and license file(s) using the **Browse** button or by dragging and dropping.
 3. Optionally:
    1. Expand the **Advanced settings** section.
@@ -123,16 +123,16 @@ You can configure what Control Center tracks for an attached cluster via the clu
 
 To update the monitoring configuration:
 
-1.  Click the ⋮ in the right corner of the **My Cluster** tab and choose **Monitoring configuration** from the menu.
+1. Click the &#8942; in the right corner of the **My Cluster** tab and choose **Monitoring configuration** from the menu.
 
-    ![](../../../.gitbook/assets/cc-gg9-update_cluster_config.png)
-2.  Switch on the features you want Control Center to monitor:
+   ![](../../../.gitbook/assets/cc-gg9-update_cluster_config.png)
+2. Switch on the features you want Control Center to monitor:
 
-    | Option      | Description                                                                                                                         |
-    | ----------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-    | Metrics     | Enables the metric exporter. Available for attached clusters only.                                                                  |
-    | Queries log | Enables [query logging](../querying-gg9.md#queries-log). Click **Configure** to set the minimum duration of the queries to monitor. |
-    | Events      | Enables [event](../events.md) monitoring. Click **Configure** to select the events to collect.                                      |
+   | Option | Description |
+   |---|---|
+   | Metrics | Enables the metric exporter. Available for attached clusters only. |
+   | Queries log | Enables [query logging](../queries/querying-gg9.md#queries-log). Click **Configure** to set the minimum duration of the queries to monitor. |
+   | Events | Enables [event](../events/events.md) monitoring. Click **Configure** to select the events to collect. |
 3. Click **Save**.
 
 The dialog closes once the configuration is saved. While the save is in progress, the form is read-only. To discard your changes, click **Cancel**.
@@ -153,8 +153,8 @@ cluster config update "ignite.metrics.exporters=[
 ]"
 ```
 
-* If you are using a custom connector for metrics, then in the `endpoint` field, enter the connector address that is reachable from the cluster nodes, followed by `/api`. The address must match `connector.base-url` as documented in the Cloud Connector [section](../cloud-connector/connect-cloud-connector.md#configure-cloud-connector).
-* If you prefer to use the embedded connector, then set the `endpoint` to the Control Center portal address, followed by `/api`.
+- If you are using a custom connector for metrics, then in the `endpoint` field, enter the connector address that is reachable from the cluster nodes, followed by `/api`. The address must match `connector.base-url` as documented in the Cloud Connector [section](../cloud-connector/connect-cloud-connector.md#configure-cloud-connector).
+- If you prefer to use the embedded connector, then set the `endpoint` to the Control Center portal address, followed by `/api`.
 
 ## Updating Cluster Connection Settings
 
@@ -162,9 +162,9 @@ If you have [attached](../../getting-started/connect/connect-gridgain9-cluster.m
 
 To update the cluster connection settings:
 
-1.  From the context menu in the top right corner, select **Connection settings**.
+1. From the context menu in the top right corner, select **Connection settings**.
 
-    ![Connection settings](../../../.gitbook/assets/cc-gg9-connection-settings.png)
+   ![Connection settings](../../../.gitbook/assets/cc-gg9-connection-settings.png)
 2. In the dialog that opens, enter **Username** and **Password**.
 3. Click **Save**.
 
@@ -186,8 +186,8 @@ To force-refresh the cluster state:
 
 You can have access to a cluster as:
 
-* _User_ - a regular user who can view the cluster that had been shared with them individually or via a team, as well as utilize the actions that appear in the cluster's context menu.
-* _Owner_ - the user who had created or attached the cluster. Owners have extended cluster access rights, including sharing the cluster with teams or users, suspension, removal, etc.
+- *User* - a regular user who can view the cluster that had been shared with them individually or via a team, as well as utilize the actions that appear in the cluster's context menu.
+- *Owner* - the user who had created or attached the cluster. Owners have extended cluster access rights, including sharing the cluster with teams or users, suspension, removal, etc.
 
 As a cluster owner, you can share that cluster with individual users and/or teams.
 
@@ -208,7 +208,7 @@ In the entry field across the top of the **Share cluster** dialog, start typing 
 The users and teams you have entered appear in the corresponding sections of the **Share cluster** dialog. The system notifies the users and team members that a cluster had been shared with them. To close the **Share cluster** dialog, click **Close**.
 
 {% hint style="info" %}
-Depending on configuration, [secured clusters](../authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions even from those users with whom the cluster had been shared.
+Depending on configuration, [secured clusters](../auth/authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions even from those users with whom the cluster had been shared.
 {% endhint %}
 
 ### Stopping a Cluster Share
@@ -235,7 +235,7 @@ To view a [list of available clusters](../../cluster-management.md) on the **Clu
 
 To add a cluster, click **+** on the top toolbar. From the menu that opens, select an option:
 
-* **Attach cluster** - proceed to [cluster attachment instructions](../../getting-started/connect/connect-gridgain9-cluster.md)
+- **Attach cluster** - proceed to [cluster attachment instructions](../../getting-started/connect/connect-gridgain9-cluster.md)
 
 ## Updating License
 
@@ -247,5 +247,5 @@ License can be updated either by uploading the file or by pasting it as a text.
 
 ## Next Steps
 
-* [Monitoring](dashboard-overview-gg9.md)
-* [Querying](../querying-gg9.md)
+- [Monitoring](dashboard-overview-gg9.md)
+- [Querying](../queries/querying-gg9.md)

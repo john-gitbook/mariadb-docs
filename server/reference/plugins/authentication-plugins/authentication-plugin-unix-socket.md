@@ -8,7 +8,7 @@ description: >-
 
 The `unix_socket` authentication plugin is installed by default, and it is used by the `'root'@'localhost'` user account by default. See [Authentication](../../../security/user-account-management/authentication-from-mariadb-10-4.md) for more information.
 
-The `unix_socket` authentication plugin allows the user to use operating system credentials when connecting to MariaDB via the local Unix socket file. This Unix socket file is defined by the [socket](../../../server-management/variables-and-modes/server-system-variables.md#socket) system variable.
+The `unix_socket` authentication plugin allows the user to use operating system credentials when connecting to MariaDB via the local Unix socket file. This Unix socket file is defined by the [socket](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#socket) system variable.
 
 The `unix_socket` authentication plugin works by calling the [getsockopt](https://man7.org/linux/man-pages/man7/socket.7.html) system call with the `SO_PEERCRED` socket option, which allows it to retrieve the `uid` of the process that is connected to the socket. It is then able to get the user name associated with that `uid`. Once it has the user name, it will authenticate the connecting user as the MariaDB account that has the same user name.
 
@@ -117,7 +117,7 @@ GRANT SELECT ON db.* TO username@hostname IDENTIFIED VIA unix_socket;
 From MariaDB 11.6:
 {% endhint %}
 
-The authentication string (if present) is compared with the socket's user name. Authentication proceeds if there's a match. In this case, the [external\_user](../../../server-management/variables-and-modes/server-system-variables.md#external_user) system variable contains the OS user.
+The authentication string (if present) is compared with the socket's user name. Authentication proceeds if there's a match. In this case, the [external\_user](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#external_user) system variable contains the OS user.
 
 Consider an OS user named 'bob' that has been created like this:
 

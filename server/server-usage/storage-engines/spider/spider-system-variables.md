@@ -9,9 +9,9 @@ description: >-
 
 The following variables are available when the [Spider](./) storage engine has been installed.
 
-See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting them.
+See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a complete list of system variables and instructions on setting them.
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 {% hint style="warning" %}
 As of MariaDB 13.0, the following Spider table parameters can no longer be set through a table's `COMMENT` or `CONNECTION` string (in either their short or full form): `buffer_size` (`bfz`), `bka_table_name_type` (`btt`), `crd_mode` (`cmd`), `crd_type` (`ctp`), `crd_weight` (`cwg`), `init_sql_alloc_size` (`isa`), `internal_limit` (`ilm`), `internal_offset` (`ios`), `sts_mode` (`smd`), `semi_table_lock` (`stl`), and `semi_table_lock_connection` (`stc`). They were deprecated in earlier releases and have no corresponding table option; set the matching system variable below (for example, `spider_crd_mode`) instead.
@@ -876,7 +876,7 @@ Before this change, a non-minus-one system variable value would override the tab
 
 #### `spider_remote_sql_log_off`
 
-* Description: Sets the [sql\_log\_off](../../../server-management/variables-and-modes/server-system-variables.md#sql_log_off) system variable to use when connecting to backend servers.
+* Description: Sets the [sql\_log\_off](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_log_off) system variable to use when connecting to backend servers.
   * `-1` Doesn't set the value.
   * `0` Doesn't log Spider SQL statements to remote backend servers.
   * `1` Logs SQL statements on remote backend
@@ -897,7 +897,7 @@ Before this change, a non-minus-one system variable value would override the tab
 
 #### `spider_remote_trx_isolation`
 
-* Description: Sets the [Transaction Isolation Level](../../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md#isolation-levels) when connecting to the backend server.
+* Description: Sets the [Transaction Isolation Level](../../../reference/sql-statements/transactions/set-transaction.md#isolation-levels) when connecting to the backend server.
   * `-1` Doesn't set the Isolation Level.
   * `0` Sets to the `READ UNCOMMITTED` level.
   * `1` Sets to the `READ COMMITTED` level.
@@ -1041,7 +1041,7 @@ Before this change, a non-minus-one system variable value would override the tab
 
 #### `spider_semi_trx`
 
-* Description: Enables semi-transactions. This controls transaction consistency when an SQL statement is split into multiple statements issued to the backend servers. You can preserve or relax consistency as need. Spider encapsulates auto-committed SQL statements within a transaction on the remote backend server. When using `READ COMMITTED` or `READ UNCOMMITTED` [transaction isolation levels](../../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md#isolation-levels) to force consistency, set the [spider\_semi\_trx\_isolation](spider-system-variables.md#spider_semi_trx_isolation) system variable to `2`.
+* Description: Enables semi-transactions. This controls transaction consistency when an SQL statement is split into multiple statements issued to the backend servers. You can preserve or relax consistency as need. Spider encapsulates auto-committed SQL statements within a transaction on the remote backend server. When using `READ COMMITTED` or `READ UNCOMMITTED` [transaction isolation levels](../../../reference/sql-statements/transactions/set-transaction.md#isolation-levels) to force consistency, set the [spider\_semi\_trx\_isolation](spider-system-variables.md#spider_semi_trx_isolation) system variable to `2`.
   * `0` Disables semi-transaction consistency.
   * `1` Enables semi-transaction consistency.
 * Scope: Global, Session
@@ -1457,7 +1457,7 @@ Before this change, a non-minus-one system variable value would override the tab
 #### `spider_use_handler`
 
 * Description: Converts [HANDLER](../../../reference/sql-structure/nosql/handler/) SQL statements.\
-  When the [spider\_sync\_trx\_isolation](spider-system-variables.md#spider_sync_trx_isolation) system variable is set to `0`, Spider disables [HANDLER](../../../reference/sql-structure/nosql/handler/) conversions to prevent use of the statement on the [SERIALIZABLE](../../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md#serializable) isolation level.
+  When the [spider\_sync\_trx\_isolation](spider-system-variables.md#spider_sync_trx_isolation) system variable is set to `0`, Spider disables [HANDLER](../../../reference/sql-structure/nosql/handler/) conversions to prevent use of the statement on the [SERIALIZABLE](../../../reference/sql-statements/transactions/set-transaction.md#serializable) isolation level.
   * `-1` Falls back to the default value, if the [table parameter](spider-table-parameters.md) is not set.
   * `0` Converts [HANDLER](../../../reference/sql-structure/nosql/handler/) statements into [SELECT](../../../reference/sql-statements/data-manipulation/selecting-data/select.md) statements.
   * `1` Passes [HANDLER](../../../reference/sql-structure/nosql/handler/) to the remote backend server.
@@ -1476,7 +1476,7 @@ Before this change, a non-minus-one system variable value would override the tab
 #### `spider_use_pushdown_udf`
 
 * Description:\
-  When using a UDF function in a condition and the [engine\_condition\_pushdown](../../../server-management/variables-and-modes/server-system-variables.md#engine_condition_pushdown) system variable is set to `1`, whether to execute the UDF function locally or push it down.
+  When using a UDF function in a condition and the [engine\_condition\_pushdown](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#engine_condition_pushdown) system variable is set to `1`, whether to execute the UDF function locally or push it down.
   * `-1` Falls back to the default value, if the [table parameter](spider-table-parameters.md) is not set.
   * `0` Doesn't transmit the UDF
   * `1` Transmits the UDF.

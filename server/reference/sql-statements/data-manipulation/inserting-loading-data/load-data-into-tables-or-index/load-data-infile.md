@@ -42,9 +42,9 @@ Executing this statement activates `INSERT` [triggers](../../../../../server-usa
 
 One must have the [FILE](../../../account-management-sql-statements/grant.md#file) privilege to be able to execute LOAD DATA INFILE. This is to ensure normal users cannot read system files. LOAD DATA LOCAL INFILE does not have this requirement.
 
-If the [secure\_file\_priv](../../../../../server-management/variables-and-modes/server-system-variables.md#secure_file_priv) system variable is set (by default it is not), the loaded file must be present in the specified directory.
+If the [secure\_file\_priv](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#secure_file_priv) system variable is set (by default it is not), the loaded file must be present in the specified directory.
 
-Note that MariaDB's [systemd](../../../../../server-management/starting-and-stopping-mariadb/systemd/) unit file restricts access to `/home`, `/root`, and `/run/user` by default. See [Configuring access to home directories](../../../../../server-management/starting-and-stopping-mariadb/systemd/configuring.md#configuring-access-to-home-directories).
+Note that MariaDB's [systemd](../../../../../server-management/starting-and-stopping-mariadb/systemd/README.md) unit file restricts access to `/home`, `/root`, and `/run/user` by default. See [Configuring access to home directories](../../../../../server-management/starting-and-stopping-mariadb/systemd/configuring.md#configuring-access-to-home-directories).
 
 ### LOAD DATA LOCAL INFILE
 
@@ -52,7 +52,7 @@ When you execute the `LOAD DATA INFILE` statement, MariaDB Server attempts to re
 
 If you don't want to permit this operation (perhaps for security reasons), you can disable the `LOAD DATA LOCAL INFILE` statement on either the server or the client.
 
-* The `LOAD DATA LOCAL INFILE` statement can be disabled on the server by setting the [local\_infile](../../../../../server-management/variables-and-modes/server-system-variables.md#local_infile) system variable to `0`.
+* The `LOAD DATA LOCAL INFILE` statement can be disabled on the server by setting the [local\_infile](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#local_infile) system variable to `0`.
 * The `LOAD DATA LOCAL INFILE` statement can be disabled on the client. If you are using [MariaDB Connector/C](https://app.gitbook.com/s/CjGYMsT2MVP4nd3IyW2L/mariadb-connector-c), this can be done by unsetting the `CLIENT_LOCAL_FILES` capability flag with the [mysql\_real\_connect](https://app.gitbook.com/s/CjGYMsT2MVP4nd3IyW2L/mariadb-connector-c/api-functions/mysql_real_connect) function or by unsetting the `MYSQL_OPT_LOCAL_INFILE` option with [mysql\_optionsv](https://app.gitbook.com/s/CjGYMsT2MVP4nd3IyW2L/mariadb-connector-c/api-functions/mysql_optionsv) function. If you are using a different client or client library, then see the documentation for your specific client or client library to determine how it handles the `LOAD DATA LOCAL INFILE` statement.
 * The `LOAD DATA LOCAL INFILE` strict modes like `STRICT_TRANS_TABLES` are disabled with keyword "local". ([MDEV-11235](https://jira.mariadb.org/browse/MDEV-11235))
 
@@ -87,15 +87,15 @@ The `IGNORE number LINES` syntax can be used to ignore a number of rows from the
 
 ### Character Sets
 
-When the statement opens the file, it attempts to read the contents using the default character-set, as defined by the [character\_set\_database](../../../../../server-management/variables-and-modes/server-system-variables.md#character_set_database) system variable.
+When the statement opens the file, it attempts to read the contents using the default character-set, as defined by the [character\_set\_database](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_database) system variable.
 
-In the cases where the file was written using a character-set other than the default, you can specify the character-set to use with the `CHARACTER SET` clause in the statement. It ignores character-sets specified by the [SET NAMES](../../../administrative-sql-statements/set-commands/set-names.md) statement and by the [character\_set\_client](../../../../../server-management/variables-and-modes/server-system-variables.md#character_set_client) system variable. Setting the `CHARACTER SET` clause to a value of `binary` indicates "no conversion."
+In the cases where the file was written using a character-set other than the default, you can specify the character-set to use with the `CHARACTER SET` clause in the statement. It ignores character-sets specified by the [SET NAMES](../../../../data-types/string-data-types/character-sets/set-names.md) statement and by the [character\_set\_client](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_client) system variable. Setting the `CHARACTER SET` clause to a value of `binary` indicates "no conversion."
 
 The statement interprets all fields in the file as having the same character-set, regardless of the column data type. To properly interpret file contents, you must ensure that it was written with the correct character-set. If you write a data file with [mariadb-dump -T](../../../../../clients-and-utilities/backup-restore-and-import-clients/mariadb-dump.md) or with the [SELECT INTO OUTFILE](../../selecting-data/select-into-outfile.md) statement with the [mariadb](../../../../../clients-and-utilities/mariadb-client/mariadb-command-line-client.md) client, be sure to use the `--default-character-set` option, so that the output is written with the desired character-set.
 
 When using mixed character sets, use the `CHARACTER SET` clause in both [SELECT INTO OUTFILE](../../selecting-data/select-into-outfile.md) and `LOAD DATA INFILE` to ensure that MariaDB correctly interprets the escape sequences.
 
-The [character\_set\_filesystem](../../../../../server-management/variables-and-modes/server-system-variables.md#character_set_filesystem) system variable controls the interpretation of the filename.\
+The [character\_set\_filesystem](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_filesystem) system variable controls the interpretation of the filename.\
 It is not possible to load data files that use the `ucs2` character set.
 
 ### Preprocessing Inputs

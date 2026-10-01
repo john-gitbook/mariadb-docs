@@ -6,7 +6,7 @@ description: Learn about the schema design of the Spider storage engine.
 
 ## Create Tables
 
-Spider Tables can be created with MariaDB Enterprise Spider using the [CREATE TABLE](../../../tables/create-table.md) statement. The [Enterprise Spider storage engine](./) can be chosen for the table by specifying `ENGINE=Spider`.
+Spider Tables can be created with MariaDB Enterprise Spider using the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement. The [Enterprise Spider storage engine](./) can be chosen for the table by specifying `ENGINE=Spider`.
 
 For each Spider Table, MariaDB Enterprise Spider requires connection details for the Data Nodes. The connection details are provided by specifying [Connection Options](mariadb-enterprise-spider-schema-design.md#connection-options) in the `COMMENT` option for the table or partition, depending on the topology.
 

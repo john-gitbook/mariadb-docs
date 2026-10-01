@@ -46,7 +46,7 @@ Used to select a default database for subsequent statements.
 
 {% columns %}
 {% column %}
-[**CREATE TABLE**](../server-usage/tables/create-table.md)
+[**CREATE TABLE**](../reference/sql-statements/data-definition/create/create-table.md)
 {% endcolumn %}
 
 {% column %}
@@ -66,7 +66,7 @@ Used to modify an existing table's definition (e.g., add/remove columns, change 
 
 {% columns %}
 {% column %}
-[**DROP TABLE**](../server-usage/tables/drop-table.md)
+[**DROP TABLE**](../reference/sql-statements/data-definition/drop/drop-table.md)
 {% endcolumn %}
 
 {% column %}
@@ -86,7 +86,7 @@ Shows the structure of a table (columns, data types, etc.).
 
 ### Manipulating Your Data
 
-These statements are part of the SQL Data Manipulation Language - DML.
+&#x20;These statements are part of the SQL Data Manipulation Language - DML.
 
 * [**SELECT**](../reference/sql-statements/data-manipulation/selecting-data/select.md): Used when you want to read (or select) your data from one or more tables.
 * [**INSERT**](../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md): Used when you want to add (or insert) new rows of data into a table.

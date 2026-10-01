@@ -5,12 +5,12 @@ description: >-
 hidden: true
 ---
 
-# Dashboard
+# Monitoring GridGain 8 Clusters
 
 This section covers monitoring capabilities of GridGain Control Center. You can start by monitoring each node in isolation, the connection between nodes, or the system as a whole. Control Center features a graphical user interface with flexible, user-configurable dashboards. The dashboards provide a visual presentation of the cluster status. The drag-and-drop interface allows you to monitor any of 200+ metrics available in Apache Ignite.
 
 {% hint style="info" %}
-Depending on configuration, [secured clusters](../authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions.
+Depending on configuration, [secured clusters](../auth/authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions.
 {% endhint %}
 
 {% content-ref url="my-cluster.md" %}

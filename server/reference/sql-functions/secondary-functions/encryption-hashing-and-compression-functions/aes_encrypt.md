@@ -54,7 +54,7 @@ If `AES_DECRYPT()` detects invalid data or incorrect padding, it returns `NULL`.
 From MariaDB 11.2:
 {% endhint %}
 
-The function supports an initialization vector, and control of the block encryption mode. The default mode is specified by the [block\_encryption\_mode](../../../../server-management/variables-and-modes/server-system-variables.md#block_encryption_mode) system variable, which can be changed when calling the function with a mode. _mode_ is aes-{128,192,256}-{ecb,cbc,ctr} for example: "AES-128-cbc".\
+The function supports an initialization vector, and control of the block encryption mode. The default mode is specified by the [block\_encryption\_mode](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#block_encryption_mode) system variable, which can be changed when calling the function with a mode. _mode_ is aes-{128,192,256}-{ecb,cbc,ctr} for example: "AES-128-cbc".\
 `AES_ENCRYPT(str, key)` can no longer be used in persistent virtual columns (and the like).
 {% endtab %}
 

@@ -46,7 +46,8 @@ ha_create_table_option example_table_option_list[]=
 };
 ```
 
-The engine declares a structure`ha_table_option_struct` that will hold values of these new attributes.
+The engine declares a structure`ha_table_option_struct`
+that will hold values of these new attributes.
 
 And it describes these attributes to MySQL by creating an array of`HA_TOPTION_*` macros. Note a detail: these macros expect a structure called`ha_table_option_struct`, if the structure is called differently, a`#define` are needed.
 
@@ -120,7 +121,7 @@ All values must be specified as literals, not expressions. The value of a boolea
 
 When an attribute is set, it is stored with the table definition and shown in the `SHOW CREATE TABLE;`. To remove an attribute from a table definition use `ALTER TABLE` to set its value to a `DEFAULT`.
 
-The values of unknown attributes or attributes with the illegal values cause an error by default. But with [ALTER TABLE](../../../sql-statements/data-definition/alter/alter-table/) one can change the storage engine and some previously valid attributes may become unknown — to the new engine. They are not removed automatically, though, because the table might be altered back to the first engine, and these attributes are valid again. Still [SHOW CREATE TABLE](../../../sql-statements/administrative-sql-statements/show/show-create-table.md) will comment these unknown attributes out in the output, otherwise they would make a generated [CREATE TABLE](../../../../server-usage/tables/create-table.md) statement invalid.
+The values of unknown attributes or attributes with the illegal values cause an error by default. But with [ALTER TABLE](../../../sql-statements/data-definition/alter/alter-table/) one can change the storage engine and some previously valid attributes may become unknown — to the new engine. They are not removed automatically, though, because the table might be altered back to the first engine, and these attributes are valid again. Still [SHOW CREATE TABLE](../../../sql-statements/administrative-sql-statements/show/show-create-table.md) will comment these unknown attributes out in the output, otherwise they would make a generated [CREATE TABLE](../../../sql-statements/data-definition/create/create-table.md) statement invalid.
 
 With the `IGNORE_BAD_TABLE_OPTIONS` [sql mode](../../../../server-management/variables-and-modes/sql_mode.md) this behavior changes. Unknown attributes do not cause an error, they only result in a warning. And [SHOW CREATE TABLE](../../../sql-statements/administrative-sql-statements/show/show-create-table.md) will not comment them out. This mode is implicitly enabled in the replication slave thread.
 

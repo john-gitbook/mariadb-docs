@@ -1,7 +1,7 @@
 ---
 description: >-
-  The rowid filtering optimization, which pre-filters rowids to reduce expensive
-  row lookups.
+  The rowid filtering optimization, which pre-filters rowids to reduce
+  expensive row lookups.
 ---
 
 # Rowid Filtering Optimization
@@ -98,7 +98,7 @@ Note the `rowid_filter` element. It has a `range` element inside it. `selectivit
 
 ## Control
 
-Rowid filtering can be switched on/off using `rowid_filter` flag in the [optimizer\_switch](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) variable. By default, the optimization is enabled.
+Rowid filtering can be switched on/off using `rowid_filter` flag in the [optimizer\_switch](../system-variables/server-system-variables.md#optimizer_switch) variable. By default, the optimization is enabled.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

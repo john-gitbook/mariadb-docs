@@ -1,8 +1,8 @@
 ---
 description: >-
-  MariaDB ColumnStore translates LOAD DATA INFILE statements into cpimport bulk
-  loads when batch insert mode is on and the statement runs outside a
-  transaction.
+  MariaDB ColumnStore translates LOAD DATA INFILE statements into
+  cpimport bulk loads when batch insert mode is on and the statement runs
+  outside a transaction.
 ---
 
 # Data Loading with LOAD DATA INFILE
@@ -85,7 +85,7 @@ After the command is executed, it will prompt you for a password.
 CREATE DATABASE inventory;
 ```
 
-For each table that you are importing, create the table with the [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/create-table) statement:
+For each table that you are importing, create the table with the [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create/create-table) statement:
 
 ```sql
 CREATE TABLE inventory.products (

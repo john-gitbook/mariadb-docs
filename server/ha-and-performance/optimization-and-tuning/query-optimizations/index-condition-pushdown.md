@@ -1,7 +1,7 @@
 ---
 description: >-
-  Index Condition Pushdown, which pushes WHERE conditions into the index scan to
-  reduce row reads.
+  Index Condition Pushdown, which pushes WHERE conditions into the index scan
+  to reduce row reads.
 ---
 
 # Index Condition Pushdown
@@ -91,10 +91,10 @@ The speedup was:
 
 There are two server status variables:
 
-| Variable name                                                                                                            | Meaning                                             |
-| ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| [Handler\_icp\_attempts](../../../server-management/variables-and-modes/server-status-variables.md#handler_icp_attempts) | Number of times pushed index condition was checked. |
-| [Handler\_icp\_match](../../../server-management/variables-and-modes/server-status-variables.md#handler_icp_match)       | Number of times the condition was matched.          |
+| Variable name                                                                                 | Meaning                                             |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| [Handler\_icp\_attempts](../system-variables/server-status-variables.md#handler_icp_attempts) | Number of times pushed index condition was checked. |
+| [Handler\_icp\_match](../system-variables/server-status-variables.md#handler_icp_match)       | Number of times the condition was matched.          |
 
 That way, the value `Handler_icp_attempts - Handler_icp_match` shows the number records that the server did not have to read because of Index Condition Pushdown.
 

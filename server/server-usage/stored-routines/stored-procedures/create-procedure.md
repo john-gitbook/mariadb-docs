@@ -41,9 +41,9 @@ routine_body:
 
 ![Railroad diagram of CREATE PROCEDURE — equivalent to the BNF above](../../../.gitbook/assets/create-procedure-railroad.svg)
 
-![Railroad diagram of proc\_parameter](../../../.gitbook/assets/create-function-parameter-railroad.svg)
+![Railroad diagram of proc_parameter](../../../.gitbook/assets/create-procedure-parameter-railroad.svg)
 
-![Railroad diagram of characteristic](../../../.gitbook/assets/create-function-characteristic-railroad.svg)
+![Railroad diagram of characteristic](../../../.gitbook/assets/create-procedure-characteristic-railroad.svg)
 
 The `IN OUT` parameter works only in [Oracle mode](create-procedure.md#oracle-mode).
 {% endtab %}
@@ -83,7 +83,7 @@ routine_body:
 
 Creates a [stored procedure](./). By default, a routine is associated with the default database. To associate the routine explicitly with a given database, specify the name as `db_name.sp_name` when you create it.
 
-When the routine is invoked, an implicit ` USE`` `` `_`db_name`_ is performed (and undone when the routine terminates). The causes the routine to have the given default database while it executes. `USE` statements within stored routines are disallowed.
+When the routine is invoked, an implicit `USE`` `_`db_name`_ is performed (and undone when the routine terminates). The causes the routine to have the given default database while it executes. `USE` statements within stored routines are disallowed.
 
 When a stored procedure has been created, you invoke it by using the `CALL` statement (see [CALL](../../../reference/sql-statements/stored-routine-statements/call.md)).
 
@@ -111,9 +111,11 @@ If the `IF NOT EXISTS` clause is used, then the procedure will only be created i
 
 Each parameter is an `IN` parameter by default. To specify otherwise for a parameter, use the keyword `OUT` or `INOUT` before the parameter name.
 
-An `IN` parameter passes a value into a procedure. The procedure might modify the value, but the modification is not visible to the caller when the procedure returns. An `OUT` parameter passes a value from the procedure back to the caller. Its initial value is `NULL` within the procedure, and its value is visible to the caller when the procedure returns. An `INOUT` parameter is initialized by the caller, can be modified by the procedure, and any change made by the procedure is visible to the caller when the procedure returns.
+An `IN` parameter passes a value into a procedure. The procedure might modify the value, but the modification is not visible to the caller when the procedure returns. An `OUT` parameter passes a value from the procedure back to the caller. Its initial value is `NULL` within the procedure, and its value is visible to the caller when the procedure returns. An `INOUT` parameter is initialized by the caller, can be
+modified by the procedure, and any change made by the procedure is visible to the caller when the procedure returns.
 
-For each `OUT` or `INOUT` parameter, pass a user-defined variable in the`CALL` statement that invokes the procedure so that you can obtain its value when the procedure returns. If you are calling the procedure from within another stored procedure or function, you can also pass a routine parameter or local routine variable as an `IN` or `INOUT` parameter.
+For each `OUT` or `INOUT` parameter, pass a user-defined variable in the`CALL` statement that invokes the procedure so that you can obtain its value when the procedure returns. If you are calling the procedure
+from within another stored procedure or function, you can also pass a routine parameter or local routine variable as an `IN` or `INOUT` parameter.
 
 ### DEFAULT value or expression
 
@@ -156,7 +158,7 @@ CREATE PROCEDURE name ...;
 
 ### sql\_mode
 
-MariaDB stores the [sql\_mode](../../../server-management/variables-and-modes/server-system-variables.md#sql_mode) system variable setting that is in effect at the time a routine is created and always executes the routine with this setting in force, regardless of the server [SQL mode](../../../server-management/variables-and-modes/sql_mode.md) in effect when the routine is invoked.
+MariaDB stores the [sql\_mode](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_mode) system variable setting that is in effect at the time a routine is created and always executes the routine with this setting in force, regardless of the server [SQL mode](../../../server-management/variables-and-modes/sql_mode.md) in effect when the routine is invoked.
 
 ### Character Sets and Collations
 

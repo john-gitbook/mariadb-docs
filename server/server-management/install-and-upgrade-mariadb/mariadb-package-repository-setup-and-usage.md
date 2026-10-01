@@ -158,7 +158,7 @@ By default, `mariadb_es_repo_setup` configures three Enterprise repositories: Ma
 
 ### MariaDB Enterprise Server Repository
 
-The **MariaDB Enterprise Server** repository software packages related to MariaDB Enterprise Server, including: the server itself, [clients and utilities](../../clients-and-utilities/), [client libraries](../../clients-and-utilities/server-client-software/client-libraries/), [plugins](../../reference/plugins/), and [MariaDB Enterprise Backup](../../server-usage/backup-and-restore/mariadb-enterprise-backup.md).The packages are served from `https://dlm.mariadb.com/repo/<token>/mariadb-enterprise-server/<version>/`.
+The **MariaDB Enterprise Server** repository software packages related to MariaDB Enterprise Server, including: the server itself, [clients and utilities](../../clients-and-utilities/), [client libraries](../../clients-and-utilities/server-client-software/client-libraries/), [plugins](../../reference/plugins/), and [MariaDB Enterprise Backup](../../server-usage/backup-and-restore/backup-and-restore-with-mariadb-enterprise-server/mariadb-enterprise-backup.md).The packages are served from `https://dlm.mariadb.com/repo/<token>/mariadb-enterprise-server/<version>/`.
 
 To configure a different release series, or to pin a specific release, use the [`--mariadb-server-version`](mariadb-package-repository-setup-and-usage.md#the-mariadb-server-version-option) option. To skip this repository, use the `--skip-server` option.
 

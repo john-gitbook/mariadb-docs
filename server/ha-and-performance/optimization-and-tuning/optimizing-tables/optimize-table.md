@@ -33,7 +33,7 @@ This statement requires [SELECT and INSERT privileges](../../../reference/sql-st
 
 By default, `OPTIMIZE TABLE` statements are written to the [binary log](../../../server-management/server-monitoring-logs/binary-log/) and will be [replicated](../../standard-replication/replication-overview.md). The `NO_WRITE_TO_BINLOG` keyword (`LOCAL` is an alias) will ensure the statement is not written to the binary log.
 
-`OPTIMIZE TABLE` statements are not logged to the binary log if [read\_only](../../../server-management/variables-and-modes/server-system-variables.md#read_only) is set. See also [Read-Only Replicas](../../standard-replication/read-only-replicas.md).
+`OPTIMIZE TABLE` statements are not logged to the binary log if [read\_only](../system-variables/server-system-variables.md#read_only) is set. See also [Read-Only Replicas](../../standard-replication/read-only-replicas.md).
 
 `OPTIMIZE TABLE` is also supported for partitioned tables. You can use [ALTER TABLE ... OPTIMIZE PARTITION](../../../reference/sql-statements/data-definition/alter/alter-table/#optimize-partition) to optimize one or more partitions.
 
@@ -41,7 +41,7 @@ You can use `OPTIMIZE TABLE` to reclaim the unused space and to defragment the d
 
 The [Aria](../../../server-usage/storage-engines/aria/) storage engine supports [progress reporting](../../../reference/product-development/mariadb-internals/using-mariadb-with-your-programs-api/progress-reporting.md) for this statement.
 
-If a [MyISAM](../../../server-usage/storage-engines/myisam-storage-engine/) table is fragmented, [concurrent inserts](../../../reference/sql-statements/data-manipulation/inserting-loading-data/concurrent-inserts.md) will not be performed until an `OPTIMIZE TABLE` statement is executed on that table, unless the [concurrent\_insert](../../../server-management/variables-and-modes/server-system-variables.md#concurrent_insert) server system variable is set to `ALWAYS`.
+If a [MyISAM](../../../server-usage/storage-engines/myisam-storage-engine/) table is fragmented, [concurrent inserts](../../../reference/sql-statements/data-manipulation/inserting-loading-data/concurrent-inserts.md) will not be performed until an `OPTIMIZE TABLE` statement is executed on that table, unless the [concurrent\_insert](../system-variables/server-system-variables.md#concurrent_insert) server system variable is set to `ALWAYS`.
 
 ### Updating an InnoDB fulltext index
 

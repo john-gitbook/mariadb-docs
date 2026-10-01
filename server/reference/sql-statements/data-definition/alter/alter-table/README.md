@@ -9,7 +9,7 @@ description: >-
 ## Syntax
 
 {% hint style="info" %}
-In the syntax, these options are the same as for the [CREATE TABLE statement](../../../../../server-usage/tables/create-table.md):
+In the syntax, these options are the same as for the [CREATE TABLE statement](../../create/create-table.md):
 
 * table\_option
 * column\_definition
@@ -175,11 +175,11 @@ ALTER TABLE IF EXISTS t RENAME COLUMN IF EXISTS i TO k;
 
 ## Column Definitions
 
-See [CREATE TABLE: Column Definitions](../../../../../server-usage/tables/create-table.md#column-definitions) for information about column definitions.
+See [CREATE TABLE: Column Definitions](../../create/create-table.md#column-definitions) for information about column definitions.
 
 ## Index Definitions
 
-See [CREATE TABLE: Index Definitions](../../../../../server-usage/tables/create-table.md#index-definitions) for information about index definitions.
+See [CREATE TABLE: Index Definitions](../../create/create-table.md#index-definitions) for information about index definitions.
 
 The [CREATE INDEX](../../create/create-index.md) and [DROP INDEX](../../drop/drop-index.md) statements can also be used to add or remove an index.
 
@@ -197,7 +197,7 @@ See [Setting Character Sets and Collations](../../../../data-types/string-data-t
 
 ### Table Options
 
-See [CREATE TABLE: Table Options](../../../../../server-usage/tables/create-table.md#table-options) for information about table options.
+See [CREATE TABLE: Table Options](../../create/create-table.md#table-options) for information about table options.
 
 ### ADD COLUMN
 
@@ -205,7 +205,7 @@ See [CREATE TABLE: Table Options](../../../../../server-usage/tables/create-tabl
 ... ADD COLUMN [IF NOT EXISTS] (col_name column_definition, ...)
 ```
 
-Adds a column to the table. The syntax is the same as in [CREATE TABLE](../../../../../server-usage/tables/create-table.md). If you are using `IF NOT_EXISTS` the column will not be added if it was not there already. This is very useful when doing scripts to modify tables.
+Adds a column to the table. The syntax is the same as in [CREATE TABLE](../../create/create-table.md). If you are using `IF NOT_EXISTS` the column will not be added if it was not there already. This is very useful when doing scripts to modify tables.
 
 The `FIRST` and `AFTER` clauses affect the physical order of columns in the datafile. Use `FIRST` to add a column in the first (leftmost) position, or `AFTER` followed by a column name to add the new column in any other position. The physical position of a column is usually irrelevant.
 
@@ -374,7 +374,7 @@ ADD CONSTRAINT is_balanced
 
 The `constraint_name` is optional. If you don't provide one in the `ALTER TABLE` statement, MariaDB auto-generates a name for you. This is done so that you can remove it later using [DROP CONSTRAINT](./#drop-constraint) clause.
 
-You can disable all constraint expression checks by setting the variable [check\_constraint\_checks](../../../../../server-management/variables-and-modes/server-system-variables.md#check_constraint_checks) to `OFF`. You may find this useful when loading a table that violates some constraints that you want to later find and fix in SQL.
+You can disable all constraint expression checks by setting the variable [check\_constraint\_checks](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#check_constraint_checks) to `OFF`. You may find this useful when loading a table that violates some constraints that you want to later find and fix in SQL.
 
 To view constraints on a table, query [information\_schema.TABLE\_CONSTRAINTS](../../../../system-tables/information-schema/information-schema-tables/information-schema-table_constraints-table.md):
 
@@ -392,7 +392,8 @@ WHERE TABLE_NAME = 'account_ledger';
 
 ### DROP CONSTRAINT
 
-`DROP CONSTRAINT` for `UNIQUE` and `FOREIGN KEY` [constraints](../../constraint.md) and `DROP CONSTRAINT` for `CHECK` constraints were introduced in an earlier version of MariaDB.
+`DROP CONSTRAINT` for `UNIQUE` and `FOREIGN KEY` [constraints](../../constraint.md)
+and `DROP CONSTRAINT` for `CHECK` constraints were introduced in an earlier version of MariaDB.
 
 Modifies the table, removing the given constraint.
 
@@ -401,7 +402,7 @@ ALTER TABLE table_name
 DROP CONSTRAINT constraint_name;
 ```
 
-When you add a constraint to a table, whether through a [CREATE TABLE](../../../../../server-usage/tables/create-table.md#constraint-expressions) or [ALTER TABLE...ADD CONSTRAINT](./#add-constraint) statement, you can either set a `constraint_name` yourself, or allow MariaDB to auto-generate one for you. To view constraints on a table, query [information\_schema.TABLE\_CONSTRAINTS](../../../../system-tables/information-schema/information-schema-tables/information-schema-table_constraints-table.md). For instance,
+When you add a constraint to a table, whether through a [CREATE TABLE](../../create/create-table.md#constraint-expressions) or [ALTER TABLE...ADD CONSTRAINT](./#add-constraint) statement, you can either set a `constraint_name` yourself, or allow MariaDB to auto-generate one for you. To view constraints on a table, query [information\_schema.TABLE\_CONSTRAINTS](../../../../system-tables/information-schema/information-schema-tables/information-schema-table_constraints-table.md). For instance,
 
 ```sql
 CREATE TABLE t (
@@ -494,7 +495,7 @@ From MariaDB 11.4:
 ALTER TABLE partitioned_table CONVERT PARTITION part1 TO TABLE normal_table;
 ```
 
-`CONVERT TABLE` will take an existing table and move this to another table as its own partition with a specified [partition definition](../../../../../server-usage/tables/create-table.md#partitions). For example the following moves `normal_table` to a partition of `partitioned_table` with a definition that its values, based on the `PARTITION BY` of the `partitioned_table`, are less than 12345.
+`CONVERT TABLE` will take an existing table and move this to another table as its own partition with a specified [partition definition](../../create/create-table.md#partitions). For example the following moves `normal_table` to a partition of `partitioned_table` with a definition that its values, based on the `PARTITION BY` of the `partitioned_table`, are less than 12345.
 
 ```sql
 ALTER TABLE partitioned_table CONVERT TABLE normal_table 
@@ -517,7 +518,7 @@ From MariaDB 10.7 to before MariaDB 11.4:
 ALTER TABLE partitioned_table CONVERT PARTITION part1 TO TABLE normal_table;
 ```
 
-`CONVERT TABLE` will take an existing table and move this to another table as its own partition with a specified [partition definition](../../../../../server-usage/tables/create-table.md#partitions). For example the following moves `normal_table` to a partition of `partitioned_table` with a definition that its values, based on the `PARTITION BY` of the `partitioned_table`, are less than 12345.
+`CONVERT TABLE` will take an existing table and move this to another table as its own partition with a specified [partition definition](../../create/create-table.md#partitions). For example the following moves `normal_table` to a partition of `partitioned_table` with a definition that its values, based on the `PARTITION BY` of the `partitioned_table`, are less than 12345.
 
 ```sql
 ALTER TABLE partitioned_table CONVERT TABLE normal_table 
@@ -570,7 +571,7 @@ The optional `[{WITH | WITHOUT} VALIDATION]` is not permitted.
 
 See [Partitioning Overview: Exchanging Partitions](../../../../../server-usage/partitioning-tables/partitioning-overview.md#exchanging-partitions) for more details.
 
-See also [copying InnoDB's transportable tablespaces](../../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md#copying-transportable-tablespaces).
+See also [copying InnoDB's transportable tablespaces](../../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md#copying-transportable-tablespaces).&#x20;
 {% endtab %}
 {% endtabs %}
 
@@ -620,7 +621,7 @@ See [InnoDB Online DDL Overview: ALGORITHM](../../../../../server-usage/storage-
 
 The default behavior, which occurs if `ALGORITHM=DEFAULT` is specified, or if `ALGORITHM` is not specified at all, usually only makes a copy if the operation doesn't support being done in-place at all. In this case, the most efficient available algorithm will usually be used.
 
-The [old\_alter\_table](../../../../../server-management/variables-and-modes/server-system-variables.md#old_alter_table) system variable is deprecated. Instead, the [alter\_algorithm](../../../../../server-management/variables-and-modes/server-system-variables.md#alter_algorithm) system variable defines the default algorithm for `ALTER TABLE` operations. This was removed in [MariaDB 11.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.5/what-is-mariadb-115) for the following reasons:
+The [old\_alter\_table](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_alter_table) system variable is deprecated. Instead, the [alter\_algorithm](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#alter_algorithm) system variable defines the default algorithm for `ALTER TABLE` operations. This was removed in [MariaDB 11.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.5/what-is-mariadb-115) for the following reasons:
 
 * alter\_algorithm was introduced as a replacement for the old\_alter\_table that was used to force the usage of the original alter table algorithm (copy) in cases where the new alter algorithm did not work. The new option was added as a way to force the usage of a specific algorithm when it should instead have made it possible to disable algorithms that would not work for some reason.
 * alter\_algorithm introduced some cases where ALTER TABLE would not work without specifying the ALGORITHM=XXX option together with ALTER TABLE.
@@ -735,7 +736,7 @@ See [InnoDB Online DDL Overview: LOCK](../../../../../server-usage/storage-engin
 
 ### Index Options
 
-See [CREATE TABLE](../../../../../server-usage/tables/create-table.md#index-options) page for meaning of the index options.
+See [CREATE TABLE](../../create/create-table.md#index-options) page for meaning of the index options.
 
 ## Progress Reporting
 
@@ -866,6 +867,7 @@ Binlog would contain two event groups, of which the first one gets delivered to 
 | master-bin.000001 | 655 | Gtid              |         1 |         700 | GTID 0-1-3 COMMIT ALTER id=2                                  |
 | master-bin.000001 | 700 | Query             |         1 |    
 ```
+
 {% endtab %}
 
 {% tab title="< 10.8" %}
@@ -883,8 +885,8 @@ SET @@SESSION.binlog_alter_two_phase = true;
 
 ## See Also
 
-* [CREATE TABLE](../../../../../server-usage/tables/create-table.md)
-* [DROP TABLE](../../../../../server-usage/tables/drop-table.md)
+* [CREATE TABLE](../../create/create-table.md)
+* [DROP TABLE](../../drop/drop-table.md)
 * [Character Sets and Collations](../../../../data-types/string-data-types/character-sets/supported-character-sets-and-collations.md)
 * [SHOW CREATE TABLE](../../../administrative-sql-statements/show/show-create-table.md)
 * [Instant ADD COLUMN for InnoDB](../../../../../server-usage/storage-engines/innodb/innodb-online-ddl/instant-add-column-for-innodb.md)

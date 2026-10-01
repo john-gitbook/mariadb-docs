@@ -11,13 +11,13 @@ Password expiry permits administrators to expire user passwords, either manually
 
 ## System Variables
 
-There are two system variables which affect password expiry: [default\_password\_lifetime](../../server-management/variables-and-modes/server-system-variables.md#default_password_lifetime), which determines the amount of time between requiring the user to change their password. `0`, the default, means automatic password expiry is not active.
+There are two system variables which affect password expiry: [default\_password\_lifetime](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_password_lifetime), which determines the amount of time between requiring the user to change their password. `0`, the default, means automatic password expiry is not active.
 
-The second variable, [disconnect\_on\_expired\_password](../../server-management/variables-and-modes/server-system-variables.md#disconnect_on_expired_password) determines whether a client is permitted to connect if their password has expired, or whether they are permitted to connect in sandbox mode, able to perform a limited subset of queries related to resetting the password, in particular [SET PASSWORD](../../reference/sql-statements/account-management-sql-statements/set-password.md) and [SET](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md).
+The second variable, [disconnect\_on\_expired\_password](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#disconnect_on_expired_password) determines whether a client is permitted to connect if their password has expired, or whether they are permitted to connect in sandbox mode, able to perform a limited subset of queries related to resetting the password, in particular [SET PASSWORD](../../reference/sql-statements/account-management-sql-statements/set-password.md) and [SET](../../reference/sql-statements/administrative-sql-statements/set-commands/set.md).
 
 ## Setting a Password Expiry Limit for a User
 
-Besides automatic password expiry, as determined by [default\_password\_lifetime](../../server-management/variables-and-modes/server-system-variables.md#default_password_lifetime), password expiry times can be set on an individual user basis, overriding the global using the [CREATE USER](../../reference/sql-statements/account-management-sql-statements/create-user.md) or [ALTER USER](../../reference/sql-statements/account-management-sql-statements/alter-user.md) statements, for example:
+Besides automatic password expiry, as determined by [default\_password\_lifetime](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_password_lifetime), password expiry times can be set on an individual user basis, overriding the global using the [CREATE USER](../../reference/sql-statements/account-management-sql-statements/create-user.md) or [ALTER USER](../../reference/sql-statements/account-management-sql-statements/alter-user.md) statements, for example:
 
 ```sql
 CREATE USER 'monty'@'localhost' PASSWORD EXPIRE INTERVAL 120 DAY;

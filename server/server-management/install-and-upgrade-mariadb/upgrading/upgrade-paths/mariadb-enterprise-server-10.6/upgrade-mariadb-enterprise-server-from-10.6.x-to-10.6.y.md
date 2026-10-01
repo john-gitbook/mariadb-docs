@@ -287,7 +287,7 @@ When MariaDB Enterprise Server is up and running on your system, you should test
 
     MariaDB [(none)]>
     ```
-2.  You can also verify the server version by checking the value of the [version](../../../../variables-and-modes/server-system-variables.md#list-of-server-system-variables) system variable with the [SHOW GLOBAL STATUS](../../../../../reference/sql-statements/administrative-sql-statements/show/show-status.md) statement:
+2.  You can also verify the server version by checking the value of the [version](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#list-of-server-system-variables) system variable with the [SHOW GLOBAL STATUS](../../../../../reference/sql-statements/administrative-sql-statements/show/show-status.md) statement:
 
     ```sql
     SHOW GLOBAL VARIABLES LIKE 'version';

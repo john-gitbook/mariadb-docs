@@ -2,7 +2,7 @@
 description: >-
   MariaDB Exa architecture: MaxScale routes reads and writes while MaxScale CDC
   (binlogrouter) tails the MariaDB binary log and bulk-loads changes into Exasol
-  for near real-time analytics on operational
+  for near real-time analytics on operational data.
 icon: house-blank
 ---
 
@@ -12,11 +12,11 @@ icon: house-blank
 
 MariaDB Exa combines three core components into a single Hybrid Transactional and Analytical Processing (HTAP) system:
 
-| Role         | Component                 | Purpose                                                                                                                       |
-| ------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Router**   | MariaDB MaxScale with CDC | Intelligent query routing (SmartRouter + Exasolrouter) and Change Data Capture that synchronizes data from MariaDB to Exasol. |
-| **Storage**  | MariaDB Enterprise Server | The primary system of record for transactional workloads (OLTP), ensuring data integrity and consistency.                     |
-| **Insights** | Exasol                    | A high-performance, in-memory, MPP engine purpose-built for extreme OLAP query performance.                                   |
+| Role | Component | Purpose |
+| --- | --- | --- |
+| **Router** | MariaDB MaxScale with CDC | Intelligent query routing (SmartRouter + Exasolrouter) and Change Data Capture that synchronizes data from MariaDB to Exasol. |
+| **Storage** | MariaDB Enterprise Server | The primary system of record for transactional workloads (OLTP), ensuring data integrity and consistency. |
+| **Insights** | Exasol | A high-performance, in-memory, MPP engine purpose-built for extreme OLAP query performance. |
 
 Applications use a single MariaDB connection endpoint for both OLTP and analytics. MaxScale decides, per query, whether MariaDB or Exasol answers faster, and keeps Exasol in sync through asynchronous Change Data Capture (CDC).
 
@@ -116,12 +116,12 @@ flowchart LR
 
 MariaDB Exa supports four topologies, differing in scale and how analytics clients reach Exasol:
 
-| Topology          | MariaDB / MaxScale / Exasol                | Routing strategy                            | Typical use                                                      |
-| ----------------- | ------------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------- |
-| **Micro**         | 1 / 1 / 1                                  | HTAP SmartRouter                            | Development and functional testing                               |
-| **Standard**      | Primary + replicas / 2 / cluster + standby | HTAP SmartRouter                            | Production HTAP: one endpoint for OLTP and OLAP                  |
-| **Exasol Router** | Primary + replicas / 2 / cluster + standby | Exasolrouter over the MariaDB wire protocol | BI tools querying Exasol through MaxScale's MariaDB endpoint     |
-| **Exasol Direct** | Primary + replicas / 2 / cluster + standby | Direct via the Exasol connector             | BI tools connecting straight to Exasol with its native connector |
+| Topology | MariaDB / MaxScale / Exasol | Routing strategy | Typical use |
+| --- | --- | --- | --- |
+| **Micro** | 1 / 1 / 1 | HTAP SmartRouter | Development and functional testing |
+| **Standard** | Primary + replicas / 2 / cluster + standby | HTAP SmartRouter | Production HTAP: one endpoint for OLTP and OLAP |
+| **Exasol Router** | Primary + replicas / 2 / cluster + standby | Exasolrouter over the MariaDB wire protocol | BI tools querying Exasol through MaxScale's MariaDB endpoint |
+| **Exasol Direct** | Primary + replicas / 2 / cluster + standby | Direct via the Exasol connector | BI tools connecting straight to Exasol with its native connector |
 
 In every topology, MaxScale CDC keeps Exasol synchronized from the MariaDB binary log. The **Micro** topology collapses everything to single nodes for testing; **Standard** adds MariaDB replicas, an Exasol cluster with a standby node, and a second MaxScale for high availability. The **Exasol Router** and **Exasol Direct** topologies change only how analytics clients reach Exasol — through MaxScale or directly.
 
@@ -143,7 +143,7 @@ flowchart LR
     class M merge;
 ```
 
-For the full configuration procedure, see the [MariaDB MaxScale Exasolrouter Tutorial](https://app.gitbook.com/s/0pSbu5DcMSW4KwAkUcmX/mariadb-maxscale-tutorials/mariadb-maxscale-exasolrouter). Pipeline tuning parameters are covered in [Performance & Benchmarking](performance-and-benchmarking.md).
+For the full configuration procedure, see the [MariaDB MaxScale Exasolrouter Tutorial](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/0pSbu5DcMSW4KwAkUcmX/mariadb-maxscale-tutorials/mariadb-maxscale-exasolrouter). Pipeline tuning parameters are covered in [Performance & Benchmarking](performance-and-benchmarking.md).
 
 <sub>_This page is: Copyright © 2026 MariaDB. All rights reserved._</sub>
 

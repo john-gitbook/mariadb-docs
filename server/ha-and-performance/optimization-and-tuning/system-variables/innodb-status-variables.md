@@ -1,14 +1,15 @@
 ---
-description: InnoDB server status variables, viewable with SHOW STATUS.
+description: >-
+  InnoDB server status variables, viewable with SHOW STATUS.
 ---
 
 # InnoDB Server Status Variables
 
-See [Server Status Variables](../../../server-management/variables-and-modes/server-status-variables.md) for a complete list of status variables that can be viewed with [SHOW STATUS](../../../reference/sql-statements/administrative-sql-statements/show/show-status.md).
+See [Server Status Variables](server-status-variables.md) for a complete list of status variables that can be viewed with [SHOW STATUS](../../../reference/sql-statements/administrative-sql-statements/show/show-status.md).
 
 Much of the [InnoDB](../../../server-usage/storage-engines/innodb/) information here can also be seen with a [SHOW ENGINE INNODB STATUS](../../../reference/sql-statements/administrative-sql-statements/show/show-engine-innodb-status.md) statement.
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `Innodb_adaptive_hash_cells`
 
@@ -454,7 +455,7 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 
 #### `Innodb_dict_tables`
 
-* Description: Number of entries in the XtraDB data dictionary cache. This Percona XtraDB variable was removed in MariaDB 10/XtraDB 5.6 as it was replaced with MySQL 5.6's [table\_definition\_cache](../../../server-management/variables-and-modes/server-system-variables.md#table_definition_cache) implementation.
+* Description: Number of entries in the XtraDB data dictionary cache. This Percona XtraDB variable was removed in MariaDB 10/XtraDB 5.6 as it was replaced with MySQL 5.6's [table\_definition\_cache](server-system-variables.md#table_definition_cache) implementation.
 * Scope: Global
 * Data Type: `numeric`
 * Introduced: XtraDB 5.0.77-b13
@@ -465,7 +466,7 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 * Description: Intended to show the number of tablespaces in the key rotation list. InnoDB never updated the counter, so it always returned `0`. [INFORMATION\_SCHEMA.INNODB\_TABLESPACES\_ENCRYPTION](../../../reference/system-tables/information-schema/information-schema-tables/information-schema-innodb-tables/information-schema-innodb_tablespaces_encryption-table.md) reports the key rotation state of each tablespace.
 * Scope: Global
 * Data Type: `numeric`
-* Removed: [MariaDB 10.6.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.8), [MariaDB 10.5.16](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.16), [MariaDB 10.4.25](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.25), [MariaDB 10.3.35](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.35)
+* Removed: [MariaDB 10.6.8](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.8), [MariaDB 10.5.16](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.16), [MariaDB 10.4.25](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.25), [MariaDB 10.3.35](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.35)
 
 #### `Innodb_encryption_n_merge_blocks_decrypted`
 
@@ -907,19 +908,19 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 
 #### `Innodb_num_index_pages_written`
 
-* Description: Intended to show the number of index pages written. The code that updated the counter was lost in [MariaDB 10.2.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.2), so from then on it always returned `0`.
+* Description: Intended to show the number of index pages written. The code that updated the counter was lost in [MariaDB 10.2.2](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.2), so from then on it always returned `0`.
 * Scope: Global
 * Data Type: `numeric`
 * Introduced: [MariaDB 10.1.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.0)
-* Removed: [MariaDB 10.6.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.8), [MariaDB 10.5.16](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.16), [MariaDB 10.4.25](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.25), [MariaDB 10.3.35](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.35)
+* Removed: [MariaDB 10.6.8](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.8), [MariaDB 10.5.16](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.16), [MariaDB 10.4.25](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.25), [MariaDB 10.3.35](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.35)
 
 #### `Innodb_num_non_index_pages_written`
 
-* Description: Intended to show the number of non-index pages written. The code that updated the counter was lost in [MariaDB 10.2.2](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.2), so from then on it always returned `0`.
+* Description: Intended to show the number of non-index pages written. The code that updated the counter was lost in [MariaDB 10.2.2](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.2/10.2.2), so from then on it always returned `0`.
 * Scope: Global
 * Data Type: `numeric`
 * Introduced: [MariaDB 10.1.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/10.1.0)
-* Removed: [MariaDB 10.6.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.8), [MariaDB 10.5.16](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.16), [MariaDB 10.4.25](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.25), [MariaDB 10.3.35](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.35)
+* Removed: [MariaDB 10.6.8](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.8), [MariaDB 10.5.16](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.16), [MariaDB 10.4.25](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.4/10.4.25), [MariaDB 10.3.35](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.35)
 
 #### `Innodb_num_open_files`
 
@@ -1196,28 +1197,28 @@ See also the [Full list of MariaDB options, system and status variables](../../.
 
 #### `Innodb_rows_deleted`
 
-* Description: Number of rows deleted from InnoDB tables that where not system tables. Almost equivalent to [Handler\_delete](../../../server-management/variables-and-modes/server-status-variables.md#handler_delete) which does include system tables.
+* Description: Number of rows deleted from InnoDB tables that where not system tables. Almost equivalent to [Handler\_delete](server-status-variables.md#handler_delete) which does include system tables.
 * Scope: Global
 * Data Type: `numeric`
 * Removed: [MariaDB 10.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.10/what-is-mariadb-1010)
 
 #### `Innodb_rows_inserted`
 
-* Description: Number of rows inserted into InnoDB tables that where not system tables. No direct equivalent in [Handler](../../../server-management/variables-and-modes/server-status-variables.md#handler_commit) status variables.
+* Description: Number of rows inserted into InnoDB tables that where not system tables. No direct equivalent in [Handler](server-status-variables.md#handler_commit) status variables.
 * Scope: Global
 * Data Type: `numeric`
 * Removed: [MariaDB 10.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.10/what-is-mariadb-1010)
 
 #### `Innodb_rows_read`
 
-* Description: Number of rows read from InnoDB tables that where not system tables. Almost equivalent to the sum of [Handler\_read\*](../../../server-management/variables-and-modes/server-status-variables.md#handler_read_first) status variables which do include system tables.
+* Description: Number of rows read from InnoDB tables that where not system tables. Almost equivalent to the sum of [Handler\_read\*](server-status-variables.md#handler_read_first) status variables which do include system tables.
 * Scope: Global
 * Data Type: `numeric`
 * Removed: [MariaDB 10.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.10/what-is-mariadb-1010)
 
 #### `Innodb_rows_updated`
 
-* Description: Number of rows updated in InnoDB tables that where not system tables. Almost equivalent to [Handler\_update](../../../server-management/variables-and-modes/server-status-variables.md#handler_update) which does include system tables.
+* Description: Number of rows updated in InnoDB tables that where not system tables. Almost equivalent to [Handler\_update](server-status-variables.md#handler_update) which does include system tables.
 * Scope: Global
 * Data Type: `numeric`
 * Removed: [MariaDB 10.10](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.10/what-is-mariadb-1010)

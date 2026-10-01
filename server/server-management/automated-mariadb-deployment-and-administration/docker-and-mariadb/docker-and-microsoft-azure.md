@@ -141,7 +141,7 @@ MariaDB [(none)]> SHOW GRANTS FOR yourappname;
 
 Obviously replace these passwords with something that is a bit more secure than you see in this example for anything other than development purposes.
 
-26. Load up your database from your preexisting SQL script that contains [CREATE DATABASE](../../../reference/sql-statements/data-definition/create/create-database.md); [USE DATABASE](../../../reference/sql-statements/administrative-sql-statements/use-database.md); and [CREATE TABLE](../../../server-usage/tables/create-table.md) statements.
+26. Load up your database from your preexisting SQL script that contains [CREATE DATABASE](../../../reference/sql-statements/data-definition/create/create-database.md); [USE DATABASE](../../../reference/sql-statements/administrative-sql-statements/use-database.md); and [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statements.
 
 Open a new local terminal window and navigate to the directory containing your `init.sql` script. Then, run the command: `mariadb --host=ww.xx.yyy.zzz --port=3306 --user=admin --password=admin -e "SOURCE init.sql"`, replacing `ww.xx.yyy.zzz` with your server's IP address.
 

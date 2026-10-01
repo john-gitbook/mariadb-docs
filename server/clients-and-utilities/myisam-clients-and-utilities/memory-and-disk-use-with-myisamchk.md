@@ -1,7 +1,7 @@
 ---
 description: >-
-  Tune myisamchk memory and disk usage to speed up checking and repairing large
-  MyISAM tables.
+  Tune myisamchk memory and disk usage to speed up checking and repairing
+  large MyISAM tables.
 ---
 
 # Memory and Disk Use With myisamchk
@@ -16,11 +16,11 @@ myisamchk has the following requirements for disk space:
 * Disk space in the temporary directory (TMPDIR or the tmpdir=path option) is needed for sorting if the --recover or --sort-recover options are used when not using --safe-recover). The space required is approximately (largest\_key + row\_pointer\_length) \* number\_of\_rows \* 2. To get information about the length of the keys as well as the row pointer length, use myisamchk -dv table\_name.
 * Space for a new index file to replace the existing one. The old index is first truncated, so unless the old index file is not present or is smaller for some reason, no significant extra space is needed.
 
-There are a number of [system variables](../../server-management/variables-and-modes/server-system-variables.md) that are useful to adjust when running myisamchk. They will increase memory usage, and since some are per-session variables, you don't want to increase the general value, but you can either pass an increased value to myisamchk as a command line option, or with a \[myisamchk] section in your [my.cnf](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) file.
+There are a number of [system variables](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) that are useful to adjust when running myisamchk. They will increase memory usage, and since some are per-session variables, you don't want to increase the general value, but you can either pass an increased value to myisamchk as a command line option, or with a \[myisamchk] section in your [my.cnf](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md) file.
 
-* [sort\_buffer\_size](../../server-management/variables-and-modes/server-system-variables.md#sort_buffer_size). By default this is 4M, but it's very useful to increase to make myisamchk sorting much faster. Since the server won't be running when you run myisamchk, you can increase substantially. 16M is usually a minimum, but values such as 256M are not uncommon if memory is available.
+* [sort\_buffer\_size](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sort_buffer_size). By default this is 4M, but it's very useful to increase to make myisamchk sorting much faster. Since the server won't be running when you run myisamchk, you can increase substantially. 16M is usually a minimum, but values such as 256M are not uncommon if memory is available.
 * [key\_buffer\_size](../../server-usage/storage-engines/myisam-storage-engine/myisam-system-variables.md#key_buffer_size) (which particularly helps with the --extend-check and --safe-recover options.
-* [read\_buffer\_size](../../server-management/variables-and-modes/server-system-variables.md#read_buffer_size)
+* [read\_buffer\_size](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#read_buffer_size)
 * `write_buffer_size` (a myisamchk option, not a server system variable)
 
 For example, if you have more than 512MB available to allocate to the process, the following settings could be used:

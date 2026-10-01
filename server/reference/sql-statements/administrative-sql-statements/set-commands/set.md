@@ -19,7 +19,7 @@ variable_assignment:
 
 ![Railroad diagram of SET](../../../../.gitbook/assets/set-railroad.svg)
 
-![Railroad diagram of variable\_assignment](../../../../.gitbook/assets/set-variable-assignment-railroad.svg)
+![Railroad diagram of variable_assignment](../../../../.gitbook/assets/set-variable-assignment-railroad.svg)
 
 One can also set a user variable in any expression with this syntax:
 
@@ -37,7 +37,7 @@ For setting variables on a per-query basis, see [SET STATEMENT](set-statement.md
 
 See [SHOW VARIABLES](../show/show-variables.md) for documentation on viewing server system variables.
 
-See [Server System Variables](../../../../server-management/variables-and-modes/server-system-variables.md) for a list of all the system variables.
+See [Server System Variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a list of all the system variables.
 
 ### GLOBAL / SESSION
 
@@ -57,7 +57,7 @@ Setting a global variable to DEFAULT will restore it to the server default, and 
 
 * [innodb\_sync\_spin\_loops](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_sync_spin_loops) is a global variable.
 * [skip\_parallel\_replication](../../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md) is a session variable.
-* [max\_error\_count](../../../../server-management/variables-and-modes/server-system-variables.md#max_error_count) is both global and session.
+* [max\_error\_count](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_error_count) is both global and session.
 
 ```sql
 SELECT VARIABLE_NAME, SESSION_VALUE, GLOBAL_VALUE FROM
@@ -165,7 +165,7 @@ SELECT @a;
 
 * [Using last\_value() to return data of used rows](../../../sql-functions/secondary-functions/information-functions/last_value.md)
 * [SET STATEMENT](set-statement.md)
-* [SET Variable](set-variable.md)
+* [SET Variable](../../programmatic-compound-statements/set-variable.md)
 * [SET Data Type](../../../data-types/string-data-types/set-data-type.md)
 * [DECLARE Variable](../../programmatic-compound-statements/declare-variable.md)
 

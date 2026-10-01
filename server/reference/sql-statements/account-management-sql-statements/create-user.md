@@ -55,19 +55,19 @@ lock_option:
 
 ![Railroad diagram of CREATE USER — equivalent to the BNF above](../../../.gitbook/assets/create-user-railroad.svg)
 
-![Railroad diagram of user\_specification](../../../.gitbook/assets/alter-user-specification-railroad.svg)
+![Railroad diagram of user_specification](../../../.gitbook/assets/create-user-specification-railroad.svg)
 
-![Railroad diagram of authentication\_option](../../../.gitbook/assets/alter-user-authentication-option-railroad.svg)
+![Railroad diagram of authentication_option](../../../.gitbook/assets/create-user-authentication-option-railroad.svg)
 
-![Railroad diagram of authentication\_rule](../../../.gitbook/assets/alter-user-authentication-rule-railroad.svg)
+![Railroad diagram of authentication_rule](../../../.gitbook/assets/create-user-authentication-rule-railroad.svg)
 
-![Railroad diagram of tls\_option](../../../.gitbook/assets/alter-user-tls-option-railroad.svg)
+![Railroad diagram of tls_option](../../../.gitbook/assets/create-user-tls-option-railroad.svg)
 
-![Railroad diagram of resource\_option](../../../.gitbook/assets/alter-user-resource-option-railroad.svg)
+![Railroad diagram of resource_option](../../../.gitbook/assets/create-user-resource-option-railroad.svg)
 
-![Railroad diagram of password\_option](../../../.gitbook/assets/alter-user-password-option-railroad.svg)
+![Railroad diagram of password_option](../../../.gitbook/assets/create-user-password-option-railroad.svg)
 
-![Railroad diagram of lock\_option](../../../.gitbook/assets/alter-user-lock-option-railroad.svg)
+![Railroad diagram of lock_option](../../../.gitbook/assets/create-user-lock-option-railroad.svg)
 
 ## Description
 
@@ -142,7 +142,10 @@ For example, if our password is `mariadb`, then we can create the user with:
 CREATE USER foo2@test IDENTIFIED BY 'mariadb';
 ```
 
-If you do not specify a password with the `IDENTIFIED BY` clause, the user will be able to connect without a password. A blank password is not a wildcard to match any password. The user must connect without providing a password if no password is set.
+If you do not specify a password with the `IDENTIFIED BY` clause, the user
+will be able to connect without a password. A blank password is not a wildcard
+to match any password. The user must connect without providing a password if no
+password is set.
 
 The only [authentication plugins](../../plugins/authentication-plugins/) that this clause supports are [mysql\_native\_password](../../plugins/authentication-plugins/authentication-plugin-mysql_native_password.md) and [mysql\_old\_password](../../plugins/authentication-plugins/authentication-plugin-mysql_old_password.md).
 
@@ -243,7 +246,7 @@ You can set certain TLS-related restrictions for specific user accounts. For ins
 | REQUIRE SUBJECT 'subject' | The account must use TLS and must have a valid X509 certificate. Also, the certificate's Subject must be the one specified via the string subject. This option implies REQUIRE X509. This option can be combined with the ISSUER, and CIPHER options in any order.                                  |
 | REQUIRE CIPHER 'cipher'   | The account must use TLS, but no valid X509 certificate is required. Also, the encryption used for the connection must use a specific cipher method specified in the string cipher. This option implies REQUIRE SSL. This option can be combined with the ISSUER, and SUBJECT options in any order. |
 
-`REQUIRE SSL` and `REQUIRE X509` guarantee only that the connection is encrypted and that the client presented some certificate signed by a trusted CA — neither identifies _which_ client connected. `REQUIRE SUBJECT` ties the account to a certificate identity instead; see [Matching the Certificate Subject](create-user.md#matching-the-certificate-subject) below for how that comparison works and its limits.
+`REQUIRE SSL` and `REQUIRE X509` guarantee only that the connection is encrypted and that the client presented some certificate signed by a trusted CA — neither identifies *which* client connected. `REQUIRE SUBJECT` ties the account to a certificate identity instead; see [Matching the Certificate Subject](#matching-the-certificate-subject) below for how that comparison works and its limits.
 
 The `REQUIRE` keyword must be used only once for all specified options, and the `AND` keyword can be used to separate individual options, but it is not required.
 
@@ -311,21 +314,30 @@ Per account resource limits are stored in the [user](../../system-tables/the-mys
 
 Account names have both a user name component and a host name component, and are specified as `'user_name'@'host_name'`.
 
-The user name and host name may be unquoted, quoted as strings using double quotes (`"`) or single quotes (`'`), or quoted as identifiers using backticks (\`\`\`). You must use quotes when using special characters (such as a hyphen) or wildcard characters. If you quote, you must quote the user name and host name separately (for example `'user_name'@'host_name'`).
+The user name and host name may be unquoted, quoted as strings using double quotes (`"`) or
+single quotes (`'`), or quoted as identifiers using backticks (\`\`\`). You must use quotes
+when using special characters (such as a hyphen) or wildcard characters. If you quote, you
+must quote the user name and host name separately (for example `'user_name'@'host_name'`).
 
 ### Host Name Component
 
 If the host name is not provided, it is assumed to be `'%'`.
 
-Host names may contain the wildcard characters `%` and `_`. They are matched as if by the [LIKE](../../sql-functions/string-functions/like.md) clause. If you need to use a wildcard character literally (for example, to match a domain name with an underscore), prefix the character with a backslash. See `LIKE` for more information on escaping wildcard characters.
+Host names may contain the wildcard characters `%` and `_`. They are matched as if by
+the [LIKE](../../sql-functions/string-functions/like.md) clause. If you need to use a wildcard character literally (for example, to
+match a domain name with an underscore), prefix the character with a backslash. See `LIKE`
+for more information on escaping wildcard characters.
 
 Before [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog), when multiple host patterns could match a connecting client, the sort order among wildcard patterns was determined only by the position of the first wildcard character. This approach often produced incorrect results or made the outcome dependent on insertion order.
 
 Starting with [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog) ([MDEV-14735](https://jira.mariadb.org/browse/MDEV-14735)), the matching algorithm correctly ranks host patterns by specificity, the number of hosts a pattern can match, ensuring deterministic and accurate privilege resolution.
 
-Host name matches are case-insensitive. Host names can match either domain names or IP addresses. Use `'localhost'` as the host name to allow only local client connections. On Linux, the loopback interface (127.0.0.1) will not match 'localhost' as it is not considered a local connection: this means that only connections via UNIX-domain sockets will match 'localhost'.
+Host name matches are case-insensitive. Host names can match either domain names or IP
+addresses. Use `'localhost'` as the host name to allow only local client connections. On Linux, the loopback interface (127.0.0.1) will not match 'localhost' as it is not considered a local connection: this means that only connections via UNIX-domain sockets will match 'localhost'.
 
-You can use a netmask to match a range of IP addresses using `'base_ip/netmask'` as the host name. A user with an IP address _ip\_addr_ will be allowed to connect if the following condition is true:
+You can use a netmask to match a range of IP addresses using `'base_ip/netmask'` as the
+host name. A user with an IP address _ip\_addr_ will be allowed to connect if the following
+condition is true:
 
 ```bash
 ip_addr & netmask = base_ip
@@ -351,10 +363,12 @@ User names must match exactly, including case. A user name that is empty is know
 
 For valid identifiers to use as user names, see [Identifier Names](../../sql-structure/sql-language-structure/identifier-names.md).
 
-It is possible for more than one account to match when a user connects. MariaDB selects the first matching account after sorting according to the following criteria:
+It is possible for more than one account to match when a user connects. MariaDB selects
+the first matching account after sorting according to the following criteria:
 
-* Accounts with an exact host name are sorted before accounts using a wildcard in the host name. Host names using a netmask are considered to be exact for sorting.
-* Accounts with a wildcard in the host name are sorted by specificity: a hostname that can match fewer hosts is considered more specific and is sorted first. Exact hostnames (no wildcards) are most specific; a bare `%` (matches any host) is least specific. Among patterns with wildcards, those that can match a narrower set of hosts sort before those that match a broader set. For example, `%.foo.bar` sorts before `%.bar` because it matches fewer hosts.\
+* Accounts with an exact host name are sorted before accounts using a wildcard in the
+  host name. Host names using a netmask are considered to be exact for sorting.
+* Accounts with a wildcard in the host name are sorted by specificity: a hostname that can match fewer hosts is considered more specific and is sorted first. Exact hostnames (no wildcards) are most specific; a bare `%` (matches any host) is least specific. Among patterns with wildcards, those that can match a narrower set of hosts sort before those that match a broader set. For example, `%.foo.bar` sorts before `%.bar` because it matches fewer hosts. \
   \
   Starting with [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog), this ordering is handled correctly by the improved `get_sort()` algorithm ([MDEV-14735](https://jira.mariadb.org/browse/MDEV-14735)). In earlier versions, sorting was based only on the length of the prefix before the first wildcard, which led to indeterminate ordering for patterns such as `%.bar` versus `%.foo.bar`.
 * Accounts with a non-empty user name sort before accounts with an empty user name.
@@ -390,7 +404,7 @@ If the matching account has no grant at all at a given level, a grant belonging 
 
 Usernames can be up to 80 characters long before 10.6 and starting from 10.6 it can be 128 characters long.
 
-Starting with [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog), patterns are ranked according to how many hosts they can match; those that match fewer hosts are considered more specific and take precedence in the ordering. The following example shows how domain-name wildcard patterns are sorted by specificity.
+Starting with [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog),  patterns are ranked according to how many hosts they can match; those that match fewer hosts are considered more specific and take precedence in the ordering. The following example shows how domain-name wildcard patterns are sorted by specificity.
 
 ```sql
 +---------+-------------+
@@ -403,7 +417,7 @@ Starting with [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/co
 +---------+-------------+
 ```
 
-**Note:** The ordering of wildcard host patterns shown above reflects the behavior introduced in [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog) ([MDEV-14735](https://jira.mariadb.org/browse/MDEV-14735)). In earlier versions, `%.foo.bar` and `%.bar` could sort indeterminately because the algorithm only compared the length of the prefix before the first wildcard character, both patterns have an empty prefix, so their relative order was undefined and could depend on insertion order in `mysql.user`.
+**Note:** The ordering of wildcard host patterns shown above reflects the behavior introduced in [MariaDB 10.4.6](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/changelogs/changelogs-mariadb-10-4-series/mariadb-1046-changelog) ([MDEV-14735](https://jira.mariadb.org/browse/MDEV-14735)). In earlier versions, `%.foo.bar` and `%.bar` could sort indeterminately because the algorithm only compared the length of the prefix before the first wildcard character, both patterns have an empty prefix, so their relative order was undefined and could depend on insertion order in `mysql.user`. &#x20;
 
 ### Anonymous Accounts
 
@@ -447,7 +461,7 @@ See [MDEV-13486](https://jira.mariadb.org/browse/MDEV-13486) for more informatio
 
 ## Password Expiry
 
-Besides automatic password expiry, as determined by [default\_password\_lifetime](../../../server-management/variables-and-modes/server-system-variables.md#default_password_lifetime), password expiry times can be set on an individual user basis, overriding the global setting, for example:
+Besides automatic password expiry, as determined by [default\_password\_lifetime](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_password_lifetime), password expiry times can be set on an individual user basis, overriding the global setting, for example:
 
 ```sql
 CREATE USER 'monty'@'localhost' PASSWORD EXPIRE INTERVAL 120 DAY;

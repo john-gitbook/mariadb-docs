@@ -24,7 +24,7 @@ This transaction coordinator uses the [binary log](../binary-log/), which is ena
 
 ### Memory-Mapped File-Based Transaction Coordinator Log
 
-This transaction coordinator uses the memory-mapped file defined by the [--log-tc](../../starting-and-stopping-mariadb/mariadbd-options.md#log-tc) server option. The size is defined by the [log\_tc\_size](../../variables-and-modes/server-system-variables.md#log_tc_size) system variable.
+This transaction coordinator uses the memory-mapped file defined by the [--log-tc](../../starting-and-stopping-mariadb/mariadbd-options.md#log-tc) server option. The size is defined by the [log\_tc\_size](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_tc_size) system variable.
 
 Some facts about this log:
 
@@ -48,9 +48,9 @@ Note that a page becomes "dirty" and has to be synced only when a new xid is add
 
 The memory-mapped transaction coordinator log can be monitored with the following status variables:
 
-* [Tc\_log\_max\_pages\_used](../../variables-and-modes/server-status-variables.md#tc_log_max_pages_used)
-* [Tc\_log\_page\_size](../../variables-and-modes/server-status-variables.md#tc_log_page_size)
-* [Tc\_log\_page\_waits](../../variables-and-modes/server-status-variables.md#tc_log_page_waits)
+* [Tc\_log\_max\_pages\_used](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#tc_log_max_pages_used)
+* [Tc\_log\_page\_size](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#tc_log_page_size)
+* [Tc\_log\_page\_waits](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#tc_log_page_waits)
 
 ## Heuristic Recovery with the Transaction Coordinator Log
 

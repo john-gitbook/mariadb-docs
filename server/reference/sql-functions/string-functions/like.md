@@ -22,15 +22,20 @@ Patterns may use the following wildcard characters:
 * `%` matches any number of characters, including zero.
 * `_` matches any single character.
 
-Use `NOT LIKE` to test if a string does not match a pattern. This is equivalent to using the [NOT](../../sql-structure/operators/comparison-operators/) operator on the entire `LIKE` expression.
+Use `NOT LIKE` to test if a string does not match a pattern. This is equivalent to using
+the [NOT](../../sql-structure/operators/comparison-operators/) operator on the entire `LIKE` expression.
 
 If either the expression or the pattern is `NULL`, the result is `NULL`.
 
-`LIKE` performs case-insensitive substring matches if the collation for the expression and pattern is case-insensitive. For case-sensitive matches, declare either argument to use a binary collation using collate, or coerce either of them to a [BINARY](../../data-types/string-data-types/binary.md) string using [CAST](cast.md). Use [SHOW COLLATION](../../sql-statements/administrative-sql-statements/show/show-collation.md) to get a list of available collations. Collations ending in `_bin` are case-sensitive.
+`LIKE` performs case-insensitive substring matches if the collation for the expression and pattern is case-insensitive. For case-sensitive matches, declare either argument to use a binary collation using collate, or coerce either of them to a [BINARY](../../data-types/string-data-types/binary.md) string using [CAST](cast.md). Use [SHOW COLLATION](../../sql-statements/administrative-sql-statements/show/show-collation.md) to get a list of
+available collations. Collations ending in `_bin` are case-sensitive.
 
 Numeric arguments are coerced to binary strings.
 
-The `_` wildcard matches a single character, not byte. It will only match a multi-byte character if it is valid in the expression's character set. For example, `_` will match `_utf8"€"`, but it will not match `_latin1"€"` because the Euro sign is not a valid latin1 character. If necessary, use [CONVERT](convert.md) to use the expression in a different character set.
+The `_` wildcard matches a single character, not byte. It will only match a multi-byte character
+if it is valid in the expression's character set. For example, `_` will match `_utf8"€"`, but it
+will not match `_latin1"€"` because the Euro sign is not a valid latin1 character. If necessary,
+use [CONVERT](convert.md) to use the expression in a different character set.
 
 If you need to match the characters `_` or `%`, you must escape them. By default, you can prefix the wildcard characters the backslash character `\` to escape them. The backslash is used both to encode special characters like newlines when a string is parsed as well as to escape wildcards in a pattern after parsing. Thus, to match an actual backslash, you sometimes need to double-escape it as `"\``\``\``\"`.
 
@@ -147,7 +152,7 @@ SELECT * FROM t2 WHERE DAYNAME(d) LIKE "T%";
 ## Optimizing LIKE
 
 * MariaDB can use indexes for `LIKE` on string columns in the case where the LIKE doesn't start with `%` or `_`.
-* You can set the [optimizer\_use\_condition\_selectivity](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_use_condition_selectivity) variable to 5. If this is done, then the optimizer will read [optimizer\_selectivity\_sampling\_limit](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_selectivity_sampling_limit) rows to calculate the selectivity of the `LIKE` expression before starting to calculate the query plan. This can help speed up some `LIKE` queries by providing the optimizer with more information about your data.
+* You can set the [optimizer\_use\_condition\_selectivity](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#optimizer_use_condition_selectivity) variable to 5. If this is done, then the optimizer will read [optimizer\_selectivity\_sampling\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#optimizer_selectivity_sampling_limit) rows to calculate the selectivity of the `LIKE` expression before starting to calculate the query plan. This can help speed up some `LIKE` queries by providing the optimizer with more information about your data.
 
 ## See Also
 

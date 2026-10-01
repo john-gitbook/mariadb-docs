@@ -51,13 +51,13 @@ See [InnoDB Online DDL Operations with ALGORITHM=INSTANT: Changing the Data Type
 
 #### Changing a Column to NULL
 
-InnoDB supports modifying a column to allow [NULL](../../../tables/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
+InnoDB supports modifying a column to allow [NULL](../../../../reference/sql-statements/data-definition/create/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
 
 See [InnoDB Online DDL Operations with ALGORITHM=INSTANT: Changing a Column to NULL](innodb-online-ddl-operations-with-the-instant-alter-algorithm.md) for more information.
 
 #### Changing a Column to NOT NULL
 
-InnoDB does **not** support modifying a column to **not** allow [NULL](../../../tables/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`.
+InnoDB does **not** support modifying a column to **not** allow [NULL](../../../../reference/sql-statements/data-definition/create/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`.
 
 For example:
 
@@ -97,13 +97,13 @@ This applies to [ALTER TABLE ... ALTER COLUMN](../../../../reference/sql-stateme
 
 #### Setting a Column's Default Value
 
-InnoDB supports modifying a column's [DEFAULT](../../../tables/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
+InnoDB supports modifying a column's [DEFAULT](../../../../reference/sql-statements/data-definition/create/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
 
 See [InnoDB Online DDL Operations with ALGORITHM=INSTANT: Setting a Column's Default Value](innodb-online-ddl-operations-with-the-instant-alter-algorithm.md) for more information.
 
 #### Removing a Column's Default Value
 
-InnoDB supports removing a column's [DEFAULT](../../../tables/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
+InnoDB supports removing a column's [DEFAULT](../../../../reference/sql-statements/data-definition/create/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
 
 See [InnoDB Online DDL Operations with ALGORITHM=INSTANT: Removing a Column's Default Value](innodb-online-ddl-operations-with-the-instant-alter-algorithm.md) for more information.
 
@@ -306,7 +306,7 @@ This applies to [ALTER TABLE ... DROP INDEX](../../../../reference/sql-statement
 
 ### `ALTER TABLE ... ADD FOREIGN KEY`
 
-InnoDB does supports adding foreign key constraints to a table with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`. In order to add a new foreign key constraint to a table with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`, the [foreign\_key\_checks](../../../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) system variable needs to be set to `OFF`. If it is set to `ON`, then `ALGORITHM=COPY` is required.
+InnoDB does supports adding foreign key constraints to a table with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`. In order to add a new foreign key constraint to a table with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`, the [foreign\_key\_checks](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks) system variable needs to be set to `OFF`. If it is set to `ON`, then `ALGORITHM=COPY` is required.
 
 This operation supports the non-locking strategy. This strategy can be explicitly chosen by setting the [LOCK](../../../../reference/sql-statements/data-definition/alter/alter-table/#lock) clause to `NONE`. When this strategy is used, all concurrent DML is permitted.
 
@@ -369,7 +369,7 @@ InnoDB supports changing a table's [AUTO\_INCREMENT](../../../../reference/data-
 
 See [InnoDB Online DDL Operations with ALGORITHM=INSTANT: ALTER TABLE ... AUTO\_INCREMENT=...](innodb-online-ddl-operations-with-the-instant-alter-algorithm.md) for more information.
 
-This applies to [ALTER TABLE ... AUTO\_INCREMENT=...](../../../tables/create-table.md#auto_increment) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... AUTO\_INCREMENT=...](../../../../reference/sql-statements/data-definition/create/create-table.md#auto_increment) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... ROW_FORMAT=...`
 
@@ -389,7 +389,7 @@ ALTER TABLE tab ROW_FORMAT=COMPRESSED;
 ERROR 1846 (0A000): ALGORITHM=NOCOPY is not supported. Reason: Changing table options requires the table to be rebuilt. Try ALGORITHM=INPLACE
 ```
 
-This applies to [ALTER TABLE ... ROW\_FORMAT=...](../../../tables/create-table.md#row_format) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... ROW\_FORMAT=...](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... KEY_BLOCK_SIZE=...`
 
@@ -410,19 +410,19 @@ ALTER TABLE tab KEY_BLOCK_SIZE=2;
 ERROR 1846 (0A000): ALGORITHM=NOCOPY is not supported. Reason: Changing table options requires the table to be rebuilt. Try ALGORITHM=INPLACE
 ```
 
-This applies to [KEY\_BLOCK\_SIZE=...](../../../tables/create-table.md#key_block_size) for [InnoDB](../) tables.
+This applies to [KEY\_BLOCK\_SIZE=...](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... PAGE_COMPRESSED=1` and `ALTER TABLE ... PAGE_COMPRESSION_LEVEL=...`
 
-InnoDB supports setting a table's [PAGE\_COMPRESSED](../../../tables/create-table.md#page_compressed) value to `1` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
+InnoDB supports setting a table's [PAGE\_COMPRESSED](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) value to `1` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause set to `INSTANT`.
 
-InnoDB does **not** support changing a table's [PAGE\_COMPRESSED](../../../tables/create-table.md#page_compressed) value from `1` to `0` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`.
+InnoDB does **not** support changing a table's [PAGE\_COMPRESSED](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) value from `1` to `0` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY`.
 
-In these versions, InnoDB also supports changing a table's [PAGE\_COMPRESSION\_LEVEL](../../../tables/create-table.md#page_compression_level) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause is set to `INSTANT`.
+In these versions, InnoDB also supports changing a table's [PAGE\_COMPRESSION\_LEVEL](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compression_level) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `NOCOPY` in the cases where the operation supports having the [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) clause is set to `INSTANT`.
 
 See [InnoDB Online DDL Operations with ALGORITHM=INSTANT: ALTER TABLE ... PAGE\_COMPRESSED=1 and ALTER TABLE ... PAGE\_COMPRESSION\_LEVEL=...](innodb-online-ddl-operations-with-the-instant-alter-algorithm.md) for more information.
 
-This applies to [ALTER TABLE ... PAGE\_COMPRESSED=...](../../../tables/create-table.md#page_compressed) and [ALTER TABLE ... PAGE\_COMPRESSION\_LEVEL=...](../../../tables/create-table.md#page_compression_level) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... PAGE\_COMPRESSED=...](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) and [ALTER TABLE ... PAGE\_COMPRESSION\_LEVEL=...](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compression_level) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... DROP SYSTEM VERSIONING`
 
@@ -490,7 +490,7 @@ ALTER TABLE tab ENGINE=InnoDB;
 ERROR 1845 (0A000): ALGORITHM=NOCOPY is not supported for this operation. Try ALGORITHM=INPLACE
 ```
 
-This applies to [ALTER TABLE ... ENGINE=InnoDB](../../../tables/create-table.md#storage-engine) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... ENGINE=InnoDB](../../../../reference/sql-statements/data-definition/create/create-table.md#storage-engine) for [InnoDB](../) tables.
 
 ### `OPTIMIZE TABLE ...`
 

@@ -61,7 +61,6 @@ flowchart TD
     classDef field fill:#e2f0f2,stroke:#0a5a6b,stroke-width:2px,color:#111;
     classDef hdr fill:#fbe5d6,stroke:#c15911,stroke-width:2px,color:#111;
 ```
-
 _A 40 Mbyte packet body split across three standard packets: 4-byte header + 16 Mbytes, 4-byte header + 16 Mbytes, 4-byte header + 8 Mbytes._
 
 First packet:
@@ -82,7 +81,7 @@ Third packet:
 02 00 80 02 ...
 ```
 
-The client must be aware of the [max\_allowed\_packet](../../server-management/variables-and-modes/server-system-variables.md#max_allowed_packet) variable value. The server has a buffer to store the body with a maximum size corresponding to this `max_allowed_packet` value. If the client sends more data than `max_allowed_packet` size, the socket is closed.
+The client must be aware of the [max\_allowed\_packet](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_allowed_packet) variable value. The server has a buffer to store the body with a maximum size corresponding to this `max_allowed_packet` value. If the client sends more data than `max_allowed_packet` size, the socket is closed.
 
 {% hint style="info" %}
 Note that data of exact size 2^24 -1 byte must be sent in 2 packets, the first one with length prefix `0xffffff`, and the second one with length 0 (length byte `0x000000`, seqno incremented). Generally, if data length is an exact multiple of 2^24-1, it must always be followed by an empty packet.
@@ -140,7 +139,6 @@ flowchart TD
     classDef field fill:#e2f0f2,stroke:#0a5a6b,stroke-width:2px,color:#111;
     classDef hdr fill:#fbe5d6,stroke:#c15911,stroke-width:2px,color:#111;
 ```
-
 _Each standard packet from the 40 Mbyte split is re-wrapped in a 7-byte-header compressed packet whose body size equals the compressed chunk plus its 4-byte header._
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>

@@ -2,7 +2,8 @@
 description: >-
   TideSQL is a transactional, log-structured merge-tree storage engine for
   MariaDB Server, built on the TidesDB library, optimized for high write
-  throughput with full SQL, MVCC, encryption, and secondar
+  throughput with full SQL, MVCC, encryption, and secondary, spatial,
+  full-text, and vector indexes.
 ---
 
 # TideSQL

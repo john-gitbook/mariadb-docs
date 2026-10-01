@@ -22,7 +22,7 @@ Cluster must have open egress on `TCP:8080`. Control Center must have open ingre
 {% endhint %}
 
 {% hint style="info" %}
-Depending on configuration, [secured clusters](../../gg8/authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions.
+Depending on configuration, [secured clusters](../../gg8/auth/authorization-permissions.md) might require a cluster-level authentication for some (or all) of the actions.
 {% endhint %}
 
 ## Enabling the Control Center Module
@@ -39,9 +39,9 @@ java.lang.ClassNotFoundException: org.gridgain.control.agent.configuration.Contr
 
 Depending on how you deploy your cluster, you can enable the module in different ways:
 
-* If you start nodes from the distribution package by executing `ignite.sh`, copy the `{GRIDGAIN_HOME}/libs/optional/control-center-agent` folder to `{GRIDGAIN_HOME}/libs/`.
-* If you start nodes using Maven, see this section for the information on how to enable modules.
-* If you use a GridGain Docker image, see Enabling Modules.
+- If you start nodes from the distribution package by executing `ignite.sh`, copy the `{GRIDGAIN_HOME}/libs/optional/control-center-agent` folder to `{GRIDGAIN_HOME}/libs/`.
+- If you start nodes using Maven, see this section for the information on how to enable modules.
+- If you use a GridGain Docker image, see Enabling Modules.
 
 When you start your cluster with the Control Center Agent enabled, you can use the `management.sh` script to enable and disable management functions for the cluster. The management script is located in the `bin` directory of the distribution package. Detailed descriptions are available in the [Command Line Options](../../admin-guide/command-line.md) page.
 
@@ -49,22 +49,22 @@ As the cluster tries to connect to Control Center, you should see the following 
 
 ![](../../../.gitbook/assets/cc-getting-started-node_output.png)
 
-If you have no [Control Center URI](connect-gridgain-cluster.md#control-center-uri) configured, or if you want to use a URL different from the one you have configured, copy the link (URL + token) and paste it into your browser.
+If you have no [Control Center URI](#control-center-uri) configured, or if you want to use a URL different from the one you have configured, copy the link (URL + token) and paste it into your browser.
 
-Alternatively, copy the connection token and perform the [Attaching the Cluster to Control Center](connect-gridgain-cluster.md#attaching-the-cluster-to-control-center) procedure.
+Alternatively, copy the connection token and perform the [Attaching the Cluster to Control Center](#attaching-the-cluster-to-control-center) procedure.
 
 ## Attaching the Cluster to Control Center
 
 To attach the cluster to Control Center:
 
 1. Click the **+** icon on the Control Center toolbar.
-2.  In he **Attach cluster** dialog that opens, select the **GridGain 8** tab.
+2. In he **Attach cluster** dialog that opens, select the **GridGain 8** tab.
 
-    ![Attach GridGain 8 cluster](../../../.gitbook/assets/cc-getting-started-attach-gg8-cluster.png)
-3. In the **Connection token** field, enter the token you have generated while [Enabling the Control Center Module](connect-gridgain-cluster.md#enabling-the-control-center-module) .
-4.  Click **Continue**.
+   ![Attach GridGain 8 cluster](../../../.gitbook/assets/cc-getting-started-attach-gg8-cluster.png)
+3. In the **Connection token** field, enter the token you have generated while [Enabling the Control Center Module](#enabling-the-control-center-module) .
+4. Click **Continue**.
 
-    If the cluster is found and the token is successfully validated, the success notification appears in the dialog.
+   If the cluster is found and the token is successfully validated, the success notification appears in the dialog.
 5. Click **Attach**.
 
 The attached cluster displays in the [My cluster](../../gg8/dashboard/my-cluster.md) screen.
@@ -79,14 +79,14 @@ Control Center collects metrics from the cluster nodes that are running. Most me
 
 You can enable metrics in two ways:
 
-* In the cluster configuration, or
-* Via JMX Beans at runtime
+- In the cluster configuration, or
+- Via JMX Beans at runtime
 
 ### Enabling Tracing
 
 You can enable tracing capabilities and view traces in Control Center in two ways:
 
-1. The best way to configure tracing is to use the [Tracing](../../gg8/tracing.md#the-tracing-screen) screen of the Control Center.
+1. The best way to configure tracing is to use the [Tracing](../../gg8/tracing/tracing.md#the-tracing-screen) screen of the Control Center.
 2. To configure tracing programmatically, see the Tracing page for more detail.
 
 ### Control Center URI

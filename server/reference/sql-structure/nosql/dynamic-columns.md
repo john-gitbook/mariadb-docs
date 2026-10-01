@@ -284,7 +284,8 @@ The set of possible datatypes is mostly the same as that used by the [CAST](../.
 
 #### A Note About Lengths
 
-If you're running queries without specifying a maximum length (i.e. using #as CHAR#, not `as CHAR(n)`), MariaDB reports the maximum length of the result set column to be`53,6870,911` (bytes or characters?). This may cause excessive memory usage in some client libraries, because they try to pre-allocate a buffer of maximum result set width. If you suspect you're hitting this problem, use `CHAR(n)` whenever you're using `COLUMN_GET` in the select list.
+If you're running queries without specifying a maximum length (i.e. using #as CHAR#, not `as CHAR(n)`), MariaDB reports the maximum length of the result set column to be`53,6870,911` (bytes or characters?). This may cause excessive memory usage in some client libraries, because they try to pre-allocate a buffer of maximum result set width. If you suspect you're hitting this problem, use `CHAR(n)`
+whenever you're using `COLUMN_GET` in the select list.
 
 ```sql
 SELECT COLUMN_GET(blob, 'colname' as CHAR) ...
@@ -296,10 +297,10 @@ It is also possible to create or parse dynamic columns blobs on the client side.
 
 ### Limitations
 
-| Description                                   | Limit                                                                                                                     |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Max number of columns                         | 65535                                                                                                                     |
-| Maximum total length of packed dynamic column | [max\_allowed\_packet](../../../server-management/variables-and-modes/server-system-variables.md#max_allowed_packet) (1G) |
+| Description                                   | Limit                                                                                                                                           |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Max number of columns                         | 65535                                                                                                                                           |
+| Maximum total length of packed dynamic column | [max\_allowed\_packet](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_allowed_packet) (1G) |
 
 ## See Also
 

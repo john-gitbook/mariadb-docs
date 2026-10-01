@@ -22,7 +22,7 @@ The limit for indexing column values depends on the [innodb\_page\_size](../inno
 
 ## Using the DYNAMIC Row Format
 
-The default row format is `DYNAMIC`, as long as the [innodb\_default\_row\_format](../innodb-system-variables.md#innodb_default_row_format) system variable has not been modified. Therefore, in these versions, the easiest way to create an InnoDB table that uses the `DYNAMIC` row format is by **not** setting the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option at all in a [CREATE TABLE](../../../tables/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement.
+The default row format is `DYNAMIC`, as long as the [innodb\_default\_row\_format](../innodb-system-variables.md#innodb_default_row_format) system variable has not been modified. Therefore, in these versions, the easiest way to create an InnoDB table that uses the `DYNAMIC` row format is by **not** setting the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option at all in a [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../../reference/sql-statements/data-definition/alter/alter-table/) statement.
 
 It is recommended to set the [innodb\_strict\_mode](../innodb-system-variables.md#innodb_strict_mode) system variable to `ON` when using this row format.
 
@@ -51,7 +51,7 @@ Let's create an InnoDB table after confirming that the default storage engine is
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -87,7 +87,7 @@ SHOW GLOBAL VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-5. Create the table using the [CREATE TABLE](../../../tables/create-table.md) statement:
+5. Create the table using the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -129,7 +129,7 @@ Let's create an InnoDB table after confirming that the default storage engine is
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) system variable using the [SHOW SESSION VARIABLES](../../../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -165,7 +165,7 @@ SHOW GLOBAL VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-5. Create the table using the [CREATE TABLE](../../../tables/create-table.md) statement, and specify the Dynamic row format using the `ROW_FORMAT` table option:
+5. Create the table using the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement, and specify the Dynamic row format using the `ROW_FORMAT` table option:
 
 ```sql
 CREATE TABLE hq_sales.invoices (

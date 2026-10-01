@@ -53,21 +53,21 @@ The SELECT grammar is broken out into named sub-clauses for readability. Each cl
 
 ![Railroad diagram of SELECT — top-level](../../../../.gitbook/assets/select-railroad.svg)
 
-![Railroad diagram of from\_clause](../../../../.gitbook/assets/select-from-clause-railroad.svg)
+![Railroad diagram of from_clause](../../../../.gitbook/assets/select-from-clause-railroad.svg)
 
-![Railroad diagram of group\_by\_clause](../../../../.gitbook/assets/select-group-by-clause-railroad.svg)
+![Railroad diagram of group_by_clause](../../../../.gitbook/assets/select-group-by-clause-railroad.svg)
 
-![Railroad diagram of order\_by\_clause](../../../../.gitbook/assets/select-order-by-clause-railroad.svg)
+![Railroad diagram of order_by_clause](../../../../.gitbook/assets/select-order-by-clause-railroad.svg)
 
-![Railroad diagram of limit\_clause](../../../../.gitbook/assets/select-limit-clause-railroad.svg)
+![Railroad diagram of limit_clause](../../../../.gitbook/assets/select-limit-clause-railroad.svg)
 
-![Railroad diagram of into\_clause](../../../../.gitbook/assets/select-into-clause-railroad.svg)
+![Railroad diagram of into_clause](../../../../.gitbook/assets/select-into-clause-railroad.svg)
 
-![Railroad diagram of locking\_clause](../../../../.gitbook/assets/select-locking-clause-railroad.svg)
+![Railroad diagram of locking_clause](../../../../.gitbook/assets/select-locking-clause-railroad.svg)
 
-![Railroad diagram of export\_options](../../../../.gitbook/assets/select-export-options-railroad.svg)
+![Railroad diagram of export_options](../../../../.gitbook/assets/select-export-options-railroad.svg)
 
-![Railroad diagram of lock\_option](../../../../.gitbook/assets/select-lock-option-railroad.svg)
+![Railroad diagram of lock_option](../../../../.gitbook/assets/select-lock-option-railroad.svg)
 
 {% tabs %}
 {% tab title="Current" %}
@@ -127,7 +127,7 @@ Before MariaDB 12.0:
 
 ## Description
 
-`SELECT` is used to retrieve rows selected from one or more tables, and can include [UNION](set-operations/union.md) statements and [subqueries](subqueries/).
+`SELECT` is used to retrieve rows selected from one or more tables, and can include [UNION](set-operations/union.md) statements and [subqueries](joins-subqueries/subqueries/).
 
 * Each `select_expr` expression indicates a column or data that you want to retrieve. You must have at least one select expression. See [Select Expressions](select.md#select-expressions) below.
 * The `FROM` clause indicates the table or tables from which to retrieve rows. Use either a single table name or a `JOIN` expression. See [JOIN](joins/join-syntax.md) for details. If no table is involved, [FROM DUAL](dual.md) can be specified.
@@ -205,7 +205,7 @@ See [Optimizer Hints](../../../../ha-and-performance/optimization-and-tuning/opt
 
 ### max\_statement\_time clause
 
-By using [max\_statement\_time](../../../../server-management/variables-and-modes/server-system-variables.md#max_statement_time) in conjunction with [SET STATEMENT](../../administrative-sql-statements/set-commands/set-statement.md), it is possible to limit the execution time of individual queries. For example:
+By using [max\_statement\_time](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_statement_time) in conjunction with [SET STATEMENT](../../administrative-sql-statements/set-commands/set-statement.md), it is possible to limit the execution time of individual queries. For example:
 
 ```sql
 SET STATEMENT max_statement_time=100 FOR 

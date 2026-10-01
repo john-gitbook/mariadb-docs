@@ -33,7 +33,7 @@ This page has a list of SQL Server features that MariaDB implements in a differe
 * Computed columns are called [generated columns](../../../../reference/sql-statements/data-definition/create/generated-columns.md) in MariaDB and are created with a different syntax. See also [Implementation Differences Compared to Microsoft SQL Server](../../../../reference/sql-statements/data-definition/create/generated-columns.md#implementation-differences-compared-to-microsoft-sql-server).
 * [Temporal tables](../../../../reference/sql-structure/temporal-tables/system-versioned-tables.md) use a different (more standard) syntax on MariaDB. In MariaDB, the history is stored in the same table as current data (but optionally in different partitions). MariaDB supports both [SYSTEM\_TIME](../../../../reference/sql-structure/temporal-tables/system-versioned-tables.md) and [APPLICATION\_TIME](../../../../reference/sql-structure/temporal-tables/system-versioned-tables.md).
 * Hidden columns are [Invisible columns](../../../../reference/sql-statements/data-definition/create/invisible-columns.md) in MariaDB.
-* [Temporary tables](../../../../server-usage/tables/create-table.md#create-temporary-table) are implemented and used differently.
+* [Temporary tables](../../../../reference/sql-statements/data-definition/create/create-table.md#create-temporary-table) are implemented and used differently.
 
 ## High Availability
 

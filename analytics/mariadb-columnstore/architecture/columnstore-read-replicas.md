@@ -1,8 +1,8 @@
 ---
 description: >-
-  MariaDB ColumnStore read replicas (Alpha) add read-only nodes that scale read
-  throughput by forwarding writes to RW nodes; they share storage and need at
-  least one RW node per cluster.
+  MariaDB ColumnStore read replicas (Alpha) add read-only nodes that scale
+  read throughput by forwarding writes to RW nodes; they share storage and
+  need at least one RW node per cluster.
 ---
 
 # ColumnStore Read Replicas
@@ -86,7 +86,7 @@ chmod +x mariadb_es_repo_setup;
 ./mariadb_es_repo_setup --token="xxxxx" --apply --mariadb-server-version="11.4"
 ```
 
-See [this page](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-management/install-and-upgrade-mariadb/mariadb-package-repository-setup-and-usage) for additional details about the ES repo setup.
+See [this page](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/server-management/install-and-upgrade-mariadb/mariadb-package-repository-setup-and-usage) for additional details about the ES repo setup.
 {% endstep %}
 
 {% step %}

@@ -58,7 +58,7 @@ Create Table: CREATE TABLE `t` (
 
 ## Setting or Changing the Auto\_Increment Value
 
-You can use an [ALTER TABLE](../sql-statements/data-definition/alter/alter-table/) statement to assign a new value to the `auto_increment` table option, or set the [insert\_id](../../server-management/variables-and-modes/server-system-variables.md#insert_id) server system variable to change the next `AUTO_INCREMENT` value inserted by the current session.
+You can use an [ALTER TABLE](../sql-statements/data-definition/alter/alter-table/) statement to assign a new value to the `auto_increment` table option, or set the [insert\_id](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#insert_id) server system variable to change the next `AUTO_INCREMENT` value inserted by the current session.
 
 [LAST\_INSERT\_ID()](../sql-functions/secondary-functions/information-functions/last_insert_id.md) can be used to see the last `AUTO_INCREMENT` value inserted by the current session.
 
@@ -310,7 +310,7 @@ Also ensure that, if you want to use the above trick, you always double the valu
 
 ## CHECK Constraints, DEFAULT Values and Virtual Columns
 
-`AUTO_INCREMENT` columns are not permitted in [CHECK constraints](../sql-statements/data-definition/constraint.md), [DEFAULT value expressions](../../server-usage/tables/create-table.md#default-column-option) and [virtual columns](../sql-statements/data-definition/create/generated-columns.md).
+`AUTO_INCREMENT` columns are not permitted in [CHECK constraints](../sql-statements/data-definition/constraint.md), [DEFAULT value expressions](../sql-statements/data-definition/create/create-table.md#default-column-option) and [virtual columns](../sql-statements/data-definition/create/generated-columns.md).
 
 ## Generating Auto\_Increment Values When Adding the Attribute
 

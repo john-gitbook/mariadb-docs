@@ -11,7 +11,7 @@ By default, all logs are disabled or written into files. The [general query log]
 
 Note that [EXPLAIN output](slow-query-log/explain-in-the-slow-query-log.md) will only be recorded if the slow query log is written to a file and not to a table.
 
-To write logs into tables, the [log\_output](../variables-and-modes/server-system-variables.md#log_output) server system variable is used. Allowed values are `FILE`, `TABLE` and `NONE`. It is possible to specify multiple values, separated with commas, to write the logs into both tables and files. `NONE` disables logging and has precedence over the other values.
+To write logs into tables, the [log\_output](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_output) server system variable is used. Allowed values are `FILE`, `TABLE` and `NONE`. It is possible to specify multiple values, separated with commas, to write the logs into both tables and files. `NONE` disables logging and has precedence over the other values.
 
 So, to write logs into tables, one of the following settings can be used:
 
@@ -41,7 +41,7 @@ SET GLOBAL general_log = @old_log_state;
 
 [CHECK TABLE](../../reference/sql-statements/table-statements/check-table.md) and [CHECKSUM TABLE](../../reference/sql-statements/table-statements/checksum-table.md) are supported.
 
-[CREATE TABLE](../../server-usage/tables/create-table.md) is supported. [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/), [RENAME TABLE](../../reference/sql-statements/data-definition/rename-table.md) and [DROP TABLE](../../server-usage/tables/drop-table.md) are supported when logging is disabled, but log tables cannot be partitioned.
+[CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) is supported. [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/), [RENAME TABLE](../../reference/sql-statements/data-definition/rename-table.md) and [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md) are supported when logging is disabled, but log tables cannot be partitioned.
 
 Contents of log tables are not logged in the [binary log](binary-log/), thus cannot be replicated.
 

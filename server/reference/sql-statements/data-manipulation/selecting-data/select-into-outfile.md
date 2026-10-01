@@ -25,13 +25,13 @@ export_options:
 
 ![Railroad diagram of SELECT INTO OUTFILE — equivalent to the BNF above](../../../../.gitbook/assets/select-into-outfile-railroad.svg)
 
-![Railroad diagram of export\_options](../../../../.gitbook/assets/select-export-options-railroad.svg)
+![Railroad diagram of export_options](../../../../.gitbook/assets/select-into-outfile-export-options-railroad.svg)
 
 ## Description
 
 `SELECT INTO OUTFILE` writes the resulting rows to a file, and allows the use of column and row terminators to specify a particular output format. The default is to terminate fields with tabs () and lines with newlines ().
 
-The file must not exist. It cannot be overwritten. A user needs the [FILE](../../account-management-sql-statements/grant.md#global-privileges) privilege to run this statement. Also, MariaDB needs permission to write files in the specified location. If the [secure\_file\_priv](../../../../server-management/variables-and-modes/server-system-variables.md#secure_file_priv) system variable is set to a non-empty directory name, the file can only be written to that directory or one of its subdirectories.
+The file must not exist. It cannot be overwritten. A user needs the [FILE](../../account-management-sql-statements/grant.md#global-privileges) privilege to run this statement. Also, MariaDB needs permission to write files in the specified location. If the [secure\_file\_priv](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#secure_file_priv) system variable is set to a non-empty directory name, the file can only be written to that directory or one of its subdirectories.
 
 The [LOAD DATA INFILE](../inserting-loading-data/load-data-into-tables-or-index/load-data-infile.md) statement complements `SELECT INTO OUTFILE`.
 

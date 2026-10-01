@@ -1,135 +1,138 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
+# Site structure for the "mariadb copy" test site (site_HdZoj), synced from copy-branch.
+# Mirrors the site's current layout: 11 top-level sections, one space each.
+# Inert until the site is switched to site-level Git Sync; today each space syncs on its own.
 site:
   title: mariadb copy
   structure:
     - type: section
-      key: section-1
+      key: home-sec
       title: Home
       path: home
       default: true
       children:
         - type: space
-          key: space-1
+          key: home
           title: Home
           path: home
           default: true
           content:
             directory: ./home
     - type: section
-      key: section-2
+      key: mariadb-platform-sec
       title: Mariadb Platform
       path: mariadb-platform
       children:
         - type: space
-          key: space-2
+          key: mariadb-platform
           title: Mariadb Platform
           path: mariadb-platform
           default: true
           content:
             directory: ./platform
     - type: section
-      key: section-3
+      key: server-sec
       title: Server
       path: server
       children:
         - type: space
-          key: space-3
+          key: server
           title: Server
           path: server
           default: true
           content:
             directory: ./server
     - type: section
-      key: section-4
+      key: maxscale-sec
       title: MaxScale
       path: maxscale
       children:
         - type: space
-          key: space-4
+          key: maxscale
           title: MaxScale
           path: maxscale
           default: true
           content:
             directory: ./maxscale
     - type: section
-      key: section-5
+      key: analytics-sec
       title: Analytics
       path: analytics
       children:
         - type: space
-          key: space-5
+          key: analytics
           title: Analytics
           path: analytics
           default: true
           content:
             directory: ./analytics
     - type: section
-      key: section-6
+      key: galera-cluster-sec
       title: Galera Cluster
       path: galera-cluster
       children:
         - type: space
-          key: space-6
+          key: galera-cluster
           title: Galera Cluster
           path: galera-cluster
           default: true
           content:
             directory: ./galera-cluster
     - type: section
-      key: section-7
+      key: connectors-sec
       title: Connectors
       path: connectors
       children:
         - type: space
-          key: space-7
+          key: connectors
           title: Connectors
           path: connectors
           default: true
           content:
             directory: ./connectors
     - type: section
-      key: section-8
+      key: enterprise-tools-sec
       title: Enterprise Tools
       path: enterprise-tools
       children:
         - type: space
-          key: space-8
+          key: enterprise-tools
           title: Enterprise Tools
           path: enterprise-tools
           default: true
           content:
             directory: ./tools
     - type: section
-      key: section-9
+      key: mariadb-cloud-sec
       title: MariaDB Cloud
       path: mariadb-cloud
       children:
         - type: space
-          key: space-9
+          key: mariadb-cloud
           title: MariaDB Cloud
           path: mariadb-cloud
           default: true
           content:
             directory: ./mariadb-cloud
     - type: section
-      key: section-10
+      key: release-notes-sec
       title: Release Notes
       path: release-notes
       children:
         - type: space
-          key: space-10
+          key: release-notes
           title: Release Notes
           path: release-notes
           default: true
           content:
             directory: ./release-notes
     - type: section
-      key: section-11
+      key: general-resources-sec
       title: General Resources
       path: general-resources
       children:
         - type: space
-          key: space-11
+          key: general-resources
           title: General Resources
           path: general-resources
           default: true

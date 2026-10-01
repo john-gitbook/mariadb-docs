@@ -46,11 +46,12 @@ Statements and tables using timestamps or auto\_increment are safe to use with s
 
 This mode can be enabled by setting the [binlog\_format](../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#binlog_format) system variable to `STATEMENT`.
 
-In certain cases when it would be impossible to execute the statement on the replica, the server will switch to row-based logging for the statement. Some cases of this are:
+In certain cases when it would be impossible to execute the statement on the replica, the server will switch to
+row-based logging for the statement. Some cases of this are:
 
 * When replication has been changed from row-based to statement-based and a statement uses data from a temporary table created during row-based mode. In this case, the temporary tables are not stored on the replica, so row logging is the only alternative.
 * [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/) of a table using a storage engine that stores data remotely, such as the [S3 storage engine](../../../server-usage/storage-engines/s3-storage-engine/), to another storage engine.
-* One is using [SEQUENCEs](../../../reference/sql-structure/sequences/) in the statement or the [CREATE TABLE](../../../server-usage/tables/create-table.md) definition.
+* One is using [SEQUENCEs](../../../reference/sql-structure/sequences/) in the statement or the [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) definition.
 
 In certain cases, a statement may not be deterministic, and therefore not safe for [replication](../../../ha-and-performance/standard-replication/). If MariaDB determines that an unsafe statement has been executed, it issues a warning like this:
 
@@ -89,7 +90,7 @@ If you want to be able to see the original query that was logged, you can enable
 This mode can be enabled by setting the [binlog\_format](../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#binlog_format) system variable to `ROW`.
 
 {% hint style="warning" %}
-When the primary server (master) writes a transaction to the binary log that exceeds the [`max_allowed_packet`](../../variables-and-modes/server-system-variables.md#max_allowed_packet) size, replication breaks, issuing an error like this:
+When the primary server (master) writes a transaction to the binary log that exceeds the  [`max_allowed_packet`](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_allowed_packet) size, replication breaks, issuing an error like this:
 
 `Last_IO_Error: Got fatal error 1236 from master when reading data from binary log: 'log event entry exceeded max_allowed_packet; Increase max_allowed_packet on master; the first event 'mariadb-bin.109824' at 4, the last event read from 'mariadb-bin.109825' at 15113554, the last byte read from 'mariadb-bin.109825' at 15113573.'`
 
@@ -104,7 +105,7 @@ When that happens, the only way to recover is by manually extracting the transac
 This functionality is available from MariaDB 12.3.
 {% endhint %}
 
-The maximum value of the [`max_allowed_packet`](../../variables-and-modes/server-system-variables.md#max_allowed_packet) system variable is 1GB. It can be set to smaller values, but not values bigger than that. For row-based replication, this means that a `ROW`-format replication event bigger than the configured variable value cannot be written to the primary server's binary log. As a consequence, replication breaks. (See the warning above.)
+The maximum value of the  [`max_allowed_packet`](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_allowed_packet) system variable is 1GB. It can be set to smaller values, but not values bigger than that. For row-based replication, this means that a `ROW`-format replication event bigger than the configured variable value cannot be written to the primary server's binary log. As a consequence, replication breaks. (See the warning above.)
 
 To overcome this limitation (and breakage), a variable named [`binlog_row_event_fragment_threshold`](../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#binlog_row_event_fragment_threshold) can be configured. A valid value for this variable would be equal to or smaller than a connecting replica's configured `slave_max_allowed_packet` value.
 
@@ -114,7 +115,7 @@ Once configured, the primary (master) server behaves differently when encounteri
 
 When using row-based logging, some statements work different on the master.
 
-* ` DELETE FROM`` `` `_`table_name`_
+* `DELETE FROM`` `_`table_name`_
   * In row-based mode, the table always uses deletion row-by-row, which can take a long time if the table is big. It can also use a lot of space in the binary log.
   * In `STATEMENT` or `MIXED` mode, [truncate](../../../reference/sql-functions/numeric-functions/truncate.md) is used, if possible (no triggers, no foreign keys etc). This is much faster and uses less space in the binary log.
 
@@ -157,7 +158,7 @@ SET GLOBAL slave_parallel_threads=4;
 START REPLICA;
 ```
 
-For considerations when replicating temporary tables, see [Replicating temporary tables](../../../server-usage/tables/create-table.md#replicating-temporary-tables).
+For considerations when replicating temporary tables, see [Replicating temporary tables](../../../reference/sql-statements/data-definition/create/create-table.md#replicating-temporary-tables).
 
 ## Effect of the Binary Log Format on Replicas
 
@@ -173,7 +174,7 @@ If the mysql database is edited directly, logging is performed as expected accor
 
 If the `mysql` database is edited indirectly, statement logging is used regardless of [binlog\_format](../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md#binlog_format) setting. Statements editing the `mysql` database indirectly include [GRANT](../../../reference/sql-statements/account-management-sql-statements/grant.md), [REVOKE](../../../reference/sql-statements/account-management-sql-statements/revoke.md), [SET PASSWORD](../../../reference/sql-statements/account-management-sql-statements/set-password.md), [RENAME USER](../../../reference/sql-statements/account-management-sql-statements/rename-user.md), [ALTER](../../../reference/sql-statements/data-definition/alter/), [DROP](../../../reference/sql-statements/data-definition/drop/) and [CREATE](../../../reference/sql-statements/data-definition/create/) (except for the situation described below).
 
-`CREATE TABLE ... SELECT` can use a combination of logging formats. The [CREATE TABLE](../../../server-usage/tables/create-table.md) portion of the statement is logged using statement-based logging, while the [SELECT](../../../reference/sql-statements/data-manipulation/selecting-data/select.md) portion is logged according to the value of `binlog_format`.
+`CREATE TABLE ... SELECT` can use a combination of logging formats. The [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) portion of the statement is logged using statement-based logging, while the [SELECT](../../../reference/sql-statements/data-manipulation/selecting-data/select.md) portion is logged according to the value of `binlog_format`.
 
 ### Metadata Field Definitions (mariadb-binlog Output)
 
@@ -202,13 +203,13 @@ The structure and verbosity of `ROW` events are significantly altered by several
   * `MINIMAL`: Only logs data.
   * `FULL`: Includes column names and data types in the log. This is essential for parsers to decode the log without querying the live database schema.
 * **encrypt\_binlog**:
-  * If `ON`, events are encrypted on disk. For `mariadb-binlog` to display this data, it must directly connect to the server hosting the encrypted binlogs via option `--read-from-remote-server`. `mariadb-binlog` cannot directly decrypt binary logs (see \[MDEV-8813|https://jira.mariadb.org/browse/MDEV-8813] for details).
+  * If `ON`, events are encrypted on disk. For `mariadb-binlog` to display this data, it must directly connect to the server hosting the encrypted binlogs via option `--read-from-remote-server`. `mariadb-binlog` cannot directly decrypt binary logs (see [MDEV-8813|https://jira.mariadb.org/browse/MDEV-8813] for details).
 
 ## See Also
 
 * [Setting up replication](../../../ha-and-performance/standard-replication/setting-up-replication.md)
 * [Compressing the binary log](compressing-events-to-reduce-size-of-the-binary-log.md)
-* [Replicating temporary tables](../../../server-usage/tables/create-table.md#replicating-temporary-tables)
+* [Replicating temporary tables](../../../reference/sql-statements/data-definition/create/create-table.md#replicating-temporary-tables)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

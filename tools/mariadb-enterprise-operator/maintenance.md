@@ -11,8 +11,8 @@ The MariaDB Enterprise Kubernetes Operator provides a maintenance mode that allo
 
 Maintenance mode is designed to work with any MariaDB topology and is particularly useful for:
 
-* **Cluster switchover**: Preventing writes to the primary cluster before switching to a replica cluster in a [multi-cluster](topologies/high-availability/multi-cluster.md) setup. You can ensure that no writes are lost during the switchover process, allowing the replicas to catch up to the primary.
-* **Debugging**: Isolating the database from application traffic while investigating issues.
+- **Cluster switchover**: Preventing writes to the primary cluster before switching to a replica cluster in a [multi-cluster](topologies/multi-cluster.md) setup. You can ensure that no writes are lost during the switchover process, allowing the replicas to catch up to the primary.
+- **Debugging**: Isolating the database from application traffic while investigating issues.
 
 {% hint style="warning" %}
 Maintenance mode is different from [suspending reconciliation](suspend-reconciliation.md). While suspending reconciliation stops the operator from managing the resource entirely, maintenance mode allows the operator to continue running while controlling how the database behaves.
@@ -21,7 +21,7 @@ Maintenance mode is different from [suspending reconciliation](suspend-reconcili
 ## Enabling maintenance mode
 
 {% hint style="warning" %}
-When MaxScale is used, the maintenance mode should be enabled in the `MaxScale` CR. See [MaxScale maintenance mode](maintenance.md#maxscale-maintenance-mode) for more information.
+When MaxScale is used, the maintenance mode should be enabled in the `MaxScale` CR. See [MaxScale maintenance mode](#maxscale-maintenance-mode) for more information.
 {% endhint %}
 
 To enable maintenance mode in MariaDB, set `spec.maintenance.enabled: true` in the `MariaDB` CR:
@@ -88,14 +88,12 @@ Drain connections mode gracefully terminates long-running connections after a gr
 The operator evaluates all active connections and terminates those that have been running longer than the specified grace period (`spec.maintenance.drainGracePeriodSeconds`). Connections that are still within the grace period are left untouched, giving them time to complete.
 
 The following connection types are considered safe to terminate:
-
-* Client connections (user queries)
-* Prepared statements
+- Client connections (user queries)
+- Prepared statements
 
 The following connection types are **never** terminated:
-
-* Replication connections
-* System connections
+- Replication connections
+- System connections
 
 To enable drain connections mode with a custom grace period:
 
@@ -218,7 +216,6 @@ spec:
 ```
 
 When maintenance mode is disabled, the operator will:
-
 1. Disable read-only mode on all Pods (if it was enabled).
 2. Re-add the Pods to the service endpoints (if cordon was enabled).
 
@@ -268,10 +265,10 @@ kubectl get mariadb mariadb-eu-south -o jsonpath="{.status.conditions}" | jq
 
 The following status conditions indicate the maintenance state:
 
-| Condition     | Reason        | Message     |
-| ------------- | ------------- | ----------- |
-| `Ready=False` | `Cordoned`    | Cordoned    |
-| `Ready=True`  | `Maintenance` | Maintenance |
+| Condition | Reason | Message |
+|-----------|--------|---------|
+| `Ready=False` | `Cordoned` | Cordoned |
+| `Ready=True` | `Maintenance` | Maintenance |
 
 When `cordon` is enabled, the resource is marked as not ready (`Ready=False`) with the reason `Cordoned`. This prevents Kubernetes from routing traffic to the database.
 

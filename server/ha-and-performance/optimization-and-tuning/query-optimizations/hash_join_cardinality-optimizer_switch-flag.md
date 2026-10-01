@@ -28,15 +28,16 @@ Suppose, table orders has an index `IDX` on `orders.customer_id`.
 
 If the query plan is using this index to fetch orders for each customer, the optimizer will use index statistics from `IDX` to estimate the number of rows in the customer-joined-with-orders.
 
-On the other hand, if the optimizer considers a query plan that joins customer with orders without use of indexes, it will ignore the `customer.id = orders.customer_id` equality completely and will compute the output cardinality as if customer was cross-joined with orders.
+On the other hand, if the optimizer considers a query plan that joins customer with orders without use of indexes, it will ignore the `customer.id = orders.customer_id` equality completely and will compute the
+output cardinality as if customer was cross-joined with orders.
 
 ## Hash Join
 
-MariaDB supports [Block Hash Join](../query-optimizer/block-based-join-algorithms.md#block-hash-join). It is not enabled by default, one needs to set it [join\_cache\_level](../../../server-management/variables-and-modes/server-system-variables.md#join_cache_level) to 3 or a bigger value to enable it.
+MariaDB supports [Block Hash Join](../query-optimizer/block-based-join-algorithms.md#block-hash-join). It is not enabled by default, one needs to set it [join\_cache\_level](../system-variables/server-system-variables.md#join_cache_level) to 3 or a bigger value to enable it.
 
 Before [MDEV-30812](https://jira.mariadb.org/browse/MDEV-30812), Query optimization for Block Hash Join would work as described in the above example: It would assume that the join operation is a cross join.
 
-[MDEV-30812](https://jira.mariadb.org/browse/MDEV-30812) introduces a new [optimizer\_switch](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) flag, `hash_join_cardinality`. In MariaDB versions before 11.0, it is off by default.
+[MDEV-30812](https://jira.mariadb.org/browse/MDEV-30812) introduces a new [optimizer\_switch](../system-variables/server-system-variables.md#optimizer_switch) flag, `hash_join_cardinality`. In MariaDB versions before 11.0, it is off by default.
 
 If one sets it to ON, the optimizer will make use of column histograms when computing the cardinality of hash join operation output.
 

@@ -1,11 +1,11 @@
 ---
 description: >-
   MariaDB Connector/Python 2.0 migration covers renamed parameters, removed
-  auto-reconnect, updated pooling, URI connections, async/await support, and a
-  migration checklist.
+  auto-reconnect, updated pooling, URI connections, async/await support, and
+  a migration checklist.
 ---
 
-# Migration Guide: 1.1 to 2.0
+# Migration Guide: MariaDB Connector/Python 1.1 to 2.0
 
 This guide helps you migrate your applications from MariaDB Connector/Python 1.1 to version 2.0.0.
 
@@ -15,20 +15,20 @@ This guide helps you migrate your applications from MariaDB Connector/Python 1.1
 
 ## API Reference
 
-* [**Connection API**](api/connection.md) - Connection parameters, methods, and attributes
-* [**Cursor API**](api/cursor.md) - Cursor parameters, methods, and attributes
-* [**Connection Pooling API**](pooling.md) - Pool configuration and usage
+- **[Connection API](connection.md)** - Connection parameters, methods, and attributes
+- **[Cursor API](cursor.md)** - Cursor parameters, methods, and attributes  
+- **[Connection Pooling API](pooling.md)** - Pool configuration and usage
 
 ## Overview
 
 Version 2.0 is a major rewrite that introduces significant improvements and breaking changes:
 
-* **Flexible distribution options**: Pure Python, C extension, and pre-compiled binary wheels
-* **Native async/await support**: First-class asynchronous API
-* **URI connection strings**: Standard `mariadb://` connection syntax
-* **Full type hints**: Complete mypy and pyright compatibility
-* **Improved performance**: Faster parameter binding and prepared statement caching
-* **Unified protocol control**: Explicit binary vs text protocol selection
+- **Flexible distribution options**: Pure Python, C extension, and pre-compiled binary wheels
+- **Native async/await support**: First-class asynchronous API
+- **URI connection strings**: Standard `mariadb://` connection syntax
+- **Full type hints**: Complete mypy and pyright compatibility
+- **Improved performance**: Faster parameter binding and prepared statement caching
+- **Unified protocol control**: Explicit binary vs text protocol selection
 
 ## Installation Changes
 
@@ -45,29 +45,23 @@ This always installed the C extension and required MariaDB Connector/C to be pre
 Version 2.0 is still a Release Candidate, so the `--pre` flag is required; without it, pip installs the latest GA release (1.1).
 
 **Pure Python (default, works everywhere):**
-
 ```bash
 pip install --pre mariadb
 ```
 
 **C extension (maximum performance):**
-
 ```bash
 pip install --pre mariadb[c]
 ```
-
-_Requires MariaDB Connector/C to be pre-installed on your system._
+*Requires MariaDB Connector/C to be pre-installed on your system.*
 
 **Pre-compiled binary wheels (no local C connector required):**
-
 ```bash
 pip install --pre mariadb[binary]
 ```
-
-_MariaDB Connector/C is bundled - no separate installation needed._
+*MariaDB Connector/C is bundled - no separate installation needed.*
 
 **With connection pooling:**
-
 ```bash
 pip install --pre mariadb[pool]
 # or combined
@@ -76,17 +70,16 @@ pip install --pre mariadb[binary,pool]
 
 ### Key Changes
 
-* **Pure Python is now default**: No compiler or MariaDB Connector/C required
-* **Connection pooling is optional**: Must explicitly install `mariadb[pool]`
-* **Binary wheels available**: Pre-compiled for common platforms with MariaDB Connector/C bundled
-* **C extension requires pre-installation**: MariaDB Connector/C must be installed separately when building from source with `mariadb[c]`
+- **Pure Python is now default**: No compiler or MariaDB Connector/C required
+- **Connection pooling is optional**: Must explicitly install `mariadb[pool]`
+- **Binary wheels available**: Pre-compiled for common platforms with MariaDB Connector/C bundled
+- **C extension requires pre-installation**: MariaDB Connector/C must be installed separately when building from source with `mariadb[c]`
 
 ## Breaking Changes
 
 ### 1. Removed: Auto-Reconnect
 
 **Version 1.1:**
-
 ```python
 conn = mariadb.connect(
     host="localhost",
@@ -97,7 +90,6 @@ conn = mariadb.connect(
 ```
 
 **Version 2.0:**
-
 ```python
 # reconnect parameter removed
 conn = mariadb.connect(
@@ -117,16 +109,14 @@ except mariadb.Error:
 
 **Migration**: Use connection pools instead. For manual reconnection, call `conn.reconnect()` explicitly.
 
-### 2. Removed: cursor\_type Parameter
+### 2. Removed: cursor_type Parameter
 
 **Version 1.1:**
-
 ```python
 cursor = conn.cursor(cursor_type=mariadb.CURSOR.READ_ONLY)
 ```
 
 **Version 2.0:**
-
 ```python
 # Use buffered=False instead
 cursor = conn.cursor(buffered=False)
@@ -141,14 +131,12 @@ cursor = conn.cursor(buffered=False)
 The `binary` cursor option already existed in version 1.1 alongside `prepared`. In version 2.0, `prepared` is deprecated in favor of `binary`; it still works but emits a `DeprecationWarning`.
 
 **Version 1.1 (either option):**
-
 ```python
 cursor = conn.cursor(binary=True)
 cursor.execute("SELECT * FROM users WHERE id = ?", (1,))
 ```
 
 **Version 2.0 (use `binary`):**
-
 ```python
 cursor = conn.cursor(binary=True)
 cursor.execute("SELECT * FROM users WHERE id = ?", (1,))
@@ -158,23 +146,21 @@ cursor.execute("SELECT * FROM users WHERE id = ?", (1,))
 
 ### 4. Changed: Binary Protocol Behavior
 
-**Version 1.1:** Automatically promoted certain parameter types (bytes, datetime) to binary protocol, even when not requested.
+**Version 1.1:**
+Automatically promoted certain parameter types (bytes, datetime) to binary protocol, even when not requested.
 
 **Version 2.0:**
-
-* **Text protocol by default**: Predictable, debuggable
-* **Explicit binary=True required**: No automatic promotion
-* **Dict parameters always use text protocol**: Named parameter substitution
+- **Text protocol by default**: Predictable, debuggable
+- **Explicit binary=True required**: No automatic promotion
+- **Dict parameters always use text protocol**: Named parameter substitution
 
 **Version 1.1 (automatic promotion):**
-
 ```python
 cursor.execute("SELECT ?", (b'\xde\xad',))
 # Silently used binary protocol
 ```
 
 **Version 2.0 (explicit control):**
-
 ```python
 # Text protocol (default)
 cursor.execute("SELECT ?", (b'\xde\xad',))
@@ -191,7 +177,6 @@ cursor.execute("SELECT ?", (b'\xde\xad',))
 ### 5. Connection Pooling Now Separate Package
 
 **Version 1.1:**
-
 ```python
 import mariadb
 
@@ -205,7 +190,6 @@ pool = mariadb.ConnectionPool(
 ```
 
 **Version 2.0:**
-
 ```bash
 # First install pooling support (--pre is required while 2.0 is an RC)
 pip install --pre mariadb[pool]
@@ -233,16 +217,14 @@ pool = await mariadb.create_async_pool(
 )
 ```
 
-**Migration**:
-
+**Migration**: 
 1. Install `mariadb[pool]`
 2. Use `create_pool()` instead of `ConnectionPool()`
 3. Note: `pool_size` split into `min_size` and `max_size`
 
-### 6. Removed: plugin\_dir in Pure Python
+### 6. Removed: plugin_dir in Pure Python
 
 **Version 1.1:**
-
 ```python
 conn = mariadb.connect(
     host="localhost",
@@ -251,7 +233,6 @@ conn = mariadb.connect(
 ```
 
 **Version 2.0:**
-
 ```python
 # plugin_dir removed in pure Python implementation
 # Still available in C extension
@@ -366,13 +347,13 @@ conn = mariadb.connect(
 )
 ```
 
-**Benefits**:
-
-* First execution pays PREPARE cost
-* Subsequent executions reuse prepared statement
-* 2-4× performance improvement for repeated queries
+**Benefits**: 
+- First execution pays PREPARE cost
+- Subsequent executions reuse prepared statement
+- 2-4× performance improvement for repeated queries
 
 **Migration**: No changes needed - caching is automatic. Consider increasing `prep_stmt_cache_size` for applications with many distinct queries.
+
 
 ## Migration Checklist
 
@@ -386,14 +367,12 @@ pip install --pre mariadb[binary,pool]
 ### Step 2: Update Cursor Creation
 
 **Before:**
-
 ```python
 cursor = conn.cursor(prepared=True)
 cursor = conn.cursor(cursor_type=mariadb.CURSOR.READ_ONLY)
 ```
 
 **After:**
-
 ```python
 cursor = conn.cursor(binary=True)
 cursor = conn.cursor(buffered=False)
@@ -402,7 +381,6 @@ cursor = conn.cursor(buffered=False)
 ### Step 3: Remove Auto-Reconnect Logic
 
 **Before:**
-
 ```python
 conn = mariadb.connect(
     host="localhost",
@@ -411,7 +389,6 @@ conn = mariadb.connect(
 ```
 
 **After:**
-
 ```python
 # Use connection pool (recommended)
 pool = mariadb.create_pool(
@@ -433,25 +410,25 @@ except mariadb.Error:
 
 Version 2.0 introduces automatic prepared statement caching. For best performance:
 
-1.  **Use binary protocol for hot paths:**
+1. **Use binary protocol for hot paths:**
+   ```python
+   conn = mariadb.connect("mariadb://localhost/mydb?binary=true")
+   ```
 
-    ```python
-    conn = mariadb.connect("mariadb://localhost/mydb?binary=true")
-    ```
-2.  **Increase cache size for many distinct queries:**
+2. **Increase cache size for many distinct queries:**
+   ```python
+   conn = mariadb.connect(
+       "mariadb://localhost/mydb?prep_stmt_cache_size=500"
+   )
+   ```
 
-    ```python
-    conn = mariadb.connect(
-        "mariadb://localhost/mydb?prep_stmt_cache_size=500"
-    )
-    ```
 3. **Reuse the same SQL statements** - the cache benefits repeated executions
 
 ### When to Use Binary Protocol
 
-* **Connection-level**: When most queries are parameterized and repeated
-* **Per-cursor**: For specific hot queries in mixed workloads
-* **Text protocol**: For ad-hoc queries, SHOW commands, administrative queries
+- **Connection-level**: When most queries are parameterized and repeated
+- **Per-cursor**: For specific hot queries in mixed workloads
+- **Text protocol**: For ad-hoc queries, SHOW commands, administrative queries
 
 ### Async for High Concurrency
 
@@ -470,15 +447,14 @@ pool = await mariadb.create_async_pool(
 
 ### Python Version Support
 
-* **Version 1.1**: Python 3.8 and later
-* **Version 2.0**: Python 3.10 and later
+- **Version 1.1**: Python 3.8 and later
+- **Version 2.0**: Python 3.10 and later
 
 ### Server Compatibility
 
 Both versions support:
-
-* MariaDB Server 10.3+
-* MySQL Server 5.7+
+- MariaDB Server 10.3+
+- MySQL Server 5.7+
 
 ### API Compatibility
 

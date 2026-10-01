@@ -31,17 +31,17 @@ The BNF above documents four related statements together; each gets its own diag
 
 ![Railroad diagram of SET autocommit](../../../.gitbook/assets/set-autocommit-railroad.svg)
 
-![Railroad diagram of transaction\_property](../../../.gitbook/assets/start-transaction-property-railroad.svg)
+![Railroad diagram of transaction_property](../../../.gitbook/assets/start-transaction-property-railroad.svg)
 
 ## Description
 
-The `START TRANSACTION` or `BEGIN` statement begins a new transaction. [COMMIT](commit.md) commits the current transaction, making its changes permanent. [ROLLBACK](rollback.md) rolls back the current transaction, canceling its changes. The [SET](../administrative-sql-statements/set-commands/set-variable.md) [autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) statement disables or enables the default autocommit mode for the current session.
+The `START TRANSACTION` or `BEGIN` statement begins a new transaction. [COMMIT](commit.md) commits the current transaction, making its changes permanent. [ROLLBACK](rollback.md) rolls back the current transaction, canceling its changes. The [SET](../programmatic-compound-statements/set-variable.md) [autocommit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) statement disables or enables the default autocommit mode for the current session.
 
 `START TRANSACTION` and `SET` autocommit = 1 implicitly commit the current transaction, if there is one.
 
-The optional `WORK` keyword is supported for`COMMIT` and `ROLLBACK`, as are the`CHAIN` and `RELEASE` clauses.`CHAIN` and `RELEASE` can be used for additional control over transaction completion. The value of the [completion\_type](../../../server-management/variables-and-modes/server-system-variables.md#completion_type) system variable determines the default completion behavior.
+The optional `WORK` keyword is supported for`COMMIT` and `ROLLBACK`, as are the`CHAIN` and `RELEASE` clauses.`CHAIN` and `RELEASE` can be used for additional control over transaction completion. The value of the [completion\_type](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#completion_type) system variable determines the default completion behavior.
 
-The `AND CHAIN` clause causes a new transaction to begin as soon as the current one ends, and the new transaction has the same isolation level as the just-terminated transaction. The `RELEASE` clause causes the server to disconnect the current client session after terminating the current transaction. Including the `NO` keyword suppresses`CHAIN` or `RELEASE` completion, which can be useful if the [completion\_type](../../../server-management/variables-and-modes/server-system-variables.md#completion_type) system variable is set to cause chaining or release completion by default.
+The `AND CHAIN` clause causes a new transaction to begin as soon as the current one ends, and the new transaction has the same isolation level as the just-terminated transaction. The `RELEASE` clause causes the server to disconnect the current client session after terminating the current transaction. Including the `NO` keyword suppresses`CHAIN` or `RELEASE` completion, which can be useful if the [completion\_type](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#completion_type) system variable is set to cause chaining or release completion by default.
 
 ### Access Mode
 
@@ -51,7 +51,7 @@ The `AND CHAIN` clause causes a new transaction to begin as soon as the current 
 From MariaDB 10.11:
 {% endhint %}
 
-The access mode specifies whether the transaction is allowed to write data or not. By default, transactions are in `READ WRITE` mode (see the [tx\_read\_only](../../../server-management/variables-and-modes/server-system-variables.md#tx_read_only) system variable). `READ ONLY` mode allows the storage engine to apply optimizations that cannot be used for transactions which write data. Note that, unlike the global [read\_only](../../../server-management/variables-and-modes/server-system-variables.md#read_only) mode, the [READ\_ONLY ADMIN](../account-management-sql-statements/grant.md#read_only-admin) privilege doesn't allow writes and DDL statements on temporary tables are not allowed either.
+The access mode specifies whether the transaction is allowed to write data or not. By default, transactions are in `READ WRITE` mode (see the [tx\_read\_only](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#tx_read_only) system variable). `READ ONLY` mode allows the storage engine to apply optimizations that cannot be used for transactions which write data. Note that, unlike the global [read\_only](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#read_only) mode, the [READ\_ONLY ADMIN](../account-management-sql-statements/grant.md#read_only-admin) privilege doesn't allow writes and DDL statements on temporary tables are not allowed either.
 {% endtab %}
 
 {% tab title="< 10.11" %}
@@ -59,17 +59,17 @@ The access mode specifies whether the transaction is allowed to write data or no
 Before MariaDB 10.11:
 {% endhint %}
 
-The access mode specifies whether the transaction is allowed to write data or not. By default, transactions are in `READ WRITE` mode (see the [tx\_read\_only](../../../server-management/variables-and-modes/server-system-variables.md#tx_read_only) system variable). `READ ONLY` mode allows the storage engine to apply optimizations that cannot be used for transactions which write data. Note that, unlike the global [read\_only](../../../server-management/variables-and-modes/server-system-variables.md#read_only) mode, the [SUPER](../account-management-sql-statements/grant.md#super) privilege doesn't allow writes and DDL statements on temporary tables are not allowed either.
+The access mode specifies whether the transaction is allowed to write data or not. By default, transactions are in `READ WRITE` mode (see the [tx\_read\_only](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#tx_read_only) system variable). `READ ONLY` mode allows the storage engine to apply optimizations that cannot be used for transactions which write data. Note that, unlike the global [read\_only](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#read_only) mode, the [SUPER](../account-management-sql-statements/grant.md#super) privilege doesn't allow writes and DDL statements on temporary tables are not allowed either.
 {% endtab %}
 {% endtabs %}
 
 It is not permitted to specify both `READ WRITE` and `READ ONLY` in the same statement.
 
-`READ WRITE` and `READ ONLY` can also be specified in the [SET TRANSACTION](../administrative-sql-statements/set-commands/set-transaction.md) statement, in which case the specified mode is valid for all sessions, or for all subsequent transaction used by the current session.
+`READ WRITE` and `READ ONLY` can also be specified in the [SET TRANSACTION](set-transaction.md) statement, in which case the specified mode is valid for all sessions, or for all subsequent transaction used by the current session.
 
 ### autocommit
 
-By default, MariaDB runs with [autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) mode enabled. This means that as soon as you execute a statement that updates (modifies) a table, MariaDB stores the update on disk to make it permanent. To disable autocommit mode, use the following statement:
+By default, MariaDB runs with [autocommit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) mode enabled. This means that as soon as you execute a statement that updates (modifies) a table, MariaDB stores the update on disk to make it permanent. To disable autocommit mode, use the following statement:
 
 ```sql
 SET autocommit=0;
@@ -89,7 +89,7 @@ A transaction acquires a [metadata lock](metadata-locking.md) on every table it 
 
 ### in\_transaction
 
-The [in\_transaction](../../../server-management/variables-and-modes/server-system-variables.md#in_transaction) system variable is a session-only, read-only variable that returns `1` inside a transaction, and `0` if not in a transaction.
+The [in\_transaction](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#in_transaction) system variable is a session-only, read-only variable that returns `1` inside a transaction, and `0` if not in a transaction.
 
 ### WITH CONSISTENT SNAPSHOT
 

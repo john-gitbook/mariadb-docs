@@ -8,9 +8,9 @@ description: >-
 
 This page documents system variables related to the [S3 storage engine](./).
 
-See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting system variables.
+See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a complete list of system variables and instructions on setting system variables.
 
-Also see the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md)
+Also see the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md)
 
 ## Variables
 
@@ -26,7 +26,7 @@ Also see the [Full list of MariaDB options, system and status variables](../../.
 
 #### `s3_block_size`
 
-* Description: The default block size for a table, if not specified in [CREATE TABLE](../../tables/create-table.md). Set to 4M as default. See [mariadbd startup options for S3](using-the-s3-storage-engine.md#mariadbd-startup-options-for-s3).
+* Description: The default block size for a table, if not specified in [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md). Set to 4M as default. See [mariadbd startup options for S3](using-the-s3-storage-engine.md#mariadbd-startup-options-for-s3).
 * Command line: `--s3-block-size=#`
 * Scope: Global
 * Dynamic: Yes

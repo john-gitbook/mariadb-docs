@@ -16,7 +16,7 @@ SHOW CREATE SEQUENCE sequence_name;
 
 Shows the [CREATE SEQUENCE](../../../sql-structure/sequences/create-sequence.md) statement that creates the given [sequence](../../../sql-structure/sequences/). The statement requires the `SELECT` privilege for the table.
 
-`SHOW CREATE SEQUENCE` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../server-management/variables-and-modes/server-system-variables.md#sql_quote_show_create) system variable.
+`SHOW CREATE SEQUENCE` quotes identifiers according to the value of the [sql\_quote\_show\_create](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_quote_show_create) system variable.
 
 ## Example
 

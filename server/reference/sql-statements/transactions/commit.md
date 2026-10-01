@@ -6,7 +6,7 @@ description: >-
 
 # COMMIT
 
-The `COMMIT` statement ends a transaction, saving any changes to the data so that they become visible to subsequent transactions. Also, [unlocks metadata](metadata-locking.md) changed by current transaction. If [autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) is set to 1, an implicit commit is performed after each statement. Otherwise, all transactions which don't end with an explicit `COMMIT` are implicitly rollbacked and the changes are lost. The [ROLLBACK](rollback.md) statement can be used to do this explicitly.
+The `COMMIT` statement ends a transaction, saving any changes to the data so that they become visible to subsequent transactions. Also, [unlocks metadata](metadata-locking.md) changed by current transaction. If [autocommit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) is set to 1, an implicit commit is performed after each statement. Otherwise, all transactions which don't end with an explicit `COMMIT` are implicitly rollbacked and the changes are lost. The [ROLLBACK](rollback.md) statement can be used to do this explicitly.
 
 The required syntax for the `COMMIT` statement is as follows:
 
@@ -20,12 +20,12 @@ The optional `AND CHAIN` clause is a convenience for initiating a new transactio
 
 `RELEASE` tells the server to disconnect the client immediately after the current transaction.
 
-There are `NO RELEASE` and `AND NO CHAIN` options. By default, commits do not `RELEASE` or `CHAIN`, but it's possible to change this default behavior with the [completion\_type](../../../server-management/variables-and-modes/server-system-variables.md#completion_type) server system variable. In this case, the `AND NO CHAIN` and `NO RELEASE` options override the server default.
+There are `NO RELEASE` and `AND NO CHAIN` options. By default, commits do not `RELEASE` or `CHAIN`, but it's possible to change this default behavior with the [completion\_type](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#completion_type) server system variable. In this case, the `AND NO CHAIN` and `NO RELEASE` options override the server default.
 
 ## See Also
 
-* [autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) - server system variable that determines whether statements are automatically committed.
-* [completion\_type](../../../server-management/variables-and-modes/server-system-variables.md#completion_type) - server system variable that determines whether COMMIT's are standard, COMMIT AND CHAIN or COMMIT RELEASE.
+* [autocommit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) - server system variable that determines whether statements are automatically committed.
+* [completion\_type](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#completion_type) - server system variable that determines whether COMMIT's are standard, COMMIT AND CHAIN or COMMIT RELEASE.
 * [SQL statements that cause an implicit commit](sql-statements-that-cause-an-implicit-commit.md)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>

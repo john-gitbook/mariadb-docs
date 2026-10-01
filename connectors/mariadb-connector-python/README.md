@@ -101,8 +101,8 @@ Application development with MariaDB Connector/Python.
 
 {% columns %}
 {% column %}
-{% content-ref url="api/" %}
-[api](api/)
+{% content-ref url="api.md" %}
+[api.md](api.md)
 {% endcontent-ref %}
 {% endcolumn %}
 

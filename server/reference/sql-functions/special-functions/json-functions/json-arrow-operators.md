@@ -1,9 +1,10 @@
 ---
 title: JSON Arrow Operators
 description: >-
-  The MariaDB 13.1 JSON arrow operators -> and ->>: shorthand for JSON_EXTRACT()
-  and JSON_UNQUOTE(JSON_EXTRACT()), added for MySQL 5.7 compatibility. Syntax,
-  string-literal path restriction, chaining, a
+  The MariaDB 13.1 JSON arrow operators -> and ->>: shorthand for
+  JSON_EXTRACT() and JSON_UNQUOTE(JSON_EXTRACT()), added for MySQL 5.7
+  compatibility. Syntax, string-literal path restriction, chaining, and
+  quoting behavior.
 ---
 
 # JSON Arrow Operators
@@ -100,8 +101,8 @@ SELECT id FROM t1 WHERE data->>'$.name' = 'Name';
 * [JSON\_EXTRACT](json_extract.md) — the function `->` is shorthand for.
 * [JSON\_UNQUOTE](json_unquote.md) — combined with `JSON_EXTRACT`, the function `->>` is shorthand for.
 * [JSONPath Expressions](jsonpath-expressions.md) — the path syntax used on the right-hand side.
-* [JSON\_VALUE](json_value.md) — related, but _not_ equivalent: returns only scalar values, always unquoted.
-* [JSON\_QUERY](json_query.md) — related, but _not_ equivalent: returns only objects or arrays.
+* [JSON\_VALUE](json_value.md) — related, but *not* equivalent: returns only scalar values, always unquoted.
+* [JSON\_QUERY](json_query.md) — related, but *not* equivalent: returns only objects or arrays.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

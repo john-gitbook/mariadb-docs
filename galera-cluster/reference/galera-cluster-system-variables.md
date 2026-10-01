@@ -68,7 +68,7 @@ This page documents system variables related to Galera Cluster. For options that
 * Default Value: `OFF`
 * Removed: [MariaDB 11.3.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/11.3/11.3.0)
 
-#### `wsrep_certificate_expiration_hours_warning`
+#### `wsrep_certificate_expiration_hours_warning`&#x20;
 
 This variable is documented in detail here:
 
@@ -319,7 +319,7 @@ Desyncing affects cluster availability: if **all** nodes are desynced the cluste
 * Dynamic: Yes
 * Data Type: Enumeration
 * Default Value: (Empty)
-* Valid Values: `APPLIER_SKIP_FK_CHECKS_IN_IST`, `BINLOG_ROW_FORMAT_ONLY`, `DISALLOW_LOCAL_GTID`, `REQUIRED_PRIMARY_KEY`, `REPLICATE_ARIA`, `REPLICATE_MYISAM` and `STRICT_REPLICATION`
+* Valid Values: `APPLIER_SKIP_FK_CHECKS_IN_IST`,  `BINLOG_ROW_FORMAT_ONLY`, `DISALLOW_LOCAL_GTID`, `REQUIRED_PRIMARY_KEY`, `REPLICATE_ARIA`, `REPLICATE_MYISAM` and `STRICT_REPLICATION`&#x20;
 * Introduced: [MariaDB 10.6.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.0)
 
 #### `wsrep_mysql_replication_bundle`
@@ -363,7 +363,7 @@ Desyncing affects cluster availability: if **all** nodes are desynced the cluste
 Multiple nodes in a cluster can share the same name, but unique names are advised for clarity.
 {% endhint %}
 
-* Description:
+* Description:&#x20;
   * Logical name for this node. This name is used in logs and within the cluster to identify the node by means other than its network address.
   * It can be used in [wsrep\_sst\_donor](galera-cluster-system-variables.md#wsrep_sst_donor) to specify a preferred donor node.
   * **Recommendation**: While the default is the server's hostname, it is highly recommended to set an explicit logical name for each node, independent of the hostname.
@@ -376,7 +376,7 @@ Multiple nodes in a cluster can share the same name, but unique names are advise
 
 #### `wsrep_notify_cmd`
 
-* Description: Command to be executed each time the node state or the cluster membership changes. Can be used for raising an alarm, configuring load balancers and so on. See [Using the Notification Command (wsrep\_notify\_cmd)](../galera-management/configuration/using-the-notification-command-wsrep_notify_cmd.md) for more details.
+* Description: Command to be executed each time the node state or the cluster membership changes. Can be used for raising an alarm, configuring load balancers and so on. See [Using the Notification Command (wsrep_notify_cmd)](../galera-management/configuration/using-the-notification-command-wsrep_notify_cmd.md) for more details.
 * Command line: `--wsrep-notify-command=value`
 * Scope: Global
 * Dynamic: No
@@ -398,7 +398,7 @@ Multiple nodes in a cluster can share the same name, but unique names are advise
 * Description: Online schema upgrade method. The default is `TOI`, specifying the setting without the optional parameter will set to `RSU`.
   * `TOI`: Total Order Isolation. In each cluster node, DDL is processed in the same order regarding other transactions, guaranteeing data consistency. However, affected parts of the database will be locked for the whole cluster.
   * `RSU`: Rolling Schema Upgrade. DDL processing is only done locally on the node, and the user needs perform the changes manually on each node. The node is desynced from the rest of the cluster while the processing takes place to avoid the blocking other nodes. Schema changes [must be backwards compatible in the same way as for ROW based replication](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/replication-when-the-primary-and-replica-have-different-table-definitions) to avoid breaking replication when the DDL processing is complete on the single node, and replication recommences.
-  * `NBO`: Non-Blocking Operations. It replicates DDL in total order across the cluster but allows non-conflicting transactions to continue processing on other tables during the operation. Non-Blocking Operations are exclusive to **MariaDB Enterprise Server**.
+  * `NBO`: Non-Blocking Operations. It replicates DDL in total order across the cluster but allows non-conflicting transactions to continue processing on other tables during the operation. Non-Blocking Operations are exclusive to **MariaDB Enterprise Server**.&#x20;
 * Command line: `--wsrep-OSU-method[=value]`
 * Scope: Global, Session
 * Dynamic: Yes
@@ -498,9 +498,9 @@ More details can be found on this page:
 
 * Description: Controls whether the applier replica thread performs foreign key constraint checks. Deactivated and deprecated in MariaDB 10.11.17, 11.4.11, 11.8.7, and 12.3.2. Setting the variable to `ON` or `OFF` no longer has any effect as the variable has become a NOOP; Galera will always behave as if it were set to `ON` starting with these versions. This change ensures data consistency in clusters with cascading relations, as MariaDB does not replicate cascaded changes and instead relies on local foreign key checks on replicas to reproduce the cascade. Disabling these checks leads to massive data inconsistency across all replicas, which can subsequently result in a master node abort.
 * Command line: `--wsrep-slave-FK-checks[={0|1}]`
-* Scope: Global
-* Dynamic: Yes
-* Data Type: boolean
+* Scope: Global&#x20;
+* Dynamic: Yes&#x20;
+* Data Type: boolean&#x20;
 * Default Value: `ON`
 * Valid Values: `ON`, `OFF`
 * Deprecated: MariaDB 10.11.17, 11.4.11, 11.8.7, 12.3.2
@@ -534,7 +534,7 @@ More details can be found on this page:
 * Default Value: `table`
 * Valid Values: `table`, `none`
 
-#### `wsrep_ssl_mode`
+#### `wsrep_ssl_mode`&#x20;
 
 This variable is documented in details on this page:
 
@@ -582,7 +582,7 @@ Although the variable is dynamic, the node does not use the new value unless the
 * Dynamic: Yes
 * Data Type: String
 * Default Value: `rsync`
-* Valid Values: `rsync`, `mysqldump`, `xtrabackup`, `xtrabackup-v2`, `mariadb-backup`
+* Valid Values: `rsync`, `mysqldump`, `xtrabackup`, `xtrabackup-v2`, `mariadb-backup`&#x20;
 
 See this page for more information about this variable:
 
@@ -599,15 +599,15 @@ See this page for more information about this variable:
 * Data Type: String
 * Default Value: `AUTO`
 
-#### **`wsrep_sst_tmp_dir`**
+#### **`wsrep_sst_tmp_dir`**&#x20;
 
-* Description: Specifies a temporary directory that, when `wsrep_sst_method=mariabackup` is in use, is used to stage incoming SST data on the joiner node. When set, `mariadb-backup` sends the SST payload into `<wsrep_sst_tmp_dir>/.sst/` instead of the default `<datadir>/.sst/`. Data is transferred from the temporary directory to `datadir` after the backup is ready. When the cluster has tables defined with the `DATA DIRECTORY` clause and their data files are bigger than the datadir's available space, this is beneficial. The directory must have enough free space to meet the entire SST payload, not overlap with the `datadir`, and exist before MariaDB is started. See [mariadb-backup SST method](../high-availability/state-snapshot-transfers-ssts-in-galera-cluster/mariadb-backup-sst-method.md).
-* Command line: `--wsrep-sst-tmp-dir=value`
+* Description: Specifies a temporary directory that, when `wsrep_sst_method=mariabackup` is in use, is used to stage incoming SST data on the joiner node. When set, `mariadb-backup` sends the SST payload into `<wsrep_sst_tmp_dir>/.sst/` instead of the default `<datadir>/.sst/`. Data is transferred from the temporary directory to `datadir` after the backup is ready. When the cluster has tables defined with the `DATA DIRECTORY` clause and their data files are bigger than the datadir's available space, this is beneficial. The directory must have enough free space to meet the entire SST payload, not overlap with the `datadir`, and exist before MariaDB is started. See [mariadb-backup SST method](../high-availability/state-snapshot-transfers-ssts-in-galera-cluster/mariadb-backup-sst-method.md).&#x20;
+* Command line: `--wsrep-sst-tmp-dir=value`&#x20;
 * Scope: Global
 * Dynamic: No
 * Data Type: String
 * Default Value: Empty
-* Introduced: MariaDB 13.0 ([MDEV-29909](https://jira.mariadb.org/browse/MDEV-29909) Fix Version is 13.1)
+* Introduced: MariaDB 13.0 ([MDEV-29909](https://jira.mariadb.org/browse/MDEV-29909) Fix Version is 13.1)&#x20;
 
 #### `wsrep_start_position`
 
@@ -630,8 +630,9 @@ See this page for more information about this variable:
 
 #### `wsrep_strict_ddl`
 
-* Description: If set, reject DDL statements on affected tables not supporting Galera replication. This is done by checking if the table is InnoDB, which is the only storage engine that fully supports Galera replication. MyISAM tables will not trigger the error if the experimental [wsrep\_replicate\_myisam](galera-cluster-system-variables.md#wsrep_replicate_myisam) setting is `ON`. If set, should be set on all tables in the cluster. Affected DDL statements include: [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/create-table) (e.g. CREATE TABLE t1(a int) engine=Aria) [ALTER TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/alter/alter-table) [TRUNCATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/table-statements/truncate-table)[CREATE VIEW](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/views/create-view) [CREATE TRIGGER](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/triggers-events/triggers/create-trigger) [CREATE INDEX](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create/create-index) [DROP INDEX](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/drop/drop-index) [RENAME TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/rename-table) [DROP TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/drop-table)\
-  Statements in [procedures](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/stored-routines/stored-procedures), [events](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/triggers-events/event-scheduler), and [functions](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/stored-routines/stored-functions) are permitted as the affected tables are only known at execution. Furthermore, the various USER, ROLE, SERVER and\
+* Description: If set, reject DDL statements on affected tables not supporting Galera replication. This is done by checking if the table is InnoDB, which is the only storage engine that fully supports Galera replication. MyISAM tables will not trigger the error if the experimental [wsrep\_replicate\_myisam](galera-cluster-system-variables.md#wsrep_replicate_myisam) setting is `ON`. If set, should be set on all tables in the cluster. Affected DDL statements include: [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/create-table) (e.g. CREATE TABLE t1(a int) engine=Aria) [ALTER TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/alter/alter-table) [TRUNCATE TABLE](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/table-statements/truncate-table)[CREATE VIEW](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/views/create-view) [CREATE TRIGGER](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/triggers-events/triggers/create-trigger) [CREATE INDEX](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create/create-index) [DROP INDEX](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/drop/drop-index) [RENAME TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/rename-table) [DROP TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/drop-table)\
+  Statements in [procedures](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/stored-routines/stored-procedures), [events](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/triggers-events/event-scheduler), and [functions](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/stored-routines/stored-functions) are permitted as the affected
+  tables are only known at execution. Furthermore, the various USER, ROLE, SERVER and\
   DATABASE statements are also allowed as they do not have an affected table. Deprecated in [MariaDB 10.6.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/10.6/10.6.0) and removed in [MariaDB 10.7](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.7/what-is-mariadb-107). Use [wsrep\_mode=STRICT\_REPLICATION](galera-cluster-system-variables.md#wsrep_mode) instead.
 * Command line: `--wsrep-strict-ddl[={0|1}`
 * Scope: Global

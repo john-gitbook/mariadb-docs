@@ -52,7 +52,7 @@ Whilst this can be useful for development and testing, it is not recommended for
 * Upgrades require downtime
 * Only vertical scaling is possible
 
-For achieving high availability, we recommend deploying a highly available topology as described in the [high availability guide](high-availability/).
+For achieving high availability, we recommend deploying a highly available topology as described in the [high availability guide](high-availability.md).
 
 <sub>_This page is: Copyright © 2026 MariaDB. All rights reserved._</sub>
 

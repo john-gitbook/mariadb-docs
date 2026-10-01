@@ -20,7 +20,7 @@ It is not recommended to use ENCRYPT() with utf16, utf32 or ucs2 multi-byte char
 
 Note that the underlying crypt() system call may have some limitations, such as ignoring all but the first eight characters.
 
-If the [have\_crypt](../../../../server-management/variables-and-modes/server-system-variables.md#have_crypt) system variable is set to `NO` (because the crypt() system call is not available), the ENCRYPT function will always return NULL.
+If the [have\_crypt](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#have_crypt) system variable is set to `NO` (because the crypt() system call is not available), the ENCRYPT function will always return NULL.
 
 ## Examples
 

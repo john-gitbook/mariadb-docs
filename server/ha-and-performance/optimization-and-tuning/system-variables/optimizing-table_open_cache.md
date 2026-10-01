@@ -1,10 +1,11 @@
 ---
-description: Tuning table_open_cache to balance performance against open-file usage.
+description: >-
+  Tuning table_open_cache to balance performance against open-file usage.
 ---
 
 # Optimizing table\_open\_cache
 
-[_table\_open\_cache_](../../../server-management/variables-and-modes/server-system-variables.md#table_open_cache) can be a useful variable to adjust to improve performance.
+[_table\_open\_cache_](server-system-variables.md#table_open_cache) can be a useful variable to adjust to improve performance.
 
 Each concurrent session accessing the same table does so independently. This improves performance, although it comes at a cost of extra memory usage.
 
@@ -25,7 +26,7 @@ SELECT @@table_open_cache;
 +--------------------+
 ```
 
-To evaluate whether you could do with a higher table\_open\_cache, look at the number of opened tables, in conjunction with the server uptime ([Opened\_tables](../../../server-management/variables-and-modes/server-status-variables.md#opened_tables) and [Uptime](../../../server-management/variables-and-modes/server-status-variables.md#uptime) status variables):
+To evaluate whether you could do with a higher table\_open\_cache, look at the number of opened tables, in conjunction with the server uptime ([Opened\_tables](server-status-variables.md#opened_tables) and [Uptime](server-status-variables.md#uptime) status variables):
 
 ```sql
 SHOW global status LIKE 'opened_tables';
@@ -66,9 +67,9 @@ When MariaDB Server creates a new instance, it prints a message like the followi
   table cache instance activated. Number of instances after activation: 2.
 ```
 
-The maximum number of instances is defined by the [table\_open\_cache\_instances](../../../server-management/variables-and-modes/server-system-variables.md#table_open_cache_instances) system variable. The default value of the [table\_open\_cache\_instances](../../../server-management/variables-and-modes/server-system-variables.md#table_open_cache_instances) system variable is `8`, which is expected to handle up to 100 CPU cores. If your system is larger than this, then you may benefit from increasing the value of this system variable.
+The maximum number of instances is defined by the [table\_open\_cache\_instances](server-system-variables.md#table_open_cache_instances) system variable. The default value of the [table\_open\_cache\_instances](server-system-variables.md#table_open_cache_instances) system variable is `8`, which is expected to handle up to 100 CPU cores. If your system is larger than this, then you may benefit from increasing the value of this system variable.
 
-Depending on the ratio of actual available file handles, and [table\_open\_cache](../../../server-management/variables-and-modes/server-system-variables.md#table_open_cache) size, the max. instance count may be auto adjusted to a lower value on server startup.
+Depending on the ratio of actual available file handles, and [table\_open\_cache](server-system-variables.md#table_open_cache) size, the max. instance count may be auto adjusted to a lower value on server startup.
 
 The implementation and behavior of this feature is different than the same feature in MySQL 5.6.
 

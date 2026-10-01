@@ -12,7 +12,7 @@ Using time periods implicitly defines the two columns as `NOT NULL`. It also add
 
 ### Creating Tables with Time Periods
 
-To create a table with a time period, use a [CREATE TABLE](../../../server-usage/tables/create-table.md) statement with the `PERIOD` table option.
+To create a table with a time period, use a [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md) statement with the `PERIOD` table option.
 
 ```sql
 CREATE TABLE t1(

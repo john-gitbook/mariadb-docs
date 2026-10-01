@@ -1,9 +1,9 @@
 # Status Variables Added in MariaDB 11.4
 
-This is a list of [status variables](../../../../../server-management/variables-and-modes/server-status-variables.md) that were added in the [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114) series.
+This is a list of [status variables](../../server-status-variables.md) that were added in the [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114) series.
 
-| Variable                                                                                                                            | Added                                                                                         |
-| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Variable                                                                                                                         | Added                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | [binlog\_gtid\_index\_hit](../../../../standard-replication/replication-and-binary-log-status-variables.md#binlog_gtid_index_hit)   | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
 | [binlog\_gtid\_index\_miss](../../../../standard-replication/replication-and-binary-log-status-variables.md#binlog_gtid_index_miss) | [MariaDB 11.4.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/11.4.0) |
 

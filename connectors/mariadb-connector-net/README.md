@@ -2,7 +2,7 @@
 description: >-
   Comprehensive guide to ADO.NET connectors for MariaDB. MySqlConnector is the
   recommended ADO.NET connector for MariaDB, covering connection strings,
-  DbConnection/DbCommand classes, and parameterized q
+  DbConnection/DbCommand classes, and parameterized queries.
 icon: link
 ---
 

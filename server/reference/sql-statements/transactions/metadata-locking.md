@@ -10,7 +10,7 @@ MariaDB supports metadata locking. This means that when a transaction (including
 
 [LOCK TABLES ... WRITE](lock-tables.md) are also queued. Some wrong statements which produce an error may not need to wait for the lock to be freed.
 
-The metadata lock's timeout is determined by the value of the [lock\_wait\_timeout](../../../server-management/variables-and-modes/server-system-variables.md#lock_wait_timeout) server system variable (in seconds). However, note that its default value is 31536000 (1 year). If this timeout is exceeded, the following error is returned:
+The metadata lock's timeout is determined by the value of the [lock\_wait\_timeout](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#lock_wait_timeout) server system variable (in seconds). However, note that its default value is 31536000 (1 year). If this timeout is exceeded, the following error is returned:
 
 ```sql
 ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction

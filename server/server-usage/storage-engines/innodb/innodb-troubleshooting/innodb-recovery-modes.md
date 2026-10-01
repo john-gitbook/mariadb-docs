@@ -16,7 +16,7 @@ Generally, it is best to start with a recovery mode of 1, and increase in single
 
 Write transactions are permitted with mode `3` or less.
 
-To recover the tables, you can execute [SELECTs](../../../../reference/sql-statements/data-manipulation/selecting-data/select.md) to dump data, and [DROP TABLE](../../../tables/drop-table.md) (when write transactions are permitted) to remove corrupted tables.
+To recover the tables, you can execute [SELECTs](../../../../reference/sql-statements/data-manipulation/selecting-data/select.md) to dump data, and [DROP TABLE](../../../../reference/sql-statements/data-definition/drop/drop-table.md) (when write transactions are permitted) to remove corrupted tables.
 
 The following modes are available:
 

@@ -20,7 +20,7 @@ Before data can be imported into the tables, create a matching schema.
 CREATE DATABASE inventory;
 ```
 
-2. For each table that you are importing, create the table with the [CREATE TABLE](../../../../server-usage/tables/create-table.md) statement:
+2. For each table that you are importing, create the table with the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE inventory.products (

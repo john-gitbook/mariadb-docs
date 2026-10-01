@@ -1,11 +1,11 @@
 # System Variables Added in MariaDB 5.5
 
-This is a list of [system variables](../../../../../server-management/variables-and-modes/server-system-variables.md) that were added in the [MariaDB 5.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/changes-improvements-in-mariadb-5-5) series.
+This is a list of [system variables](../../server-system-variables.md) that were added in the [MariaDB 5.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/changes-improvements-in-mariadb-5-5) series.
 
 The list excludes variables related to non-default storage engines and plugins that can be added to [MariaDB 5.5](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/changes-improvements-in-mariadb-5-5):
 
-| Variable                                                                                                                          | Added                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Variable                                                                                                                                                                            | Added                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | [innodb\_adaptive\_flushing\_method](../../../../../server-usage/storage-engines/innodb/innodb-system-variables.md)               | [MariaDB 5.5.20](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/5.5.20) |
 | [innodb\_adaptive\_hash\_index\_partitions](../../../../../server-usage/storage-engines/innodb/innodb-system-variables.md)        | [MariaDB 5.5.20](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/5.5.20) |
 | [innodb\_blocking\_buffer\_pool\_restore](../../../../../server-usage/storage-engines/innodb/innodb-system-variables.md)          | [MariaDB 5.5.20](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/5.5/5.5.20) |
@@ -27,7 +27,7 @@ The list excludes variables related to non-default storage engines and plugins t
 ## See also
 
 * [System Variables Added in MariaDB 10.0](system-variables-added-in-mariadb-100.md)
-* [Upgrading from MariaDB 5.3 to MariaDB 5.5](../../../../../server-management/install-and-upgrade-mariadb/upgrading/mariadb-community-server-upgrade-paths/upgrading-to-unmaintained-mariadb-releases/upgrading-from-mariadb-10-4-to-mariadb-10-5.md)
+* [Upgrading from MariaDB 5.3 to MariaDB 5.5](../../../../../server-management/install-and-upgrade-mariadb/upgrading/upgrading-to-unmaintained-mariadb-releases/upgrading-from-mariadb-10-4-to-mariadb-10-5.md)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

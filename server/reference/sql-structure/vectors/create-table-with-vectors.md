@@ -10,7 +10,7 @@ description: >-
 
 {% include "../../../.gitbook/includes/vectors-are-available-from-....md" %}
 
-MariaDB has a dedicated [VECTOR(N)](vector.md) data type with a built-in data validation. `N` is the number of dimensions that all vector values in the column have.
+MariaDB has a dedicated [VECTOR(N)](../../data-types/numeric-data-types/vector.md) data type with a built-in data validation. `N` is the number of dimensions that all vector values in the column have.
 
 {% hint style="info" %}
 * Vector indexes are dimensionality-specific.
@@ -57,6 +57,7 @@ CREATE TABLE embeddings (
 {% hint style="info" %}
 Declare `DISTANCE` explicitly. The default is `euclidean`, and a query using a different distance function than the one the index was built for cannot use the index, it falls back to a full table scan. Match the distance function to the metric your embedding model recommends.
 {% endhint %}
+
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

@@ -1,8 +1,9 @@
 ---
 description: >-
-  Multi-node MariaDB ColumnStore deployment with S3 object storage: HA topology
-  with three or more nodes, MaxScale routing, CMAPI cluster management, and bulk
-  data import.
+  Multi-node MariaDB ColumnStore deployment with S3 object storage:
+  HA topology with three or more nodes, MaxScale routing, CMAPI cluster
+  management, and bulk data import.
+
 ---
 
 # Multi-Node S3
@@ -220,7 +221,7 @@ $ sudo ./mariadb_es_repo_setup --token="CUSTOMER_DOWNLOAD_TOKEN" --apply \
       --mariadb-server-version="11.4"
 ```
 
-_Checksums of the various releases of the `mariadb_es_repo_setup` script can be found in the_ [_Versions_](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-management/install-and-upgrade-mariadb/mariadb-package-repository-setup-and-usage#versions) _section at the bottom of the_ [_MariaDB Package Repository Setup and Usage_](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-management/install-and-upgrade-mariadb/mariadb-package-repository-setup-and-usage) _page. Substitute `${checksum}` in the example above with the latest checksum._
+_Checksums of the various releases of the `mariadb_es_repo_setup` script can be found in the_ [_Versions_](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/server-management/install-and-upgrade-mariadb/mariadb-package-repository-setup-and-usage#versions) _section at the bottom of the_ [_MariaDB Package Repository Setup and Usage_](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/server-management/install-and-upgrade-mariadb/mariadb-package-repository-setup-and-usage) _page. Substitute `${checksum}` in the example above with the latest checksum._
 
 #### Install Enterprise ColumnStore
 
@@ -638,9 +639,9 @@ Enterprise ColumnStore supports multiple methods to import data into ColumnStore
 
 #### cpimport
 
-MariaDB Enterprise ColumnStore includes [cpimport](https://app.gitbook.com/s/rBEU9juWLfTDcdwF3Q14/mariadb-columnstore/clients-and-tools/data-import/mariadb-enterprise-columnstore-data-loading-with-cpimport), which is a command-line utility designed to efficiently load data in bulk. Alternative methods are available.
+MariaDB Enterprise ColumnStore includes [cpimport](https://app.gitbook.com/s/rBEU9juWLfTDcdwF3Q14/data-import-with-mariadb-enterprise-columnstore/mariadb-enterprise-columnstore-data-loading-with-cpimport), which is a command-line utility designed to efficiently load data in bulk. Alternative methods are available.
 
-To import your data from a TSV (tab-separated values) file, on the primary server run [cpimport](https://app.gitbook.com/s/rBEU9juWLfTDcdwF3Q14/mariadb-columnstore/clients-and-tools/data-import/mariadb-enterprise-columnstore-data-loading-with-cpimport):
+To import your data from a TSV (tab-separated values) file, on the primary server run [cpimport](https://app.gitbook.com/s/rBEU9juWLfTDcdwF3Q14/data-import-with-mariadb-enterprise-columnstore/mariadb-enterprise-columnstore-data-loading-with-cpimport):
 
 ```bash
 $ sudo cpimport -s '\t' inventory products /tmp/inventory-products.tsv
@@ -648,7 +649,7 @@ $ sudo cpimport -s '\t' inventory products /tmp/inventory-products.tsv
 
 #### LOAD DATA INFILE
 
-When data is loaded with the LOAD DATA INFILE statement, MariaDB Enterprise ColumnStore loads the data using [cpimport](https://app.gitbook.com/s/rBEU9juWLfTDcdwF3Q14/mariadb-columnstore/clients-and-tools/data-import/mariadb-enterprise-columnstore-data-loading-with-cpimport), which is a command-line utility designed to efficiently load data in bulk. Alternative methods are available.
+When data is loaded with the LOAD DATA INFILE statement, MariaDB Enterprise ColumnStore loads the data using [cpimport](https://app.gitbook.com/s/rBEU9juWLfTDcdwF3Q14/data-import-with-mariadb-enterprise-columnstore/mariadb-enterprise-columnstore-data-loading-with-cpimport), which is a command-line utility designed to efficiently load data in bulk. Alternative methods are available.
 
 To import your data from a TSV (tab-separated values) file, on the primary server use LOAD DATA INFILE statement:
 

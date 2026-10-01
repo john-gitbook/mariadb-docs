@@ -18,24 +18,24 @@ SHOW COUNT(*) WARNINGS
 
 `SHOW WARNINGS` shows the error, warning, and note messages that resulted from the last statement that generated messages in the current session. It shows nothing if the last statement used a table and generated no messages. (That is, a statement that uses a table but generates no messages clears the message list.) Statements that do not use tables and do not generate messages have no effect on the message list.
 
-A note is different to a warning in that it only appears if the [sql\_notes](../../../../server-management/variables-and-modes/server-system-variables.md#sql_notes) variable is set to 1 (the default), and is not converted to an error if [strict mode](../../../../server-management/variables-and-modes/sql_mode.md) is enabled.
+A note is different to a warning in that it only appears if the [sql\_notes](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_notes) variable is set to 1 (the default), and is not converted to an error if [strict mode](../../../../server-management/variables-and-modes/sql_mode.md) is enabled.
 
 A related statement, [SHOW ERRORS](show-errors.md), shows only the errors.
 
-The `SHOW COUNT(*) WARNINGS` statement displays the total number of errors, warnings, and notes. You can also retrieve this number from the [warning\_count](../../../../server-management/variables-and-modes/server-system-variables.md#warning_count) variable:
+The `SHOW COUNT(*) WARNINGS` statement displays the total number of errors, warnings, and notes. You can also retrieve this number from the [warning\_count](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#warning_count) variable:
 
 ```sql
 SHOW COUNT(*) WARNINGS;
 SELECT @@warning_count;
 ```
 
-The value of [warning\_count](../../../../server-management/variables-and-modes/server-system-variables.md#warning_count) might be greater than the number of messages displayed by `SHOW WARNINGS` if the [max\_error\_count](../../../../server-management/variables-and-modes/server-system-variables.md#max_error_count) system variable is set so low that not all messages are stored.
+The value of [warning\_count](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#warning_count) might be greater than the number of messages displayed by `SHOW WARNINGS` if the [max\_error\_count](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_error_count) system variable is set so low that not all messages are stored.
 
 The `LIMIT` clause has the same syntax as for the [SELECT statement](../../data-manipulation/selecting-data/select.md).
 
 `SHOW WARNINGS` can be used after [EXPLAIN EXTENDED](../analyze-and-explain-statements/explain.md) to see how a query is internally rewritten by MariaDB.
 
-If the [sql\_notes](../../../../server-management/variables-and-modes/server-system-variables.md#sql_notes) server variable is set to 1, Notes are included in the output of `SHOW WARNINGS`; if it is set to 0, this statement will not show (or count) Notes.
+If the [sql\_notes](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_notes) server variable is set to 1, Notes are included in the output of `SHOW WARNINGS`; if it is set to 0, this statement will not show (or count) Notes.
 
 The results of `SHOW WARNINGS` and `SHOW COUNT(*) WARNINGS` are directly sent to the client. If you need to access those information in a stored program, you can use the [GET DIAGNOSTICS](../../programmatic-compound-statements/programmatic-compound-statements-diagnostics/get-diagnostics.md) statement instead.
 

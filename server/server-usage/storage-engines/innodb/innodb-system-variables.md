@@ -9,9 +9,9 @@ description: >-
 
 This page documents system variables related to the [InnoDB storage engine](./). For options that are not system variables, see [InnoDB Options](../../../server-management/starting-and-stopping-mariadb/mariadbd-options.md).
 
-See [Server System Variables](../../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting them.
+See [Server System Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a complete list of system variables and instructions on setting them.
 
-Also see the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+Also see the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `ignore_builtin_innodb`
 
@@ -43,7 +43,7 @@ Also see the [Full list of MariaDB options, system and status variables](../../.
 
 #### `innodb_adaptive_hash_index`
 
-* Description: If set to `1`, the [InnoDB](./) hash index is enabled. Based on performance testing ([MDEV-17492](https://jira.mariadb.org/browse/MDEV-17492)), the InnoDB adaptive hash index helps performance in mostly read-only workloads, and could slow down performance in other environments, especially [DROP TABLE](../../tables/drop-table.md), [TRUNCATE TABLE](../../../reference/sql-statements/table-statements/truncate-table.md), [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/), or [DROP INDEX](../../../reference/sql-statements/data-definition/drop/drop-index.md) operations. From [MariaDB 13.1.1](https://jira.mariadb.org/browse/MDEV-37070), this variable is an enumeration. The `IF_SPECIFIED` value enables the adaptive hash index only for tables and indexes whose [ADAPTIVE\_HASH\_INDEX](../../tables/create-table.md#adaptive_hash_index) option is set to `YES`.
+* Description: If set to `1`, the [InnoDB](./) hash index is enabled. Based on performance testing ([MDEV-17492](https://jira.mariadb.org/browse/MDEV-17492)), the InnoDB adaptive hash index helps performance in mostly read-only workloads, and could slow down performance in other environments, especially [DROP TABLE](../../../reference/sql-statements/data-definition/drop/drop-table.md), [TRUNCATE TABLE](../../../reference/sql-statements/table-statements/truncate-table.md), [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/), or [DROP INDEX](../../../reference/sql-statements/data-definition/drop/drop-index.md) operations. From [MariaDB 13.1.1](https://jira.mariadb.org/browse/MDEV-37070), this variable is an enumeration. The `IF_SPECIFIED` value enables the adaptive hash index only for tables and indexes whose [ADAPTIVE\_HASH\_INDEX](../../../reference/sql-statements/data-definition/create/create-table.md#adaptive_hash_index) option is set to `YES`.
 * Command line: `--innodb-adaptive-hash-index[={OFF|ON|IF_SPECIFIED}]`
 * Scope: Global
 * Dynamic: Yes
@@ -118,13 +118,13 @@ Also see the [Full list of MariaDB options, system and status variables](../../.
 
 #### `innodb_buffer_pool_chunk_size`
 
-* Description: Chunk size used for dynamically resizing the [buffer pool](innodb-buffer-pool.md). Note that changing this setting can change the size of the buffer pool. When [large-pages](../../../server-management/variables-and-modes/server-system-variables.md#large_pages) is used this value is effectively rounded up to the next multiple of [large-page-size](../../../server-management/variables-and-modes/server-system-variables.md#large_page_size). See [Setting Innodb Buffer Pool Size Dynamically](../../../ha-and-performance/optimization-and-tuning/system-variables/setting-innodb-buffer-pool-size-dynamically.md). From [MariaDB 10.8.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/10.8.0), the variable is autosized based on the [buffer pool size](innodb-buffer-pool.md).
+* Description: Chunk size used for dynamically resizing the [buffer pool](innodb-buffer-pool.md). Note that changing this setting can change the size of the buffer pool. When [large-pages](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#large_pages) is used this value is effectively rounded up to the next multiple of [large-page-size](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#large_page_size). See [Setting Innodb Buffer Pool Size Dynamically](../../../ha-and-performance/optimization-and-tuning/system-variables/setting-innodb-buffer-pool-size-dynamically.md). From [MariaDB 10.8.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/10.8.0), the variable is autosized based on the [buffer pool size](innodb-buffer-pool.md).
 * Command line: `--innodb-buffer-pool-chunk-size=#`
 * Scope: Global
 * Dynamic: No
 * Data Type: `numeric`
 * Default Value:
-  * `autosize (0)`, resulting in [innodb\_buffer\_pool\_size](innodb-system-variables.md#innodb_buffer_pool_size)/64, if [large\_pages](../../../server-management/variables-and-modes/server-system-variables.md#large_pages) round down to multiple of largest page size, with 1MiB minimum (from [MariaDB 10.8.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/10.8.1))
+  * `autosize (0)`, resulting in [innodb\_buffer\_pool\_size](innodb-system-variables.md#innodb_buffer_pool_size)/64, if [large\_pages](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#large_pages) round down to multiple of largest page size, with 1MiB minimum (from [MariaDB 10.8.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/10.8.1))
   * `134217728` (until [MariaDB 10.8.0](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/10.8.0))
 * Range:
   * `0`, as autosize, and then `1048576` to `18446744073709551615` (from [MariaDB 10.8](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.8/what-is-mariadb-108))
@@ -260,7 +260,7 @@ Automatic upward dynamic resizing is not implemented ([MDEV-36197](https://jira.
 {% endhint %}
 
 * Description: Maximum `innodb_buffer_pool_size` value. On 64-bit systems other than IBM AIX, the default is 8 TiB, and the minimum 8 MiB. On other systems, the default and minimum are `0`, and the value `0` is replaced with the initial `innodb_buffer_pool_size` rounded up to the allocation unit (2 MiB or 8 MiB). The maximum value is 4GiB-2MiB on 32-bit systems and 16EiB-8MiB on 64-bit systems. This maximum is likely to be limited further by the operating system.\
-  On 64-bit systems the default 8 TiB only reserves virtual address space; no memory is committed until the buffer pool actually grows into it. The default is reduced automatically in two cases. If the address-space limit [`RLIMIT_AS`](#user-content-fn-1)[^1] is set and a quarter of it is less than 8 TiB, the default is lowered to that quarter. On architectures whose usable virtual address space can be narrower than 8 TiB — ARM64, RISC-V, MIPS and LoongArch — a failed reservation is retried with 128 GiB, or with the initial `innodb_buffer_pool_size` if that is larger, so that the server can still start. On any other architecture, a failed reservation is a startup error, and a smaller `innodb_buffer_pool_size_max` has to be configured explicitly.
+  On 64-bit systems the default 8 TiB only reserves virtual address space; no memory is committed until the buffer pool actually grows into it. The default is reduced automatically in two cases. If the address-space limit [`RLIMIT_AS`](#user-content-fn-2)[^2] is set and a quarter of it is less than 8 TiB, the default is lowered to that quarter. On architectures whose usable virtual address space can be narrower than 8 TiB — ARM64, RISC-V, MIPS and LoongArch — a failed reservation is retried with 128 GiB, or with the initial `innodb_buffer_pool_size` if that is larger, so that the server can still start. On any other architecture, a failed reservation is a startup error, and a smaller `innodb_buffer_pool_size_max` has to be configured explicitly.
 * Command line: `--innodb-buffer-pool-size-max=#`
 * Scope: Global
 * Dynamic: No
@@ -631,9 +631,9 @@ Before MariaDB 11.0.6:
 #### `innodb_encrypt_tables`
 
 * Description: Enables automatic encryption of all InnoDB tablespaces.
-  * `OFF` - Disables table encryption for all new and existing tables that have the [ENCRYPTED](../../tables/create-table.md#encrypted) table option set to `DEFAULT`.
-  * `ON` - Enables table encryption for all new and existing tables that have the [ENCRYPTED](../../tables/create-table.md#encrypted) table option set to `DEFAULT`, but allows unencrypted tables to be created.
-  * `FORCE` - Enables table encryption for all new and existing tables that have the [ENCRYPTED](../../tables/create-table.md#encrypted) table option set to `DEFAULT`, and doesn't allow unencrypted tables to be created (`CREATE TABLE ... ENCRYPTED=NO` fails).
+  * `OFF` - Disables table encryption for all new and existing tables that have the [ENCRYPTED](../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option set to `DEFAULT`.
+  * `ON` - Enables table encryption for all new and existing tables that have the [ENCRYPTED](../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option set to `DEFAULT`, but allows unencrypted tables to be created.
+  * `FORCE` - Enables table encryption for all new and existing tables that have the [ENCRYPTED](../../../reference/sql-statements/data-definition/create/create-table.md#encrypted) table option set to `DEFAULT`, and doesn't allow unencrypted tables to be created (`CREATE TABLE ... ENCRYPTED=NO` fails).
   * See [Data-at-Rest Encryption](../../../security/encryption/data-at-rest-encryption/data-at-rest-encryption-tde-fundamentals.md) and [Enabling InnoDB Encryption: Enabling Encryption for Automatically Encrypted Tablespaces](../../../security/encryption/data-at-rest-encryption/innodb-encryption/innodb-enabling-encryption.md#enabling-encryption-for-automatically-encrypted-tablespaces) for more information.
 * Command line: `--innodb-encrypt-tables={0|1}`
 * Scope: Global
@@ -743,7 +743,7 @@ Before MariaDB 11.0.6:
 #### `innodb_flush_log_at_trx_commit`
 
 * Description: Set to `1`, along with [sync\_binlog=1](../../../ha-and-performance/standard-replication/replication-and-binary-log-system-variables.md) for the greatest level of fault tolerance.
-  * `1` The default, the log buffer is written to the [InnoDB redo log](innodb-redo-log.md) file and a flush to disk performed after each transaction. This is required for full ACID[^2] compliance.
+  * `1` The default, the log buffer is written to the [InnoDB redo log](innodb-redo-log.md) file and a flush to disk performed after each transaction. This is required for full ACID[^3] compliance.
   * `0` Nothing is done on commit; rather the log buffer is written and flushed to the [InnoDB redo log](innodb-redo-log.md) once a second. This gives better performance, but a server crash can erase the last second of transactions.
   * `2` The log buffer is written to the [InnoDB redo log](innodb-redo-log.md) after each commit, but flushing takes place every [innodb\_flush\_log\_at\_timeout](innodb-system-variables.md#innodb_flush_log_at_timeout) seconds (by default once a second). Performance is slightly better, but a OS or power outage can cause the last second's transactions to be lost.
   * `3` The log buffer is written to the [InnoDB redo log](innodb-redo-log.md) file and flushed to disk at both the prepare and the commit phase of each transaction. This is slower than `1`, and the extra flush at prepare is usually redundant. Like `1`, it guarantees that after a crash, committed transactions are not lost and remain consistent with the binary log and other transactional engines. See [Binlog group commit and innodb\_flush\_log\_at\_trx\_commit](binary-log-group-commit-and-innodb-flushing-performance.md).
@@ -754,7 +754,7 @@ Before MariaDB 11.0.6:
 * Default Value: `1`
 * Valid Values: `0`, `1`, `2` or `3`
 
-**Note**: When the [InnoDB-based Binary Log](../../../server-management/server-monitoring-logs/binary-log/innodb-based-binary-log.md) is enabled (`--binary-storage-engine=innodb`), this option manages the durability of commits for both binlog files and InnoDB table data. Also, in this configuration, there is no separate binlog `fsync` step and no two-phase commit between InnoDB and the binary log.
+**Note**: When the [InnoDB-based Binary Log](../../../ha-and-performance/standard-replication/innodb-based-binary-log.md) is enabled (`--binary-storage-engine=innodb`), this option manages the durability of commits for both binlog files and InnoDB table data. Also, in this configuration, there is no separate binlog `fsync` step and no two-phase commit between InnoDB and the binary log.
 
 #### `innodb_flush_method`
 
@@ -1006,18 +1006,23 @@ Before MariaDB 11.0:
 * Dynamic: Yes
 * Data Type: `boolean`
 * Default Value: `ON`
-* Introduced: [MariaDB 11.8.9](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.8/11.8.9), [MariaDB 12.3.3](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/12.3/12.3.3)
+* Introduced: [MariaDB 11.8.9](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.8/11.8.9), [MariaDB 12.3.3](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/12.3/12.3.3)
 
 #### `innodb_instant_alter_column_allowed`
 
 * Description:
-  * If a table is altered using `ALGORITHM=INSTANT`, it can force the table to use a non-canonical format: A hidden metadata record at the start of the clustered index is used to store each column's `DEFAULT` value. This makes it possible to add new columns that have default values without rebuilding the table. A `BLOB` in the hidden metadata record is used to store column mappings. This makes it possible to drop or reorder columns without rebuilding the table. This also makes it possible to add columns to any position or drop columns from any position in the table without rebuilding the table. If a column is dropped without rebuilding the table, old records will contain garbage in that column's former position, and new records are written with `NULL` values, empty strings, or dummy values.
-  * This is generally not a problem. However, there may be cases where you want to avoid putting a table into this format. For example, to ensure that future `UPDATE` operations after an `ADD COLUMN` are performed in-place, to reduce write amplification. (Instantly added columns are essentially always variable-length.) Also avoid bugs similar to [MDEV-19916](https://jira.mariadb.org/browse/MDEV-19916), or to be able to export tables to older versions of the server.
+  * If a table is altered using `ALGORITHM=INSTANT`, it can force the table to use a non-canonical format: A hidden metadata record at the start of the clustered index is used to store each column's `DEFAULT` value. This makes it possible to add new columns that have default values without rebuilding the table. A `BLOB` in the hidden metadata record is used to store column mappings. This makes
+    it possible to drop or reorder columns without rebuilding the table. This also makes it possible to add columns to any position or drop columns from any position in the table without rebuilding the table. If a column is dropped without rebuilding the table, old records will contain garbage in that column's former position, and new records are written with `NULL` values, empty strings, or dummy values.
+  * This is generally not a problem. However, there may be cases where
+    you want to avoid putting a table into this format. For example, to ensure that future `UPDATE` operations after an `ADD COLUMN` are performed in-place, to reduce write amplification. (Instantly added columns are essentially always variable-length.) Also avoid bugs similar to [MDEV-19916](https://jira.mariadb.org/browse/MDEV-19916), or to be able to export tables to older versions of the server.
   * This variable has been introduced as a result, with the following values:
   * `never` (0): Do not allow instant add/drop/reorder, to maintain format compatibility with MariaDB 10.x and MySQL 5.x. If the table (or partition) is not in the canonical format, then any ALTER TABLE (even one that does not involve instant column operations) will force a table rebuild.
-  * `add_last` (1): Store a hidden metadata record that allows columns to be appended to the table instantly ([MDEV-11369](https://jira.mariadb.org/browse/MDEV-11369)).\
-    If the table (or partition) is not in this format, then any ALTER TABLE (even one that does not involve column changes) will force a table rebuild.
-  * `add_drop_reorder` (2, default): Like 'add\_last', but allow the metadata record to store a column map, to support instant add/drop/reorder of columns.
+  * `add_last` (1): Store a hidden metadata record that
+    allows columns to be appended to the table instantly ([MDEV-11369](https://jira.mariadb.org/browse/MDEV-11369)).\
+    If the table (or partition) is not in this format, then any ALTER TABLE (even one that does not involve column changes)
+    will force a table rebuild.
+  * `add_drop_reorder` (2, default): Like 'add\_last', but allow the metadata record to store a column map, to support instant
+    add/drop/reorder of columns.
 * Command line: `--innodb-instant-alter-column-allowed=value`
 * Scope: Global
 * Dynamic: Yes
@@ -1118,7 +1123,8 @@ SELECT @@GLOBAL.innodb_log_file_buffering;
 
 #### `innodb_log_file_mmap`
 
-* Description: Whether ib\_logfile0 resides in persistent memory or should initially be memory-mapped. When using the default innodb\_log\_buffer\_size=2m, mariadb-backup --backup would spend a lot of time re-reading and re-parsing the log. For reading the log file during mariadb-backup --backup, it is beneficial to memory-map the entire ib\_logfile0 to the address space (typically 48 bits or 256 TiB) and read it from there, both during --backup and --prepare. OFF by default on most platforms, to avoid aggressive read-ahead of the entire ib\_logfile0 in when only a tiny portion would be accessed. On Linux and FreeBSD the default is innodb\_log\_file\_mmap=ON, because those platforms define a specific mmap(2) option for enabling such read-ahead and therefore it can be assumed that the default wouldbe on-demand paging. This parameter will only have impact on the initial InnoDB startup and recovery. Any writes to the log will use regular I/O, except when the ib\_logfile0 is stored in a specially configured file system that is backed by persistent memory (Linux "mount -o dax").
+* Description: Whether ib\_logfile0 resides in persistent memory or should initially be memory-mapped. When using the default innodb\_log\_buffer\_size=2m, mariadb-backup --backup would spend a lot of time re-reading and re-parsing the log. For reading the log file during mariadb-backup --backup, it is beneficial to memory-map the entire ib\_logfile0 to the address space (typically 48 bits or 256 TiB) and read it from there,
+  both during --backup and --prepare. OFF by default on most platforms, to avoid aggressive read-ahead of the entire ib\_logfile0 in when only a tiny portion would be accessed. On Linux and FreeBSD the default is innodb\_log\_file\_mmap=ON, because those platforms define a specific mmap(2) option for enabling such read-ahead and therefore it can be assumed that the default wouldbe on-demand paging. This parameter will only have impact on the initial InnoDB startup and recovery. Any writes to the log will use regular I/O, except when the ib\_logfile0 is stored in a specially configured file system that is backed by persistent memory (Linux "mount -o dax").
 * Command line: `--innodb-log-file-mmap{=0|1}`
 * Scope: Global
 * Dynamic: No
@@ -1195,7 +1201,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_log_spin_wait_delay`
 
-* Description: Delay between log buffer spin lock polls (0 to use a blocking latch). Specifically, enables a spin lock that will execute that many MY\_RELAX\_CPU() operations (such as the x86 PAUSE instruction) between successive attempts of acquiring the spin lock. On some hardware with certain workloads (observed on write intensive workloads on NUMA[^3] systems), the default setting results in a significant amount of time being spent in native\_queued\_spin\_lock\_slowpath() in the Linux kernel, plus context switching between user and kernel address space, in which case changing from the default (for example, setting to `50`), may result in a performance improvement.
+* Description: Delay between log buffer spin lock polls (0 to use a blocking latch). Specifically, enables a spin lock that will execute that many MY\_RELAX\_CPU() operations (such as the x86 PAUSE instruction) between successive attempts of acquiring the spin lock. On some hardware with certain workloads (observed on write intensive workloads on NUMA[^1] systems), the default setting results in a significant amount of time being spent in native\_queued\_spin\_lock\_slowpath() in the Linux kernel, plus context switching between user and kernel address space, in which case changing from the default (for example, setting to `50`), may result in a performance improvement.
 * Command line: `--innodb-log-spin-wait-delay=#`
 * Scope: Global
 * Dynamic: Yes
@@ -1341,7 +1347,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_numa_interleave`
 
-* Description: Whether or not to use the NUMA[^3] interleave memory policy to allocate the [InnoDB buffer pool](innodb-buffer-pool.md).
+* Description: Whether or not to use the NUMA[^1] interleave memory policy to allocate the [InnoDB buffer pool](innodb-buffer-pool.md).
 * Command line: `innodb-numa-interleave={0|1}`
 * Scope: Global
 * Dynamic: No
@@ -1381,7 +1387,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_open_files`
 
-* Description: Maximum .ibd files MariaDB can have open at the same time. Only applies to systems with multiple XtraDB/InnoDB tablespaces, and is separate to the table cache and [open\_files\_limit](../../../server-management/variables-and-modes/server-system-variables.md#open_files_limit). The default, if [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) is disabled, is 300 or the value of [table\_open\_cache](../../../server-management/variables-and-modes/server-system-variables.md#table_open_cache), whichever is higher. It will also auto-size up to the default value if it is set to a value less than `10`.
+* Description: Maximum .ibd files MariaDB can have open at the same time. Only applies to systems with multiple XtraDB/InnoDB tablespaces, and is separate to the table cache and [open\_files\_limit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#open_files_limit). The default, if [innodb\_file\_per\_table](innodb-system-variables.md#innodb_file_per_table) is disabled, is 300 or the value of [table\_open\_cache](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#table_open_cache), whichever is higher. It will also auto-size up to the default value if it is set to a value less than `10`.
 * Command line: `--innodb-open-files=#`
 * Scope: Global
 * Dynamic: No
@@ -1537,7 +1543,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_sort_buffer_size`
 
-* Description: Size of the sort buffers used for sorting data when an InnoDB index is created, as well as the amount by which the temporary log file is extended during online DDL operations to record concurrent writes. The larger the setting, the fewer merge phases are required between buffers while sorting. When a [CREATE TABLE](../../tables/create-table.md) or [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/) creates a new index, three buffers of this size are allocated, as well as pointers for the rows in the buffer.
+* Description: Size of the sort buffers used for sorting data when an InnoDB index is created, as well as the amount by which the temporary log file is extended during online DDL operations to record concurrent writes. The larger the setting, the fewer merge phases are required between buffers while sorting. When a [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/) creates a new index, three buffers of this size are allocated, as well as pointers for the rows in the buffer.
 * Command line: `--innodb-sort-buffer-size=#`
 * Scope: Global
 * Dynamic: No
@@ -1557,7 +1563,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_stats_auto_recalc`
 
-* Description: If set to `1` (the default), persistent statistics are automatically recalculated when the table changes significantly (more than 10% of the rows). Affects tables created or altered with STATS\_PERSISTENT=1 (see [CREATE TABLE](../../tables/create-table.md) ), or when [innodb\_stats\_persistent](innodb-system-variables.md#innodb_stats_persistent) is enabled. [innodb\_stats\_persistent\_sample\_pages](innodb-system-variables.md#innodb_stats_persistent_sample_pages) determines how much data to sample when recalculating. See [InnoDB Persistent Statistics](../../../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/innodb-persistent-statistics.md).
+* Description: If set to `1` (the default), persistent statistics are automatically recalculated when the table changes significantly (more than 10% of the rows). Affects tables created or altered with STATS\_PERSISTENT=1 (see [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) ), or when [innodb\_stats\_persistent](innodb-system-variables.md#innodb_stats_persistent) is enabled. [innodb\_stats\_persistent\_sample\_pages](innodb-system-variables.md#innodb_stats_persistent_sample_pages) determines how much data to sample when recalculating. See [InnoDB Persistent Statistics](../../../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/innodb-persistent-statistics.md).
 * Command line: `--innodb-stats-auto-recalc={0|1}`
 * Scope: Global
 * Dynamic: Yes
@@ -1607,7 +1613,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_stats_persistent`
 
-* Description: [ANALYZE TABLE](../../../reference/sql-statements/table-statements/analyze-table.md) produces index statistics, and this setting determines whether they are stored on disk, or be required to be recalculated more frequently, such as when the server restarts. This information is stored for each table, and can be set with the STATS\_PERSISTENT clause when creating or altering tables (see [CREATE TABLE](../../tables/create-table.md)). See [InnoDB Persistent Statistics](../../../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/innodb-persistent-statistics.md).
+* Description: [ANALYZE TABLE](../../../reference/sql-statements/table-statements/analyze-table.md) produces index statistics, and this setting determines whether they are stored on disk, or be required to be recalculated more frequently, such as when the server restarts. This information is stored for each table, and can be set with the STATS\_PERSISTENT clause when creating or altering tables (see [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md)). See [InnoDB Persistent Statistics](../../../ha-and-performance/optimization-and-tuning/query-optimizations/statistics-for-optimizing-queries/innodb-persistent-statistics.md).
 * Command line: `--innodb-stats-persistent={0|1}`
 * Scope: Global
 * Dynamic: Yes
@@ -1687,7 +1693,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_table_locks`
 
-* Description: If [autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) is set to `0` (`1` is default), setting innodb\_table\_locks to `1`, the default, will cause InnoDB to lock a table internally upon a [LOCK TABLE](../../../reference/sql-statements/transactions/lock-tables.md).
+* Description: If [autocommit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) is set to `0` (`1` is default), setting innodb\_table\_locks to `1`, the default, will cause InnoDB to lock a table internally upon a [LOCK TABLE](../../../reference/sql-statements/transactions/lock-tables.md).
 * Command line: `--innodb-table-locks`
 * Scope: Global, Session
 * Dynamic: Yes
@@ -1728,7 +1734,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_tmpdir`
 
-* Description: Allows an alternate location to be set for temporary non-tablespace files. If not set (the default), files are created in the usual [tmpdir](../../../server-management/variables-and-modes/server-system-variables.md#tmpdir) location.\
+* Description: Allows an alternate location to be set for temporary non-tablespace files. If not set (the default), files are created in the usual [tmpdir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#tmpdir) location.\
   Alternate location must be outside of `datadir`
 * Command line: `--innodb-tmpdir=path`
 * Scope: Global
@@ -1748,7 +1754,7 @@ If you set a target that is unreachable in the other direction (for example, low
 
 #### `innodb_undo_directory`
 
-* Description: Path to the directory (relative or absolute) that InnoDB uses to create separate tablespaces for the [undo logs](innodb-undo-log.md). The default value is NULL: if no path is specified, undo tablespaces are created in the directory defined by [datadir](../../../server-management/variables-and-modes/server-system-variables.md#datadir). `.` leaves the undo logs in the same directory as the other log files. Use together with [innodb\_undo\_tablespaces](innodb-system-variables.md#innodb_undo_tablespaces). Undo logs are most usefully placed on a separate storage device.
+* Description: Path to the directory (relative or absolute) that InnoDB uses to create separate tablespaces for the [undo logs](innodb-undo-log.md). The default value is NULL: if no path is specified, undo tablespaces are created in the directory defined by [datadir](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#datadir). `.` leaves the undo logs in the same directory as the other log files. Use together with [innodb\_undo\_tablespaces](innodb-system-variables.md#innodb_undo_tablespaces). Undo logs are most usefully placed on a separate storage device.
 * Command line: `--innodb-undo-directory=name`
 * Scope: Global
 * Dynamic: No
@@ -1814,9 +1820,11 @@ If you set a target that is unreachable in the other direction (for example, low
 
 {% @marketo/form formId="4316" %}
 
-[^1]: RLIMIT\_AS stands for Resource Limit: Address Space. It is one of the "ulimits" (user limits) that a system administrator can set to prevent a single process from going rogue.
+[^1]: NUMA (Non-Uniform Memory Access): A hardware architecture where a processor accesses its own local memory faster than non-local memory, requiring database optimization for efficiency.
 
-[^2]: ACID compliance refers to a set of properties—Atomicity, Consistency, Isolation, and Durability—that ensure database transactions are processed reliably and maintain data integrity.\
+[^2]: RLIMIT\_AS stands for Resource Limit: Address Space. It is one of the "ulimits" (user limits) that a system administrator can set to prevent a single process from going rogue.
+
+[^3]: ACID compliance refers to a set of properties—Atomicity, Consistency, Isolation, and Durability—that ensure database transactions are processed reliably and maintain data integrity.\
     Atomicity guarantees that a transaction is treated as a single, indivisible unit, where all operations succeed or the entire transaction is rolled back.\
     Consistency ensures that a transaction brings the database from one valid state to another, adhering to all defined rules and constraints.\
     Isolation mandates that concurrent transactions do not interfere with each other, preserving data accuracy during simultaneous operations.\
@@ -1824,5 +1832,3 @@ If you set a target that is unreachable in the other direction (for example, low
     These properties are essential for mission-critical applications in industries like banking, healthcare, and e-commerce, where data accuracy and reliability are paramount.\
     While ACID compliance enhances data integrity and user confidence, it can impact performance, particularly under high load, due to the overhead of maintaining strict consistency and concurrency control.\
     Some modern systems, such as data warehouses, may relax isolation requirements to improve read performance, though they still typically maintain atomicity, consistency, and durability.
-
-[^3]: NUMA (Non-Uniform Memory Access): A hardware architecture where a processor accesses its own local memory faster than non-local memory, requiring database optimization for efficiency.

@@ -289,7 +289,12 @@ When this feature is enabled, a failure to route a query due to a connection pro
 
 When combined with the `master_reconnection` parameter, failures of writes done outside of transactions can be hidden from the client connection. This allows a primary to be replaced while writes are being sent.
 
-Starting with MaxScale 21.06.18, 22.08.15, 23.02.12, 23.08.8, 24.02.4 and 25.01.1, `delayed_retry` will no longer attempt to retry a write query if it was already sent to the database. If a query is received while a valid target server is not available, the execution of the query is delayed until a valid target is found or the delayed retry timeout is hit. If a query was already sent, it will not be replayed to prevent duplicate execution of statements.
+Starting with MaxScale 21.06.18, 22.08.15, 23.02.12, 23.08.8, 24.02.4 and
+25.01.1, `delayed_retry` will no longer attempt to retry a write query if it was
+already sent to the database. If a query is received while a valid target server
+is not available, the execution of the query is delayed until a valid target is
+found or the delayed retry timeout is hit. If a query was already sent, it will
+not be replayed to prevent duplicate execution of statements.
 
 In older versions of MaxScale, duplicate execution of a statement can occur if the connection to the server is lost or the server crashes but the server comes back up before the timeout for the retrying is exceeded. At this point, if the server managed to read the client's statement, it will be executed. For this reason, it is recommended to only enable `delayed_retry` for older versions of MaxScale when the possibility of duplicate statement execution is an acceptable risk.
 
@@ -382,9 +387,18 @@ If this feature is enabled and a transaction returns a deadlock error (e.g. `SQL
 * Dynamic: Yes
 * Default: true
 
-This parameter controls whether transaction that are about to commit are replayed. The default behavior is the safe behavior of transactions never being retried if the `COMMIT` for it was already sent to the database. The default should only be changed if you know that all of the SQL being executed is safe and doesn't involve patterns that are vulnerable to duplicate execution.
+This parameter controls whether transaction that are about to commit are
+replayed. The default behavior is the safe behavior of transactions never being
+retried if the `COMMIT` for it was already sent to the database. The default
+should only be changed if you know that all of the SQL being executed is safe
+and doesn't involve patterns that are vulnerable to duplicate execution.
 
-When the connection to the database is lost while the `COMMIT` statement was in flight, replaying the transaction is generally unsafe. This is because it is not possible to know whether the transaction committed or not and executing the transaction again may end up duplicating data even if the checksums are identical. The following are some examples of unsafe transactions whose checksums would be identical to the original transaction.
+When the connection to the database is lost while the `COMMIT` statement was in
+flight, replaying the transaction is generally unsafe. This is because it is not
+possible to know whether the transaction committed or not and executing the
+transaction again may end up duplicating data even if the checksums are
+identical. The following are some examples of unsafe transactions whose
+checksums would be identical to the original transaction.
 
 ```sql
 -- Replaying the COMMIT may inserting two rows if no auto-increment columns are present.
@@ -403,13 +417,24 @@ DELETE FROM tbl WHERE ... LIMIT 100;
 COMMIT;
 ```
 
-If the data that is about to be modified is read before it is modified and it is locked in an appropriate manner (e.g. with `SELECT ... FOR UPDATE` or with the `SERIALIZABLE` isolation level), it may be safe to replay a transaction that was about to commit. This is because the checksum of the transaction will mismatch if the original transaction ended up committing on the server. Disabling this feature may allow more transactions to commit when a database failure occurs but it requires that the SQL is correctly formed and compatible with this behavior.
+If the data that is about to be modified is read before it is modified and it is
+locked in an appropriate manner (e.g. with `SELECT ... FOR UPDATE` or with the
+`SERIALIZABLE` isolation level), it may be safe to replay a transaction that was
+about to commit. This is because the checksum of the transaction will mismatch
+if the original transaction ended up committing on the server. Disabling this
+feature may allow more transactions to commit when a database failure occurs but
+it requires that the SQL is correctly formed and compatible with this behavior.
 
 This parameter was added in MaxScale 23.08.0 and is enabled by default. The older version of MaxScale always attempted to replay the transaction even if there was a risk of duplicating the transaction.
 
 In MaxScale 25.01.0, this parameter also disabled the replaying of individual DML statements that `delayed_retry` enabled. The result of this was that only statements done inside of an explicit transactions or with autocommit disabled were replayed and writes done with autocommit enabled were never replayed.
 
-In MaxScale 25.01.1 and newer versions, where `delayed_retry` no longer attempts to retry a query if it was already sent to the database, write queries outside of transactions are delayed if no valid target is found but they are never retried. Thus `transaction_replay_safe_commit` again only affects how the `COMMIT` of a transaction is handled.
+In MaxScale 25.01.1 and newer versions, where `delayed_retry` no longer attempts
+to retry a query if it was already sent to the database, write queries outside
+of transactions are delayed if no valid target is found but they are never
+retried. Thus `transaction_replay_safe_commit` again only affects how the
+`COMMIT` of a transaction is handled.
+
 
 ### `transaction_replay_retry_on_mismatch`
 
@@ -476,7 +501,7 @@ The following table contains a comparison of the modes. Read the [implementation
 
 The `fast`, `fast_global` and `fast_universal` modes should only be used when low latency is more important than proper distribution of reads. These modes should only be used when the workload is mostly read-only with only occasional writes. If used with a mixed or a write-heavy workload, the traffic will end up being routed almost exclusively to the primary server.
 
-**Note:** This feature also enables multi-statement execution of SQL in the protocol. This is equivalent to using `allowMultiQueries=true` in [Connector/J](https://app.gitbook.com/s/CjGYMsT2MVP4nd3IyW2L/mariadb-connector-j/about-mariadb-connector-j#allowmultiqueries) or using `CLIENT_MULTI_STATEMENTS` and `CLIENT_MULTI_RESULTS` in the Connector/C. The [implementation of `causal_reads`](maxscale-readwritesplit.md#implementation-of-causal_reads) section explains why this is necessary.
+**Note:** This feature also enables multi-statement execution of SQL in the protocol. This is equivalent to using `allowMultiQueries=true` in [Connector/J](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/CjGYMsT2MVP4nd3IyW2L/mariadb-connector-j/about-mariadb-connector-j#allowmultiqueries) or using `CLIENT_MULTI_STATEMENTS` and `CLIENT_MULTI_RESULTS` in the Connector/C. The [implementation of `causal_reads`](maxscale-readwritesplit.md#implementation-of-causal_reads) section explains why this is necessary.
 
 The possible values for this parameter are:
 
@@ -845,7 +870,8 @@ If the connection to the server where the transaction is being executed is lost 
 
 In MaxScale 23.08, the `transaction_replay_safe_commit` variable controls whether a replay is attempted or not whenever a `COMMIT` is interrupted. By default the transaction will not be replayed. Older versions of MaxScale always replayed the transaction.
 
-Data duplication can happen with `transaction_replay_safe_commit=false` if the transaction consists of the following statement types:
+Data duplication can happen with `transaction_replay_safe_commit=false` if the
+transaction consists of the following statement types:
 
 * INSERT of rows into a table that does not have an auto-increment primary key
 * A "blind update" of one or more rows e.g. `UPDATE t SET c = c + 1 WHERE id = 123`
@@ -867,7 +893,7 @@ If the connection to the server where a transaction is being executed is lost wh
 
 Any changes to the session state (e.g. autocommit state, SQL mode) done inside a transaction will remain in effect even if the connection to the server where the transaction is being executed fails. When readwritesplit creates a new connection to a server to replay the transaction, it will first restore the session state by executing all session commands that were executed. This means that if the session state is changed mid-transaction in a way that affects the results, transaction replay will fail.
 
-The following partial transaction demonstrates the problem by using [`SQL_MODE`](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-management/variables-and-modes/sql_mode) inside a transaction.
+The following partial transaction demonstrates the problem by using [`SQL_MODE`](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/server-management/variables-and-modes/sql_mode) inside a transaction.
 
 ```
 SET SQL_MODE='';            -- A session command

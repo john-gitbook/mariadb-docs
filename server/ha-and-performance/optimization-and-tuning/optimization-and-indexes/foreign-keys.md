@@ -27,7 +27,7 @@ CREATE TABLE b(for_key INT REFERENCES a(not_key));
 
 MariaDB applies the constraint if possible. See the [Examples](foreign-keys.md#examples) below.
 
-Foreign keys are created with [CREATE TABLE](../../../server-usage/tables/create-table.md) or [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/). The foreign key definition has this syntax:
+Foreign keys are created with [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/). The foreign key definition has this syntax:
 
 ```sql
 [CONSTRAINT [symbol]] FOREIGN KEY
@@ -84,8 +84,8 @@ Foreign key names must be **unique per database**.
 * Foreign key actions do not activate [triggers](../../../server-usage/triggers-events/triggers/).
 * If `ON UPDATE CASCADE` recurses to update the same table it has previously updated during the cascade, it acts like `RESTRICT`.
 * Indexed [generated columns](../../../reference/sql-statements/data-definition/create/generated-columns.md) (both `VIRTUAL` and `PERSISTENT`) are not supported as InnoDB foreign key indexes.
-* The columns in the child table must be a `BTREE` index (not `HASH`, `RTREE`, or `FULLTEXT` — see [SHOW INDEX](../../../reference/sql-statements/administrative-sql-statements/show/show-index.md)), or the leftmost part of a `BTREE` index.
-* Index prefixes are not supported, which means that [TEXT](../../../reference/data-types/string-data-types/text.md) and [BLOB](../../../reference/data-types/string-data-types/blob.md) columns cannot be used as foreign keys.
+* The columns in the child table must be a `BTREE` index (not `HASH`, `RTREE`, or `FULLTEXT` — see [SHOW INDEX](../../../reference/sql-statements/administrative-sql-statements/show/show-index.md)), or the leftmost part of a `BTREE` index.&#x20;
+* Index prefixes are not supported, which means that [TEXT](../../../reference/data-types/string-data-types/text.md) and [BLOB](../../../reference/data-types/string-data-types/blob.md) columns cannot be used as foreign keys.&#x20;
 
 ## Constraints
 
@@ -107,9 +107,9 @@ The allowed actions for `ON DELETE` and `ON UPDATE` are:
 * `SET NULL`: The change is allowed, and the child row's foreign key columns are set to `NULL`.
 * `SET DEFAULT`: This clause is not supported.
 
-`DELETE` or `UPDATE` statements triggered by foreign keys do not activate [triggers](../../../server-usage/triggers-events/triggers/) and are not counted in the [Com\_delete](../../../server-management/variables-and-modes/server-status-variables.md#com_delete) and [Com\_update](../../../server-management/variables-and-modes/server-status-variables.md#com_update) status variables.
+`DELETE` or `UPDATE` statements triggered by foreign keys do not activate [triggers](../../../server-usage/triggers-events/triggers/) and are not counted in the [Com\_delete](../system-variables/server-status-variables.md#com_delete) and [Com\_update](../system-variables/server-status-variables.md#com_update) status variables.
 
-Foreign key constraints can be disabled by setting the [foreign\_key\_checks](../../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) server system variable to `0`. This speeds up the insertion of large quantities of data.
+Foreign key constraints can be disabled by setting the [foreign\_key\_checks](../system-variables/server-system-variables.md#foreign_key_checks) server system variable to `0`. This speeds up the insertion of large quantities of data.
 
 Setting `foreign_key_checks` to `0` suspends the checks on data, but it does not permit schema changes that would leave the constraint itself invalid. Regardless of the setting, a column used in a foreign key cannot be dropped, renamed, or changed in a way that alters how its values compare, including a change of type, character set, or collation. See [Changing the Character Set or Collation of a Foreign Key Column](foreign-keys.md#changing-the-character-set-or-collation-of-a-foreign-key-column).
 
@@ -263,7 +263,7 @@ Create Table: CREATE TABLE `countries` (
 
 ### Creating and Using Foreign Keys
 
-In this example, we create an `author` and a `book` table, both having a primary key called `id`. The `book` table also has a foreign key composed from a field called `author_id`, which refers to the `author` table primary key. The foreign key constraint name is optional, but we specify it because we want it to appear in error messages: `fk_book_author`.
+In this example, we create an `author`  and a `book` table, both having a primary key called `id`. The `book` table also has a foreign key composed from a field called `author_id`, which refers to the `author` table primary key. The foreign key constraint name is optional, but we specify it because we want it to appear in error messages: `fk_book_author`.
 
 ```sql
 CREATE TABLE author (

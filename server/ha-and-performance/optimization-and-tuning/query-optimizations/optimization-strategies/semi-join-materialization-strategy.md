@@ -184,7 +184,7 @@ Semi-join materialization
 
 * Can be used for uncorrelated IN-subqueries. The subselect may use grouping and/or aggregate functions.
 * Is shown in `EXPLAIN` as `type=MATERIALIZED` for the subquery, and a line with`table=<subqueryN>` in the parent subquery.
-* Is enabled when one has both `materialization=on` and `semijoin=on` in the [optimizer\_switch](../../../../server-management/variables-and-modes/server-system-variables.md#optimizer_switch) variable.
+* Is enabled when one has both `materialization=on` and `semijoin=on` in the [optimizer\_switch](../../system-variables/server-system-variables.md#optimizer_switch) variable.
 * The `materialization=on|off` flag is shared with [Non-semijoin materialization](../subquery-optimizations/non-semi-join-subquery-optimizations.md#materialization-for-non-correlated-in-subqueries).
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>

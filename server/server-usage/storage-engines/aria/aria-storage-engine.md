@@ -14,13 +14,14 @@ Additionally, internal on-disk tables are in the Aria table format instead of th
 
 Note: The _**Aria**_ storage engine was previously called _Maria_ (see [The Aria Name](the-aria-name.md) for details on the rename) and in previous versions of [MariaDB](../storage-engines-storage-engines-overview.md) the engine was still called Maria.
 
-The following table options to Aria tables in [CREATE TABLE](../../tables/create-table.md) and [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/):
+The following table options to Aria tables in [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) and [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/):
 
 * `TRANSACTIONAL= 0 | 1` : If the `TRANSACTIONAL` table option is set for an Aria table, then the table are crash-safe. This is implemented by logging any changes to the table to Aria's transaction log, and syncing those writes at the end of the statement. This will marginally slow down writes and updates. However, the benefit is that if the server dies before the statement ends, all non-durable changes will roll back to the state at the beginning of the statement. This also needs up to 6 bytes more for each row and key to store the transaction id (to allow concurrent insert's and selects).
   * `TRANSACTIONAL=1` is not supported for partitioned tables.
   * An Aria table's default value for the `TRANSACTIONAL` table option depends on the table's value for the `ROW_FORMAT` table option. See below for more details.
   * If the `TRANSACTIONAL` table option is set for an Aria table, the table does not actually support transactions. See [MDEV-21364](https://jira.mariadb.org/browse/MDEV-21364) for more information. In this context, transactional just means crash-safe.
-* `PAGE_CHECKSUM= 0 | 1` : If index and data should use page checksums for extra safety.
+* `PAGE_CHECKSUM= 0 | 1` : If index and data should use
+  page checksums for extra safety.
 * `TABLE_CHECKSUM= 0 | 1` :\
   Same as `CHECKSUM` in MySQL 5.1
 * `ROW_FORMAT=PAGE | FIXED | DYNAMIC` : The table's [row format](aria-storage-formats.md).
@@ -35,7 +36,9 @@ The `TRANSACTIONAL` and `ROW_FORMAT` table options interact as follows:
 
 Some other improvements are:
 
-* [CHECKSUM TABLE](../../../reference/sql-statements/table-statements/checksum-table.md) now ignores values in `NULL` fields. This makes `CHECKSUM TABLE` faster and fixes some cases where same table definition could give different checksum values depending on [row format](aria-storage-formats.md). The disadvantage is that the value is now different compared to other MySQL installations. The new checksum calculation is fixed for all table engines that uses the default way to calculate and MyISAM which does the calculation internally. Note: Old MyISAM tables with internal checksum returns the same checksum as before. To fix them to calculate according to new rules you have to do an [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/). You can use the old ways to calculate checksums by using the option `--old` to mariadbdmysqld or set the system variable '`@@old`' to `1` when you do `CHECKSUM TABLE ... EXTENDED;`
+* [CHECKSUM TABLE](../../../reference/sql-statements/table-statements/checksum-table.md) now ignores values in `NULL` fields. This makes `CHECKSUM TABLE` faster and fixes some cases where same table definition could give different checksum values depending on [row format](aria-storage-formats.md). The disadvantage is that the value is now different compared to other MySQL installations. The new checksum calculation is fixed for all table engines that uses the default way to calculate and MyISAM which does the
+  calculation internally. Note: Old MyISAM tables with internal checksum returns the same checksum as before. To fix them to calculate according to new rules you have to do an [ALTER TABLE](../../../reference/sql-statements/data-definition/alter/alter-table/). You can use the old ways to calculate checksums by using the option `--old` to mariadbdmysqld or set the system variable '`@@old`' to `1` when you
+  do `CHECKSUM TABLE ... EXTENDED;`
 * At startup Aria will check the Aria logs and automatically recover the tables from the last checkpoint if the server was not taken down correctly. See [Aria Log Files](aria-storage-engine.md#aria-log-files)
 
 ## Startup Options for Aria
@@ -48,9 +51,12 @@ In normal operations, the only variables you have to consider are:
   * This is where all index and data pages are cached. The bigger this is, the faster\
     Aria will work.
 * [aria-block-size](aria-system-variables.md#aria_block_size)
-  * The default value 8192, should be ok for most cases. The only problem with a higher value is that it takes longer to find a packed key in the block as one has to search roughly 8192/2 to find each key. We plan to fix this by adding a dictionary at the end of the page to be able to do a binary search within the block before starting a scan. Until this is done and key lookups takes too long time even if you are not hitting disk, then you should consider making this smaller.
+  * The default value 8192, should be ok for most cases. The only problem with a higher value is that it takes longer to find a packed key in the block as one has to
+    search roughly 8192/2 to find each key. We plan to fix this by adding a
+    dictionary at the end of the page to be able to do a binary search within the block before starting a scan. Until this is done and key lookups takes too long time even if you are not hitting disk, then you should consider making this smaller.
   * Possible values to try are `2048`, `4096` or `8192`
-  * Note that you can't change this without dumping, deleting old tables and deleting all log files and then restoring your Aria tables. (This is the only option that requires a dump and load.)
+  * Note that you can't change this without dumping, deleting old tables and
+    deleting all log files and then restoring your Aria tables. (This is the only option that requires a dump and load.)
 * [aria-log-purge-type](aria-system-variables.md)
   * Set this to "`at_flush`" if you want to keep a copy of the transaction logs (good as an extra backup). The logs will stay around until you execute [FLUSH ENGINE LOGS](../../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md).
 

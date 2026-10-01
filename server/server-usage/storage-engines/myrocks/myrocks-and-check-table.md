@@ -11,7 +11,7 @@ MyRocks supports the [CHECK TABLE](../../../reference/sql-statements/table-state
 The command will do a number of checks to verify that the table data is self-consistent.
 
 The details about the errors are printed into the [error log](../../../server-management/server-monitoring-logs/error-log.md).\
-If [log\_warnings](../../../server-management/variables-and-modes/server-system-variables.md#log_warnings) > 2, the error log will also have some informational messages which can help with troubleshooting.
+If [log\_warnings](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) > 2, the error log will also have some informational messages which can help with troubleshooting.
 
 Besides this, RocksDB has its own (low-level) log in `#rocksdb/LOG` file.
 

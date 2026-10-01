@@ -7,7 +7,7 @@ hidden: true
 
 # Disk Space Optimization
 
-To prevent running out of disk space, you can optimize disk space utilization. I.e., you can accumulate less data, or keep the data for a shorter period, without missing what is important for your cluster operation. Data collection and accumulation parameters should be defined in the optimal way at the beginning - right after the [Control Center installation](installation/).
+To prevent running out of disk space, you can optimize disk space utilization. I.e., you can accumulate less data, or keep the data for a shorter period, without missing what is important for your cluster operation. Data collection and accumulation parameters should be defined in the optimal way at the beginning - right after the [Control Center installation](../installation/README.md).
 
 If you do run out of disk space in the course of Control Center operation, this might mean that your data collection and accumulation parameters need further optimization. Proceed as follows.
 
@@ -15,18 +15,20 @@ If you do run out of disk space in the course of Control Center operation, this 
 
 Combine the following approaches:
 
-*   [Reduce the data retention period](configuration.md#time-to-live-limits).
+- [Reduce the data retention period](configuration.md#time-to-live-limits).
 
-    <div data-gb-custom-block data-tag="hint" data-style="info" class="hint hint-info"><p>When you reduce TTL, the new value applies only to the new data. The data that had been collected with the previous TTL setting will be retained for the period this previous value defined. Therefore, the disk size utilization will decrease gradually rather than immediately.</p></div>
-* [Limit table size](configuration.md#table-size-limits).
+  {% hint style="info" %}
+  When you reduce TTL, the new value applies only to the new data. The data that had been collected with the previous TTL setting will be retained for the period this previous value defined. Therefore, the disk size utilization will decrease gradually rather than immediately.
+  {% endhint %}
+- [Limit table size](configuration.md#table-size-limits).
 
 ## Throttle Down Data Collection
 
 Throttle down data collection for:
 
-* [Traces](../gg8/tracing.md#configuring-tracing)
-* [Queries](../gg8/queries/querying.md#selecting-queries-to-track)
-* [Metrics](configuration.md#common-properties) - see `control.metric-collector.pull-interval`
+- [Traces](../gg8/tracing/tracing.md#configuring-tracing)
+- [Queries](../gg8/queries/querying.md#selecting-queries-to-track)
+- [Metrics](configuration.md#common-properties) - see `control.metric-collector.pull-interval`
 
 ## Clean Up Space (Optional)
 
@@ -42,17 +44,17 @@ The number of records in a table does not precisely correlate to the volume that
 
 1. Check the sizes of the relevant tables on the disk - QuerySession, Trace, Span, and TaskSession - in `work/db/ggcc_db`. Because of defragmentation, the table might appear significantly larger than in reality. For defragmented tables, check the actuator metrics for real sizes.
 2. Get the number of records in the same tables by from [Spring actuator metrics](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.metrics.endpoint) at the following URLs:
-   * `<control-center-url>/actuator/metrics/repository.table.Span.size`
-   * `<control-center-url>/actuator/metrics/repository.table.Trace.size`
-   * `<control-center-url>/actuator/metrics/repository.table.QuerySession.size`
-   * `<control-center-url>/actuator/metrics/repository.table.TaskSession.size`
+   - `<control-center-url>/actuator/metrics/repository.table.Span.size`
+   - `<control-center-url>/actuator/metrics/repository.table.Trace.size`
+   - `<control-center-url>/actuator/metrics/repository.table.QuerySession.size`
+   - `<control-center-url>/actuator/metrics/repository.table.TaskSession.size`
 
 If the relevant tables in your environment are not yet of representative size, you can use our estimates for a 3-node cluster with an average load:
 
-* [Query](../gg8/queries/querying.md#queries-log): 1 GB - approximately 200,000 records
-* [Task](../gg8/compute-grid.md): 1 GB - approximately 250,000 records
-* [Trace](../gg8/tracing.md#configuring-tracing): 1 GB - approximately 800,000 records
-* [Span](../gg8/tracing.md#viewing-spans): 1 GB - approximately 500,000 records
+- [Query](../gg8/queries/querying.md#queries-log): 1 GB - approximately 200,000 records
+- [Task](../gg8/compute/compute-grid.md): 1 GB - approximately 250,000 records
+- [Trace](../gg8/tracing/tracing.md#configuring-tracing): 1 GB - approximately 800,000 records
+- [Span](../gg8/tracing/tracing.md#viewing-spans): 1 GB - approximately 500,000 records
 
 ### Delete Oversized Tables
 

@@ -24,7 +24,7 @@ The `mysql.proxies_priv` table contains the following fields:
 | Grantor       | char(141)  | NO   | MUL |                    |             |
 | Timestamp     | timestamp  | NO   |     | CURRENT\_TIMESTAMP |             |
 
-The [Acl\_proxy\_users](../../../server-management/variables-and-modes/server-status-variables.md#acl_proxy_users) status variable indicates how many rows the `mysql.proxies_priv` table contains.
+The [Acl\_proxy\_users](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#acl_proxy_users) status variable indicates how many rows the `mysql.proxies_priv` table contains.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

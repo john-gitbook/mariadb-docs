@@ -1,8 +1,8 @@
 ---
 description: >-
   Performance tuning and benchmarking for MariaDB Exa: the MaxScale CDC
-  (binlogrouter) odbc_perf_* bulk-load parameters, plus CDC throughput up to 600
-  TPS and TPC-H benchmark results.
+  (binlogrouter) odbc_perf_* bulk-load parameters, plus CDC throughput up to
+  600 TPS and TPC-H benchmark results.
 icon: bolt-lightning
 ---
 
@@ -12,18 +12,18 @@ icon: bolt-lightning
 
 MariaDB Exa keeps Exasol in sync through MaxScale CDC, which reads the MariaDB binary log with the `binlogrouter` module and bulk-loads batches into Exasol over the Exasol ODBC driver. The bulk-load pipeline's throughput is controlled by the `odbc_perf_*` parameters on the binlogrouter CDC service. The defaults suit most workloads; raise the batch size for more throughput, or lower `odbc_perf_ncycles` if memory use is high.
 
-| Component    | Key parameter                 | Default       | Description & tuning tips                                                              |
-| ------------ | ----------------------------- | ------------- | -------------------------------------------------------------------------------------- |
-| MaxScale CDC | `odbc_perf_batch_size`        | 200 MB        | Size in bytes of one ODBC batch over the wire. Raise for more throughput.              |
-| MaxScale CDC | `odbc_perf_max_buffered_rows` | 750,000       | Ceiling of buffered rows before a batch is sent.                                       |
-| MaxScale CDC | `odbc_perf_max_idle_rows`     | 400,000       | Rows buffered before sending when the pipeline is otherwise idle.                      |
-| MaxScale CDC | `odbc_perf_ncycles`           | 4             | Maximum parallel ODBC cycles (also the maximum value). Lower it if memory use is high. |
-| MaxScale CDC | `odbc_perf_nthreads`          | 0 (unlimited) | Maximum threads used in ODBC processing.                                               |
-| Exasol       | `NUM_NODES`, `DB_RAM_SIZE`    | —             | Scale based on dataset size and concurrency.                                           |
-| Network      | 10 Gbps+ recommended          | —             | Ensures low-latency data transfer between MaxScale and Exasol.                         |
+| Component | Key parameter | Default | Description & tuning tips |
+| --------- | ------------- | ------- | ------------------------- |
+| MaxScale CDC | `odbc_perf_batch_size` | 200 MB | Size in bytes of one ODBC batch over the wire. Raise for more throughput. |
+| MaxScale CDC | `odbc_perf_max_buffered_rows` | 750,000 | Ceiling of buffered rows before a batch is sent. |
+| MaxScale CDC | `odbc_perf_max_idle_rows` | 400,000 | Rows buffered before sending when the pipeline is otherwise idle. |
+| MaxScale CDC | `odbc_perf_ncycles` | 4 | Maximum parallel ODBC cycles (also the maximum value). Lower it if memory use is high. |
+| MaxScale CDC | `odbc_perf_nthreads` | 0 (unlimited) | Maximum threads used in ODBC processing. |
+| Exasol | `NUM_NODES`, `DB_RAM_SIZE` | — | Scale based on dataset size and concurrency. |
+| Network | 10 Gbps+ recommended | — | Ensures low-latency data transfer between MaxScale and Exasol. |
 
 {% hint style="info" %}
-These parameters are set on the `binlogrouter` CDC service. For the full CDC setup, see the [MariaDB MaxScale Exasolrouter Tutorial](https://app.gitbook.com/s/0pSbu5DcMSW4KwAkUcmX/mariadb-maxscale-tutorials/mariadb-maxscale-exasolrouter).
+These parameters are set on the `binlogrouter` CDC service. For the full CDC setup, see the [MariaDB MaxScale Exasolrouter Tutorial](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/0pSbu5DcMSW4KwAkUcmX/mariadb-maxscale-tutorials/mariadb-maxscale-exasolrouter).
 {% endhint %}
 
 ## Benchmarking

@@ -10,7 +10,7 @@ This article briefly discusses the main ways to backup MariaDB. For detailed des
 
 ## Logical vs Physical Backups
 
-Logical backups consist of the SQL statements necessary to restore the data, such as [CREATE DATABASE](../../reference/sql-statements/data-definition/create/create-database.md), [CREATE TABLE](../tables/create-table.md) and [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md).
+Logical backups consist of the SQL statements necessary to restore the data, such as [CREATE DATABASE](../../reference/sql-statements/data-definition/create/create-database.md), [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) and [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md).
 
 Physical backups are performed by copying the individual data files or directories.
 
@@ -124,9 +124,9 @@ mariadb-hotcopy db_name_1 ... db_name_n /path/to/new_directory
 
 ### Percona XtraBackup
 
-Percona XtraBackup is **not supported** in MariaDB. [mariadb-backup](mariadb-backup/) is the recommended backup method to use instead of Percona XtraBackup. See [Percona XtraBackup Overview: Compatibility with MariaDB](mariadb-backup/) for more information.
+Percona XtraBackup is **not supported** in MariaDB. [mariadb-backup](mariadb-backup/) is the recommended backup method to use instead of Percona XtraBackup. See [Percona XtraBackup Overview: Compatibility with MariaDB](mariadb-backup/README.md) for more information.
 
-[Percona XtraBackup](mariadb-backup/) is a tool for performing fast, hot backups. It was designed specifically for [XtraDB/InnoDB](../storage-engines/innodb/) databases, but can be used with any storage engine (although not with [encryption](../../security/encryption/data-at-rest-encryption/) and [compression](../storage-engines/innodb/innodb-page-compression.md)). It is not included with MariaDB.
+[Percona XtraBackup](mariadb-backup/README.md) is a tool for performing fast, hot backups. It was designed specifically for [XtraDB/InnoDB](../storage-engines/innodb/) databases, but can be used with any storage engine (although not with [encryption](../../security/encryption/data-at-rest-encryption/) and [compression](../storage-engines/innodb/innodb-page-compression.md)). It is not included with MariaDB.
 
 ### Filesystem Snapshots
 

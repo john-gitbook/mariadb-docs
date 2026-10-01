@@ -9,17 +9,16 @@ description: Quickstart guide for MariaDB Connector/Python
 MariaDB Connector/Python is the official Python client library for connecting applications to MariaDB and MySQL databases. It implements the Python DB API 2.0 (PEP-249) standard, ensuring compatibility with common Python database programming patterns.
 
 **Version 2.0** offers flexible distribution options:
-
-* **Pure Python** - Works everywhere, no compiler or dependencies required
-* **C extension** - Maximum performance (2-12× faster on data-heavy workloads)
-* **Pre-compiled wheels** - No MariaDB Connector/C installation needed
-* **Async/await support** - Native asynchronous operations for modern Python applications
+- **Pure Python** - Works everywhere, no compiler or dependencies required
+- **C extension** - Maximum performance (2-12× faster on data-heavy workloads)
+- **Pre-compiled wheels** - No MariaDB Connector/C installation needed
+- **Async/await support** - Native asynchronous operations for modern Python applications
 
 ## API Reference
 
-* [**Connection API**](../mariadb-connector-python/api/connection.md) - Connection parameters, methods, and attributes
-* [**Cursor API**](../mariadb-connector-python/api/cursor.md) - Cursor parameters, methods, and attributes
-* [**Connection Pooling API**](../mariadb-connector-python/pooling.md) - Pool configuration and usage
+- **[Connection API](../mariadb-connector-python/connection.md)** - Connection parameters, methods, and attributes
+- **[Cursor API](../mariadb-connector-python/cursor.md)** - Cursor parameters, methods, and attributes  
+- **[Connection Pooling API](../mariadb-connector-python/pooling.md)** - Pool configuration and usage
 
 #### 1. Prerequisites
 

@@ -55,12 +55,12 @@ When InnoDB performs a referential constraint check, the outcome depends on seve
 | Operation                                                                                   | Result of Constraint Check                                     | Action              | Consequence                                                                                                                                                                                                                          |
 | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | InnoDB finds corresponding rows in the child table             | ON UPDATE RESTRICT  | • Fails with [ER\_ROW\_IS\_REFERENCED\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1451.md) error code                                                                                                          |
-| [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | InnoDB finds corresponding rows in the child table             | ON UPDATE NO ACTION | • Fails with [ER\_ROW\_IS\_REFERENCED\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1451.md) error code                                                                                                          |
+| [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | InnoDB finds corresponding rows in the child table             | ON UPDATE NO ACTION | • Fails with [ER\_ROW\_IS\_REFERENCED\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1451.md) error code                                                                                                         |
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | InnoDB finds corresponding rows in the child table             | ON UPDATE CASCADE   | • Success. • Row in the parent table is updated. • Corresponding rows in the child table are also updated with the new foreign key value. If the child table has an update trigger, the trigger will not be executed for the update. |
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | InnoDB finds corresponding rows in the child table             | ON UPDATE SET NULL  | • Success. • Row in the parent table is updated. • Corresponding rows in the child table are also updated with NULL. If the child table has an update trigger, the trigger will not be executed for the update.                      |
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | InnoDB does not find any corresponding rows in the child table | NA                  | • Success. • Row in the parent table is updated                                                                                                                                                                                      |
 | [DELETE](../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) | InnoDB finds corresponding rows in the child table             | ON DELETE RESTRICT  | • Fails with [ER\_ROW\_IS\_REFERENCED\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1451.md) error code                                                                                                          |
-| [DELETE](../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) | InnoDB finds corresponding rows in the child table             | ON DELETE NO ACTION | • Fails with [ER\_ROW\_IS\_REFERENCED\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1451.md) error code                                                                                                          |
+| [DELETE](../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) | InnoDB finds corresponding rows in the child table             | ON DELETE NO ACTION | • Fails with [ER\_ROW\_IS\_REFERENCED\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1451.md) error code                                                                                    |
 | [DELETE](../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) | InnoDB finds corresponding rows in the child table             | ON DELETE CASCADE   | • Success. • Row in the parent table is deleted. • Corresponding rows in the child table are also deleted. If the child table has a delete trigger, the trigger will not be executed for the delete.                                 |
 | [DELETE](../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) | InnoDB finds rows in the child table for the row               | ON DELETE SET NULL  | • Success. • Row in the parent table is deleted. • Corresponding rows in the child table are updated with NULL. If the child table has an update trigger, the trigger will not be executed for the update.                           |
 | [DELETE](../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) | InnoDB does not find any rows in the child table for the row   | NA                  | • Success. • Row in the parent table is deleted                                                                                                                                                                                      |
@@ -71,7 +71,7 @@ When an InnoDB table is referenced by a foreign key, it is known as a child tabl
 
 * [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md)
 * [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md)
-* [DROP TABLE](../../server-usage/tables/drop-table.md)
+* [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md)
 
 When InnoDB performs a referential constraint check, the outcome depends on several factors. The following table describes the details:
 
@@ -83,11 +83,11 @@ When InnoDB performs a referential constraint check, the outcome depends on seve
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | New foreign key value is present in parent table     | Success                                                                                                                   |
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | New foreign key value is not present in parent table | Fails with [ER\_NO\_REFERENCED\_ROW\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1452.md) error code |
 | [UPDATE](../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) | New foreign key value is NULL                        | Success                                                                                                                   |
-| [DROP TABLE](../../server-usage/tables/drop-table.md)                                       | Table is referenced by a foreign key                 | Fails with [ER\_NO\_REFERENCED\_ROW\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1452.md) error code |
+| [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md)             | Table is referenced by a foreign key                 | Fails with [ER\_NO\_REFERENCED\_ROW\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1452.md) error code |
 
 ## Creating InnoDB Tables with a Foreign Key Constraint
 
-Let's create InnoDB tables with a foreign key constraint after confirming that the [default storage engine](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) is InnoDB:
+Let's create InnoDB tables with a foreign key constraint after confirming that the [default storage engine](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) is InnoDB:
 
 1. Connect to the server using MariaDB Client:
 
@@ -95,7 +95,7 @@ Let's create InnoDB tables with a foreign key constraint after confirming that t
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -114,7 +114,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the parent table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
+4. Create the parent table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.customers (
@@ -125,7 +125,7 @@ CREATE TABLE hq_sales.customers (
 );
 ```
 
-5. Create the child table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
+5. Create the child table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -196,7 +196,7 @@ ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint f
 
 ## Adding a Foreign Key Constraint to an InnoDB Table
 
-Let's create InnoDB tables after confirming that the [default storage engine](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) is InnoDB, and then let's add a foreign key constraint between them:
+Let's create InnoDB tables after confirming that the [default storage engine](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) is InnoDB, and then let's add a foreign key constraint between them:
 
 1. Connect to the server using MariaDB Client:
 
@@ -204,7 +204,7 @@ Let's create InnoDB tables after confirming that the [default storage engine](..
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -223,7 +223,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the parent table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
+4. Create the parent table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.customers (
@@ -234,7 +234,7 @@ CREATE TABLE hq_sales.customers (
 );
 ```
 
-5. Create the child table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
+5. Create the child table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -354,7 +354,7 @@ Let's temporarily disable foreign key constraint checks, and then perform some t
 $ mariadb --user=root
 ```
 
-2. Temporarily disable foreign key constraint checks by setting the [foreign\_key\_checks](../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) system variable with the [SET SESSION](../../reference/sql-statements/account-management-sql-statements/set-session-authorization.md) statement:
+2. Temporarily disable foreign key constraint checks by setting the [foreign\_key\_checks](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks) system variable with the [SET SESSION](../../set-session-authorization.md) statement:
 
 ```sql
 SET SESSION foreign_key_checks=OFF;
@@ -380,7 +380,7 @@ VALUES
 
 This operation would usually fail with the [ER\_NO\_REFERENCED\_ROW\_2](../../reference/error-codes/mariadb-error-codes-1400-to-1499/e1452.md) error code as explained in the [Operating on a Child Table](foreign-key-constraints.md#operating-on-a-child-table) section, but if foreign key constraint checks are disable, then it will succeed.
 
-5. Re-enable foreign key constraint checks by setting the [foreign\_key\_checks](../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) system variable with the [SET SESSION](../../reference/sql-statements/account-management-sql-statements/set-session-authorization.md) statement:
+5. Re-enable foreign key constraint checks by setting the [foreign\_key\_checks](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks) system variable with the [SET SESSION](../../set-session-authorization.md) statement:
 
 ```sql
 SET SESSION foreign_key_checks=ON;
@@ -396,7 +396,7 @@ When a foreign key constraint is created without a name, InnoDB implicitly gives
 <table_name>_ibfk_<constraint_count>
 ```
 
-If foreign key constraints are explicitly created with names in the same format, it is possible for collisions to occur during table renames. In that case, the [MariaDB Error Log](../../server-management/variables-and-modes/server-system-variables.md#log_error) would contain messages like the following:
+If foreign key constraints are explicitly created with names in the same format, it is possible for collisions to occur during table renames. In that case, the [MariaDB Error Log](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#log_error) would contain messages like the following:
 
 ```
 2021-06-16 11:50:39 139702710404864 [ERROR] InnoDB: Possible reasons:
@@ -409,7 +409,7 @@ If foreign key constraints are explicitly created with names in the same format,
 
 A foreign key constraint requires an index on the column. If a foreign key constraint is added to a column without an index, InnoDB will automatically create an index to enforce the foreign key constraint.
 
-When the [foreign\_key\_checks](../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) system variable is disabled, it is possible to drop the index used by a foreign key constraint. When the [foreign\_key\_checks](../../server-management/variables-and-modes/server-system-variables.md#foreign_key_checks) system variable is re-enabled, InnoDB will have no way to enforce the foreign key constraint, so all operations that could potentially violate the foreign key constraint will fail.
+When the [foreign\_key\_checks](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks) system variable is disabled, it is possible to drop the index used by a foreign key constraint. When the [foreign\_key\_checks](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#foreign_key_checks) system variable is re-enabled, InnoDB will have no way to enforce the foreign key constraint, so all operations that could potentially violate the foreign key constraint will fail.
 
 <sub>_This page is: Copyright © 2026 MariaDB. All rights reserved._</sub>
 

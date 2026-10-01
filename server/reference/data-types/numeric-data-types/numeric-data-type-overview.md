@@ -24,7 +24,7 @@ There are a number of numeric data types:
 * [FLOAT](float.md)
 * [DOUBLE](double.md), DOUBLE PRECISION, REAL
 * [BIT](bit.md)
-* [VECTOR](../../sql-structure/vectors/vector.md)
+* [VECTOR](vector.md)
 
 See the specific articles for detailed information on each.
 

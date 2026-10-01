@@ -12,7 +12,7 @@ A variant of this partitioning method, [LIST COLUMNS](range-columns-and-list-col
 
 ## Syntax
 
-The last part of a [CREATE TABLE](../../tables/create-table.md) statement can be the definition of the new table's partitions. In the case of `LIST` partitioning, the syntax is as follows:
+The last part of a [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statement can be the definition of the new table's partitions. In the case of `LIST` partitioning, the syntax is as follows:
 
 ```bnf
 PARTITION BY LIST (partitioning_expression)

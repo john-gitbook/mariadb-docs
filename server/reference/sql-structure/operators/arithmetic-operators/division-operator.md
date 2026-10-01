@@ -8,7 +8,7 @@
 
 ## Description
 
-Division operator. Dividing by zero will return `NULL`. By default, returns four digits after the decimal. This is determined by the server system variable [div\_precision\_increment](../../../../server-management/variables-and-modes/server-system-variables.md#div_precision_increment) which by default is four. It can be set from 0 to 30.
+Division operator. Dividing by zero will return `NULL`. By default, returns four digits after the decimal. This is determined by the server system variable [div\_precision\_increment](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#div_precision_increment) which by default is four. It can be set from 0 to 30.
 
 Dividing by zero returns `NULL`. If the default `ERROR_ON_DIVISION_BY_ZERO` [SQL\_MODE](../../../../server-management/variables-and-modes/sql_mode.md) is used, a division by zero also produces a warning.
 
@@ -37,7 +37,7 @@ SELECT 300/7;
 +---------+
 ```
 
-Changing [div\_precision\_increment](../../../../server-management/variables-and-modes/server-system-variables.md#div_precision_increment) for the session from the default of four to six:
+Changing [div\_precision\_increment](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#div_precision_increment) for the session from the default of four to six:
 
 ```sql
 SET div_precision_increment = 6;

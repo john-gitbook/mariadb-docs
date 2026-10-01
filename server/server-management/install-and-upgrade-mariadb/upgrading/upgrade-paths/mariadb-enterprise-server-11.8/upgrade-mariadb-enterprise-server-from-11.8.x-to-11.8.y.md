@@ -258,7 +258,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]>
 ```
 
-2\. You can also verify the server version by checking the value of the [version](../../../../variables-and-modes/server-system-variables.md#version) system variable with the [SHOW GLOBAL STATUS](../../../../../reference/sql-statements/administrative-sql-statements/show/show-status.md) statement:
+2\. You can also verify the server version by checking the value of the [version](../../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#version) system variable with the [SHOW GLOBAL STATUS](../../../../../reference/sql-statements/administrative-sql-statements/show/show-status.md) statement:
 
 ```sql
 SHOW GLOBAL VARIABLES LIKE 'version';

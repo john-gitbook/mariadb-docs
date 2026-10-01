@@ -58,7 +58,7 @@ The optional _precision_ determines the microsecond precision. See [Microseconds
 
 When displayed in the [INFORMATION\_SCHEMA.COLUMNS](../../system-tables/information-schema/information-schema-tables/information-schema-columns-table.md) table, a default [CURRENT TIMESTAMP](current_timestamp.md) is displayed as `current_timestamp()` .
 
-Changing the [timestamp system variable](../../../server-management/variables-and-modes/server-system-variables.md#timestamp) with a [SET](../../sql-statements/administrative-sql-statements/set-commands/set.md) `timestamp` statement affects the value returned by `NOW()`, but not by [SYSDATE()](sysdate.md).
+Changing the [timestamp system variable](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#timestamp) with a [SET](../../sql-statements/administrative-sql-statements/set-commands/set.md) `timestamp` statement affects the value returned by `NOW()`, but not by [SYSDATE()](sysdate.md).
 
 ## Examples
 
@@ -111,7 +111,7 @@ SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='test'
 ## See Also
 
 * [Microseconds in MariaDB](microseconds-in-mariadb.md)
-* [timestamp server system variable](../../../server-management/variables-and-modes/server-system-variables.md#timestamp)
+* [timestamp server system variable](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#timestamp)
 
 <sub>_This page is licensed: GPLv2, originally from_</sub> [<sub>_fill\_help\_tables.sql_</sub>](https://github.com/MariaDB/server/blob/main/scripts/fill_help_tables.sql)
 

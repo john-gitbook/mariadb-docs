@@ -74,7 +74,7 @@ The InnoDB storage engine does not maintain internal row counts. Transactions is
 * Of the 128 rollback segments, InnoDB assigns 32 to non-redo logs for transactions that modify temporary tables and related objects, reducing the maximum number of concurrent data-modifying transactions to 96,000, from 128.000.
 * The limit is 32,000 concurrent transactions when all data-modifying transactions also modify temporary tables.
 * Issuing a [LOCK TABLES](../../../reference/sql-statements/transactions/lock-tables.md) statement sets two locks on each table when the [innodb\_table\_locks](innodb-system-variables.md#innodb_table_locks) system variable is enabled (the default).
-* When you commit or roll back a transaction, any locks set in the transaction are released. You don't need to issue [LOCK TABLES](../../../reference/sql-statements/transactions/lock-tables.md) statements when the [autocommit](../../../server-management/variables-and-modes/server-system-variables.md#autocommit) variable is enabled, as InnoDB would immediately release the table locks.
+* When you commit or roll back a transaction, any locks set in the transaction are released. You don't need to issue [LOCK TABLES](../../../reference/sql-statements/transactions/lock-tables.md) statements when the [autocommit](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) variable is enabled, as InnoDB would immediately release the table locks.
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

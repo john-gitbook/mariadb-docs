@@ -2,7 +2,8 @@
 description: >-
   Compare the deployment topologies for running two MariaDB MaxScale instances
   over the same cluster. Covers what each one costs in hardware, what it
-  survives, and how a co-located tiebreaker or Galera
+  survives, and how a co-located tiebreaker or Galera arbitrator buys
+  three-node safety at two-node cost.
 ---
 
 # Deployment Topologies for Multiple MaxScales
@@ -17,12 +18,12 @@ This page assumes you have read [Failover With Multiple MaxScales](failover-with
 
 ## Comparing the Topologies
 
-| Topology                                                                                                                                                           | Hosts | Survives one database node down | Survives a network partition |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----- | ------------------------------- | ---------------------------- |
-| [2 databases + 2 MaxScales](deployment-topologies-for-multiple-maxscales.md#two-databases-and-two-maxscales)                                                       | 4     | No                              | No                           |
-| [3 databases + 2 MaxScales](deployment-topologies-for-multiple-maxscales.md#three-databases-and-two-maxscales)                                                     | 5     | Yes                             | Yes                          |
-| [2 databases + 2 MaxScales + co-located tiebreaker](deployment-topologies-for-multiple-maxscales.md#two-databases-two-maxscales-and-a-co-located-tiebreaker)       | 4     | Yes                             | Yes                          |
-| [2 Galera nodes + 2 MaxScales + co-located arbitrator](deployment-topologies-for-multiple-maxscales.md#two-galera-nodes-two-maxscales-and-a-co-located-arbitrator) | 4     | Yes                             | Yes                          |
+| Topology | Hosts | Survives one database node down | Survives a network partition |
+| -------- | ----- | ------------------------------- | ---------------------------- |
+| [2 databases + 2 MaxScales](deployment-topologies-for-multiple-maxscales.md#two-databases-and-two-maxscales) | 4 | No | No |
+| [3 databases + 2 MaxScales](deployment-topologies-for-multiple-maxscales.md#three-databases-and-two-maxscales) | 5 | Yes | Yes |
+| [2 databases + 2 MaxScales + co-located tiebreaker](deployment-topologies-for-multiple-maxscales.md#two-databases-two-maxscales-and-a-co-located-tiebreaker) | 4 | Yes | Yes |
+| [2 Galera nodes + 2 MaxScales + co-located arbitrator](deployment-topologies-for-multiple-maxscales.md#two-galera-nodes-two-maxscales-and-a-co-located-arbitrator) | 4 | Yes | Yes |
 
 The first three use [MariaDB Monitor](../reference/maxscale-monitors/mariadb-monitor.md) with `cooperative_monitoring_locks`. The fourth uses [Galera Monitor](../reference/maxscale-monitors/galera-monitor.md) and relies on a different mechanism entirely — see [How the Galera Case Differs](deployment-topologies-for-multiple-maxscales.md#how-the-galera-case-differs).
 
@@ -32,7 +33,7 @@ The minimum deployment: two database servers, two MaxScale servers, four hosts. 
 
 Majority is `servers / 2 + 1`. With two servers in the count, that is two locks — every server, every time.
 
-### With majority\_of\_running
+### With majority_of_running
 
 Majority is counted over the servers each instance can currently reach. During a partition each instance reaches one server, needs `1 / 2 + 1 = 1` lock, and gets it. Both instances declare themselves the primary monitor, both mark a primary, and both accept writes — on different servers.
 
@@ -68,7 +69,7 @@ _Both sides reach a local majority, so both accept writes and the cluster diverg
 
 Divergence is not recoverable: one of the two write streams has to be discarded and the server rebuilt by hand.
 
-### With majority\_of\_all
+### With majority_of_all
 
 Majority is counted over all configured servers, so it is always two locks whether or not both servers are up. No single side of a partition can reach two, and neither can either instance when one server is simply down. The pair goes read-only.
 

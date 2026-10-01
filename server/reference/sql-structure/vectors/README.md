@@ -15,7 +15,7 @@ description: >-
 {% endcolumn %}
 
 {% column %}
-Official MariaDB Vector reference: VECTOR(n) data type, VECTOR INDEX (M, DISTANCE=euclidean|cosine), VEC\_FromText() inserts, VEC\_DISTANCE() queries.
+Official MariaDB Vector reference: VECTOR(n) data type, VECTOR INDEX (M, DISTANCE=euclidean|cosine), VEC_FromText() inserts, VEC_DISTANCE() queries.
 {% endcolumn %}
 {% endcolumns %}
 
@@ -63,14 +63,14 @@ MariaDB Vector integrations with popular AI and application frameworks.
 {% endcolumn %}
 
 {% column %}
-Explore vector functions. This section details SQL functions for manipulating and querying vector data types, enabling efficient similarity search and AI/ML applications within your database.
+Explore vector functions. This section details SQL functions for manipulating and querying vector data types, enabling efficient similarity search and AI/ML applications within your  database.
 {% endcolumn %}
 {% endcolumns %}
 
 {% columns %}
 {% column %}
-{% content-ref url="vector.md" %}
-[vector.md](vector.md)
+{% content-ref url="../../data-types/numeric-data-types/vector.md" %}
+[vector.md](../../data-types/numeric-data-types/vector.md)
 {% endcontent-ref %}
 {% endcolumn %}
 

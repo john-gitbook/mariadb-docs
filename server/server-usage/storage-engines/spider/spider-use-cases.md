@@ -27,7 +27,7 @@ INSTALL SONAME 'ha_spider';
 
 ### Setting the SUPER privilege for the Spider user on data nodes or alternatives to avoid privilege issues
 
-When explicitly setting the [spider\_internal\_sql\_log\_off](spider-system-variables.md#spider_internal_sql_log_off) system variable, please note that Spider will execute matching [SET SQL\_LOG\_OFF](../../../server-management/variables-and-modes/server-system-variables.md#sql_log_off) statements on each of the data nodes. It will attempt to do this on the data nodes using the [SUPER](../../../reference/sql-statements/account-management-sql-statements/grant.md#super) privilege, which thus requires one to grant this privilege to the Spider user on the data nodes.
+When explicitly setting the [spider\_internal\_sql\_log\_off](spider-system-variables.md#spider_internal_sql_log_off) system variable, please note that Spider will execute matching [SET SQL\_LOG\_OFF](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#sql_log_off) statements on each of the data nodes. It will attempt to do this on the data nodes using the [SUPER](../../../reference/sql-statements/account-management-sql-statements/grant.md#super) privilege, which thus requires one to grant this privilege to the Spider user on the data nodes.
 
 If the Spider user on the data note is not configured with the SUPER privilege, you may encounter issues when working with Spider tables like ERROR 1227 (42000): Access denied for the missing SUPER privilege. To avoid this, don't explicitly set spider\_internal\_sql\_log\_off, or set it to -1, or grant the SUPER privilege to the Spider user on the data node.
 
@@ -112,7 +112,7 @@ KEY (accountName)
 
 ## Use case 2: sharding by hash
 
-See also [hash-partitioning-type](../../partitioning-tables/partitioning-types/hash-partitioning-type.md).
+See also [hash-partitioning-type](../../../server-usage/partitioning-tables/partitioning-types/hash-partitioning-type.md).
 
 In this case a spider table is created to distribute data across backend1 and backend2 by hashing the id column. Since the id column is an incrementing numeric value the hashing will ensure even distribution across the 2 nodes.
 
@@ -137,7 +137,7 @@ KEY (accountName)
 
 ## Use case 3: sharding by range
 
-See also [range-partitioning-type](../../partitioning-tables/partitioning-types/range-partitioning-type.md).
+See also [range-partitioning-type](../../../server-usage/partitioning-tables/partitioning-types/range-partitioning-type.md).
 
 In this case a spider table is created to distribute data across backend1 and backend2 based on the first letter of the accountName field. All accountNames that start with the letter L and prior are stored in backend1 and all other values stored in backend2. Note that the accountName column must be added to the primary key which is a requirement of MariaDB partitioning:
 
@@ -162,7 +162,7 @@ KEY(accountName)
 
 ## Use case 4: sharding by list
 
-See also [list-partitioning-type](../../partitioning-tables/partitioning-types/list-partitioning-type.md).
+See also [list-partitioning-type](../../../server-usage/partitioning-tables/partitioning-types/list-partitioning-type.md).
 
 In this case a spider table is created to distribute data across backend1 and backend2 based on specific values in the owner field. Bill, Bob, and Chris are stored in backend1 and Maria and Olivier stored in backend2. Note that the owner column must be added to the primary key which is a requirement of MariaDB partitioning:
 
@@ -191,7 +191,7 @@ The following partition clause can be used to specify a default partition for al
 PARTITION partition_name DEFAULT
 ```
 
-For a complete list of partition types, see [partitioning-types](../../partitioning-tables/partitioning-types/).
+For a complete list of partition types, see [partitioning-types](../../../server-usage/partitioning-tables/partitioning-types/).
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

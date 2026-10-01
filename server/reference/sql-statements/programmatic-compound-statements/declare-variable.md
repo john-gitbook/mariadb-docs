@@ -30,14 +30,14 @@ Anchored data types allow a data type to be defined based on another object, suc
 
 Variables declared with `ROW TYPE OF` will have the same features as implicit [ROW](../../data-types/string-data-types/row.md) variables. It is not possible to use `ROW TYPE OF` variables in a [LIMIT](../data-manipulation/selecting-data/limit.md) clause.
 
-The real data type of `TYPE OF` and `ROW TYPE OF table_name` will become known at the very beginning of the stored routine call. [ALTER TABLE](../data-definition/alter/alter-table/) or [DROP TABLE](../../../server-usage/tables/drop-table.md) statements performed inside the current routine on the tables that appear in anchors won't affect the data type of the anchored variables, even if the variable is declared after an [ALTER TABLE](../data-definition/alter/alter-table/) or [DROP TABLE](../../../server-usage/tables/drop-table.md) statement.
+The real data type of `TYPE OF` and `ROW TYPE OF table_name` will become known at the very beginning of the stored routine call. [ALTER TABLE](../data-definition/alter/alter-table/) or [DROP TABLE](../data-definition/drop/drop-table.md) statements performed inside the current routine on the tables that appear in anchors won't affect the data type of the anchored variables, even if the variable is declared after an [ALTER TABLE](../data-definition/alter/alter-table/) or [DROP TABLE](../data-definition/drop/drop-table.md) statement.
 
 The real data type of a `ROW TYPE OF cursor_name` variable will become known when execution enters into the block where the variable is declared. Data type instantiation will happen only once. In a cursor `ROW TYPE OF` variable that is declared inside a loop, its data type will become known on the very first iteration and won't change on further loop iterations.
 
 The tables referenced in `TYPE OF` and `ROW TYPE OF` declarations will be checked for existence at the beginning of the stored routine call. [CREATE PROCEDURE](../../../server-usage/stored-routines/stored-procedures/create-procedure.md) or [CREATE FUNCTION](../data-definition/create/create-function.md) will not check the referenced tables for existence.
 
 {% hint style="info" %}
-**Dynamic Cursors Limitation**
+**Dynamic Cursors Limitation**&#x20;
 
 `ROW TYPE OF` is not supported for dynamic cursors (cursors declared for a prepared statement). This is because the cursor's structure is dependent on the prepared statement, which is not known at the time the stored procedure context is created.
 {% endhint %}

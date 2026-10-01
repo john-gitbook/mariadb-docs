@@ -102,8 +102,8 @@ Query OK, 0 rows affected (0.004 sec)
 InnoDB does **not** support modifying a column's data type with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` in most cases. There are some exceptions:
 
 * InnoDB supports increasing the length of `VARCHAR` columns with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`, unless it would require changing the number of bytes requires to represent the column's length. A `VARCHAR` column that is between 0 and 255 bytes in size requires 1 byte to represent its length, while a `VARCHAR` column that is 256 bytes or longer requires 2 bytes to represent its length. This means that the length of a column cannot be increased with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` if the original length was less than 256 bytes, and the new length is 256 bytes or more.
-* InnoDB supports increasing the length of `VARCHAR` columns with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` with no restrictions if the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option is set to [REDUNDANT](../innodb-row-formats/innodb-row-formats-overview.md). See [MDEV-15563](https://jira.mariadb.org/browse/MDEV-15563) for more information.
-* InnoDB also supports increasing the length of `VARCHAR` columns with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` in a more limited manner if the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option is set to [COMPACT](../innodb-row-formats/innodb-row-formats-overview.md), [DYNAMIC](../innodb-row-formats/innodb-row-formats-overview.md), or [COMPRESSED](../innodb-row-formats/innodb-row-formats-overview.md). In this scenario, the following limitations apply:
+* InnoDB supports increasing the length of `VARCHAR` columns with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` with no restrictions if the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to [REDUNDANT](../innodb-row-formats/innodb-row-formats-overview.md). See [MDEV-15563](https://jira.mariadb.org/browse/MDEV-15563) for more information.
+* InnoDB also supports increasing the length of `VARCHAR` columns with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` in a more limited manner if the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to [COMPACT](../innodb-row-formats/innodb-row-formats-overview.md), [DYNAMIC](../innodb-row-formats/innodb-row-formats-overview.md), or [COMPRESSED](../innodb-row-formats/innodb-row-formats-overview.md). In this scenario, the following limitations apply:
   * The length can be increased with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` if the original length of the column is 127 bytes or less, and the new length of the column is 256 bytes or more.
   * The length can be increased with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` if the original length of the column is 255 bytes or less, and the new length of the column is still 255 bytes or less.
   * The length can be increased with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` if the original length of the column is 256 bytes or more, and the new length of the column is still 256 bytes or more.
@@ -215,7 +215,7 @@ ERROR 1846 (0A000): ALGORITHM=INSTANT is not supported. Reason: Cannot change co
 
 #### Changing a Column to NULL
 
-InnoDB supports modifying a column to allow [NULL](../../../tables/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` if the [ROW\_FORMAT](../../../tables/create-table.md#row_format) table option is set to [REDUNDANT](../innodb-row-formats/innodb-row-formats-overview.md). See [MDEV-15563](https://jira.mariadb.org/browse/MDEV-15563) for more information.
+InnoDB supports modifying a column to allow [NULL](../../../../reference/sql-statements/data-definition/create/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT` if the [ROW\_FORMAT](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) table option is set to [REDUNDANT](../innodb-row-formats/innodb-row-formats-overview.md). See [MDEV-15563](https://jira.mariadb.org/browse/MDEV-15563) for more information.
 
 This operation supports the non-locking strategy. This strategy can be explicitly chosen by setting the [LOCK](../../../../reference/sql-statements/data-definition/alter/alter-table/#lock) clause to `NONE`. When this strategy is used, all concurrent DML is permitted.
 
@@ -235,7 +235,7 @@ Query OK, 0 rows affected (0.004 sec)
 
 #### Changing a Column to NOT NULL
 
-InnoDB does **not** support modifying a column to **not** allow [NULL](../../../tables/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
+InnoDB does **not** support modifying a column to **not** allow [NULL](../../../../reference/sql-statements/data-definition/create/create-table.md#null-and-not-null) values with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
 
 For example:
 
@@ -352,7 +352,7 @@ This applies to [ALTER TABLE ... ALTER COLUMN](../../../../reference/sql-stateme
 
 #### Setting a Column's Default Value
 
-InnoDB supports modifying a column's [DEFAULT](../../../tables/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
+InnoDB supports modifying a column's [DEFAULT](../../../../reference/sql-statements/data-definition/create/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
 
 This operation supports the non-locking strategy. This strategy can be explicitly chosen by setting the [LOCK](../../../../reference/sql-statements/data-definition/alter/alter-table/#lock) clause to `NONE`. When this strategy is used, all concurrent DML is permitted.
 
@@ -372,7 +372,7 @@ Query OK, 0 rows affected (0.003 sec)
 
 #### Removing a Column's Default Value
 
-InnoDB supports removing a column's [DEFAULT](../../../tables/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
+InnoDB supports removing a column's [DEFAULT](../../../../reference/sql-statements/data-definition/create/create-table.md#default-column-option) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
 
 This operation supports the non-locking strategy. This strategy can be explicitly chosen by setting the [LOCK](../../../../reference/sql-statements/data-definition/alter/alter-table/#lock) clause to `NONE`. When this strategy is used, all concurrent DML is permitted.
 
@@ -653,7 +653,7 @@ ALTER TABLE tab AUTO_INCREMENT=100;
 Query OK, 0 rows affected (0.002 sec)
 ```
 
-This applies to [ALTER TABLE ... AUTO\_INCREMENT=...](../../../tables/create-table.md#auto_increment) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... AUTO\_INCREMENT=...](../../../../reference/sql-statements/data-definition/create/create-table.md#auto_increment) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... ROW_FORMAT=...`
 
@@ -673,7 +673,7 @@ ALTER TABLE tab ROW_FORMAT=COMPRESSED;
 ERROR 1846 (0A000): ALGORITHM=INSTANT is not supported. Reason: Changing table options requires the table to be rebuilt. Try ALGORITHM=INPLACE
 ```
 
-This applies to [ALTER TABLE ... ROW\_FORMAT=...](../../../tables/create-table.md#row_format) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... ROW\_FORMAT=...](../../../../reference/sql-statements/data-definition/create/create-table.md#row_format) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... KEY_BLOCK_SIZE=...`
 
@@ -694,13 +694,13 @@ ALTER TABLE tab KEY_BLOCK_SIZE=2;
 ERROR 1846 (0A000): ALGORITHM=INSTANT is not supported. Reason: Changing table options requires the table to be rebuilt. Try ALGORITHM=INPLACE
 ```
 
-This applies to [KEY\_BLOCK\_SIZE=...](../../../tables/create-table.md#key_block_size) for [InnoDB](../) tables.
+This applies to [KEY\_BLOCK\_SIZE=...](../../../../reference/sql-statements/data-definition/create/create-table.md#key_block_size) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... PAGE_COMPRESSED=1` and `ALTER TABLE ... PAGE_COMPRESSION_LEVEL=...`
 
-InnoDB supports setting a table's [PAGE\_COMPRESSED](../../../tables/create-table.md#page_compressed) value to `1` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`. InnoDB does **not** support changing a table's [PAGE\_COMPRESSED](../../../tables/create-table.md#page_compressed) value from `1` to `0` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
+InnoDB supports setting a table's [PAGE\_COMPRESSED](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) value to `1` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`. InnoDB does **not** support changing a table's [PAGE\_COMPRESSED](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) value from `1` to `0` with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
 
-In these versions, InnoDB also supports changing a table's [PAGE\_COMPRESSION\_LEVEL](../../../tables/create-table.md#page_compression_level) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
+In these versions, InnoDB also supports changing a table's [PAGE\_COMPRESSION\_LEVEL](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compression_level) value with [ALGORITHM](../../../../reference/sql-statements/data-definition/alter/alter-table/#algorithm) set to `INSTANT`.
 
 This operation supports the non-locking strategy. This strategy can be explicitly chosen by setting the [LOCK](../../../../reference/sql-statements/data-definition/alter/alter-table/#lock) clause to `NONE`. When this strategy is used, all concurrent DML is permitted.
 
@@ -749,7 +749,7 @@ ALTER TABLE tab PAGE_COMPRESSED=0;
 ERROR 1846 (0A000): ALGORITHM=INSTANT is not supported. Reason: Changing table options requires the table to be rebuilt. Try ALGORITHM=INPLACE
 ```
 
-This applies to [ALTER TABLE ... PAGE\_COMPRESSED=...](../../../tables/create-table.md#page_compressed) and [ALTER TABLE ... PAGE\_COMPRESSION\_LEVEL=...](../../../tables/create-table.md#page_compression_level) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... PAGE\_COMPRESSED=...](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compressed) and [ALTER TABLE ... PAGE\_COMPRESSION\_LEVEL=...](../../../../reference/sql-statements/data-definition/create/create-table.md#page_compression_level) for [InnoDB](../) tables.
 
 ### `ALTER TABLE ... DROP SYSTEM VERSIONING`
 
@@ -832,7 +832,7 @@ ALTER TABLE tab ENGINE=InnoDB;
 ERROR 1845 (0A000): ALGORITHM=INSTANT is not supported for this operation. Try ALGORITHM=INPLACE
 ```
 
-This applies to [ALTER TABLE ... ENGINE=InnoDB](../../../tables/create-table.md#storage-engine) for [InnoDB](../) tables.
+This applies to [ALTER TABLE ... ENGINE=InnoDB](../../../../reference/sql-statements/data-definition/create/create-table.md#storage-engine) for [InnoDB](../) tables.
 
 ### `OPTIMIZE TABLE ...`
 

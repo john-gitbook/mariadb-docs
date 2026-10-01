@@ -15,7 +15,7 @@ Each encryption key has a 32-bit integer that serves as a key identifier.
 
 The default key is set using the [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id) system variable.
 
-Encryption keys can also be specified with the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option for tables that use [file-per-table](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md) tablespaces.
+Encryption keys can also be specified with the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option for tables that use [file-per-table](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md) tablespaces.
 
 InnoDB encrypts the [temporary tablespace](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-temporary-tablespaces.md) using the encryption key with the ID `1`.
 
@@ -23,7 +23,7 @@ InnoDB encrypts the [Redo Log](../../../../server-usage/storage-engines/innodb/i
 
 ### Keys with Manually Encrypted Tablespaces
 
-With tables that use [manually](innodb-enabling-encryption.md#enabling-encryption-for-manually-encrypted-tablespaces) enabled encryption, one way to set the specific encryption key for the table is to use the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option. For example:
+With tables that use [manually](innodb-enabling-encryption.md#enabling-encryption-for-manually-encrypted-tablespaces) enabled encryption, one way to set the specific encryption key for the table is to use the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option. For example:
 
 ```sql
 CREATE TABLE tab1 (
@@ -41,7 +41,7 @@ WHERE NAME='db1/tab1';
 +----------+-------------------+----------------+
 ```
 
-If the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option is not set for a table that uses [manually](innodb-enabling-encryption.md#enabling-encryption-for-manually-encrypted-tablespaces) enabled encryption, then it will inherit the value from the [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id) system variable. For example:
+If the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option is not set for a table that uses [manually](innodb-enabling-encryption.md#enabling-encryption-for-manually-encrypted-tablespaces) enabled encryption, then it will inherit the value from the [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id) system variable. For example:
 
 ```sql
 SET SESSION innodb_default_encryption_key_id=100;
@@ -89,7 +89,7 @@ WHERE NAME='db1/tab1';
 
 InnoDB tables that are part of the [system](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-system-tablespaces.md) tablespace can only be encrypted using the encryption key set by the [innodb\_default\_encryption\_key\_id](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_default_encryption_key_id) system variable.
 
-If the table is in a [file-per-table](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md) tablespace, and if [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) is set to `ON` or `FORCE`, and if [innodb\_encryption\_threads](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encryption_threads) is set to a value greater than `0`, then you can also set the specific encryption key for the table by using the [ENCRYPTION\_KEY\_ID](../../../../server-usage/tables/create-table.md#encryption_key_id) table option. For example:
+If the table is in a [file-per-table](../../../../server-usage/storage-engines/innodb/innodb-tablespaces/innodb-file-per-table-tablespaces.md) tablespace, and if [innodb\_encrypt\_tables](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encrypt_tables) is set to `ON` or `FORCE`, and if [innodb\_encryption\_threads](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_encryption_threads) is set to a value greater than `0`, then you can also set the specific encryption key for the table by using the [ENCRYPTION\_KEY\_ID](../../../../reference/sql-statements/data-definition/create/create-table.md#encryption_key_id) table option. For example:
 
 ```sql
 SET GLOBAL innodb_encryption_threads=4;

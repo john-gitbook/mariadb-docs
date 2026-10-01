@@ -2,7 +2,7 @@
 description: >-
   MariaDB Cloud Observability exposes runtime logs and metrics through APIs and
   integrations like Datadog and Splunk, requiring an API key and Database ID for
-  instrumentation and dashboard configuration
+  instrumentation and dashboard configuration.
 icon: telescope
 ---
 
@@ -89,10 +89,10 @@ A Splunk universal forwarder is not required. Both collectors push data directly
 
 The package contains two collectors. They are independent, so you can deploy either one on its own or both together.
 
-| Collector | Endpoints used                                                 | What it sends to Splunk                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Logs      | `observability/v2/logs/query`, `observability/v2/logs/archive` | Error log, audit log, and MaxScale log lines, extracted from the downloaded log archives and converted to HEC events. A per-archive checkpoint keeps already-ingested lines from being sent again. |
-| Metrics   | `observability/v2/metrics`                                     | The Prometheus-format metric series from the [metrics](observability.md#metrics) endpoint, parsed and converted to HEC metric events.                                                              |
+| Collector | Endpoints used                                                     | What it sends to Splunk                                                                                                                                                              |
+| --------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Logs      | `observability/v2/logs/query`, `observability/v2/logs/archive`     | Error log, audit log, and MaxScale log lines, extracted from the downloaded log archives and converted to HEC events. A per-archive checkpoint keeps already-ingested lines from being sent again. |
+| Metrics   | `observability/v2/metrics`                                         | The Prometheus-format metric series from the [metrics](observability.md#metrics) endpoint, parsed and converted to HEC metric events.                                                 |
 
 #### Deployment options
 
@@ -160,6 +160,8 @@ The following metrics are exported as part of the [metrics](observability.md#met
 * `gridgain_*`: GridGain, including the query result cache
 
 The endpoint returns only the metrics for components your services run. For example, `maxscale_*` metrics appear only for services that include MaxScale.
+
+<!-- DOCS-6580: the mariadb_xpand_stats_* rows list the intended names. The cortex-exporter rename rule `ts_(.+)` is unanchored and currently rewrites them (e.g. mariadb_xpand_stamariadb_service_Com_delete); raised with the Cloud team. -->
 
 | Metric                                                    | Component        |
 | --------------------------------------------------------- | ---------------- |

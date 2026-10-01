@@ -21,7 +21,7 @@ With a redirection mechanism, much like HTTP redirects or Oracle redirected conn
 
 ## Usage
 
-Redirection is handled through a new system variable, [redirect\_url](../server-management/variables-and-modes/server-system-variables.md#redirect_url). The value defaults to an empty string, but can also contain a connection string in the conventional format (in the style of a Connector/C etc. connection url), like this:
+Redirection is handled through a new system variable, [redirect\_url](optimization-and-tuning/system-variables/server-system-variables.md#redirect_url). The value defaults to an empty string, but can also contain a connection string in the conventional format (in the style of a Connector/C etc. connection url), like this:
 
 ```
 {mysql,mariadb}://host[:port]
@@ -29,7 +29,7 @@ Redirection is handled through a new system variable, [redirect\_url](../server-
 
 Here, _`host`_ is an arbitrary string not containing colons, and _`port`_ is a number between `0` and `65535` inclusive.
 
-This variable is appended to the default value of the [session\_track\_system\_variables](../server-management/variables-and-modes/server-system-variables.md#session_track_system_variables) system variable. Unless empty, clients are redirected to the specified server.
+This variable is appended to the default value of the [session\_track\_system\_variables](optimization-and-tuning/system-variables/server-system-variables.md#session_track_system_variables) system variable. Unless empty, clients are redirected to the specified server.
 
 ## Use Cases
 
@@ -38,7 +38,7 @@ This variable is appended to the default value of the [session\_track\_system\_v
 * Redirect to a group of servers randomly:
   * Create a table with connection URLs, one per row.
   * Use an SQL script that selects a random row from that table, and sets `@@redirect_url` to this value.
-  * Specify this script in the [`--init-connect`](../server-management/variables-and-modes/server-system-variables.md#init_connect) server parameter.
+  * Specify this script in the [`--init-connect`](optimization-and-tuning/system-variables/server-system-variables.md#init_connect) server parameter.
 * Dynamically redirect from the primary server to one of the replicas:
   * Same as before, but use [INFORMATION\_SCHEMA.PROCESSLIST](../reference/system-tables/information-schema/information-schema-tables/information-schema-processlist-table.md) to get the list of active replicas.
 

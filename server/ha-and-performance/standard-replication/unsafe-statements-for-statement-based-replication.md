@@ -60,7 +60,7 @@ The following statements are regarded as unsafe:
   * [UUID\_SHORT()](../../reference/sql-functions/secondary-functions/miscellaneous-functions/uuid_short.md).
 * Statements which refer to log tables, since these may differ across servers.
 * Statements which refer to self-logging tables. Statements following a read or write to a self-logging table within a transaction are also considered unsafe.
-* Statements which refer to [system variables](../../server-management/variables-and-modes/server-system-variables.md) (there are a few exceptions).
+* Statements which refer to [system variables](../optimization-and-tuning/system-variables/server-system-variables.md) (there are a few exceptions).
 * [LOAD DATA INFILE](../../reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile.md) statements.
 * Non-transactional reads or writes that execute after transactional reads within a transaction.
 * If row-based logging is used for a statement, and the session executing the statement has any temporary tables, row-based logging is used for the remaining statements until the temporary table is dropped. This is because temporary tables can't use row-based logging, so if it is used due to one of the above conditions, all subsequent statements using that table are unsafe. The server deals with this situation by treating all statements in the session as unsafe for statement-based logging until the temporary table is dropped.
@@ -86,14 +86,14 @@ The following statements are not deterministic, but are considered safe for bina
 
 ## Isolation Levels
 
-Even when using safe statements, not all [transaction isolation levels](../../reference/sql-statements/administrative-sql-statements/set-commands/set-transaction.md#isolation-levels) are safe with statement-based or mixed binary logging. While the `REPEATABLE READ` and `SERIALIZABLE` isolation levels can be used with both statement- and row-based replication, the `READ COMMITTED` and `READ UNCOMMITTED` isolation levels only support row-based replication, as with them isolation between transactions is not guaranteed at all, and different transaction orders on a replica, or when doing point-in-time recovery, would lead to different results than on the original master.
+Even when using safe statements, not all [transaction isolation levels](../../reference/sql-statements/transactions/set-transaction.md#isolation-levels) are safe with statement-based or mixed binary logging. While the `REPEATABLE READ` and `SERIALIZABLE` isolation levels can be used with both statement- and row-based replication, the `READ COMMITTED` and `READ UNCOMMITTED` isolation levels only support row-based replication, as with them isolation between transactions is not guaranteed at all, and different transaction orders on a replica, or when doing point-in-time recovery, would lead to different results than on the original master.
 
 This restriction does not apply if only non-transactional storage engines are used.
 
 ## See Also
 
 * [Replication and Foreign Keys](replication-and-foreign-keys.md)
-* [Replicating Temporary Tables](../../server-usage/tables/create-table.md#replicating-temporary-tables)
+* [Replicating Temporary Tables](../../reference/sql-statements/data-definition/create/create-table.md#replicating-temporary-tables)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

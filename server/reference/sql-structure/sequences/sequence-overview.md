@@ -179,7 +179,7 @@ This happens because `SELECT` modifies objects.
 
 MariaDB supports both ANSI SQL and Oracle syntax for sequences.
 
-However as `SEQUENCE` is implemented as a special kind of table, it uses the same namespace as tables. The benefits are that sequences show up in [SHOW TABLES](../../sql-statements/administrative-sql-statements/show/show-tables.md), and one can also create a sequence with [CREATE TABLE](../../../server-usage/tables/create-table.md) and drop it with [DROP TABLE](../../../server-usage/tables/drop-table.md). One can [SELECT](../../sql-statements/data-manipulation/selecting-data/select.md) from it as from any other table. This ensures that all old tools that work with tables should work with sequences.
+However as `SEQUENCE` is implemented as a special kind of table, it uses the same namespace as tables. The benefits are that sequences show up in [SHOW TABLES](../../sql-statements/administrative-sql-statements/show/show-tables.md), and one can also create a sequence with [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md) and drop it with [DROP TABLE](../../sql-statements/data-definition/drop/drop-table.md). One can [SELECT](../../sql-statements/data-manipulation/selecting-data/select.md) from it as from any other table. This ensures that all old tools that work with tables should work with sequences.
 
 Since sequence objects act as regular tables in many contexts, they will be affected by [LOCK TABLES](../../sql-statements/transactions/lock-tables.md). This is not the case in other DBMS, such as Oracle, where LOCK TABLE does not affect sequences.
 
@@ -192,7 +192,7 @@ To make this possible, `sequence` is implemented as a table with a few exclusive
 The special properties for sequence tables are:
 
 * A sequence table has always one row.
-* When one creates a sequence, either with [CREATE TABLE](../../../server-usage/tables/create-table.md) or [CREATE SEQUENCE](create-sequence.md), one row will be inserted.
+* When one creates a sequence, either with [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md) or [CREATE SEQUENCE](create-sequence.md), one row will be inserted.
 * If one tries to insert into a sequence table, the single row will be updated. This allows [mariadb-dump](../../../clients-and-utilities/backup-restore-and-import-clients/mariadb-dump.md) to work but also gives the additional benefit that one can change all properties of a sequence with a single insert. New applications should of course also use `ALTER SEQUENCE`.
 * [UPDATE](../../sql-statements/data-manipulation/changing-deleting-data/update.md) or [DELETE](../../sql-statements/data-manipulation/changing-deleting-data/delete.md) can't be performed on Sequence objects.
 * Doing a select on the sequence shows the current state of the sequence, except the values that are reserved in the cache. The `next_value` column shows the next value not reserved by the cache.
@@ -201,16 +201,17 @@ The special properties for sequence tables are:
 
 ## Table Operations that Work with Sequences
 
-* [SHOW CREATE TABLE sequence\_name](../../sql-statements/administrative-sql-statements/show/show-create-table.md). This shows the table structure that is behind the `SEQUENCE` including the field names that can be used with [SELECT](../../sql-statements/data-manipulation/selecting-data/select.md) or even [CREATE TABLE](../../../server-usage/tables/create-table.md).
-* [CREATE TABLE sequence-structure ... SEQUENCE=1](../../../server-usage/tables/create-table.md)
+* [SHOW CREATE TABLE sequence\_name](../../sql-statements/administrative-sql-statements/show/show-create-table.md). This shows the table structure that is behind the `SEQUENCE` including the field names that can be used with [SELECT](../../sql-statements/data-manipulation/selecting-data/select.md) or even [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md).
+* [CREATE TABLE sequence-structure ... SEQUENCE=1](../../sql-statements/data-definition/create/create-table.md)
 * [ALTER TABLE sequence RENAME TO sequence2](../../sql-statements/data-definition/alter/alter-table/)
 * [RENAME TABLE sequence\_name TO new\_sequence\_name](../../sql-statements/data-definition/rename-table.md)
-* [DROP TABLE sequence\_name](../../../server-usage/tables/drop-table.md). This is allowed mainly to get old tools like [mariadb-dump](../../../clients-and-utilities/backup-restore-and-import-clients/mariadb-dump.md) to work with sequence tables.
+* [DROP TABLE sequence\_name](../../sql-statements/data-definition/drop/drop-table.md). This is allowed mainly to get old tools like [mariadb-dump](../../../clients-and-utilities/backup-restore-and-import-clients/mariadb-dump.md) to work with sequence tables.
 * [SHOW TABLES](../../sql-statements/administrative-sql-statements/show/show-tables.md)
 
 ## Implementation
 
-Internally, sequence tables are created as a normal table without rollback (the [InnoDB](../../../server-usage/storage-engines/innodb/), [Aria](../../../server-usage/storage-engines/aria/) and [MySAM](../../../server-usage/storage-engines/myisam-storage-engine/) engines support this), wrapped by a sequence engine object. This allowed us to create sequences with almost no performance impact for normal tables. (The cost is one 'if' per insert if the [binary log](../../../server-management/server-monitoring-logs/binary-log/) is enabled).
+Internally, sequence tables are created as a normal table without rollback (the [InnoDB](../../../server-usage/storage-engines/innodb/), [Aria](../../../server-usage/storage-engines/aria/) and [MySAM](../../../server-usage/storage-engines/myisam-storage-engine/) engines support this), wrapped by a sequence engine object. This allowed us to create sequences with
+almost no performance impact for normal tables. (The cost is one 'if' per insert if the [binary log](../../../server-management/server-monitoring-logs/binary-log/) is enabled).
 
 ## Underlying Table Structure
 

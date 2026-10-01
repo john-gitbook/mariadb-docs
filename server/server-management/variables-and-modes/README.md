@@ -19,18 +19,14 @@ layout:
     visible: true
   tags:
     visible: true
-  actions:
-    visible: true
-  anchors:
-    visible: true
 ---
 
 # Variables and Modes
 
 {% columns %}
 {% column %}
-{% content-ref url="full-list-of-mariadb-options-system-and-status-variables.md" %}
-[full-list-of-mariadb-options-system-and-status-variables.md](full-list-of-mariadb-options-system-and-status-variables.md)
+{% content-ref url="../../reference/full-list-of-mariadb-options-system-and-status-variables.md" %}
+[full-list-of-mariadb-options-system-and-status-variables.md](../../reference/full-list-of-mariadb-options-system-and-status-variables.md)
 {% endcontent-ref %}
 {% endcolumn %}
 
@@ -41,8 +37,8 @@ A comprehensive, alphabetical reference list of all server command-line options,
 
 {% columns %}
 {% column %}
-{% content-ref url="server-status-variables.md" %}
-[server-status-variables.md](server-status-variables.md)
+{% content-ref url="../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md" %}
+[server-status-variables.md](../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md)
 {% endcontent-ref %}
 {% endcolumn %}
 
@@ -53,8 +49,8 @@ Documentation for server status variables, which provide information about the s
 
 {% columns %}
 {% column %}
-{% content-ref url="server-system-variables.md" %}
-[server-system-variables.md](server-system-variables.md)
+{% content-ref url="../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md" %}
+[server-system-variables.md](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md)
 {% endcontent-ref %}
 {% endcolumn %}
 
@@ -95,7 +91,7 @@ Describes the `OLD_MODE` system variable, used to revert specific behaviors to m
 {% endcolumn %}
 
 {% column %}
-Complete SQL\_MODE reference: set via SET/SET GLOBAL/--sql-mode, view @@SQL\_MODE, STRICT\_TRANS\_TABLES, ANSI\_QUOTES, TRADITIONAL, and database emulation.
+Complete SQL_MODE reference: set via SET/SET GLOBAL/--sql-mode, view @@SQL_MODE, STRICT_TRANS_TABLES, ANSI_QUOTES, TRADITIONAL, and database emulation.
 {% endcolumn %}
 {% endcolumns %}
 
@@ -107,7 +103,7 @@ Complete SQL\_MODE reference: set via SET/SET GLOBAL/--sql-mode, view @@SQL\_MOD
 {% endcolumn %}
 
 {% column %}
-SQL\_MODE=MSSQL enables Microsoft SQL Server compatibility behaviors in MariaDB.
+SQL_MODE=MSSQL enables Microsoft SQL Server compatibility behaviors in MariaDB.
 {% endcolumn %}
 {% endcolumns %}
 
@@ -119,7 +115,7 @@ SQL\_MODE=MSSQL enables Microsoft SQL Server compatibility behaviors in MariaDB.
 {% endcolumn %}
 
 {% column %}
-SQL\_MODE=ORACLE enables Oracle Database compatibility behaviors in MariaDB.
+SQL_MODE=ORACLE enables Oracle Database compatibility behaviors in MariaDB.
 {% endcolumn %}
 {% endcolumns %}
 

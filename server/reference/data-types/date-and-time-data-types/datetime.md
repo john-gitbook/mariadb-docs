@@ -20,7 +20,7 @@ MariaDB displays `DATETIME` values in '`YYYY-MM-DD HH:MM:SS.ffffff`' format, but
 
 `DATETIME` columns also accept [CURRENT\_TIMESTAMP](../../sql-functions/date-time-functions/now.md) as the default value.
 
-The [--mysql56-temporal-format](../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) option, on by default, allows MariaDB to store `DATETME` values using the same low-level format MySQL 5.6 uses. For more information, see [Internal Format](datetime.md#internal-format), below.
+The [--mysql56-temporal-format](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) option, on by default, allows MariaDB to store `DATETME` values using the same low-level format MySQL 5.6 uses. For more information, see [Internal Format](datetime.md#internal-format), below.
 
 For storage requirements, see [Data Type Storage Requirements](../data-type-storage-requirements.md).
 
@@ -38,9 +38,9 @@ In [Oracle mode](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server
 
 ## Internal Format
 
-A new temporal format was introduced from MySQL 5.6 that alters how the `TIME`, `DATETIME` and `TIMESTAMP` columns operate at lower levels. These changes allow these temporal data types to have fractional parts and negative values. You can disable this feature using the [mysql56\_temporal\_format](../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) system variable.
+A new temporal format was introduced from MySQL 5.6 that alters how the `TIME`, `DATETIME` and `TIMESTAMP` columns operate at lower levels. These changes allow these temporal data types to have fractional parts and negative values. You can disable this feature using the [mysql56\_temporal\_format](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) system variable.
 
-Tables that include `TIMESTAMP` values that were created on an older version of MariaDB or that were created while the [mysql56\_temporal\_format](../../../server-management/variables-and-modes/server-system-variables.md#mysql56_temporal_format) system variable was disabled continue to store data using the older data type format.
+Tables that include `TIMESTAMP` values that were created on an older version of MariaDB or that were created while the [mysql56\_temporal\_format](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#mysql56_temporal_format) system variable was disabled continue to store data using the older data type format.
 
 In order to update table columns from the older format to the newer format, execute an [ALTER TABLE... MODIFY COLUMN](../../sql-statements/data-definition/alter/alter-table/#modify-column) statement that changes the column to the _same_ data type. This change may be needed if you want to export the table's tablespace and import it onto a server that has `mysql56_temporal_format=ON` set (see [MDEV-15225](https://jira.mariadb.org/browse/MDEV-15225)).
 

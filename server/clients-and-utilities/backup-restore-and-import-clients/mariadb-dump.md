@@ -152,7 +152,7 @@ Add a [DROP DATABASE](../../reference/sql-statements/data-definition/drop/drop-d
 
 #### --add-drop-table
 
-Add a [DROP TABLE](../../server-usage/tables/drop-table.md) before each create.
+Add a [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md) before each create.
 
 #### --add-drop-trigger
 
@@ -212,7 +212,7 @@ Change the dump to be compatible with a given mode. By default, tables are dumpe
 
 #### -c, --complete-insert
 
-Use complete [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) statements that include column names. From MariaDB 13.1, [generated columns](mariadb-dump.md#generated-columns) are omitted from the column list.
+Use complete [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) statements that include column names. From MariaDB 13.1, [generated columns](#generated-columns) are omitted from the column list.
 
 #### -C, --compress
 
@@ -350,7 +350,7 @@ Continue even if an SQL error occurs during a table dump. One use for this optio
 
 #### --gtid
 
-Used together with `--master-data` and `--dump-slave` to more conveniently set up a new [GTID](../../ha-and-performance/standard-replication/gtid/) replica. It causes those options to output SQL statements that configure the replica to use the [global transaction ID](../../ha-and-performance/standard-replication/gtid/) to connect to the primary instead of old-style filename/offset positions. The old-style positions are still included in comments when --gtid is used; likewise, the GTID position is included in comments even if `--gtid` is not used.
+Used together with `--master-data` and `--dump-slave` to more conveniently set up a new [GTID](../../ha-and-performance/standard-replication/gtid/README.md) replica. It causes those options to output SQL statements that configure the replica to use the [global transaction ID](../../ha-and-performance/standard-replication/gtid/README.md) to connect to the primary instead of old-style filename/offset positions. The old-style positions are still included in comments when --gtid is used; likewise, the GTID position is included in comments even if `--gtid` is not used.
 
 #### --header
 
@@ -488,7 +488,7 @@ The initial buffer size for client/server TCP/IP and socket communication. This 
 
 #### --no-autocommit
 
-Enclose the [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) statements for each dumped table within [SET autocommit = 0](../../server-management/variables-and-modes/server-system-variables.md#autocommit) and [COMMIT](../../reference/sql-statements/transactions/commit.md) statements. `ON` by default from MariaDB 11.8 to allow faster data loading by InnoDB, writing only one undo log for the whole operation.
+Enclose the [INSERT](../../reference/sql-statements/data-manipulation/inserting-loading-data/insert.md) statements for each dumped table within [SET autocommit = 0](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#autocommit) and [COMMIT](../../reference/sql-statements/transactions/commit.md) statements. `ON` by default from MariaDB 11.8 to allow faster data loading by InnoDB, writing only one undo log for the whole operation.
 
 #### -n, --no-create-db
 
@@ -496,11 +496,11 @@ This option suppresses the [CREATE DATABASE ... IF EXISTS](../../reference/sql-s
 
 #### -t, --no-create-info
 
-Do not write [CREATE TABLE](../../server-usage/tables/create-table.md) statements, which re-create each dumped table.
+Do not write [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statements, which re-create each dumped table.
 
 #### -d, --no-data
 
-Do not write any table row information (that is, do not dump table contents). This is useful if you want to dump only the [CREATE TABLE](../../server-usage/tables/create-table.md) statement for the table (for example, to create an empty copy of the table by loading the dump file). See also `--ignore-table-data`.
+Do not write any table row information (that is, do not dump table contents). This is useful if you want to dump only the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement for the table (for example, to create an empty copy of the table by loading the dump file). See also `--ignore-table-data`.
 
 #### --no-data-med
 
@@ -588,7 +588,7 @@ Shared-memory name to use for Windows connections using shared memory to a local
 
 #### --single-transaction
 
-This option sends a [START TRANSACTION](../../reference/sql-statements/transactions/start-transaction.md) SQL statement to the server before dumping data. It is useful only with transactional tables such as [InnoDB](../../server-usage/storage-engines/innodb/), because then it dumps the consistent state of the database at the time when `BEGIN` was issued, without blocking any applications. When using this option, you should keep in mind that only InnoDB tables are dumped in a consistent state. The single-transaction feature depends not only on the engine being transactional and capable of `REPEATABLE-READ`, but also on `START TRANSACTION WITH CONSISTENT SNAPSHOT`. The dump is not guaranteed to be consistent for other storage engines. For example, any [MyISAM](../../server-usage/storage-engines/myisam-storage-engine/), or [MEMORY](../../server-usage/storage-engines/memory-storage-engine.md) tables dumped while using this option may still change state. While a `--single-transaction` dump is in process, to ensure a valid dump file (correct table contents and binary log coordinates), no other connection should use the following statements: [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/), [CREATE TABLE](../../server-usage/tables/create-table.md), [DROP TABLE](../../server-usage/tables/drop-table.md), [RENAME TABLE](../../reference/sql-statements/data-definition/rename-table.md), or [TRUNCATE TABLE](../../reference/sql-statements/table-statements/truncate-table.md). A consistent read is not isolated from those statements, so use of them on a table to be dumped can cause the `SELECT` (performed by mariadb-dump to retrieve the table contents) to obtain incorrect contents or fail. The `--single-transaction` option and the `--lock-tables` option are mutually exclusive, because [LOCK TABLES](../../reference/sql-statements/transactions/lock-tables.md) causes any pending transactions to be committed implicitly. So, this option automatically turns off `--lock-tables`. To dump large tables, you should combine the `--single-transaction` option with `--quick`.
+This option sends a [START TRANSACTION](../../reference/sql-statements/transactions/start-transaction.md) SQL statement to the server before dumping data. It is useful only with transactional tables such as [InnoDB](../../server-usage/storage-engines/innodb/), because then it dumps the consistent state of the database at the time when `BEGIN` was issued, without blocking any applications. When using this option, you should keep in mind that only InnoDB tables are dumped in a consistent state. The single-transaction feature depends not only on the engine being transactional and capable of `REPEATABLE-READ`, but also on `START TRANSACTION WITH CONSISTENT SNAPSHOT`. The dump is not guaranteed to be consistent for other storage engines. For example, any [MyISAM](../../server-usage/storage-engines/myisam-storage-engine/), or [MEMORY](../../server-usage/storage-engines/memory-storage-engine.md) tables dumped while using this option may still change state. While a `--single-transaction` dump is in process, to ensure a valid dump file (correct table contents and binary log coordinates), no other connection should use the following statements: [ALTER TABLE](../../reference/sql-statements/data-definition/alter/alter-table/), [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md), [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md), [RENAME TABLE](../../reference/sql-statements/data-definition/rename-table.md), or [TRUNCATE TABLE](../../reference/sql-statements/table-statements/truncate-table.md). A consistent read is not isolated from those statements, so use of them on a table to be dumped can cause the `SELECT` (performed by mariadb-dump to retrieve the table contents) to obtain incorrect contents or fail. The `--single-transaction` option and the `--lock-tables` option are mutually exclusive, because [LOCK TABLES](../../reference/sql-statements/transactions/lock-tables.md) causes any pending transactions to be committed implicitly. So, this option automatically turns off `--lock-tables`. To dump large tables, you should combine the `--single-transaction` option with `--quick`.
 
 #### --skip-add-locks
 
@@ -735,10 +735,12 @@ Dump a database as well-formed XML.
 
 Some `mariadb-dump` options are shorthand for groups of other options:
 
-* Use of `--opt` is the same as specifying`--add-drop-table`, `--add-locks`, `--create-options`, `--disable-keys`, `--extended-insert`, `--lock-tables`, `--quick`, and `--set-charset`. All of the options that `--opt` stands for are also on by default because `--opt` is on by default.
+* Use of `--opt` is the same as specifying`--add-drop-table`, `--add-locks`, `--create-options`, `--disable-keys`, `--extended-insert`, `--lock-tables`, `--quick`, and `--set-charset`. All of the
+  options that `--opt` stands for are also on by default because `--opt` is on by default.
 * Use of `--compact` is the same as specifying `--skip-add-drop-table`, `--skip-add-locks`, `--skip-comments`, `--skip-disable-keys`, and `--skip-set-charset` options.
 
-To reverse the effect of a group option, use its `--skip-xxx` form (`--skip-opt` or `--skip-compact`). It is also possible to select only part of the effect of a group option by following it with options that enable or disable specific features. Here are some examples:
+To reverse the effect of a group option, use its `--skip-xxx` form (`--skip-opt` or `--skip-compact`). It
+is also possible to select only part of the effect of a group option by following it with options that enable or disable specific features. Here are some examples:
 
 * To select the effect of `--opt` except for some features, use the `--skip` option for each feature. To disable extended inserts and memory buffering, use `--opt--skip-extended-insert` `--skip-quick`.\
   (Actually, `--skip-extended-insert--skip-quick` is sufficient because`--opt` is on by default.)
@@ -1008,13 +1010,14 @@ Or:
 shell> mariadb-dump --all-databases --flush-logs --master-data=2 > all_databases.sql
 ```
 
-The `--master-data` and `--single-transaction` options can be used simultaneously, which provides a convenient way to make an online backup suitable for use prior to point-in-time recovery if tables are stored that use the InnoDB storage engine.
+The `--master-data` and `--single-transaction` options can be used simultaneously, which provides a convenient way to make an online backup suitable for use prior to point-in-time recovery if tables are
+stored that use the InnoDB storage engine.
 
 ## See Also
 
 * [mariadb-backup](../../server-usage/backup-and-restore/mariadb-backup/)
 * [MariaDB point-in-time recovery](https://www.youtube.com/watch?v=ezHmnNmmcDo) (video)
-* [MariaDB Enterprise Backup](../../server-usage/backup-and-restore/mariadb-enterprise-backup.md)
+* [MariaDB Enterprise Backup](../../server-usage/backup-and-restore/backup-and-restore-with-mariadb-enterprise-server/mariadb-enterprise-backup.md)
 * [Upgrading to a newer major version of MariaDB](https://www.youtube.com/watch?v=1kLIXN2DoEo) (video)
 * [MariaDB dump file compatibility change](https://app.gitbook.com/s/3VYeeVGUV4AMqrA3zwy7/high-availability/state-snapshot-transfers-ssts-in-galera-cluster/manual-sst-of-galera-cluster-node-with-mariadb-backup) (blog, 2024)
 

@@ -1,8 +1,8 @@
 ---
 description: >-
-  Create a data source with MariaDB Connector/ODBC on Windows using ODBC Data
-  Source Administrator or on Linux by configuring UnixODBC with a driver entry
-  and DSN for MariaDB Server.
+  Create a data source with MariaDB Connector/ODBC on Windows using ODBC
+  Data Source Administrator or on Linux by configuring UnixODBC with a
+  driver entry and DSN for MariaDB Server.
 ---
 
 # Creating a Data Source with MariaDB Connector/ODBC
@@ -13,7 +13,7 @@ description: >-
 * It is compliant with the ODBC 3.8 standard.
 * It can be used as a drop-in replacement for MySQL Connector/ODBC.
 * It supports both Unicode and ANSI modes.
-* It uses the MariaDB/MySQL binary protocol (server-side [prepared statements](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/prepared-statements)) for `SQLPrepare`. One-shot `SQLExecDirect` queries default to the client-side text protocol unless the `SQL_ATTR_EXECDIRECT_ON_SERVER` attribute (or the `EDSERVER` connection option) is set.
+* It uses the MariaDB/MySQL binary protocol (server-side [prepared statements](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/prepared-statements)) for `SQLPrepare`. One-shot `SQLExecDirect` queries default to the client-side text protocol unless the `SQL_ATTR_EXECDIRECT_ON_SERVER` attribute (or the `EDSERVER` connection option) is set.
 
 The supported release series are:
 

@@ -18,7 +18,7 @@ The `PASSWORD()` function is used for hashing passwords for use in authenticatio
 
 Calculates and returns a hashed password string from the plaintext password _str_. Returns an empty string if the argument is `NULL`.
 
-The return value is a nonbinary string in the connection [character set and collation](../../../data-types/string-data-types/character-sets/), determined by the values of the [character\_set\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) system variables.
+The return value is a nonbinary string in the connection [character set and collation](../../../data-types/string-data-types/character-sets/), determined by the values of the [character\_set\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection) system variables.
 
 This is the function that is used for hashing MariaDB passwords for storage in the Password column of the [user table](../../../system-tables/the-mysql-database-tables/mysql-user-table.md) (see [privileges](../../../sql-statements/account-management-sql-statements/grant.md)), usually used with the [SET PASSWORD](../../../sql-statements/account-management-sql-statements/set-password.md) statement. It is not intended for use in other applications.
 
@@ -47,7 +47,7 @@ CONCAT(user, '@', host, ' => ', JSON_DETAILED(priv)): edtest2@localhost => {
 }
 ```
 
-The behavior of this function is affected by the value of the [old\_passwords](../../../../server-management/variables-and-modes/server-system-variables.md#old_passwords) system variable. If this is set to `1` (`0` is default), MariaDB reverts to using the [mysql\_old\_password authentication plugin](../../../plugins/authentication-plugins/authentication-plugin-mysql_old_password.md) by default for newly created users and passwords.
+The behavior of this function is affected by the value of the [old\_passwords](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#old_passwords) system variable. If this is set to `1` (`0` is default), MariaDB reverts to using the [mysql\_old\_password authentication plugin](../../../plugins/authentication-plugins/authentication-plugin-mysql_old_password.md) by default for newly created users and passwords.
 
 ## Examples
 

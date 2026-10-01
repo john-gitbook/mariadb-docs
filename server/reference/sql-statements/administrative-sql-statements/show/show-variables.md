@@ -17,7 +17,7 @@ SHOW [GLOBAL | SESSION] VARIABLES
 
 ## Description
 
-`SHOW VARIABLES` shows the values of MariaDB [system variables](../../../../server-management/variables-and-modes/server-system-variables.md). This does not include user-defined variables - see [here](../../../sql-structure/sql-language-structure/user-defined-variables.md#viewing) for details on viewing those.
+`SHOW VARIABLES` shows the values of MariaDB [system variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md). This does not include user-defined variables - see [here](../../../sql-structure/sql-language-structure/user-defined-variables.md#viewing) for details on viewing those.
 
 System variable information can also be obtained using the [mariadb-admin variables](../../../../clients-and-utilities/administrative-tools/mariadb-admin.md) command. The `LIKE` clause, if present, indicates which variable names to match. The `WHERE` clause can be given to select rows using more general conditions.
 
@@ -41,7 +41,7 @@ The `WHERE` and `LIKE` clauses can be given to select rows using more general co
 
 See [SET](../set-commands/set.md) for information on setting server system variables.
 
-See [Server System Variables](../../../../server-management/variables-and-modes/server-system-variables.md) for a list of all the variables that can be set.
+See [Server System Variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) for a list of all the variables that can be set.
 
 You can also see the server variables by querying the [Information Schema GLOBAL\_VARIABLES and SESSION\_VARIABLES](../../../system-tables/information-schema/information-schema-tables/information-schema-global_variables-and-session_variables-tables.md) tables.
 

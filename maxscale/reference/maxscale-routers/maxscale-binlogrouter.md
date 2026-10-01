@@ -153,7 +153,7 @@ If the server from which the binlogrouter replicates from is using semi-sync rep
 
 The binlogrouter is configured similarly to how normal routers are configured in MaxScale. It requires at least one listener where clients can connect to and one server from which the database user information can be retrieved. An example configuration can be found in the [example](maxscale-binlogrouter.md#example) section of this document.
 
-The settings that control change data capture from MariaDB to Exasol are documented separately in [ODBC replication to Exasol](maxscale-binlogrouter.md#odbc-replication-to-exasol).
+The settings that control change data capture from MariaDB to Exasol are documented separately in [ODBC replication to Exasol](#odbc-replication-to-exasol).
 
 ### `datadir`
 
@@ -322,7 +322,7 @@ Enable [semi-synchronous](../../../server/ha-and-performance/standard-replicatio
 
 In addition to serving binary logs to replicas, binlogrouter can apply the changes it reads to an [Exasol](https://www.exasol.com/) database over ODBC, providing change data capture (CDC) from MariaDB to Exasol. Committed changes are compacted, batched, and bulk-loaded into Exasol staging tables, then applied to the target tables with a `MERGE` in GTID order. Replication is asynchronous.
 
-CDC is enabled by setting [`odbc_connection_str`](maxscale-binlogrouter.md#odbc_connection_str). When it is empty, none of the other `odbc_*` settings have any effect.
+CDC is enabled by setting [`odbc_connection_str`](#odbc_connection_str). When it is empty, none of the other `odbc_*` settings have any effect.
 
 {% hint style="info" %}
 CDC to Exasol uses the Exasol ODBC driver shipped in the `maxscale-exasol` package and is available from MaxScale 25.10.3. For a step-by-step setup, see the [MariaDB MaxScale Exasolrouter tutorial](../../mariadb-maxscale-tutorials/mariadb-maxscale-exasolrouter.md#synchronizing-data-to-exasol-with-change-data-capture-cdc).
@@ -371,7 +371,7 @@ odbc_include_tables=sales.orders,sales.customers,inventory.stock
 
 A comma-separated list of tables that replicate `INSERT` statements only, each written as `schema.table`. Updates and deletes for these tables are dropped, so rows deleted in MariaDB are retained in Exasol. This suits append-only analytics targets, such as event or audit history that must outlive the source rows.
 
-Listing a table here enables its replication independently of [`odbc_include_tables`](maxscale-binlogrouter.md#odbc_include_tables), so a table does not have to appear in both lists. A schema containing an insert-only table is also protected from `DROP SCHEMA`, so dropping the schema in MariaDB does not discard the retained data in Exasol.
+Listing a table here enables its replication independently of [`odbc_include_tables`](#odbc_include_tables), so a table does not have to appear in both lists. A schema containing an insert-only table is also protected from `DROP SCHEMA`, so dropping the schema in MariaDB does not discard the retained data in Exasol.
 
 ```
 odbc_insert_only_tables=audit.events
@@ -404,7 +404,7 @@ Whether a target table in Exasol is created immediately from the replicated `CRE
 
 When disabled (the default), a target table is instead created lazily from the first row event that maps it, which derives the table from the binary log's row metadata rather than from the SQL. DDL that arrives for a table that does not yet exist in Exasol, such as an `ALTER TABLE` or a `RENAME TABLE`, is skipped rather than applied.
 
-Enabling [`odbc_manage_user_grants`](maxscale-binlogrouter.md#odbc_manage_user_grants) turns this setting on implicitly, because grants are resolved against tables that must already exist.
+Enabling [`odbc_manage_user_grants`](#odbc_manage_user_grants) turns this setting on implicitly, because grants are resolved against tables that must already exist.
 
 ### `odbc_stop_on_error`
 
@@ -428,7 +428,7 @@ Because the GTID position is persisted, CDC resumes from where it stopped when t
 
 Whether MariaDB users and their grants are replicated to Exasol. When disabled (the default), user and privilege statements such as `CREATE USER`, `DROP USER`, `GRANT`, and `REVOKE` are not applied to the target, and Exasol users are managed independently.
 
-Enabling this setting also enables [`odbc_create_table_from_sql`](maxscale-binlogrouter.md#odbc_create_table_from_sql).
+Enabling this setting also enables [`odbc_create_table_from_sql`](#odbc_create_table_from_sql).
 
 ### `odbc_perf_ncycles`
 
@@ -463,7 +463,7 @@ Raising this value increases throughput and memory use; lowering it reduces repl
 
 The number of buffered rows that triggers a bulk load when the pipeline is otherwise idle, that is, when no cycle is currently loading data into Exasol.
 
-This is the lower of the two row thresholds: it lets a batch be sent before [`odbc_perf_max_buffered_rows`](maxscale-binlogrouter.md#odbc_perf_max_buffered_rows) is reached when there is spare capacity, which keeps lag down on a moderate write load. Setting it to `0` disables the idle threshold, leaving `odbc_perf_max_buffered_rows` as the only row-count trigger.
+This is the lower of the two row thresholds: it lets a batch be sent before [`odbc_perf_max_buffered_rows`](#odbc_perf_max_buffered_rows) is reached when there is spare capacity, which keeps lag down on a moderate write load. Setting it to `0` disables the idle threshold, leaving `odbc_perf_max_buffered_rows` as the only row-count trigger.
 
 ### `odbc_perf_batch_size`
 
@@ -598,7 +598,7 @@ START SLAVE;
 
 When replicating from a Galera cluster, [select\_master](maxscale-binlogrouter.md#select_master) must be set to true, and the servers must be monitored by the [Galera Monitor](../maxscale-monitors/galera-monitor.md). Configuring binlogrouter is the same as described above.
 
-The Galera cluster must be configured to use [Wsrep GTID Mode](https://app.gitbook.com/s/3VYeeVGUV4AMqrA3zwy7/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/using-mariadb-gtids-with-mariadb-galera-cluster).
+The Galera cluster must be configured to use [Wsrep GTID Mode](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/3VYeeVGUV4AMqrA3zwy7/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/using-mariadb-gtids-with-mariadb-galera-cluster).
 
 The MariaDB version must be 10.5.1 or higher. The required GTID related server settings for MariaDB/Galera to work with Binlogrouter are listed here:
 

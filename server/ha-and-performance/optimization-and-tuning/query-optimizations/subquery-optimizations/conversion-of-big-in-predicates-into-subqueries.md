@@ -18,12 +18,12 @@ which opens new opportunities for the query optimizer.
 
 The conversion happens if the following conditions are met:
 
-* the IN list has more than 1000 elements (One can control it through the [in\_predicate\_conversion\_threshold](../../../../server-management/variables-and-modes/server-system-variables.md#in_predicate_conversion_threshold) parameter).
+* the IN list has more than 1000 elements (One can control it through the [in\_predicate\_conversion\_threshold](../../system-variables/server-system-variables.md#in_predicate_conversion_threshold) parameter).
 * the \[NOT] IN condition is at the top level of the WHERE/ON clause.
 
 ## Controlling the Optimization
 
-* The optimization is on by default. [MariaDB 10.3.18](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.18) (and debug builds prior to that) introduced the [in\_predicate\_conversion\_threshold](../../../../server-management/variables-and-modes/server-system-variables.md#in_predicate_conversion_threshold) variable. Set to `0` to disable the optimization.
+* The optimization is on by default. [MariaDB 10.3.18](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.3/10.3.18) (and debug builds prior to that) introduced the [in\_predicate\_conversion\_threshold](../../system-variables/server-system-variables.md#in_predicate_conversion_threshold) variable. Set to `0` to disable the optimization.
 
 ## Benefits of the Optimization
 

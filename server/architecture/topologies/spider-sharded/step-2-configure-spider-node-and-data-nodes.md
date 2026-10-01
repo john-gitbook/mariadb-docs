@@ -76,7 +76,7 @@ The Spider Node requires connection details for each Data Node.
 
 The Data Node runs MariaDB Enterprise Server, so the `FOREIGN DATA WRAPPER` is set to `mariadb`.
 
-Using a server object for connection details is optional. Alternatively, the connection details for the Data Node can be specified in the `COMMENT` table option of the [CREATE TABLE](../../../server-usage/tables/create-table.md) statement when [creating the Spider Table](step-2-configure-spider-node-and-data-nodes.md#create-the-spider-table).
+Using a server object for connection details is optional. Alternatively, the connection details for the Data Node can be specified in the `COMMENT` table option of the [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statement when [creating the Spider Table](step-2-configure-spider-node-and-data-nodes.md#create-the-spider-table).
 
 ## Create the Data Tables
 

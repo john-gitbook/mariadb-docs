@@ -8,7 +8,8 @@ description: >-
 
 ## Description
 
-MariaDB provides a standard way of creating spatial columns for geometry types, for example, with [CREATE TABLE](../../../server-usage/tables/create-table.md) or [ALTER TABLE](../../sql-statements/data-definition/alter/alter-table/). Spatial columns are supported for [MyISAM](../../../server-usage/storage-engines/myisam-storage-engine/), [InnoDB](../../../server-usage/storage-engines/innodb/) and [ARCHIVE](../../../server-usage/storage-engines/archive.md) tables. See also [SPATIAL INDEX](spatial-index.md).
+MariaDB provides a standard way of creating spatial columns for geometry types, for example, with [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md) or [ALTER TABLE](../../sql-statements/data-definition/alter/alter-table/). Spatial columns are supported for [MyISAM](../../../server-usage/storage-engines/myisam-storage-engine/), [InnoDB](../../../server-usage/storage-engines/innodb/) and [ARCHIVE](../../../server-usage/storage-engines/archive.md)
+tables. See also [SPATIAL INDEX](spatial-index.md).
 
 The basic geometry type is `GEOMETRY`, but the type can be more specific. The following types are supported:
 
@@ -71,7 +72,6 @@ INSERT INTO gis_point VALUES
 ```
 
 ### [LINESTRING](../../sql-statements/geometry-constructors/geometry-constructors/linestring.md)
-
 ```sql
 CREATE TABLE gis_line  (g LINESTRING);
 SHOW FIELDS FROM gis_line;

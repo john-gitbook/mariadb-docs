@@ -25,9 +25,9 @@ DDL statements are affected by some server system variables.
 
 [sql\_mode](../../../variables-and-modes/sql_mode.md) determines the behavior of some SQL statements and expressions, including how strict error checking is, and some details regarding the syntax. Objects like [stored procedures](../../../../server-usage/stored-routines/stored-procedures/), [stored functions](../../../../server-usage/stored-routines/stored-functions/) [triggers](../../../../server-usage/triggers-events/triggers/) and [views](../../../../server-usage/views/), are always executed with the sql\_mode that was in effect during their creation. [sql\_mode='MSSQL'](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/about/compatibility-and-differences/sql_modemssql) can be used to have MariaDB behaving as close to SQL Server as possible.
 
-[innodb\_strict\_mode](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_strict_mode) enables the so-called InnoDB strict mode. Normally some errors in the [CREATE TABLE](../../../../server-usage/tables/create-table.md) options are ignored. When InnoDB strict mode is enabled, the creation of InnoDB tables will fail with an error when certain mistakes are made.
+[innodb\_strict\_mode](../../../../server-usage/storage-engines/innodb/innodb-system-variables.md#innodb_strict_mode) enables the so-called InnoDB strict mode. Normally some errors in the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) options are ignored. When InnoDB strict mode is enabled, the creation of InnoDB tables will fail with an error when certain mistakes are made.
 
-[updatable\_views\_with\_limit](../../../variables-and-modes/server-system-variables.md#updatable_views_with_limit) determines whether view updates can be made with an [UPDATE](../../../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) or [DELETE](../../../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) statement with a `LIMIT` clause if the view does not contain all primary or not null unique key columns from the underlying table.
+[updatable\_views\_with\_limit](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#updatable_views_with_limit) determines whether view updates can be made with an [UPDATE](../../../../reference/sql-statements/data-manipulation/changing-deleting-data/update.md) or [DELETE](../../../../reference/sql-statements/data-manipulation/changing-deleting-data/delete.md) statement with a `LIMIT` clause if the view does not contain all primary or not null unique key columns from the underlying table.
 
 ### Dumps and sys.sql\_modules
 
@@ -102,7 +102,7 @@ By specifying the `--no-data` option we can dump the table structures without da
 
 mariadb-dump by default produces an output with both data and structure.
 
-`--no-create-info` can be used to skip the [CREATE TABLE](../../../../server-usage/tables/create-table.md) statements.
+`--no-create-info` can be used to skip the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statements.
 
 `--compatible=mssql` will produce an output that should be usable in SQL Server.
 
@@ -122,7 +122,7 @@ CSV files can also be used to export data to SQL Server. There are several ways 
 
 The [CONNECT](../../../../server-usage/storage-engines/connect/) storage engine allows one to access external data, in many forms:
 
-* [Data files](../../../../server-usage/storage-engines/connect/connect-table-types/connect-table-types-data-files.md) ([CSV](../../../../server-usage/storage-engines/connect/connect-table-types/connect-csv-and-fmt-table-types.md), [JSON](../../../../server-usage/storage-engines/connect/connect-table-types/connect-json-table-type/), [XML](../../../../server-usage/storage-engines/connect/connect-table-types/connect-xml-table-type.md), HTML and more).
+* [Data files](../../../../server-usage/storage-engines/connect/connect-table-types/connect-table-types-data-files.md) ([CSV](../../../../server-usage/storage-engines/connect/connect-table-types/connect-csv-and-fmt-table-types.md), [JSON](../../../../server-usage/storage-engines/connect/connect-table-types/connect-json-table-type/README.md), [XML](../../../../server-usage/storage-engines/connect/connect-table-types/connect-xml-table-type.md), HTML and more).
 * Remote databases, using the [ODBC](../../../../server-usage/storage-engines/connect/connect-table-types/connect-odbc-table-type-accessing-tables-from-another-dbms.md) or [JDBC](../../../../server-usage/storage-engines/connect/connect-table-types/connect-jdbc-table-type-accessing-tables-from-another-dbms.md) standards, or [MariaDB/MySQL native protocol](../../../../server-usage/storage-engines/connect/connect-table-types/connect-mysql-table-type-accessing-mysqlmariadb-tables.md).
 * Some [special data sources](../../../../server-usage/storage-engines/connect/connect-table-types/connect-table-types-special-virtual-tables.md).
 

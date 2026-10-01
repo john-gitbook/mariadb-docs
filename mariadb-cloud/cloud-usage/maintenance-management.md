@@ -2,7 +2,7 @@
 description: >-
   MariaDB Cloud maintenance management — schedule infrastructure and database
   security upgrades in weekly maintenance windows, defer or apply updates, and
-  track maintenance through its lifecycle in the
+  track maintenance through its lifecycle in the Portal or via the API.
 icon: wrench
 ---
 

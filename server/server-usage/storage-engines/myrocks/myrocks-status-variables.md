@@ -6,9 +6,9 @@ description: >-
 
 # MyRocks Status Variables
 
-This page documents status variables related to the [MyRocks](./) storage engine. See [Server Status Variables](../../../server-management/variables-and-modes/server-status-variables.md) for a complete list of status variables that can be viewed with [SHOW STATUS](../../../reference/sql-statements/administrative-sql-statements/show/show-status.md).
+This page documents status variables related to the [MyRocks](./) storage engine. See [Server Status Variables](../../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md) for a complete list of status variables that can be viewed with [SHOW STATUS](../../../reference/sql-statements/administrative-sql-statements/show/show-status.md).
 
-See also the [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `Rocksdb_block_cache_add`
 

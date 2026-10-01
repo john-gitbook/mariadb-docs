@@ -7,7 +7,7 @@ description: >-
 
 # Incrementing of the access\_denied\_errors Status Variable
 
-The [access\_denied\_errors](../../server-management/variables-and-modes/server-status-variables.md#access_denied_errors) status variable is incremented when someone tries to access something they do not have rights to.
+The [access\_denied\_errors](../../ha-and-performance/optimization-and-tuning/system-variables/server-status-variables.md#access_denied_errors) status variable is incremented when someone tries to access something they do not have rights to.
 
 This happens in the following cases:
 

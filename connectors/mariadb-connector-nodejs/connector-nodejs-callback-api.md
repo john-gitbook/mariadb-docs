@@ -60,12 +60,12 @@ Since the 3.x version, the driver has a reliable default, returning:
 
 For compatibility with the previous version or MySQL/mysql driver, four options have been added to return BIGINT/DECIMAL as a number, as the previous defaults.
 
-|               option | description                                                                                                                                                                 |    type   | default |
-| -------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
-| **insertIdAsNumber** | Whether the query should return the last insert ID from the INSERT/UPDATE command as BigInt or Number. default return BigInt                                                | _boolean_ |  false  |
-|  **decimalAsNumber** | Whether the query should return a decimal as a number. If enabled, it might return approximate values.                                                                      | _boolean_ |  false  |
-|   **bigIntAsNumber** | Whether the query should return the BigInt data type as a number. If enabled, it might return approximate values.                                                           | _boolean_ |  false  |
-| **checkNumberRange** | when used in conjunction with decimalAsNumber, insertIdAsNumber, or bigIntAsNumber, if conversion to a number is not exact, the connector will throw an error (since 3.0.1) | _boolean_ |  false  |
+|               option | description                                                                                                                                                                 |    type    | default |
+| -------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------: | :-----: |
+| **insertIdAsNumber** | Whether the query should return the last insert ID from the INSERT/UPDATE command as BigInt or Number. default return BigInt                                                |  _boolean_ |  false  |
+|  **decimalAsNumber** | Whether the query should return a decimal as a number. If enabled, it might return approximate values.                                                                      |  _boolean_ |  false  |
+|   **bigIntAsNumber** | Whether the query should return the BigInt data type as a number. If enabled, it might return approximate values.                                                           |  _boolean_ |  false  |
+| **checkNumberRange** | when used in conjunction with decimalAsNumber, insertIdAsNumber, or bigIntAsNumber, if conversion to a number is not exact, the connector will throw an error (since 3.0.1) | _boolean_ |  false   |
 
 Previous options `supportBigNumbers` and `bigNumberStrings` still exist for compatibility, but are now deprecated.
 
@@ -101,7 +101,7 @@ The connector has different solutions when this is the case. The `timezone` opti
 
 **IANA timezone/offset**
 
-When using an IANA timezone, the connector will set the connection timezone to the timezone. This can throw an error on connection if the timezone is unknown by the server (see [mariadb timezone documentation](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/data-types/string-data-types/character-sets/internationalization-and-localization/time-zones), timezone tables might not be initialized). If you are sure the server is using that timezone, this step can be skipped with the option `skipSetTimezone`.
+When using an IANA timezone, the connector will set the connection timezone to the timezone. This can throw an error on connection if the timezone is unknown by the server (see [mariadb timezone documentation](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/data-types/string-data-types/character-sets/internationalization-and-localization/time-zones), timezone tables might not be initialized). If you are sure the server is using that timezone, this step can be skipped with the option `skipSetTimezone`.
 
 If the timezone corresponds to the JavaScript default timezone, then no conversion will be done.
 
@@ -604,7 +604,7 @@ connection.query("SELECT * FROM mysql.user")
 > * `values`: _array_ Array of parameter (array of array or array of object if using named placeholders).
 > * `callback`: _function_ Callback function with arguments (error, results, metadata).
 >
-> callback either returns an [`Error`](connector-nodejs-callback-api.md#error) with results/metadata null or with error empty and results/metadata
+> callback either returns an [`Error`](#error) with results/metadata null or with error empty and results/metadata
 
 Implementation depends of server type and version. for MariaDB server version 10.2.7+, the implementation uses dedicated bulk protocol.
 

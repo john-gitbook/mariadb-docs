@@ -18,7 +18,7 @@ This function returns a string result with the concatenated non-NULL values from
 
 It returns NULL if all arguments are NULL, or there are no matching rows.
 
-The maximum returned length in bytes is determined by the [group\_concat\_max\_len](../../../server-management/variables-and-modes/server-system-variables.md#group_concat_max_len) server system variable, which defaults to 1M.
+The maximum returned length in bytes is determined by the [group\_concat\_max\_len](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#group_concat_max_len) server system variable, which defaults to 1M.
 
 If group\_concat\_max\_len <= 512, the return type is [VARBINARY](../../data-types/string-data-types/varbinary.md) or [VARCHAR](../../data-types/string-data-types/varchar.md); otherwise, the return type is [BLOB](../../data-types/string-data-types/blob.md) or [TEXT](../../data-types/string-data-types/text.md). The choice between binary or non-binary types depends from the input.
 

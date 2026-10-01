@@ -17,7 +17,7 @@ MariaDB Server supports `UNIQUE` constraints to ensure that a column's value is 
 
 ## unique\_checks System Variable
 
-MariaDB Server provides the [unique\_checks system variable](../../server-management/variables-and-modes/server-system-variables.md#unique_checks), which can be used to disable unique checks.
+MariaDB Server provides the [unique\_checks system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#unique_checks), which can be used to disable unique checks.
 
 When unique checks are disabled, the InnoDB change buffer is used for inserts into unique indexes, and duplicate values will not be detected.
 
@@ -33,7 +33,7 @@ Let's create an InnoDB table with a single column unique index after confirming 
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -54,7 +54,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement and specify the unique index with the `UNIQUE INDEX()` clause:
+4. Create the table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement and specify the unique index with the `UNIQUE INDEX()` clause:
 
 ```sql
 CREATE TABLE hq_sales.customers (
@@ -87,7 +87,7 @@ Let's create an InnoDB table with a composite (multi-column) unique index after 
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -108,7 +108,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement and specify the unique index with the UNIQUE INDEX() clause:
+4. Create the table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement and specify the unique index with the UNIQUE INDEX() clause:
 
 ```sql
 CREATE TABLE hq_sales.invoices (
@@ -133,7 +133,7 @@ Let's create an InnoDB table with a unique index on a single column prefix after
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -154,7 +154,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement and specify the unique index with the `UNIQUE INDEX()` clause:
+4. Create the table using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement and specify the unique index with the `UNIQUE INDEX()` clause:
 
 ```sql
 CREATE TABLE hq_sales.products (
@@ -179,7 +179,7 @@ Let's create an InnoDB table without a unique index, and then add a unique index
 $ mariadb --user=root
 ```
 
-2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../server-management/variables-and-modes/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
+2. Confirm that the default storage engine is InnoDB by checking the [default\_storage\_engine system variable](../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#default_storage_engine) using the [SHOW SESSION VARIABLES](../../reference/sql-statements/administrative-sql-statements/show/show-variables.md) statement:
 
 ```sql
 SHOW SESSION VARIABLES
@@ -200,7 +200,7 @@ SHOW SESSION VARIABLES
 CREATE DATABASE hq_sales;
 ```
 
-4. Create the table without a primary key using the [CREATE TABLE](../../server-usage/tables/create-table.md) statement:
+4. Create the table without a primary key using the [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) statement:
 
 ```sql
 CREATE TABLE hq_sales.customers (

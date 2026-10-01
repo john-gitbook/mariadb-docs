@@ -8,7 +8,7 @@ description: >-
 
 * **Introduced in**: MariaDB 12.3
 * **Type**: `optimizer_switch` flag
-* **Default Value**: `OFF`
+* **Default Value**: `OFF`&#x20;
 * **Dynamic**: Yes
 * **Scope**: Global
 
@@ -136,7 +136,7 @@ WHERE t1.col1 = t2.col1(+)
   AND t1.col2 = t3.col2(+);
 ```
 
-Without `reorder_outer_joins`_,_ the optimizer may follow the table order specified in the `FROM` clause.
+Without `reorder_outer_joins`_,_ the optimizer may follow the table order specified in the `FROM` clause.&#x20;
 
 With `reorder_outer_joins=ON`, the optimizer considers both:
 
@@ -154,8 +154,8 @@ and select the one with the lowest estimated cost.
 
 ## See Also
 
-* [optimizer\_prune\_level](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_prune_level)
-* [optimizer\_trace](../../../server-management/variables-and-modes/server-system-variables.md#optimizer_trace)
+* [optimizer\_prune\_level](../system-variables/server-system-variables.md#optimizer_prune_level)
+* [optimizer\_trace](../system-variables/server-system-variables.md#optimizer_trace)
 * [optimizer\_switch](optimizer-switch.md)
 * [Optimizer Switch](index-hints-how-to-force-query-plans.md#optimizer-switch)
 * [EXPLAIN](../../../reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/explain.md)

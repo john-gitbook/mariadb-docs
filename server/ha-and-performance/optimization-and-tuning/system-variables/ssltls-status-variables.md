@@ -1,5 +1,6 @@
 ---
-description: Status variables related to TLS/SSL-encrypted connections.
+description: >-
+  Status variables related to TLS/SSL-encrypted connections.
 ---
 
 # SSL/TLS Status Variables
@@ -179,8 +180,8 @@ See also [#notes](https://docs.openssl.org/master/man3/SSL_CTX_set_verify/#notes
 
 ## See Also
 
-* [Server Status Variables](../../../server-management/variables-and-modes/server-status-variables.md) - complete list of status variables.
-* [Full list of MariaDB options, system and status variables](../../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md)
+* [Server Status Variables](server-status-variables.md) - complete list of status variables.
+* [Full list of MariaDB options, system and status variables](../../../reference/full-list-of-mariadb-options-system-and-status-variables.md)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 

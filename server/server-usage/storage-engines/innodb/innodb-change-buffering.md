@@ -22,7 +22,7 @@ The Change Buffer only contains changes to secondary index leaf pages.
 
 In the days of old, only inserted rows could be buffered, so this buffer was called _Insert Buffer_. The old name still appears in several places, for example in the output of [SHOW ENGINE INNODB STATUS](../../../reference/sql-statements/administrative-sql-statements/show/show-engine-innodb-status.md).
 
-Inserts to `UNIQUE` secondary indexes cannot be buffered unless [unique\_checks=0](../../../server-management/variables-and-modes/server-system-variables.md#unique_checks) is used. This may sometimes allow duplicates to be inserted into the `UNIQUE` secondary index. Much of the time, the `UNIQUE` constraint would be checked because the change buffer could only be used if the index page is not located in the buffer pool.
+Inserts to `UNIQUE` secondary indexes cannot be buffered unless [unique\_checks=0](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#unique_checks) is used. This may sometimes allow duplicates to be inserted into the `UNIQUE` secondary index. Much of the time, the `UNIQUE` constraint would be checked because the change buffer could only be used if the index page is not located in the buffer pool.
 
 When rows are deleted, a flag is set, thus rows are not immediately deleted. Delete-marked records may be purged after the transaction has been committed and any read views that were created before the commit have been closed. Delete-mark and purge buffering of any secondary indexes is allowed.
 

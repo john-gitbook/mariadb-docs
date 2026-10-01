@@ -6,7 +6,7 @@ description: >-
 
 # Information Schema GLOBAL\_VARIABLES and SESSION\_VARIABLES Tables
 
-The [Information Schema](../) `GLOBAL_VARIABLES` and `SESSION_VARIABLES` tables stores a record of all [system variables](../../../../server-management/variables-and-modes/server-system-variables.md) and their global and session values respectively. This is the same information as displayed by the [SHOW VARIABLES](../../../sql-statements/administrative-sql-statements/show/show-variables.md) commands `SHOW GLOBAL VARIABLES` and `SHOW SESSION VARIABLES`.
+The [Information Schema](../) `GLOBAL_VARIABLES` and `SESSION_VARIABLES` tables stores a record of all [system variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md) and their global and session values respectively. This is the same information as displayed by the [SHOW VARIABLES](../../../sql-statements/administrative-sql-statements/show/show-variables.md) commands `SHOW GLOBAL VARIABLES` and `SHOW SESSION VARIABLES`.
 
 It contains the following columns:
 

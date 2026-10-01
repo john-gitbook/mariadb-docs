@@ -6,7 +6,7 @@ Full-text indexes built in [MyISAM](../../../../server-usage/storage-engines/myi
 
 ## MyISAM Stopwords
 
-For full-text indexes on MyISAM tables, by default, the list is built from the file `storage/myisam/ft_static.c`, and searched using the server's character set and collation. The [ft\_stopword\_file](../../../../server-management/variables-and-modes/server-system-variables.md#ft_stopword_file) system variable allows the default list to be overridden with words from another file, or for stopwords to be ignored altogether.
+For full-text indexes on MyISAM tables, by default, the list is built from the file `storage/myisam/ft_static.c`, and searched using the server's character set and collation. The [ft\_stopword\_file](../../system-variables/server-system-variables.md#ft_stopword_file) system variable allows the default list to be overridden with words from another file, or for stopwords to be ignored altogether.
 
 If the stopword list is changed, any existing full-text indexes need to be rebuilt
 

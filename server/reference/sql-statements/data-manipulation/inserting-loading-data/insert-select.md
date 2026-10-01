@@ -33,7 +33,7 @@ If the new table has a primary key or UNIQUE indexes, you can use [IGNORE](ignor
 
 [REPLACE](../changing-deleting-data/replace.md) can be used instead of `INSERT` to prevent duplicates on `UNIQUE` indexes by deleting old values. In that case, `ON DUPLICATE KEY UPDATE` cannot be used.
 
-`INSERT ... SELECT` works for tables which already exist. To create a table for a given resultset, you can use [CREATE TABLE ... SELECT](../../../../server-usage/tables/create-table.md).
+`INSERT ... SELECT` works for tables which already exist. To create a table for a given resultset, you can use [CREATE TABLE ... SELECT](../../data-definition/create/create-table.md).
 
 ## See Also
 

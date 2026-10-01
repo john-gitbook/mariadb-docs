@@ -1,5 +1,6 @@
 ---
-description: Situations in which the optimizer cannot use an index.
+description: >-
+  Situations in which the optimizer cannot use an index.
 ---
 
 # Notes When an Index Cannot Be Used
@@ -45,7 +46,7 @@ As a server variable:
 @@note_verbosity="all";
 ```
 
-[note\_verbosity](../../../server-management/variables-and-modes/server-system-variables.md#note_verbosity) describes with note categories one want to get notes for. Be aware that if the old [sql\_notes](../../../server-management/variables-and-modes/server-system-variables.md#sql_notes) variable is 0, one will not get any notes.
+[note\_verbosity](../system-variables/server-system-variables.md#note_verbosity) describes with note categories one want to get notes for. Be aware that if the old [sql\_notes](../system-variables/server-system-variables.md#sql_notes) variable is 0, one will not get any notes.
 
 It can have one or many of the following options:
 

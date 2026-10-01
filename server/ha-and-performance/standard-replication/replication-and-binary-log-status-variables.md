@@ -11,9 +11,9 @@ description: >-
 The terms _master_ and _slave_ have historically been used in replication, and MariaDB has begun the process of adding _primary_ and _replica_ synonyms. The old terms will continue to be used to maintain backward compatibility - see [MDEV-18777](https://jira.mariadb.org/browse/MDEV-18777) to follow progress on this effort.
 {% endhint %}
 
-The following status variables are useful in [binary logging](../../server-management/server-monitoring-logs/binary-log/) and [replication](./). See [Server Status Variables](../../server-management/variables-and-modes/server-status-variables.md) for a complete list of status variables that can be viewed with [SHOW STATUS](../../reference/sql-statements/administrative-sql-statements/show/show-status.md).
+The following status variables are useful in [binary logging](../../server-management/server-monitoring-logs/binary-log/) and [replication](./). See [Server Status Variables](../optimization-and-tuning/system-variables/server-status-variables.md) for a complete list of status variables that can be viewed with [SHOW STATUS](../../reference/sql-statements/administrative-sql-statements/show/show-status.md).
 
-See also the [Full list of MariaDB options, system and status variables](../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md).
+See also the [Full list of MariaDB options, system and status variables](../../reference/full-list-of-mariadb-options-system-and-status-variables.md).
 
 #### `Binlog_bytes_written`
 
@@ -72,14 +72,14 @@ See also the [Full list of MariaDB options, system and status variables](../../s
 
 #### `Binlog_gtid_index_hit`
 
-* Description: Incremented for each successful lookup in a [GTID index](gtid/#binlog-indexing).
+* Description: Incremented for each successful lookup in a [GTID index](gtid/README.md#binlog-indexing).
 * Scope: Global
 * Data Type: `numeric`
 * Introduced: [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114)
 
 #### `Binlog_gtid_index_miss`
 
-* Description: Incremented when a [GTID index](gtid/#binlog-indexing) lookup is not possible, which indicates that the index file is missing (eg. binlog written by old server version without GTID index support), or corrupt.
+* Description: Incremented when a [GTID index](gtid/README.md#binlog-indexing) lookup is not possible, which indicates that the index file is missing (eg. binlog written by old server version without GTID index support), or corrupt.
 * Scope: Global
 * Data Type: `numeric`
 * Introduced: [MariaDB 11.4](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/11.4/what-is-mariadb-114)
@@ -269,7 +269,7 @@ See also the [Full list of MariaDB options, system and status variables](../../s
 
 #### `Transactions_gtid_foreign_engine`
 
-* Description: Number of replicated transactions where the update of the `gtid_slave_pos` table had to choose a storage engine that did not otherwise participate in the transaction. This can indicate that setting [gtid\_pos\_auto\_engines](gtid/) might be useful. The global value can be flushed by [FLUSH STATUS](../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md).
+* Description: Number of replicated transactions where the update of the `gtid_slave_pos` table had to choose a storage engine that did not otherwise participate in the transaction. This can indicate that setting [gtid\_pos\_auto\_engines](gtid/README.md) might be useful. The global value can be flushed by [FLUSH STATUS](../../reference/sql-statements/administrative-sql-statements/flush-commands/flush.md).
 * Scope: Global
 * Data Type: `numeric`
 

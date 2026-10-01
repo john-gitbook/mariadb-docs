@@ -8,7 +8,7 @@ description: >-
 
 `cracklib_password_check` is a [password validation](./) plugin. It uses the [CrackLib](https://github.com/cracklib/cracklib) library to check the strength of new passwords. CrackLib is installed by default in many Linux distributions, since the system's [Pluggable Authentication Module (PAM)](https://en.wikipedia.org/wiki/Pluggable_authentication_module) authentication framework is usually configured to check the strength of new passwords with the [pam\_cracklib](https://linux.die.net/man/8/pam_cracklib) PAM module.
 
-Note that passwords can be directly set as a hash, bypassing the password validation, if the [strict\_password\_validation](../../../server-management/variables-and-modes/server-system-variables.md#strict_password_validation) variable is `OFF` (it is `ON` by default).
+Note that passwords can be directly set as a hash, bypassing the password validation, if the [strict\_password\_validation](../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#strict_password_validation) variable is `OFF` (it is `ON` by default).
 
 The plugin requires at least cracklib 2.9.0, so it is not available on Debian/Ubuntu builds before Debian 8 Jessie/Ubuntu 14.04 Trusty, RedHat Enterprise Linux / CentOS 6.
 

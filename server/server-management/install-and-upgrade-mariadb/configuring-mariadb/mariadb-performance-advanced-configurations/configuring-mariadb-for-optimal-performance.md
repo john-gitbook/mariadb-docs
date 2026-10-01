@@ -69,7 +69,8 @@ If `Aria_pagecache_reads` is much smaller than `Aria_pagecache_read_request` and
 ## Using in memory temporary tables
 
 Using memory tables for internal temporary results can speed up execution.\
-However, if the memory table gets full, then the memory table will be moved to disk, which can hurt performance.
+However, if the memory table gets full, then the memory table will be moved to
+disk, which can hurt performance.
 
 You can check how the internal memory tables are performing by executing:
 
@@ -88,24 +89,24 @@ MariaDB [test]> show global status like "Created%tables%";
 
 `Created_tmp_tables` is the total number of internal temporary tables created as part of executing queries like SELECT.`Created_tmp_disk_tables` shows how many of these did hit the storage.
 
-You can increase the storage for internal temporary tables by setting [max\_heap\_table\_size](../../../variables-and-modes/server-system-variables.md#max_heap_table_size) and [tmp\_memory\_table\_size](../../../variables-and-modes/server-system-variables.md#tmp_memory_table_size) high enough. These values are per connection.
+You can increase the storage for internal temporary tables by setting [max\_heap\_table\_size](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#max_heap_table_size) and [tmp\_memory\_table\_size](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#tmp_memory_table_size) high enough. These values are per connection.
 
 ## Lots of Connections
 
 ### A Lot of Fast Connections + Small Set of Queries + Disconnects
 
-* If you are doing a lot of fast connections / disconnects, you should increase [back\_log](../../../variables-and-modes/server-system-variables.md#back_log) and if you are running [MariaDB 10.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/changes-improvements-in-mariadb-10-1) or below [thread\_cache\_size](../../../variables-and-modes/server-system-variables.md#thread_cache_size).
+* If you are doing a lot of fast connections / disconnects, you should increase [back\_log](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#back_log) and if you are running [MariaDB 10.1](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.1/changes-improvements-in-mariadb-10-1) or below [thread\_cache\_size](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#thread_cache_size).
 * If you have a lot (> 128) of simultaneous running fast queries, you should consider setting [thread\_handling](../../../../ha-and-performance/optimization-and-tuning/buffers-caches-and-threads/thread-pool/thread-pool-system-status-variables.md) to `pool_of_threads`.
 
 ### Connecting From a Lot of Different Machines
 
-* If you are connecting from a lot of different machines you should increase [host\_cache\_size](../../../variables-and-modes/server-system-variables.md#host_cache_size) to the max number of machines (default 128) to cache the resolving of hostnames. If you don't connect from a lot of machines, you can set this to a very low value!
+* If you are connecting from a lot of different machines you should increase [host\_cache\_size](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#host_cache_size) to the max number of machines (default 128) to cache the resolving of hostnames. If you don't connect from a lot of machines, you can set this to a very low value!
 
 ## See Also
 
 * [MariaDB Memory Allocation](../../../../ha-and-performance/mariadb-memory-allocation.md)
-* [Full List of MariaDB Options, System and Status Variables](../../../variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md)
-* [Server system variables](../../../variables-and-modes/server-system-variables.md)
+* [Full List of MariaDB Options, System and Status Variables](../../../../reference/full-list-of-mariadb-options-system-and-status-variables.md)
+* [Server system variables](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md)
 * [mysqld options](../../../starting-and-stopping-mariadb/mariadbd-options.md)
 * [Performance schema](../../../../reference/system-tables/performance-schema/) helps you understand what is taking time and resources.
 * [Slow query log](../../../server-monitoring-logs/slow-query-log/) is used to find queries that are running slow.

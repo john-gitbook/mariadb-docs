@@ -1,7 +1,8 @@
 ---
 description: >-
-  MariaDB ColumnStore translates INSERT INTO .. SELECT into a cpimport bulk load
-  when batch insert mode is on and the statement runs outside a transaction.
+  MariaDB ColumnStore translates INSERT INTO .. SELECT into a
+  cpimport bulk load when batch insert mode is on and the statement runs
+  outside a transaction.
 ---
 
 # Data Loading with INSERT .. SELECT
@@ -59,7 +60,7 @@ After the command is executed, it will prompt you for a password.
 CREATE DATABASE inventory;
 ```
 
-3. For each table that you are importing, create the table with the [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/create-table) statement:
+3. For each table that you are importing, create the table with the [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create/create-table) statement:
 
 ```sql
 CREATE TABLE inventory.products (

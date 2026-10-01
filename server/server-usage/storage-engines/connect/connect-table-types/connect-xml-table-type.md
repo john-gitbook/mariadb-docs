@@ -6,9 +6,10 @@ description: The CONNECT storage engine.
 
 ## Overview
 
-CONNECT supports tables represented by XML files. For these tables, the standard input/output functions of the operating system are not used but the parsing and processing of the file is delegated to a specialized library. Two such systems are supported: libxml2, a part of the GNOME framework, but which does not require GNOME and, on Windows, MS-DOM (DOMDOC), the Microsoft standard support of XML documents.
+CONNECT supports tables represented by XML files. For these tables, the standard input/output functions of the operating system are not used but the parsing and processing of the file is delegated to a specialized library. Two such systems are supported: libxml2, a part of the GNOME
+framework, but which does not require GNOME and, on Windows, MS-DOM (DOMDOC), the Microsoft standard support of XML documents.
 
-DOMDOC is the default for the Windows version of CONNECT and libxml2 is always used on other systems. On Windows the choice can be specified using the XMLSUP [CREATE TABLE](../../../tables/create-table.md) list option, for instance specifying`option_list='xmlsup=libxml2'`.
+DOMDOC is the default for the Windows version of CONNECT and libxml2 is always used on other systems. On Windows the choice can be specified using the XMLSUP [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) list option, for instance specifying`option_list='xmlsup=libxml2'`.
 
 ## Creating XML Tables
 
@@ -100,7 +101,8 @@ It are displayed as:
 | Jean-Christophe Bernadac | Construire une application XML |              | Eyrolles Paris        | 1999    |
 | William J. Pardi         | XML en Action                  | James Guerin | Microsoft Press Paris | 1999    |
 
-Let us try to understand what happened. By default the column names correspond to tag names. Because this file is rather simple, CONNECT was able to default the top tag of the table as the root node `<BIBLIO>` of the file, and the row tags as the `<BOOK>` children of the table tag. In a more complex file, this should have been specified, as we will see later. Note that we didn't have to worry about the sub-tags such as `<FIRSTNAME>` or `<LASTNAME>` because CONNECT automatically retrieves the entire text contained in a tag and its sub-tags\[2].
+Let us try to understand what happened. By default the column names correspond to tag names. Because this file is rather simple, CONNECT was able to default the top tag of the table as the root node `<BIBLIO>` of the file, and the row tags as the `<BOOK>` children of the table tag. In a more complex file, this should have been specified, as we will see later. Note that we didn't have to worry
+about the sub-tags such as `<FIRSTNAME>` or `<LASTNAME>` because CONNECT automatically retrieves the entire text contained in a tag and its sub-tags\[2].
 
 Only the first author of the first book appears. This is because only the first occurrence of a column tag has been retrieved so the result has a proper tabular structure. We will see later what we can do about that.
 
@@ -221,11 +223,15 @@ tabname='BIBLIO' option_list='rownode=BOOK';
 
 This very flexible column parameter serves several purposes:
 
-* To specify the tag name, or the attribute name if different from the column name.
+* To specify the tag name, or the attribute name if different from the column
+  name.
 * To specify the type (tag or attribute) by a prefix of '@' for attributes.
 * To specify the path for sub-tags using the '/' character.
 
-This path is always relative to the current context (the column top node) and cannot be specified as an absolute path from the document root, therefore a leading '/' cannot be used. The path cannot be variable in node names or depth, therefore using '`//`' is not allowed.
+This path is always relative to the current context (the column top node) and
+cannot be specified as an absolute path from the document root, therefore a
+leading '/' cannot be used. The path cannot be variable in node names or depth,
+therefore using '`//`' is not allowed.
 
 The query:
 
@@ -344,7 +350,7 @@ This time, all ‘ele\` tags are recognized. This solution does not work with DO
 
 ## Having Columns Defined by Discovery
 
-It is possible to let the MariaDB discovery process do the job of column specification. When columns are not defined in the [CREATE TABLE](../../../tables/create-table.md) statement, CONNECT endeavours to analyze the XML file and to provide the column specifications. This is possible only for true XML tables, but not for HTML tables.
+It is possible to let the MariaDB discovery process do the job of column specification. When columns are not defined in the [CREATE TABLE](../../../../reference/sql-statements/data-definition/create/create-table.md) statement, CONNECT endeavours to analyze the XML file and to provide the column specifications. This is possible only for true XML tables, but not for HTML tables.
 
 For instance, the _xsamp_ table could have been created specifying:
 
@@ -439,20 +445,20 @@ SELECT COLUMN_NAME Name, type_name TYPE, column_size SIZE, NULLABLE, xpath FROM 
 
 You get the description of what the table columns are:
 
-| Name                  | TYPE | SIZE | NULLABLE | xpath                |
-| --------------------- | ---- | ---- | -------- | -------------------- |
-| ISBN                  | CHAR | 13   | 0        | @                    |
-| LANG                  | CHAR | 2    | 0        | @                    |
-| SUBJECT               | CHAR | 12   | 0        | @                    |
-| AUTHOR\_FIRSTNAME     | CHAR | 15   | 0        | AUTHOR/FIRSTNAME     |
-| AUTHOR\_LASTNAME      | CHAR | 8    | 0        | AUTHOR/LASTNAME      |
-| TRANSLATOR\_PREFIX    | CHAR | 24   | 1        | TRANSLATOR/@PREFIX   |
-| TRANSLATOR\_FIRSTNAME | CHAR | 7    | 1        | TRANSLATOR/FIRSTNAME |
-| TRANSLATOR\_LASTNAME  | CHAR | 6    | 1        | TRANSLATOR/LASTNAME  |
-| TITLE                 | CHAR | 30   | 0        |                      |
-| PUBLISHER\_NAME       | CHAR | 15   | 0        | PUBLISHER/NAME       |
-| PUBLISHER\_PLACE      | CHAR | 5    | 0        | PUBLISHER/PLACE      |
-| DATEPUB               | CHAR | 4    | 0        |                      |
+| Name                   | TYPE | SIZE | NULLABLE | xpath                 |
+| ---------------------- | ---- | ---- | -------- | --------------------- |
+| ISBN                   | CHAR | 13   | 0        | @                     |
+| LANG                   | CHAR | 2    | 0        | @                     |
+| SUBJECT                | CHAR | 12   | 0        | @                     |
+| AUTHOR\_FIRSTNAME      | CHAR | 15   | 0        | AUTHOR/FIRSTNAME      |
+| AUTHOR\_LASTNAME       | CHAR | 8    | 0        | AUTHOR/LASTNAME       |
+| TRANSLATOR\_PREFIX     | CHAR | 24   | 1        | TRANSLATOR/@PREFIX    |
+| TRANSLATOR\_FIRSTNAME  | CHAR | 7    | 1        | TRANSLATOR/FIRSTNAME  |
+| TRANSLATOR\_LASTNAME   | CHAR | 6    | 1        | TRANSLATOR/LASTNAME   |
+| TITLE                  | CHAR | 30   | 0        |                       |
+| PUBLISHER\_NAME        | CHAR | 15   | 0        | PUBLISHER/NAME        |
+| PUBLISHER\_PLACE       | CHAR | 5    | 0        | PUBLISHER/PLACE       |
+| DATEPUB                | CHAR | 4    | 0        |                       |
 
 ## Write Operations on XML Tables
 
@@ -477,7 +483,7 @@ Everything seems correct when we get the result:
 | ------------ | ------------------------ | ------------------------------ | ------------ | --------------------- |
 | applications | Jean-Christophe Bernadac | Construire une application XML |              | Eyrolles Paris        |
 | applications | William J. Pardi         | XML en Action                  | James Guerin | Microsoft Press Paris |
-| général      | Alain Michard            | XML, Language et Applications  |              | Eyrolles Paris        |
+| général      | Alain Michard            | XML, Language et Applications   |              | Eyrolles Paris        |
 
 However if we enter the apparently equivalent query on the _xsampall_ table, based on the same file:
 
@@ -494,7 +500,7 @@ this returns an apparently wrong answer:
 | ------------ | ------------------------ | ------------------------------ | ------------ | --------------------- |
 | applications | Jean-Christophe Bernadac | Construire une application XML |              | Eyrolles Paris        |
 | applications | William J. Pardi         | XML en Action                  | James Guerin | Microsoft Press Paris |
-| général      |                          | XML, Language et Applications  |              |                       |
+| général      |                          | XML, Language et Applications   |              |                       |
 
 What happened here? Simply, because we used the _xsamp_ table to do the Insert, what has been inserted within the XML file had the structure described for _xsamp_:
 
@@ -540,10 +546,17 @@ Now the added book, in the XML file, will have the required structure:
 
 ## Multiple Nodes in the XML Document
 
-Let us come back to the above example XML file. We have seen that the author node can be "multiple" meaning that there can be more than one author of a book. What can we do to get the complete information fitting the relational model? CONNECT provides you with two possibilities, but is restricted to only one such multiple node per table.
+Let us come back to the above example XML file. We have seen that the author
+node can be "multiple" meaning that there can be more than one author of a
+book. What can we do to get the complete information fitting the relational
+model? CONNECT provides you with two possibilities, but is restricted to only one
+such multiple node per table.
 
-The first and most challenging one is to return as many rows than there are authors, the other columns being repeated as if we had make a join between the author column and the rest of the table. To achieve this, simply specify the\
-“multiple” node name and the “expand” option when creating the table. For instance, we can create the _xsamp2_ table like this:
+The first and most challenging one is to return as many rows than there are
+authors, the other columns being repeated as if we had make a join between the
+author column and the rest of the table. To achieve this, simply specify the\
+“multiple” node name and the “expand” option when creating the table. For
+instance, we can create the _xsamp2_ table like this:
 
 ```
 CREATE TABLE xsamp2 (
@@ -573,7 +586,7 @@ This will retrieve and display the following result:
 | 9782212090819 | applications | Jean-Christophe Bernadac | Construire une application XML |
 | 9782212090819 | applications | François Knab            | Construire une application XML |
 | 9782840825685 | applications | William J. Pardi         | XML en Action                  |
-| 9782212090529 | général      | Alain Michard            | XML, Language et Applications  |
+| 9782212090529 | général      | Alain Michard            | XML, Language et Applications   |
 
 In this case, this is as if the table had four rows. However if we enter the query:
 
@@ -587,7 +600,7 @@ this time the result are:
 | ------------- | ------------ | ------------------------------ | --------------------- |
 | 9782212090819 | applications | Construire une application XML | Eyrolles Paris        |
 | 9782840825685 | applications | XML en Action                  | Microsoft Press Paris |
-| 9782212090529 | général      | XML, Language et Applications  | Eyrolles Paris        |
+| 9782212090529 | général      | XML, Language et Applications   | Eyrolles Paris        |
 
 Because the author column does not appear in the query, the corresponding row was not expanded. This is somewhat strange because this would have been different if we had been working on a table of a different type. However, it is closer to the relational model for which there should not be two identical rows (tuples) in a table. Nevertheless, you should be aware of this somewhat erratic behavior. For instance:
 
@@ -605,13 +618,15 @@ This last query replies:
 | 9782212090819 | applications | Construire une application XML | Eyrolles Paris        |
 | 9782212090819 | applications | Construire une application XML | Eyrolles Paris        |
 | 9782840825685 | applications | XML en Action                  | Microsoft Press Paris |
-| 9782212090529 | général      | XML, Language et Applications  | Eyrolles Paris        |
+| 9782212090529 | général      | XML, Language et Applications   | Eyrolles Paris        |
 
-Even though the author column does not appear in the result, the corresponding row was expanded because the multiple column was used in the where clause.
+Even though the author column does not appear in the result, the corresponding row was
+expanded because the multiple column was used in the where clause.
 
 ## Intermediate Multiple Node
 
-The "multiple" node can be an intermediate node. If we want to do the same expanding with the _xsampall_ table, there are nothing more to do. The\_xsampall2\_ table can be created with:
+The "multiple" node can be an intermediate node. If we want to do the same
+expanding with the _xsampall_ table, there are nothing more to do. The\_xsampall2\_ table can be created with:
 
 From Connect 1.7.0002
 
@@ -668,7 +683,7 @@ This query displays:
 | applications | fr   | Construire une application XML | Jean-Christophe | Bernadac | 1999 |
 | applications | fr   | Construire une application XML | François        | Knab     | 1999 |
 | applications | fr   | XML en Action                  | William J.      | Pardi    | 1999 |
-| général      | fr   | XML, Language et Applications  | Alain           | Michard  | 1998 |
+| général      | fr   | XML, Language et Applications   | Alain           | Michard  | 1998 |
 
 These composite tables, half array half tree, reserve some surprises for us when updating, deleting from or inserting into them. Insert just cannot generate this structure; if two rows are inserted with just a different author, two book nodes are generated in the XML file. Delete always deletes one book node and all its children nodes even if specified against only one author. Update is more complicated:
 
@@ -678,14 +693,15 @@ UPDATE xsampall2 SET YEAR = 2002 WHERE authorln = 'Bernadac';
 UPDATE xsampall2 SET authorln = 'Mercier' WHERE YEAR = 2002;
 ```
 
-After these three updates, the first two responding "Affected rows: 1" and the last one responding "Affected rows: 2", the last query answers:
+After these three updates, the first two responding "Affected rows: 1" and the
+last one responding "Affected rows: 2", the last query answers:
 
 | subject      | lang | title                          | first           | last    | year |
 | ------------ | ---- | ------------------------------ | --------------- | ------- | ---- |
 | applications | fr   | Construire une application XML | Jean-Christophe | Mercier | 2002 |
 | applications | fr   | Construire une application XML | François        | Knab    | 2002 |
 | applications | fr   | XML en Action                  | William J.      | Pardi   | 1999 |
-| général      | fr   | XML, Language et Applications  | Alain           | Michard | 1998 |
+| général      | fr   | XML, Language et Applications   | Alain           | Michard | 1998 |
 
 What must be understood here is that the Update modifies node values in the XML file, not cell values in the relational table. The first update worked normally. The second update changed the year value of the book and this shows for the two expanded rows because there is only one DATEPUB node for that book. Because the third update applies to a row having a certain date value, both author names were updated.
 
@@ -709,21 +725,30 @@ We will get the following result:
 | ------------- | ------------ | --------------------------------------- | ------------------------------ |
 | 9782212090819 | applications | Jean-Christophe Bernadac, François Knab | Construire une application XML |
 | 9782840825685 | applications | William J. Pardi                        | XML en Action                  |
-| 9782212090529 | général      | Alain Michard                           | XML, Language et Applications  |
+| 9782212090529 | général      | Alain Michard                           | XML, Language et Applications   |
 
-Note that updating the "multiple" column is not possible because CONNECT does not know which of the nodes to update.
+Note that updating the "multiple" column is not possible because CONNECT does
+not know which of the nodes to update.
 
-This could not have been done with the _xsampall2_ table because the author node is intermediate in the path, and making two lists, one of first names and another one of last names would not make sense anyway.
+This could not have been done with the _xsampall2_ table because the author
+node is intermediate in the path, and making two lists, one of first names and
+another one of last names would not make sense anyway.
 
 ### What if a table contains several multiple nodes
 
-This can be handled by creating several tables on the same file, each containing only one multiple node and constructing the desired result using joins.
+This can be handled by creating several tables on the same file, each
+containing only one multiple node and constructing the desired result using
+joins.
 
 ## Support of HTML Tables
 
-Most tables included in HTML documents cannot be processed by CONNECT because the HTML language is often not compatible with the syntax of XML. In particular, XML requires all open tags to be matched by a closing tag while it is sometimes optional in HTML. This is often the case concerning column tags.
+Most tables included in HTML documents cannot be processed by CONNECT because the HTML
+language is often not compatible with the syntax of XML. In particular, XML
+requires all open tags to be matched by a closing tag while it is sometimes
+optional in HTML. This is often the case concerning column tags.
 
-However, you can meet tables that respect the XML syntax but have some of the features of HTML tables. For instance:
+However, you can meet tables that respect the XML syntax but have some of the
+features of HTML tables. For instance:
 
 ```xml
 <?xml version="1.0"?>
@@ -744,7 +769,12 @@ However, you can meet tables that respect the XML syntax but have some of the fe
 </Beers>
 ```
 
-Here the different column tags are included in `<td></td>` tags as for HTML tables. You cannot just add this tag in the Xpath of the columns, because the search is done on the first occurrence of each tag, and this would cause this search to fail for all columns except the first one. This case is handled by specifying the _Colnode_ table option that gives the name of these column tags, for example:
+Here the different column tags are included in `<td></td>` tags as for HTML
+tables. You cannot just add this tag in the Xpath of the columns, because the
+search is done on the first occurrence of each tag, and this would cause this
+search to fail for all columns except the first one. This case is handled by
+specifying the _Colnode_ table option that gives the name of these column
+tags, for example:
 
 From Connect 1.7.0002
 
@@ -775,7 +805,8 @@ The table are displayed as:
 | Huntsman | Bath, UK | Wonderful hop, light alcohol |
 | Tuborg   | Danmark  | In small bottles             |
 
-However, you can deal with tables even closer to the HTML model. For example the _coffee.htm_ file:
+However, you can deal with tables even closer to the HTML model. For example
+the _coffee.htm_ file:
 
 ```xml
 <TABLE summary="This table charts the number of cups of coffe
@@ -861,7 +892,8 @@ option_list='coltype=HTML,encoding=ISO-8859-1,
 attribute=border=1;cellpadding=5,headattr=bgcolor=yellow';
 ```
 
-Supposing the table file does not exist yet, the first insert into that table, for instance by the following statement:
+Supposing the table file does not exist yet, the first insert into that table,
+for instance by the following statement:
 
 ```sql
 INSERT INTO handlers SELECT plugin_name, plugin_version,

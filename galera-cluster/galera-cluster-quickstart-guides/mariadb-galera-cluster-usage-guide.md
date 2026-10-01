@@ -70,7 +70,7 @@ DDL operations (like `CREATE TABLE`, `ALTER TABLE`, `DROP TABLE`) require specia
 Non-Blocking Operations (NBO) are exclusive to MariaDB Enterprise Server
 {% endhint %}
 
-* An advanced, automatic method that replicates DDL to all nodes while only blocking the target table, keeping the rest of the cluster operational.
+* An advanced, automatic method that replicates DDL to all nodes while only blocking the target table, keeping the rest of the cluster operational.&#x20;
 * The method requires specific syntax, such as an explicit `LOCK` clause, and is best suited for compatible `ALTER TABLE` statements.
 
 ### **`wsrep_OSU_method`:**
@@ -152,6 +152,6 @@ By following these guidelines, you can effectively manage and operate your Maria
 * [MariaDB Galera Cluster Guide](https://mariadb.com/docs/galera-cluster/galera-cluster-quickstart-guides/mariadb-galera-cluster-guide)
 * [Performing Schema Upgrades in Galera Cluster](../galera-management/general-operations/performing-schema-upgrades-in-galera-cluster.md)
 * [MariaDB documentation - Galera Cluster Best Practices](mariadb-galera-cluster-usage-guide.md#application-best-practices)
-* [MariaDB documentation - Galera Cluster Monitor](https://app.gitbook.com/s/0pSbu5DcMSW4KwAkUcmX/reference/maxscale-monitors/galera-monitor)
+* [MariaDB documentation - Galera Cluster Monitor](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/0pSbu5DcMSW4KwAkUcmX/reference/maxscale-monitors/galera-monitor)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>

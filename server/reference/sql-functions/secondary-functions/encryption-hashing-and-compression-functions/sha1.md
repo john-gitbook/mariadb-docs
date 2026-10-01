@@ -16,7 +16,7 @@ SHA1(str), SHA(str)
 
 Calculates an SHA-1 160-bit checksum for the string _`str`_, as described in RFC 3174 (Secure Hash Algorithm).
 
-The value is returned as a string of 40 hex digits, or `NULL` if the argument was NULL. The return value is a nonbinary string in the connection [character set and collation](../../../data-types/string-data-types/character-sets/), determined by the values of the [character\_set\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../server-management/variables-and-modes/server-system-variables.md#collation_connection) system variables.
+The value is returned as a string of 40 hex digits, or `NULL` if the argument was NULL. The return value is a nonbinary string in the connection [character set and collation](../../../data-types/string-data-types/character-sets/), determined by the values of the [character\_set\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#character_set_connection) and [collation\_connection](../../../../ha-and-performance/optimization-and-tuning/system-variables/server-system-variables.md#collation_connection) system variables.
 
 ## Examples
 

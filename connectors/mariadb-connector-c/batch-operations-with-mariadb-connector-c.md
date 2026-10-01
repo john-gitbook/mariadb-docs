@@ -1,8 +1,8 @@
 ---
 description: >-
   MariaDB Connector/C supports batch (bulk) operations by binding an array of
-  parameter sets to a single prepared statement, sending many rows to the server
-  in one execution.
+  parameter sets to a single prepared statement, sending many rows to the
+  server in one execution.
 ---
 
 # Batch Operations with MariaDB Connector/C
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-Confirm the rows were inserted by using [MariaDB Client](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/clients-and-utilities/mariadb-client) to execute a [SELECT](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/selecting-data/select) statement:
+Confirm the rows were inserted by using [MariaDB Client](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/clients-and-utilities/mariadb-client) to execute a [SELECT](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-manipulation/selecting-data/select) statement:
 
 ```sql
 SELECT * FROM test.contacts;

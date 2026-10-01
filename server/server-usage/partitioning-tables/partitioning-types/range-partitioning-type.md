@@ -12,7 +12,7 @@ A variant of this partitioning method, [RANGE COLUMNS](range-columns-and-list-co
 
 ## Syntax
 
-The last part of a [CREATE TABLE](../../tables/create-table.md) statement can be definition of the new table's partitions. In the case of `RANGE` partitioning, the syntax is the following:
+The last part of a [CREATE TABLE](../../../reference/sql-statements/data-definition/create/create-table.md) statement can be definition of the new table's partitions. In the case of `RANGE` partitioning, the syntax is the following:
 
 ```bnf
 PARTITION BY RANGE (partitioning_expression)

@@ -26,6 +26,7 @@ CREATE [OR REPLACE] [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 ```
 
 ![Railroad diagram of CREATE SEQUENCE — equivalent to the BNF above](../../../.gitbook/assets/create-sequence-railroad.svg)
+
 {% endtab %}
 
 {% tab title="< 11.5" %}
@@ -45,9 +46,9 @@ CREATE [OR REPLACE] [TEMPORARY] SEQUENCE [IF NOT EXISTS] sequence_name
 {% endtab %}
 {% endtabs %}
 
-The options for `CREATE SEQUENCE` can be given in any order, optionally followed by [table\_options](../../../server-usage/tables/create-table.md#table-options).
+The options for `CREATE SEQUENCE` can be given in any order, optionally followed by [table\_options](../../sql-statements/data-definition/create/create-table.md#table-options).
 
-_`table_options`_ can be any of the normal table options in [CREATE TABLE](../../../server-usage/tables/create-table.md) — the most used ones are `ENGINE=...` and `COMMENT=`.
+_`table_options`_ can be any of the normal table options in [CREATE TABLE](../../sql-statements/data-definition/create/create-table.md) — the most used ones are `ENGINE=...` and `COMMENT=`.
 
 `NOMAXVALUE` and `NOMINVALUE` are there to allow one to create `SEQUENCE`s using the Oracle syntax.
 

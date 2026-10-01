@@ -15,7 +15,7 @@ The terms _master_ and _slave_ have historically been used in replication, and M
 
 This page lists system variables that are related to [binary logging](../../server-management/server-monitoring-logs/binary-log/) and [replication](./).
 
-See [Server System Variables](../../server-management/variables-and-modes/server-system-variables.md) for a complete list of system variables and instructions on setting them, as well as [System variables for global transaction ID](gtid/gtid-system-variables.md).
+See [Server System Variables](../optimization-and-tuning/system-variables/server-system-variables.md) for a complete list of system variables and instructions on setting them, as well as [System variables for global transaction ID](gtid/gtid-system-variables.md).
 
 Also see [mariadbd replication options](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#replication-and-binary-logging-options) for related options that are not system variables (such as [binlog\_do\_db](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#binlog-do-db) and [binlog\_ignore\_db](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#binlog-ignore-db)).
 
@@ -62,7 +62,7 @@ Also see [mariadbd replication options](../../server-management/starting-and-sto
 
 #### `binlog_cache_size`
 
-* Description: If the [binary log](../../server-management/server-monitoring-logs/binary-log/) is active, this variable determines the size in bytes, per-connection, of the cache holding a record of binary log changes during a transaction. A separate variable, [binlog\_stmt\_cache\_size](replication-and-binary-log-system-variables.md#binlog_stmt_cache_size), sets the upper limit for the statement cache. The [binlog\_cache\_disk\_use](replication-and-binary-log-status-variables.md#binlog_cache_disk_use) and [binlog\_cache\_use](replication-and-binary-log-status-variables.md#binlog_cache_use) [server status variables](../../server-management/variables-and-modes/server-status-variables.md) indicates whether this variable needs to be increased (you want a low ratio of binlog\_cache\_disk\_use to binlog\_cache\_use).
+* Description: If the [binary log](../../server-management/server-monitoring-logs/binary-log/) is active, this variable determines the size in bytes, per-connection, of the cache holding a record of binary log changes during a transaction. A separate variable, [binlog\_stmt\_cache\_size](replication-and-binary-log-system-variables.md#binlog_stmt_cache_size), sets the upper limit for the statement cache. The [binlog\_cache\_disk\_use](replication-and-binary-log-status-variables.md#binlog_cache_disk_use) and [binlog\_cache\_use](replication-and-binary-log-status-variables.md#binlog_cache_use) [server status variables](../optimization-and-tuning/system-variables/server-status-variables.md) indicates whether this variable needs to be increased (you want a low ratio of binlog\_cache\_disk\_use to binlog\_cache\_use).
 * Command line: `--binlog-cache-size=#`
 * Scope: Global
 * Dynamic: Yes
@@ -172,7 +172,7 @@ Also see [mariadbd replication options](../../server-management/starting-and-sto
 
 #### `binlog_gtid_index`
 
-* Description: Enable the creation of a GTID index for every binlog file, and the use of such index for speeding up GTID lookup in the binlog. See [Binlog indexing](gtid/#binlog-indexing).
+* Description: Enable the creation of a GTID index for every binlog file, and the use of such index for speeding up GTID lookup in the binlog. See [Binlog indexing](gtid/README.md#binlog-indexing).
 * Command line: `--binlog-gtid-index{=0|1}`
 * Scope: Global
 * Dynamic: Yes
@@ -182,7 +182,7 @@ Also see [mariadbd replication options](../../server-management/starting-and-sto
 
 #### `binlog_gtid_index_page_size`
 
-* Description: Page size to use for the binlog GTID index. See [Binlog indexing](gtid/#binlog-indexing).
+* Description: Page size to use for the binlog GTID index. See [Binlog indexing](gtid/README.md#binlog-indexing).
 * Command line: `--binlog-gtid-index-page-size=#`
 * Scope: Global
 * Dynamic: Yes
@@ -193,7 +193,7 @@ Also see [mariadbd replication options](../../server-management/starting-and-sto
 
 #### `binlog_gtid_index_span_min`
 
-* Description: Control sparseness of the binlog GTID index. If set, at most one index record is added for every `N` bytes of binlog file written, to reduce the size of the index. Normally, this does not need tuning. See [Binlog indexing](gtid/#binlog-indexing).
+* Description: Control sparseness of the binlog GTID index. If set, at most one index record is added for every `N` bytes of binlog file written, to reduce the size of the index. Normally, this does not need tuning. See [Binlog indexing](gtid/README.md#binlog-indexing).
 * Command line: `--binlog-gtid-index-span-min=#`
 * Scope: Global
 * Dynamic: Yes
@@ -308,7 +308,7 @@ Also see [mariadbd replication options](../../server-management/starting-and-sto
 
 #### `binlog_stmt_cache_size`
 
-* Description: If the [binary log](../../server-management/server-monitoring-logs/binary-log/) is active, this variable determines the size in bytes of the cache holding a record of binary log changes outside of a transaction. The variable [binlog\_cache\_size](replication-and-binary-log-system-variables.md#binlog_cache_size), determines the cache size for binary log statements inside a transaction. The [binlog\_stmt\_cache\_disk\_use](replication-and-binary-log-status-variables.md#binlog_stmt_cache_disk_use) and [binlog\_stmt\_cache\_use](replication-and-binary-log-status-variables.md#binlog_stmt_cache_use) [server status variables](../../server-management/variables-and-modes/server-status-variables.md) indicates whether this variable needs to be increased (you want a low ratio of `binlog_stmt_cache_disk_use` to `binlog_stmt_cache_use`).
+* Description: If the [binary log](../../server-management/server-monitoring-logs/binary-log/) is active, this variable determines the size in bytes of the cache holding a record of binary log changes outside of a transaction. The variable [binlog\_cache\_size](replication-and-binary-log-system-variables.md#binlog_cache_size), determines the cache size for binary log statements inside a transaction. The [binlog\_stmt\_cache\_disk\_use](replication-and-binary-log-status-variables.md#binlog_stmt_cache_disk_use) and [binlog\_stmt\_cache\_use](replication-and-binary-log-status-variables.md#binlog_stmt_cache_use) [server status variables](../optimization-and-tuning/system-variables/server-status-variables.md) indicates whether this variable needs to be increased (you want a low ratio of `binlog_stmt_cache_disk_use` to `binlog_stmt_cache_use`).
 * Command line: `--binlog-stmt-cache-size=#`
 * Scope: Global
 * Dynamic: Yes
@@ -354,7 +354,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `encrypt_binlog`
 
-* Description: Encrypt [binary logs](../../server-management/server-monitoring-logs/binary-log/) (including [relay logs](../../server-management/server-monitoring-logs/binary-log/relay-log.md)). See [Data at Rest Encryption](../../security/encryption/data-at-rest-encryption/) and [Encrypting Binary Logs](../../security/encryption/data-at-rest-encryption/managing-binary-log-encryption.md).
+* Description: Encrypt [binary logs](../../server-management/server-monitoring-logs/binary-log/) (including [relay logs](../../server-management/server-monitoring-logs/binary-log/relay-log.md)). See [Data at Rest Encryption](../../security/encryption/data-at-rest-encryption/README.md) and [Encrypting Binary Logs](../../security/encryption/data-at-rest-encryption/managing-binary-log-encryption.md).
 * Command line: `--encrypt-binlog[={0|1}]`
 * Scope: Global
 * Dynamic: No
@@ -383,17 +383,17 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
     * Preventing Data Loss: If you restart a primary server and do not set `--init-rpl-role` to `SLAVE`, the server will not truncate transactions required by the replicas.
     * Requirements: This protection allows you to keep both `rpl_semi_sync_master_enabled` and `rpl_semi_sync_slave_enabled` active on a primary to ensure no transactions are lost during a restart.
 * Default Value: `MASTER`
-* Valid values: `MASTER` or `SLAVE`
+* Valid values: `MASTER` or `SLAVE`&#x20;
 * Introduced (as a variable): MariaDB 13.0.1 (prior, it was only an option you could set in a [configuration file](../../server-management/install-and-upgrade-mariadb/configuring-mariadb/configuring-mariadb-with-option-files.md)). The variable can be queried with `SHOW VARIABLES LIKE 'init_rpl_role'` or `SELECT @@init_rpl_role` ([MDEV-38202](https://jira.mariadb.org/browse/MDEV-38202)).
 
 #### `init_slave`
 
-* Description: Similar to [init\_connect](../../server-management/variables-and-modes/server-system-variables.md#init_connect), but the string contains one or more SQL statements (separated by semicolons) that are executed by a replica server each time the SQL thread starts. These statements are only executed after the acknowledgement is sent to the replica and [START REPLICA](../../reference/sql-statements/administrative-sql-statements/replication-statements/start-replica.md) completes.
+* Description: Similar to [init\_connect](../optimization-and-tuning/system-variables/server-system-variables.md#init_connect), but the string contains one or more SQL statements (separated by semicolons) that are executed by a replica server each time the SQL thread starts. These statements are only executed after the acknowledgement is sent to the replica and [START REPLICA](../../reference/sql-statements/administrative-sql-statements/replication-statements/start-replica.md) completes.
 * Command line: `--init-slave=name`
 * Scope: Global
 * Dynamic: Yes
 * Data Type: `string`
-* Related variables: [init\_connect](../../server-management/variables-and-modes/server-system-variables.md#init_connect)
+* Related variables: [init\_connect](../optimization-and-tuning/system-variables/server-system-variables.md#init_connect)
 
 #### `innodb_binlog_state_interval`
 
@@ -406,7 +406,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `log_bin`
 
-* Description: Whether [binary logging](../../server-management/server-monitoring-logs/binary-log/) is enabled or not. If the `--log-bin` [option](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) is used, `log_bin` is set to `ON`, otherwise to `OFF` (or when `--skip-log-bin` / `--disable-log-bin` is used). If no `name` option is given for `--log-bin`, `datadir/`_`log-basename`_`-bin` or _`datadir`_`/mysql-bin` are used (the latter is used if [--log-basename](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#log-basename) is not specified). We strongly recommend you use either `--log-basename`, or to specify a filename to ensure that [replication](./) doesn't stop if the real hostname of the computer changes. The name option can optionally include an absolute path. If no path is specified, the log is written to the [data directory](../../server-management/variables-and-modes/server-system-variables.md#datadir). The name can optionally include the file extension; if it does, it is stripped, and only the file basename is used.
+* Description: Whether [binary logging](../../server-management/server-monitoring-logs/binary-log/) is enabled or not. If the `--log-bin` [option](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md) is used, `log_bin` is set to `ON`, otherwise to `OFF` (or when `--skip-log-bin` / `--disable-log-bin` is used). If no `name` option is given for `--log-bin`, `datadir/`_`log-basename`_`-bin` or _`datadir`_`/mysql-bin` are used (the latter is used if [--log-basename](../../server-management/starting-and-stopping-mariadb/mariadbd-options.md#log-basename) is not specified). We strongly recommend you use either `--log-basename`, or to specify a filename to ensure that [replication](./) doesn't stop if the real hostname of the computer changes. The name option can optionally include an absolute path. If no path is specified, the log is written to the [data directory](../optimization-and-tuning/system-variables/server-system-variables.md#datadir). The name can optionally include the file extension; if it does, it is stripped, and only the file basename is used.
 * Command line: `--log-bin[=name]`, `--skip-log-bin`, `--disable-log-bin`
 * Scope: Global
 * Dynamic: No
@@ -619,7 +619,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 #### `relay_log_recovery`
 
 * Description: If set to `1` (`0` is default), on startup the replica drops all [relay logs](../../server-management/server-monitoring-logs/binary-log/relay-log.md) that haven't yet been processed, and retrieve relay logs from the primary. Can be useful after the replica has crashed to prevent the processing of corrupt relay logs. relay\_log\_recovery should always be set together with [relay\_log\_purge](replication-and-binary-log-system-variables.md#relay_log_purge). Setting `relay-log-recovery=1` with `relay-log-purge=0` can cause the relay log to be read from files that were not purged, leading to data inconsistencies.
-  * This variable only has an effect on replicas that connect using binary log file and position coordinates (that is, `CHANGE MASTER TO MASTER_USE_GTID=NO`). A replica that connects using [GTIDs](gtid/) purges its relay logs every time the replication threads start, including after a restart, regardless of this setting.
+  * This variable only has an effect on replicas that connect using binary log file and position coordinates (that is, `CHANGE MASTER TO MASTER_USE_GTID=NO`). A replica that connects using [GTIDs](gtid/README.md) purges its relay logs every time the replication threads start, including after a restart, regardless of this setting.
   * With [semisynchronous replication](semisynchronous-replication.md#relay-log-durability), setting this variable to `1` discards transactions that the replica has already acknowledged to the primary. Those transactions are refetched from the primary, so this is only a problem if the primary has lost them as well. Use `relay_log_recovery=0` on semisynchronous replicas that connect using binary log coordinates.
 * Command line: `--relay-log-recovery`
 * Scope: Global
@@ -675,7 +675,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `replicate_events_marked_for_skip`
 
-* Description: Tells the replica whether to [replicate](./) events that are marked with the `@@skip_replication` flag. See [Selectively skipping replication of binlog events](../../server-management/server-monitoring-logs/binary-log/selectively-skipping-replication-of-binlog-events.md) for more information.
+* Description: Tells the replica whether to [replicate](./) events that are marked with the `@@skip_replication` flag. See [Selectively skipping replication of binlog events](selectively-skipping-replication-of-binlog-events.md) for more information.
 * Command line: `--replicate-events-marked-for-skip`
 * Scope: Global
 * Dynamic: Yes
@@ -826,7 +826,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `skip_replication`
 
-* Description: Changes are logged into the [binary log](../../server-management/server-monitoring-logs/binary-log/) with the @@skip\_replication flag set. Such events are not be [replicated](./) by replica that run with `--replicate-events-marked-for-skip` set different from its default of `REPLICATE`. See [Selectively skipping replication of binlog events](../../server-management/server-monitoring-logs/binary-log/selectively-skipping-replication-of-binlog-events.md) for more information.
+* Description: Changes are logged into the [binary log](../../server-management/server-monitoring-logs/binary-log/) with the @@skip\_replication flag set. Such events are not be [replicated](./) by replica that run with `--replicate-events-marked-for-skip` set different from its default of `REPLICATE`. See [Selectively skipping replication of binlog events](selectively-skipping-replication-of-binlog-events.md) for more information.
 * Command line: None
 * Scope: Session
 * Dynamic: Yes
@@ -856,7 +856,8 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 #### `slave_connections_needed_for_purge`
 
 * Description: Minimum number of connected replicas required for automatic [binary log](../../server-management/server-monitoring-logs/binary-log/) purge with [max\_binlog\_total\_size](replication-and-binary-log-system-variables.md#max_binlog_total_size), [binlog\_expire\_logs\_seconds](replication-and-binary-log-system-variables.md#binlog_expire_logs_seconds) or [expire\_logs\_days](replication-and-binary-log-system-variables.md#expire_logs_days).\
-  Change of the value triggers an attempt to purging, though without binlog rotation, with the purged set of files satisfying the above two parameters and the value that is set itself.
+  Change of the value triggers an attempt to purging, though without binlog rotation, with the purged set of
+  files satisfying the above two parameters and the value that is set itself.
 * Command line: `--slave-connections-needed-for-purge=#`
 * Scope: Global
 * Dynamic: Yes
@@ -867,7 +868,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `slave_ddl_exec_mode`
 
-* Description: Modes for how [replication](./) of DDL events should be executed. Legal values are `STRICT` and `IDEMPOTENT` (default). In `IDEMPOTENT` mode, the replica does not stop for failed DDL operations that would not cause a difference between the primary and the replica. In particular [CREATE TABLE](../../server-usage/tables/create-table.md) is treated as [CREATE OR REPLACE TABLE](../../server-usage/tables/create-table.md#create-or-replace) and [DROP TABLE](../../server-usage/tables/drop-table.md) is treated as `DROP TABLE IF EXISTS`.
+* Description: Modes for how [replication](./) of DDL events should be executed. Legal values are `STRICT` and `IDEMPOTENT` (default). In `IDEMPOTENT` mode, the replica does not stop for failed DDL operations that would not cause a difference between the primary and the replica. In particular [CREATE TABLE](../../reference/sql-statements/data-definition/create/create-table.md) is treated as [CREATE OR REPLACE TABLE](../../reference/sql-statements/data-definition/create/create-table.md#create-or-replace) and [DROP TABLE](../../reference/sql-statements/data-definition/drop/drop-table.md) is treated as `DROP TABLE IF EXISTS`.
 * Command line: `--slave-ddl-exec-mode=name`
 * Scope: Global
 * Dynamic: Yes
@@ -877,7 +878,8 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `slave_domain_parallel_threads`
 
-* Description: When set to a non-zero value, each [replication](./) domain in one primary connection can reserve at most that many worker threads at any one time, leaving the rest (up to the value of [slave\_parallel\_threads](replication-and-binary-log-system-variables.md#slave_parallel_threads)) free for other primary connections or replication domains to use in parallel. See [Parallel Replication](parallel-replication.md#configuration-variable-slave_domain_parallel_threads) for details.
+* Description: When set to a non-zero value, each [replication](./) domain in one primary connection can reserve at most that many worker threads at any one time, leaving the rest (up to the value of [slave\_parallel\_threads](replication-and-binary-log-system-variables.md#slave_parallel_threads)) free for other primary connections
+  or replication domains to use in parallel. See [Parallel Replication](parallel-replication.md#configuration-variable-slave_domain_parallel_threads) for details.
 * Command line: `--slave-domain-parallel-threads=#`
 * Scope: Global
 * Dynamic: Yes
@@ -896,7 +898,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `slave_load_tmpdir`
 
-* Description: Directory where the replica stores temporary files for [replicating](./) [LOAD DATA INFILE](../../reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile.md) statements. If not set, the replica uses [tmpdir](../../server-management/variables-and-modes/server-system-variables.md#tmpdir). Should be set to a disk-based directory that survives restarts, or else replication can fail.
+* Description: Directory where the replica stores temporary files for [replicating](./) [LOAD DATA INFILE](../../reference/sql-statements/data-manipulation/inserting-loading-data/load-data-into-tables-or-index/load-data-infile.md) statements. If not set, the replica uses [tmpdir](../optimization-and-tuning/system-variables/server-system-variables.md#tmpdir). Should be set to a disk-based directory that survives restarts, or else replication can fail.
 * Command line: `--slave-load-tmpdir=path`
 * Scope: Global
 * Dynamic: No
@@ -905,7 +907,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 #### `slave_max_allowed_packet`
 
-* Description: Maximum packet size in bytes for replica SQL and I/O threads. This value overrides [max\_allowed\_packet](../../server-management/variables-and-modes/server-system-variables.md#max_allowed_packet) for [replication](./) purposes. Set in multiples of 1024 (the minimum) up to 1GB
+* Description: Maximum packet size in bytes for replica SQL and I/O threads. This value overrides [max\_allowed\_packet](../optimization-and-tuning/system-variables/server-system-variables.md#max_allowed_packet) for [replication](./) purposes. Set in multiples of 1024 (the minimum) up to 1GB
 * Command line: `--slave-max-allowed-packet=#`
 * Scope: Global
 * Dynamic: Yes
@@ -940,7 +942,8 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 * Description: When [parallel\_replication](parallel-replication.md) is used, the [SQL thread](replication-threads.md#replica-sql-thread) reads ahead in the relay logs, queueing events in memory while looking for opportunities for executing events in parallel. This system variable sets a limit for how much memory it uses for this.
   * The configured value of this system variable is actually allocated for each [worker thread](replication-threads.md#worker-threads), so the total allocation is actually equivalent to the following:
     * [slave\_parallel\_max\_queued](replication-and-binary-log-system-variables.md) \* [slave\_parallel\_threads](replication-and-binary-log-system-variables.md)
-  * This system variable is only meaningful when parallel replication is configured (i.e. when [slave\_parallel\_threads](replication-and-binary-log-system-variables.md) > `0`).
+  * This system variable is only meaningful when parallel
+    replication is configured (i.e. when [slave\_parallel\_threads](replication-and-binary-log-system-variables.md) > `0`).
   * See [Parallel Replication: Configuring the Maximum Size of the Parallel Replica Queue](parallel-replication.md#configuring-the-maximum-size-of-the-parallel-replica-queue) for more information.
 * Command line: `--slave-parallel-max-queued=#`
 * Scope: Global
@@ -971,7 +974,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
   * If this system variable is set to a value greater than `0`, then its value determines how many replica [worker threads](replication-threads.md#worker-threads) are created to apply [binary log](../../server-management/server-monitoring-logs/binary-log/) events in parallel.
   * If this system variable is set to `0` (which is the default value), no replica [worker threads](replication-threads.md#worker-threads) are created. Instead, when replication is enabled, [binary log](../../server-management/server-monitoring-logs/binary-log/) events are applied by the replica's [SQL thread](replication-threads.md#replica-sql-thread).
   * The [replica threads](replication-threads.md#threads-on-the-replica) must be [stopped](../../reference/sql-statements/administrative-sql-statements/replication-statements/stop-replica.md) in order to change this option's value dynamically.
-  * Events that were logged with [GTIDs](gtid/) with different [gtid\_domain\_id](gtid/gtid-system-variables.md#gtid_domain_id) values can be applied in parallel in an [out-of-order](parallel-replication.md#out-of-order-parallel-replication) manner. Each [gtid\_domain\_id](gtid/gtid-system-variables.md#gtid_domain_id) can use the number of threads configured by [slave\_domain\_parallel\_threads](replication-and-binary-log-system-variables.md#slave_domain_parallel_threads).
+  * Events that were logged with [GTIDs](gtid/README.md) with different [gtid\_domain\_id](gtid/gtid-system-variables.md#gtid_domain_id) values can be applied in parallel in an [out-of-order](parallel-replication.md#out-of-order-parallel-replication) manner. Each [gtid\_domain\_id](gtid/gtid-system-variables.md#gtid_domain_id) can use the number of threads configured by [slave\_domain\_parallel\_threads](replication-and-binary-log-system-variables.md#slave_domain_parallel_threads).
   * Events that were [group-committed](../../server-management/server-monitoring-logs/binary-log/group-commit-for-the-binary-log.md) on the primary can be applied in parallel in an [in-order](parallel-replication.md#in-order-parallel-replication) manner, and the specific behavior can be configured by setting [slave\_parallel\_mode](replication-and-binary-log-system-variables.md#slave_parallel_mode).
 * Command line: `--slave-parallel-threads=#`
 * Scope: Global
@@ -1054,7 +1057,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
   * `ALL_NON_LOSSY` means that all safe conversions (no data loss) are allowed.
   * `ALL_LOSSY` means that all lossy conversions are allowed (for example 'bigint' to 'int'). This, however, does not imply that safe conversions (non-lossy) are allowed as well. In order to allow all conversions, one needs to allow both lossy as well as non-lossy conversions by setting this variable to `ALL_NON_LOSSY,ALL_LOSSY`.
   * Empty (default) means that the server gives an error and replication stops if the table definition is different between the primary and replica.
-  * `ERROR_IF_MISSING_FIELD`. This value is available from MariaDB 12.3. When provided, the replica aborts replication if it is missing a field that exists on the primary server. When absent, replication continues, although if [`log_warnings`](../../server-management/variables-and-modes/server-system-variables.md#log_warnings) is set to `1` or greater, a warning is logged to the error log.
+  * `ERROR_IF_MISSING_FIELD`. This value is available from MariaDB 12.3. When provided, the replica aborts replication if it is missing a field that exists on the primary server. When absent, replication continues, although if [`log_warnings`](../optimization-and-tuning/system-variables/server-system-variables.md#log_warnings) is set to `1` or greater, a warning is logged to the error log.
 * Command line: `--slave-type-conversions=set`
 * Scope: Global
 * Dynamic: Yes
@@ -1089,7 +1092,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 * Default Value: `0`
 * Range: `0` to `4294967295`
 
-**Note**: When you enable the [InnoDB-based Binary Log](../../server-management/server-monitoring-logs/binary-log/innodb-based-binary-log.md) (`--binary-storage-engine=innodb`), the `sync_binlog` option is ignored. Instead, the durability of the binary log is controlled by `--innodb-flush-log-at-trx-commit`, which applies to both InnoDB data and binary log writes.
+**Note**: When you enable the [InnoDB-based Binary Log](innodb-based-binary-log.md) (`--binary-storage-engine=innodb`), the `sync_binlog` option is ignored. Instead, the durability of the binary log is controlled by `--innodb-flush-log-at-trx-commit`, which applies to both InnoDB data and binary log writes.
 
 #### `sync_master_info`
 
@@ -1126,7 +1129,7 @@ Logging a `CREATE TEMPORARY` statement always requires `STATEMENT`, so any value
 
 ## See Also
 
-* [Full list of MariaDB options, system and status variables](../../server-management/variables-and-modes/full-list-of-mariadb-options-system-and-status-variables.md)
+* [Full list of MariaDB options, system and status variables](../../reference/full-list-of-mariadb-options-system-and-status-variables.md)
 
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 
