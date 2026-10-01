@@ -85,7 +85,7 @@ The ColumnStore nodes:
 
 ### ColumnStore with Shared Local Storage
 
-![es-columnstore-topology-nfs-no-title](<../../.gitbook/assets/es-columnstore-topology-nfs-no-title (1).png>)
+![es-columnstore-topology-nfs-no-title](<../.gitbook/assets/es-columnstore-topology-nfs-no-title (1).png>)
 
 The MariaDB ColumnStore topology with Shared Local Storage delivers production analytics with high availability and fault tolerance by leveraging shared local storage, such as NFS.
 
@@ -237,7 +237,7 @@ The most common shared local storage option for GCP (Google Cloud Platform) depl
 
 ## Query Evaluation Architecture
 
-![ECStore-QueryExecutionwith-S3-FlowChart](<../../.gitbook/assets/ecstore-queryexecutionwith-s3-flowchart (1).png>)
+![ECStore-QueryExecutionwith-S3-FlowChart](<../.gitbook/assets/ecstore-queryexecutionwith-s3-flowchart (1).png>)
 
 MariaDB ColumnStore uses distributed query execution and massively parallel processing (MPP) techniques to achieve vertical and horizontal scalability for production analytics and data warehousing.
 
@@ -245,7 +245,7 @@ For additional information, see "[MariaDB ColumnStore Query Evaluation](mariadb-
 
 ### Extent Elimination
 
-![ECStore-QueryExecutionExtentElimination](<../../.gitbook/assets/ecstore-queryexecutionextentelimination (1).png>)
+![ECStore-QueryExecutionExtentElimination](<../.gitbook/assets/ecstore-queryexecutionextentelimination (1).png>)
 
 MariaDB ColumnStore uses extent elimination to scale query evaluation as the table size increases.
 
@@ -469,7 +469,7 @@ When a bulk data load is running:
 
 ## Backup and Restore
 
-![EntColStoreBackupS3FlowChart](<../../.gitbook/assets/entcolstorebackups3flowchart (1).png>)
+![EntColStoreBackupS3FlowChart](<../.gitbook/assets/entcolstorebackups3flowchart (1).png>)
 
 MariaDB ColumnStore supports backup and restore using well-known tools and methods.
 

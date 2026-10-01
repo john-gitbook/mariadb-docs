@@ -3,34 +3,24 @@ site:
   title: mariadb copy
   structure:
     - type: section
-      key: home-sec
-      title: Home
-      path: home
+      key: get-started-sec
+      title: Get Started
+      path: get-started
+      icon: rocket
       default: true
       children:
         - type: space
-          key: home
-          title: Home
-          path: home
+          key: get-started
+          title: Get Started
+          path: get-started
           default: true
           content:
-            directory: ./home
-    - type: section
-      key: mariadb-platform-sec
-      title: Mariadb Platform
-      path: mariadb-platform
-      children:
-        - type: space
-          key: mariadb-platform
-          title: Mariadb Platform
-          path: mariadb-platform
-          default: true
-          content:
-            directory: ./platform
+            directory: ./get-started
     - type: section
       key: server-sec
       title: Server
       path: server
+      icon: database
       children:
         - type: space
           key: server
@@ -39,70 +29,145 @@ site:
           default: true
           content:
             directory: ./server
-    - type: section
-      key: maxscale-sec
-      title: MaxScale
-      path: maxscale
+    - type: section-group
+      key: mariadb-platform-group
+      title: MariaDB Platform
+      icon: layer-group
       children:
-        - type: space
-          key: maxscale
+        - type: section
+          key: mariadb-platform-sec
+          title: Platform Overview
+          path: mariadb-platform
+          icon: layer-group
+          children:
+            - type: space
+              key: mariadb-platform
+              title: Platform Overview
+              path: mariadb-platform
+              default: true
+              content:
+                directory: ./platform
+        - type: section
+          key: enterprise-server-sec
+          title: Server
+          path: enterprise-server
+          icon: database
+          children:
+            - type: space
+              key: enterprise-server
+              title: Server
+              path: enterprise-server
+              default: true
+              content:
+                directory: ./enterprise-server
+        - type: section
+          key: maxscale-sec
           title: MaxScale
           path: maxscale
-          default: true
-          content:
-            directory: ./maxscale
-    - type: section
-      key: analytics-sec
-      title: Analytics
-      path: analytics
-      children:
-        - type: space
-          key: analytics
-          title: Analytics
-          path: analytics
-          default: true
-          content:
-            directory: ./analytics
-    - type: section
-      key: galera-cluster-sec
-      title: Galera Cluster
-      path: galera-cluster
-      children:
-        - type: space
-          key: galera-cluster
+          icon: code-branch
+          children:
+            - type: space
+              key: maxscale
+              title: MaxScale
+              path: maxscale
+              default: true
+              content:
+                directory: ./maxscale
+        - type: section
+          key: galera-cluster-sec
           title: Galera Cluster
           path: galera-cluster
-          default: true
-          content:
-            directory: ./galera-cluster
-    - type: section
-      key: connectors-sec
-      title: Connectors
-      path: connectors
-      children:
-        - type: space
-          key: connectors
-          title: Connectors
-          path: connectors
-          default: true
-          content:
-            directory: ./connectors
-    - type: section
-      key: enterprise-tools-sec
-      title: Enterprise Tools
-      path: enterprise-tools
-      children:
-        - type: space
-          key: enterprise-tools
+          icon: circle-nodes
+          children:
+            - type: space
+              key: galera-cluster
+              title: Galera Cluster
+              path: galera-cluster
+              default: true
+              content:
+                directory: ./galera-cluster
+        - type: section
+          key: advanced-clustering-sec
+          title: Raft Cluster
+          path: advanced-clustering
+          icon: sitemap
+          children:
+            - type: space
+              key: advanced-clustering
+              title: Raft Cluster
+              path: advanced-clustering
+              default: true
+              content:
+                directory: ./advanced-clustering
+        - type: section
+          key: columnstore-sec
+          title: ColumnStore
+          path: columnstore
+          icon: table-columns
+          children:
+            - type: space
+              key: columnstore
+              title: ColumnStore
+              path: columnstore
+              default: true
+              content:
+                directory: ./analytics/mariadb-columnstore
+        - type: section
+          key: exa-sec
+          title: Exa
+          path: exa
+          icon: chart-column
+          children:
+            - type: space
+              key: exa
+              title: Exa
+              path: exa
+              default: true
+              content:
+                directory: ./analytics/mariadb-exa
+        - type: section
+          key: gridgain-sec
+          title: GridGain
+          path: gridgain
+          icon: bolt
+          children:
+            - type: space
+              key: gridgain-overview
+              title: GridGain
+              path: gridgain
+              default: true
+              content:
+                directory: ./gridgain
+            - type: space
+              key: gridgain-8
+              title: GridGain 8
+              path: gridgain-8
+              content:
+                directory: ./gridgain8
+            - type: space
+              key: gridgain-9
+              title: GridGain 9
+              path: gridgain-9
+              content:
+                directory: ./gridgain9
+        - type: section
+          key: enterprise-tools-sec
           title: Enterprise Tools
           path: enterprise-tools
-          default: true
-          content:
-            directory: ./tools
+          icon: screwdriver-wrench
+          children:
+            - type: space
+              key: enterprise-tools
+              title: Enterprise Tools
+              path: enterprise-tools
+              default: true
+              content:
+                directory: ./tools
     - type: section
       key: mariadb-cloud-sec
-      title: MariaDB Cloud
+      title: Cloud
       path: mariadb-cloud
+      icon: cloud
       children:
         - type: space
           key: mariadb-cloud
@@ -112,9 +177,23 @@ site:
           content:
             directory: ./mariadb-cloud
     - type: section
+      key: connectors-sec
+      title: Connectors
+      path: connectors
+      icon: plug
+      children:
+        - type: space
+          key: connectors
+          title: Connectors
+          path: connectors
+          default: true
+          content:
+            directory: ./connectors
+    - type: section
       key: release-notes-sec
       title: Release Notes
       path: release-notes
+      icon: file-lines
       children:
         - type: space
           key: release-notes
@@ -123,15 +202,20 @@ site:
           default: true
           content:
             directory: ./release-notes
-    - type: section
-      key: general-resources-sec
-      title: General Resources
-      path: general-resources
+    - type: section-group
+      key: more-group
+      title: More
+      icon: ellipsis
       children:
-        - type: space
-          key: general-resources
-          title: General Resources
-          path: general-resources
-          default: true
-          content:
-            directory: ./general-resources
+        - type: external-link
+          key: more-resources
+          title: Resources
+          url: https://mariadb.com/resources
+        - type: external-link
+          key: more-community
+          title: Community
+          url: https://mariadb.com/kb/en/community/
+        - type: external-link
+          key: more-about
+          title: About
+          url: https://mariadb.com/about-us/

@@ -31,7 +31,7 @@ See the instructions below for more details.
 
 ## Backup
 
-![Enterprise-ColumnStore-Backup-with-S3-Flowchart](<../../../.gitbook/assets/entcolstorebackups3flowchart (1).png>)
+![Enterprise-ColumnStore-Backup-with-S3-Flowchart](<../../.gitbook/assets/entcolstorebackups3flowchart (1).png>)
 
 Use the following process to take a backup:
 

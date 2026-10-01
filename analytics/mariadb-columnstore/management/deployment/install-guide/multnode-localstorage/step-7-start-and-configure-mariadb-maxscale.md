@@ -11,7 +11,7 @@ This page details step 7 of the 9-step procedure "Deploy ColumnStore Shared Loca
 
 This step starts and configures MariaDB MaxScale 22.08.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 Interactive commands are detailed. Alternatively, the described operations can be performed using automation.
 
