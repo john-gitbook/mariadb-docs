@@ -1,7 +1,4 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
-# Site structure for the "mariadb copy" test site (site_HdZoj), synced from copy-branch.
-# Mirrors the site's current layout: 11 top-level sections, one space each.
-# Inert until the site is switched to site-level Git Sync; today each space syncs on its own.
 site:
   title: mariadb copy
   structure:
