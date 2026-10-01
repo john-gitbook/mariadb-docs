@@ -1,0 +1,223 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+# Site structure for the IA prototype site (DOCS-6529).
+site:
+  title: MariaDB Documentation IA Prototype
+  structure:
+    - type: section
+      key: get-started-sec
+      title: Get Started
+      path: get-started
+      description: ""
+      icon: rocket
+      default: true
+      children:
+        - type: space
+          key: get-started
+          title: Get Started
+          path: get-started-home
+          default: true
+          content:
+            directory: ./get-started
+    - type: section
+      key: server-sec
+      title: Server
+      path: server
+      icon: database
+      children:
+        - type: space
+          key: server
+          title: Server
+          path: server-home
+          default: true
+          content:
+            directory: ./server
+    - type: section-group
+      key: enterprise-platform
+      title: MariaDB Platform
+      icon: layer-group
+      children:
+        - type: section
+          key: platform-overview-sec
+          title: Platform Overview
+          path: platform-overview
+          icon: layer-group
+          children:
+            - type: space
+              key: platform-overview
+              title: Platform Overview
+              path: platform-overview-home
+              default: true
+              content:
+                directory: ./platform-overview
+        - type: section
+          key: enterprise-server-sec
+          title: Server
+          path: enterprise-server
+          icon: database
+          children:
+            - type: space
+              key: enterprise-server
+              title: Server
+              path: enterprise-server-home
+              default: true
+              content:
+                directory: ./enterprise-server
+        - type: section
+          key: maxscale-sec
+          title: MaxScale
+          path: maxscale
+          icon: code-branch
+          children:
+            - type: space
+              key: maxscale
+              title: MaxScale
+              path: maxscale-home
+              default: true
+              content:
+                directory: ./maxscale
+        - type: section
+          key: galera-cluster-sec
+          title: Galera Cluster
+          path: galera-cluster
+          icon: circle-nodes
+          children:
+            - type: space
+              key: galera-cluster
+              title: Galera Cluster
+              path: galera-cluster-home
+              default: true
+              content:
+                directory: ./galera-cluster
+        - type: section
+          key: advanced-clustering-sec
+          title: Raft Cluster
+          path: advanced-clustering
+          icon: sitemap
+          children:
+            - type: space
+              key: advanced-clustering
+              title: Raft Cluster
+              path: advanced-clustering-home
+              default: true
+              content:
+                directory: ./advanced-clustering
+        - type: section
+          key: columnstore-sec
+          title: ColumnStore
+          path: columnstore
+          icon: table-columns
+          children:
+            - type: space
+              key: columnstore
+              title: ColumnStore
+              path: columnstore-home
+              default: true
+              content:
+                directory: ./columnstore
+        - type: section
+          key: exa-sec
+          title: Exa
+          path: exa
+          icon: chart-column
+          children:
+            - type: space
+              key: exa
+              title: Exa
+              path: exa-home
+              default: true
+              content:
+                directory: ./exa
+        - type: section
+          key: gridgain-sec
+          title: GridGain
+          path: gridgain
+          icon: bolt
+          children:
+            - type: space
+              key: gridgain-overview
+              title: GridGain
+              path: gridgain-home
+              default: true
+              content:
+                directory: ./gridgain
+            - type: space
+              key: gridgain-8
+              title: GridGain 8
+              path: gridgain-8-home
+              content:
+                directory: ./gridgain-8
+            - type: space
+              key: gridgain-9-space
+              title: GridGain 9
+              path: gridgain-9-home
+              content:
+                directory: ./gridgain-9
+        - type: section
+          key: tools-sec
+          title: Enterprise Tools
+          path: tools
+          icon: screwdriver-wrench
+          children:
+            - type: space
+              key: tools
+              title: Enterprise Tools
+              path: tools-home
+              default: true
+              content:
+                directory: ./tools
+    - type: section
+      key: mariadb-cloud-sec
+      title: Cloud
+      path: mariadb-cloud
+      icon: cloud
+      children:
+        - type: space
+          key: mariadb-cloud
+          title: MariaDB Cloud
+          path: mariadb-cloud-home
+          default: true
+          content:
+            directory: ./mariadb-cloud
+    - type: section
+      key: connectors-sec
+      title: Connectors
+      path: connectors
+      icon: plug
+      children:
+        - type: space
+          key: connectors
+          title: Connectors
+          path: connectors-home
+          default: true
+          content:
+            directory: ./connectors
+    - type: section
+      key: release-notes-sec
+      title: Release Notes
+      path: release-notes
+      icon: file-lines
+      children:
+        - type: space
+          key: release-notes
+          title: Release Notes
+          path: release-notes-home
+          default: true
+          content:
+            directory: ./release-notes
+    - type: section-group
+      key: more
+      title: More
+      icon: ellipsis
+      children:
+        - type: external-link
+          key: more-resources
+          title: Resources
+          url: https://mariadb.com/resources
+        - type: external-link
+          key: more-community
+          title: Community
+          url: https://mariadb.com/kb/en/community/
+        - type: external-link
+          key: more-about
+          title: About
+          url: https://mariadb.com/about-us/
