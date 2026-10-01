@@ -1,7 +1,7 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 # Site structure for the "mariadb copy" test site (site_HdZoj), synced from copy-branch.
-# Mirrors the site's current layout: 11 top-level sections, one space each.
-# Inert until the site is switched to site-level Git Sync; today each space syncs on its own.
+# Section and space keys are their identity in GitBook: never change an existing key, or
+# GitBook detaches that space and creates a new one. Titles, order and grouping are safe to edit.
 site:
   title: mariadb copy
   structure:
@@ -19,18 +19,6 @@ site:
           content:
             directory: ./home
     - type: section
-      key: mariadb-platform-sec
-      title: Mariadb Platform
-      path: mariadb-platform
-      children:
-        - type: space
-          key: mariadb-platform
-          title: Mariadb Platform
-          path: mariadb-platform
-          default: true
-          content:
-            directory: ./platform
-    - type: section
       key: server-sec
       title: Server
       path: server
@@ -42,66 +30,71 @@ site:
           default: true
           content:
             directory: ./server
-    - type: section
-      key: maxscale-sec
-      title: MaxScale
-      path: maxscale
+    - type: section-group
+      key: mariadb-platform-group
+      title: MariaDB Platform
+      icon: layer-group
       children:
-        - type: space
-          key: maxscale
+        - type: section
+          key: mariadb-platform-sec
+          title: Platform Overview
+          path: mariadb-platform
+          children:
+            - type: space
+              key: mariadb-platform
+              title: Platform Overview
+              path: mariadb-platform
+              default: true
+              content:
+                directory: ./platform
+        - type: section
+          key: maxscale-sec
           title: MaxScale
           path: maxscale
-          default: true
-          content:
-            directory: ./maxscale
-    - type: section
-      key: analytics-sec
-      title: Analytics
-      path: analytics
-      children:
-        - type: space
-          key: analytics
-          title: Analytics
-          path: analytics
-          default: true
-          content:
-            directory: ./analytics
-    - type: section
-      key: galera-cluster-sec
-      title: Galera Cluster
-      path: galera-cluster
-      children:
-        - type: space
-          key: galera-cluster
+          children:
+            - type: space
+              key: maxscale
+              title: MaxScale
+              path: maxscale
+              default: true
+              content:
+                directory: ./maxscale
+        - type: section
+          key: galera-cluster-sec
           title: Galera Cluster
           path: galera-cluster
-          default: true
-          content:
-            directory: ./galera-cluster
-    - type: section
-      key: connectors-sec
-      title: Connectors
-      path: connectors
-      children:
-        - type: space
-          key: connectors
-          title: Connectors
-          path: connectors
-          default: true
-          content:
-            directory: ./connectors
-    - type: section
-      key: enterprise-tools-sec
-      title: Enterprise Tools
-      path: enterprise-tools
-      children:
-        - type: space
-          key: enterprise-tools
+          children:
+            - type: space
+              key: galera-cluster
+              title: Galera Cluster
+              path: galera-cluster
+              default: true
+              content:
+                directory: ./galera-cluster
+        - type: section
+          key: analytics-sec
+          title: Analytics
+          path: analytics
+          children:
+            - type: space
+              key: analytics
+              title: Analytics
+              path: analytics
+              default: true
+              content:
+                directory: ./analytics
+        - type: section
+          key: enterprise-tools-sec
           title: Enterprise Tools
           path: enterprise-tools
-          default: true
-          content:
-            directory: ./tools
+          children:
+            - type: space
+              key: enterprise-tools
+              title: Enterprise Tools
+              path: enterprise-tools
+              default: true
+              content:
+                directory: ./tools
     - type: section
       key: mariadb-cloud-sec
       title: MariaDB Cloud
@@ -114,6 +107,18 @@ site:
           default: true
           content:
             directory: ./mariadb-cloud
+    - type: section
+      key: connectors-sec
+      title: Connectors
+      path: connectors
+      children:
+        - type: space
+          key: connectors
+          title: Connectors
+          path: connectors
+          default: true
+          content:
+            directory: ./connectors
     - type: section
       key: release-notes-sec
       title: Release Notes
