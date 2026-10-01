@@ -18,7 +18,7 @@ The most recent release of [MariaDB 11.0](what-is-mariadb-110.md) is:[**MariaDB 
 
 ### Optimizer
 
-* Major improvements to the Optimizer. See [The Optimizer Cost Model from MariaDB 11.0](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/optimization-and-tuning/query-optimizer/the-optimizer-cost-model-from-mariadb-11-0).
+* Major improvements to the Optimizer. See [The Optimizer Cost Model from MariaDB 11.0](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/optimization-and-tuning/query-optimizer/the-optimizer-cost-model-from-mariadb-11-0).
 
 ### InnoDB
 
@@ -43,9 +43,7 @@ The most recent release of [MariaDB 11.0](what-is-mariadb-110.md) is:[**MariaDB 
 
 ## Security Vulnerabilities Fixed in [MariaDB 11.0](what-is-mariadb-110.md)
 
-For a complete list of security vulnerabilities (CVEs) fixed across all
-versions of MariaDB, see the [Security Vulnerabilities Fixed in MariaDB](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/cve)
-page.
+For a complete list of security vulnerabilities (CVEs) fixed across all versions of MariaDB, see the [Security Vulnerabilities Fixed in MariaDB](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/cve) page.
 
 * [CVE-2024-21096](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21096): [MariaDB 11.0.6](11.0.6.md)
 * [CVE-2023-22084](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-22084): [MariaDB 11.0.4](11.0.4.md)

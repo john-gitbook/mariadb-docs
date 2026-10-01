@@ -118,8 +118,7 @@ See the [Differences in MariaDB Enterprise Server 10.5](../../../enterprise-serv
 
 ### Galera: Full GTID Support
 
-* Add full [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid) support to [Galera](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/3VYeeVGUV4AMqrA3zwy7/) cluster ([commit](https://github.com/MariaDB/server/commit/41bc736871)). With this feature all nodes in a cluster
-  will have the same GTID for replicated events originating from the cluster. Also added a new variable, `wsrep_gtid_seq_no`, to manually update the WSREP GTID sequence number in the cluster (similar to how the `gtid_seq_no` variable is used for non-WSREP transactions).
+* Add full [GTID](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication/gtid) support to [Galera](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/3VYeeVGUV4AMqrA3zwy7/) cluster ([commit](https://github.com/MariaDB/server/commit/41bc736871)). With this feature all nodes in a cluster will have the same GTID for replicated events originating from the cluster. Also added a new variable, `wsrep_gtid_seq_no`, to manually update the WSREP GTID sequence number in the cluster (similar to how the `gtid_seq_no` variable is used for non-WSREP transactions).
 * Add new mode to wsrep\_OSU\_method in which Galera checks storage engine of the affected table ([MDEV-20051](https://jira.mariadb.org/browse/MDEV-20051))
 * Galera: Replicate MariaDB GTID to other nodes in the cluster ([MDEV-20720](https://jira.mariadb.org/browse/MDEV-20720))
 
@@ -204,7 +203,7 @@ See the [Differences in MariaDB Enterprise Server 10.5](../../../enterprise-serv
 
 * For a list of all new variables, see [System Variables Added in MariaDB 10.5](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/optimization-and-tuning/system-variables/system-and-status-variables-added-by-major-release/system-and-status-variables-added-by-major-unmaintained-release/system-variables-added-in-mariadb-10-5) and [Status Variables Added in MariaDB 10.5](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/optimization-and-tuning/system-variables/system-and-status-variables-added-by-major-release/system-and-status-variables-added-by-major-unmaintained-release/status-variables-added-in-mariadb-105).
 * The [Information Schema SYSTEM\_VARIABLES Table](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/system-tables/information-schema/information-schema-tables/information-schema-system_variables-table) has a new column showing from which config file a variable derives its value ([MDEV-12684](https://jira.mariadb.org/browse/MDEV-12684)).
-* Columns that use the [old temporal format](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/data-types/date-and-time-data-types/datetime#internal-format) (created with a pre-10.0 version of MariaDB) are now marked with a `/* mariadb-5.3 */` comment in `SHOW CREATE TABLE`, `DESCRIBE` and `INFORMATION_SCHEMA.COLUMNS`. This is the behavior of MySQL 5.6's `show_old_temporals`, but MariaDB always shows the comment, with no variable to control it ([MDEV-19906](https://jira.mariadb.org/browse/MDEV-19906)).
+* Columns that use the [old temporal format](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/data-types/date-and-time-data-types/datetime#internal-format) (created with a pre-10.0 version of MariaDB) are now marked with a `/* mariadb-5.3 */` comment in `SHOW CREATE TABLE`, `DESCRIBE` and `INFORMATION_SCHEMA.COLUMNS`. This is the behavior of MySQL 5.6's `show_old_temporals`, but MariaDB always shows the comment, with no variable to control it ([MDEV-19906](https://jira.mariadb.org/browse/MDEV-19906)).
 * Numerous deprecated variables removed ([MDEV-18650](https://jira.mariadb.org/browse/MDEV-18650))
   * [multi\_range\_count](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-management/variables-and-modes/server-system-variables#multi_range_count)
   * [thread\_concurrency](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-management/variables-and-modes/server-system-variables#thread_concurrency)
@@ -212,9 +211,7 @@ See the [Differences in MariaDB Enterprise Server 10.5](../../../enterprise-serv
 
 ## Security Vulnerabilities Fixed in [MariaDB 10.5](what-is-mariadb-105.md)
 
-For a complete list of security vulnerabilities (CVEs) fixed across all
-versions of MariaDB, see the [Security Vulnerabilities Fixed in MariaDB](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/cve)
-page.
+For a complete list of security vulnerabilities (CVEs) fixed across all versions of MariaDB, see the [Security Vulnerabilities Fixed in MariaDB](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/cve) page.
 
 * [CVE-2025-21490](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-21490): [MariaDB 10.5.28](10.5.28.md)
 * [CVE-2024-21096](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21096): [MariaDB 10.5.25](10.5.25.md)
