@@ -1,8 +1,8 @@
 ---
 description: >-
-  MariaDB ColumnStore evaluates queries with MPP execution: ExeMgr
-  coordinates job steps across PrimProc nodes with extent elimination and
-  parallel aggregation to reduce I/O.
+  MariaDB ColumnStore evaluates queries with MPP execution: ExeMgr coordinates
+  job steps across PrimProc nodes with extent elimination and parallel
+  aggregation to reduce I/O.
 ---
 
 # Mariadb ColumnStore Query Evaluation
@@ -37,7 +37,7 @@ When the PrimProc process on a node receives work, it executes the job step on a
 
 ## Extent Elimination
 
-![ECStore-QueryExecutionExtentElimination](<../../.gitbook/assets/ecstore-queryexecutionextentelimination (1).png>)
+![ECStore-QueryExecutionExtentElimination](../../.gitbook/assets/ecstore-queryexecutionextentelimination.png)
 
 MariaDB ColumnStore uses extent elimination to scale query evaluation as table size increases.
 
@@ -78,11 +78,11 @@ As a smart storage engine, the ColumnStore storage engine plugin tightly integra
 
 The ColumnStore storage engine can use either the custom select handler or the generic select handler. The select handler can be configured using the `columnstore_select_handler` system variable:
 
-| Value | Description                                                                                                                                                                                                                                 |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AUTO  | <ul><li>When set to <code>AUTO</code>, ColumnStore automatically chooses the best select handler for a given SELECT query.</li><li><code>AUTO</code> was added in ColumnStore 6.</li></ul>                            |
-| OFF   | <ul><li>When set to <code>OFF</code>, ColumnStore uses the generic select handlers for all <code>SELECT</code> queries.</li><li>It is not recommended to use this value, unless recommended by MariaDB Support.</li></ul>        |
-| ON    | <ul><li>When set to <code>ON</code>, ColumnStore uses the custom select handlers for all <code>SELECT</code> queries.</li><li><code>ON</code> is the default.</li></ul> |
+| Value | Description                                                                                                                                                                                                               |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AUTO  | <ul><li>When set to <code>AUTO</code>, ColumnStore automatically chooses the best select handler for a given SELECT query.</li><li><code>AUTO</code> was added in ColumnStore 6.</li></ul>                                |
+| OFF   | <ul><li>When set to <code>OFF</code>, ColumnStore uses the generic select handlers for all <code>SELECT</code> queries.</li><li>It is not recommended to use this value, unless recommended by MariaDB Support.</li></ul> |
+| ON    | <ul><li>When set to <code>ON</code>, ColumnStore uses the custom select handlers for all <code>SELECT</code> queries.</li><li><code>ON</code> is the default.</li></ul>                                                   |
 
 ### Unsupported SQL Syntax and Fallback Behavior
 
@@ -193,7 +193,7 @@ ExeMgr performs multiple tasks:
 
 ## Query Evaluation Process
 
-![ECStore-QueryExecutionwith-S3-FlowChart](<../../.gitbook/assets/ecstore-queryexecutionwith-s3-flowchart (1).png>)
+![ECStore-QueryExecutionwith-S3-FlowChart](../../.gitbook/assets/ecstore-queryexecutionwith-s3-flowchart.png)
 
 When Enterprise ColumnStore executes a query, it goes through the following process:
 

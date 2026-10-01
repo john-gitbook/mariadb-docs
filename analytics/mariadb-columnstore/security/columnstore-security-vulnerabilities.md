@@ -18,13 +18,11 @@ Sensitive security issues can be sent directly to the persons responsible for Ma
 
 ## About CVEs
 
-CVE® stands for _"Common Vulnerabilities and Exposures"_. It is
-a publicly available and free-to-use database of known software
-vulnerabilities maintained at
+CVE® stands for _"Common Vulnerabilities and Exposures"_. It is a publicly available and free-to-use database of known software vulnerabilities maintained at
 
 ## CVEs fixed in ColumnStore
 
-The appropriate release notes listed [here](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/columnstore) document CVEs fixed within a given release. Additional information can also be found at [Security Vulnerabilities Fixed in MariaDB](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security).
+The appropriate release notes listed [here](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/columnstore) document CVEs fixed within a given release. Additional information can also be found at [Security Vulnerabilities Fixed in MariaDB](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security).
 
 As of September 2026, there are no known CVEs on ColumnStore-specific infrastructure outside of the MariaDB server.
 

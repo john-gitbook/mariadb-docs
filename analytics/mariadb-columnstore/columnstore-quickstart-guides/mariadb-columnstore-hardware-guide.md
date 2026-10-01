@@ -1,9 +1,8 @@
 ---
 description: >-
-  MariaDB ColumnStore hardware requirements for development and production:
-  CPU cores, RAM, storage type (HDD vs SSD), filesystem and DBRoot drive
-  layout, network, and bare-metal vs virtual deployment guidance.
-
+  MariaDB ColumnStore hardware requirements for development and production: CPU
+  cores, RAM, storage type (HDD vs SSD), filesystem and DBRoot drive layout,
+  network, and bare-metal vs virtual deployment g
 ---
 
 # MariaDB ColumnStore Hardware Guide
@@ -52,12 +51,12 @@ Giving the DBRoot its own dedicated drives remains a valid recommendation, but h
 
 In ColumnStore 5 and later, each node has exactly one DBRoot. These are the paths that carry ColumnStore I/O, and the `Columnstore.xml` entries that set them:
 
-| Purpose | Default path | Configuration entry |
-| --- | --- | --- |
-| Column data (DBRoot) | `/var/lib/columnstore/data1` | `SystemConfig/DBRoot1` |
-| Bulk-load staging | `/var/log/mariadb/columnstore/data/bulk` | `WriteEngine/BulkRoot` |
-| Join and aggregation temporary files | `/tmp/columnstore_tmp_files` | `SystemConfig/SystemTempFileDir` |
-| Logs | `/var/log/mariadb/columnstore` | — |
+| Purpose                              | Default path                             | Configuration entry              |
+| ------------------------------------ | ---------------------------------------- | -------------------------------- |
+| Column data (DBRoot)                 | `/var/lib/columnstore/data1`             | `SystemConfig/DBRoot1`           |
+| Bulk-load staging                    | `/var/log/mariadb/columnstore/data/bulk` | `WriteEngine/BulkRoot`           |
+| Join and aggregation temporary files | `/tmp/columnstore_tmp_files`             | `SystemConfig/SystemTempFileDir` |
+| Logs                                 | `/var/log/mariadb/columnstore`           | —                                |
 
 The DBRoot holds the column data and is the first path to move to dedicated storage. Separating the temporary-file and bulk-staging paths from the DBRoot keeps write-heavy bulk loads and disk-based joins from competing with column scans for the same device.
 

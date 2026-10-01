@@ -9,7 +9,7 @@ description: >-
 
 MariaDB ColumnStore is a columnar storage engine that utilizes a massively parallel distributed data architecture. It's a columnar storage system built by porting InfiniDB 4.6.7 to MariaDB and released under the GPL license.
 
-[MariaDB 10.5.4 ](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.4)is available as a storage engine for MariaDB Server. Before then, it is available as a separate download.
+[MariaDB 10.5.4 ](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/community-server/old-releases/10.5/10.5.4)is available as a storage engine for MariaDB Server. Before then, it is available as a separate download.
 
 {% hint style="info" %}
 Release notes and other documentation for ColumnStore is also available in the Enterprise docs section of the MariaDB website. For example:
@@ -19,7 +19,7 @@ Release notes and other documentation for ColumnStore is also available in the E
 * [ColumnStore 22.08 Release Notes](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/columnstore/22.08)
 * [ColumnStore 6 Release Notes](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/columnstore/old-releases/mariadb-columnstore-6-release-notes)
 * [ColumnStore 5.6 Release Notes](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/columnstore/old-releases/mariadb-columnstore-5-6-release-notes)
-* [Deployment Instructions](../management/deployment/README.md)
+* [Deployment Instructions](../management/deployment/)
 {% endhint %}
 
 It is designed for big data scaling to process petabytes of data, linear scalability, and exceptional performance with real-time response to analytical queries. It leverages the I/O benefits of columnar storage, compression, just-in-time projection, and horizontal and vertical partitioning to deliver tremendous performance when analyzing large data sets.

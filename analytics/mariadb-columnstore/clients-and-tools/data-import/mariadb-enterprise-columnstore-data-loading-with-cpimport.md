@@ -1,8 +1,8 @@
 ---
 description: >-
-  Data loading into MariaDB ColumnStore with cpimport: a
-  non-blocking, append-only bulk load that bypasses the SQL layer and supports
-  text, binary, and stdin sources.
+  Data loading into MariaDB ColumnStore with cpimport: a non-blocking,
+  append-only bulk load that bypasses the SQL layer and supports text, binary,
+  and stdin sources.
 ---
 
 # Data Loading with cpimport
@@ -63,7 +63,7 @@ After the command is executed, it prompts for a password.
 CREATE DATABASE inventory;
 ```
 
-3. For each imported table, create the table with the [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create/create-table) statement:
+3. For each imported table, create the table with the [CREATE TABLE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/tables/create-table) statement:
 
 ```sql
 CREATE TABLE inventory.products (
