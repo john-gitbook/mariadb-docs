@@ -2,11 +2,11 @@
 description: >-
   The Rust connector for MariaDB provides two community-maintained crates for
   building native Rust applications that connect to MariaDB databases, with
-  MariaDB-specific features contributed directly by MariaDB.
+  MariaDB-specific features contributed directly by
 icon: link
 ---
 
-# Rust Connector for MariaDB
+# Rust
 
 ## Overview
 
@@ -14,10 +14,10 @@ Rust applications can connect to MariaDB using the community-maintained drivers 
 
 The Rust ecosystem has two widely used community-maintained MySQL/MariaDB client crates:
 
-- **[`mysql`](https://crates.io/crates/mysql)** (`rust-mysql-simple`) — a synchronous Rust driver
-- **[`mysql_async`](https://crates.io/crates/mysql_async)** — an asynchronous Rust driver built on Tokio
+* [**`mysql`**](https://crates.io/crates/mysql) (`rust-mysql-simple`) — a synchronous Rust driver
+* [**`mysql_async`**](https://crates.io/crates/mysql_async) — an asynchronous Rust driver built on Tokio
 
-Both crates share a common protocol implementation library, **[`rust_mysql_common`](https://crates.io/crates/mysql_common)**, which handles low-level MySQL/MariaDB protocol primitives, value conversion, and authentication primitives used by both drivers.
+Both crates share a common protocol implementation library, [**`rust_mysql_common`**](https://crates.io/crates/mysql_common), which handles low-level MySQL/MariaDB protocol primitives, value conversion, and authentication primitives used by both drivers.
 
 MariaDB recommends these Rust crates, which provide robust MySQL‑protocol compatibility and include MariaDB‑specific enhancements for first‑class client support.
 
@@ -29,7 +29,7 @@ While other Rust crates implement the MySQL protocol, and some have higher downl
 
 ## MariaDB-Specific Contributions
 
-MariaDB has contributed MariaDB‑specific features directly to these crates. The following features have been implemented and incorporated into the official releases (mysql_async v0.37.0 and the corresponding rust‑mysql‑simple version):
+MariaDB has contributed MariaDB‑specific features directly to these crates. The following features have been implemented and incorporated into the official releases (mysql\_async v0.37.0 and the corresponding rust‑mysql‑simple version):
 
 ### 1. PARSEC Authentication Plugin Support
 
@@ -53,17 +53,18 @@ Both drivers now support this optimization. When connected to MariaDB 10.6+, the
 
 ## Crate Reference Summary
 
-| Crate | Type | Description | MariaDB Features |
-|---|---|---|---|
-| [`mysql`](https://crates.io/crates/mysql) | Sync | `rust-mysql-simple`; blocking I/O | PARSEC auth, bulk execute, metadata skip |
-| [`mysql_async`](https://crates.io/crates/mysql_async) | Async | Tokio-based async driver | PARSEC auth, bulk execute, metadata skip |
-| [`mysql_common`](https://crates.io/crates/mysql_common) | Shared | Protocol primitives, value types, auth | Used internally by both drivers |
+| Crate                                                   | Type   | Description                            | MariaDB Features                         |
+| ------------------------------------------------------- | ------ | -------------------------------------- | ---------------------------------------- |
+| [`mysql`](https://crates.io/crates/mysql)               | Sync   | `rust-mysql-simple`; blocking I/O      | PARSEC auth, bulk execute, metadata skip |
+| [`mysql_async`](https://crates.io/crates/mysql_async)   | Async  | Tokio-based async driver               | PARSEC auth, bulk execute, metadata skip |
+| [`mysql_common`](https://crates.io/crates/mysql_common) | Shared | Protocol primitives, value types, auth | Used internally by both drivers          |
 
 > **Note:** `rust_mysql_common` is a shared dependency and does not need to be added to your `Cargo.toml` directly. It is pulled in automatically by either `mysql` or `mysql_async`.
 
 ## Installation
 
 **Sync driver:**
+
 ```toml
 [dependencies]
 mysql = "*"
@@ -71,21 +72,21 @@ mysql = "*"
 
 ## MariaDB Server Version Requirements
 
-| Feature | Minimum MariaDB Version |
-|---|---|
-| Metadata skipping | 10.6 |
-| PARSEC authentication | 11.6 |
-| Bulk execution (`COM_STMT_BULK_EXECUTE`) | - |
+| Feature                                  | Minimum MariaDB Version |
+| ---------------------------------------- | ----------------------- |
+| Metadata skipping                        | 10.6                    |
+| PARSEC authentication                    | 11.6                    |
+| Bulk execution (`COM_STMT_BULK_EXECUTE`) | -                       |
 
 All features are automatically negotiated during the connection handshake based on what the server announces; no application‑side configuration is needed."
 
 ## See Also
 
-- [`mysql_async` on crates.io](https://crates.io/crates/mysql_async)
-- [`mysql` (sync) on crates.io](https://crates.io/crates/mysql)
-- [`mysql_async`](https://github.com/blackbeam/mysql_async)
-- [`rust-mysql-simple`](https://github.com/blackbeam/rust-mysql-simple)
-- [MariaDB PARSEC Authentication Plugin documentation](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/reference/plugins/authentication-plugins/authentication-plugin-parsec)
-- [MDEV-19237 — Metadata skip server-side implementation](https://jira.mariadb.org/browse/MDEV-19237)
+* [`mysql_async` on crates.io](https://crates.io/crates/mysql_async)
+* [`mysql` (sync) on crates.io](https://crates.io/crates/mysql)
+* [`mysql_async`](https://github.com/blackbeam/mysql_async)
+* [`rust-mysql-simple`](https://github.com/blackbeam/rust-mysql-simple)
+* [MariaDB PARSEC Authentication Plugin documentation](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/plugins/authentication-plugins/authentication-plugin-parsec)
+* [MDEV-19237 — Metadata skip server-side implementation](https://jira.mariadb.org/browse/MDEV-19237)
 
 <sub>_This page is: Copyright © 2026 MariaDB. All rights reserved._</sub>

@@ -1,17 +1,17 @@
 ---
 description: >-
-  MariaDB Connector/Python transactions default to manual commit; the
-  Connection class provides commit and rollback, with async transaction
-  support via asyncConnect in version 2.0.
+  MariaDB Connector/Python transactions default to manual commit; the Connection
+  class provides commit and rollback, with async transaction support via
+  asyncConnect in version 2.0.
 ---
 
 # Transactions with MariaDB Connector/Python
 
 ## API Reference
 
-- **[Connection API](connection.md)** - Connection parameters, methods, and attributes
-- **[Cursor API](cursor.md)** - Cursor parameters, methods, and attributes  
-- **[Connection Pooling API](pooling.md)** - Pool configuration and usage
+* [**Connection API**](api/connection.md) - Connection parameters, methods, and attributes
+* [**Cursor API**](api/cursor.md) - Cursor parameters, methods, and attributes
+* [**Connection Pooling API**](pooling.md) - Pool configuration and usage
 
 A database transaction is a single unit of logic. A transaction can consist of one or more database operations. Transactions are useful and sometimes essential in several types of data operations. For example, many applications require that a set of SQL statements either complete, or fail, as a single unit.
 

@@ -1,19 +1,17 @@
 ---
 description: >-
   Install MariaDB Connector/Python via pip with pure Python, C extension, or
-  binary wheel options; connection pooling requires the separate
-  mariadb[pool] extra.
+  binary wheel options; connection pooling requires the separate mariadb[pool]
+  extra.
 ---
 
 # Installation
 
 ## API Reference
 
-- **[Connection API](connection.md)** - Connection parameters, methods, and attributes
-- **[Cursor API](cursor.md)** - Cursor parameters, methods, and attributes  
-- **[Connection Pooling API](pooling.md)** - Pool configuration and usage
-
-<a id="id1"></a>
+* [**Connection API**](api/connection.md) - Connection parameters, methods, and attributes
+* [**Cursor API**](api/cursor.md) - Cursor parameters, methods, and attributes
+* [**Connection Pooling API**](pooling.md) - Pool configuration and usage
 
 ## Prerequisites
 
@@ -46,10 +44,11 @@ pip install mariadb==1.1.14
 ```
 
 Version 1.1:
-- Always installs the C extension
-- Requires MariaDB Connector/C to be pre-installed
-- Does not support pure Python or binary wheels
-- Connection pooling is included by default
+
+* Always installs the C extension
+* Requires MariaDB Connector/C to be pre-installed
+* Does not support pure Python or binary wheels
+* Connection pooling is included by default
 
 For version 1.1 documentation, see the [1.1 branch documentation](https://mariadb-corporation.github.io/mariadb-connector-python/).
 
@@ -70,10 +69,11 @@ pip install --pre mariadb
 ```
 
 This is the default installation method for 2.0. The pure Python implementation:
-- Works on all Python interpreters (CPython, PyPy, etc.)
-- Requires no compilation or system dependencies
-- Provides good performance for most use cases
-- Fully compatible with the C extension API
+
+* Works on all Python interpreters (CPython, PyPy, etc.)
+* Requires no compilation or system dependencies
+* Provides good performance for most use cases
+* Fully compatible with the C extension API
 
 ### 2. C Extension (Maximum Performance)
 
@@ -84,10 +84,11 @@ pip install --pre mariadb[c]
 ```
 
 The C extension:
-- Delivers 2-12× better performance on data-heavy workloads
-- **Requires MariaDB Connector/C to be pre-installed** on your system
-- Requires a C compiler for building from source
-- Provides the same API as the pure Python implementation
+
+* Delivers 2-12× better performance on data-heavy workloads
+* **Requires MariaDB Connector/C to be pre-installed** on your system
+* Requires a C compiler for building from source
+* Provides the same API as the pure Python implementation
 
 ### 3. Pre-compiled Binary Wheels
 
@@ -98,10 +99,11 @@ pip install --pre mariadb[binary]
 ```
 
 Binary wheels:
-- Include the C extension pre-compiled
-- **MariaDB Connector/C is bundled** - no separate installation needed
-- No compiler required
-- Available for common platforms (Windows, Linux, macOS)
+
+* Include the C extension pre-compiled
+* **MariaDB Connector/C is bundled** - no separate installation needed
+* No compiler required
+* Available for common platforms (Windows, Linux, macOS)
 
 ### 4. With Connection Pooling
 
@@ -168,16 +170,16 @@ No compiler or system dependencies required.
 
 To build the C extension from source, you will need:
 
-- C compiler (gcc, clang, or MSVC)
-- Python development files (Usually installed with package **python3-dev**). Minimum supported version is Python 3.10 (version 1.1 requires Python 3.8).
-- MariaDB Connector/C libraries and header files (version 3.3.1 or later)
-  - Either from MariaDB server package or from MariaDB Connector/C package
-  - If your distribution doesn't provide a recent version, download from [MariaDB Connector Download page](https://mariadb.com/downloads/connectors/) or build from source
-- The mariadb_config program from MariaDB Connector/C (must be in your PATH)
-- For POSIX systems: TLS libraries (GnuTLS or OpenSSL)
-- Python's "packaging" module
+* C compiler (gcc, clang, or MSVC)
+* Python development files (Usually installed with package **python3-dev**). Minimum supported version is Python 3.10 (version 1.1 requires Python 3.8).
+* MariaDB Connector/C libraries and header files (version 3.3.1 or later)
+  * Either from MariaDB server package or from MariaDB Connector/C package
+  * If your distribution doesn't provide a recent version, download from [MariaDB Connector Download page](https://mariadb.com/downloads/connectors/) or build from source
+* The mariadb\_config program from MariaDB Connector/C (must be in your PATH)
+* For POSIX systems: TLS libraries (GnuTLS or OpenSSL)
+* Python's "packaging" module
 
-**On POSIX systems**, ensure the PATH environment variable contains the directory with the mariadb_config utility.
+**On POSIX systems**, ensure the PATH environment variable contains the directory with the mariadb\_config utility.
 
 **Installing the C extension from source:**
 
@@ -197,8 +199,7 @@ For troubleshooting, check the [Installation FAQ](faq.md#installation).
 
 ## Test suite
 
-If you have installed the sources, after successful build you can run the test suite
-from the source directory.
+If you have installed the sources, after successful build you can run the test suite from the source directory.
 
 ```console
 pytest tests/ -v
@@ -206,10 +207,10 @@ pytest tests/ -v
 
 You can configure the connection parameters by using the following environment variables
 
-* TEST_DB_USER (default root)
-* TEST_DB_PASSWORD
-* TEST_DB_DATABASE (default ‘testp’)
-* TEST_DB_HOST (default ‘localhost’)
-* TEST_DB_PORT (default 3306)
+* TEST\_DB\_USER (default root)
+* TEST\_DB\_PASSWORD
+* TEST\_DB\_DATABASE (default ‘testp’)
+* TEST\_DB\_HOST (default ‘localhost’)
+* TEST\_DB\_PORT (default 3306)
 
 {% @marketo/form formId="4316" %}
