@@ -1,10 +1,9 @@
 ---
-description: >-
-  Using GridGain Control Center with GridGain 9 and Apache Ignite 3 clusters.
+description: Using GridGain Control Center with GridGain 9 and Apache Ignite 3 clusters.
 hidden: true
 ---
 
-# GridGain 9
+# GridGain 9 / Ignite 3
 
 This section covers the Control Center features available for GridGain 9 and Apache Ignite 3 clusters.
 
@@ -16,38 +15,38 @@ This section covers the Control Center features available for GridGain 9 and Apa
 [cloud-connector](cloud-connector/)
 {% endcontent-ref %}
 
-{% content-ref url="alerting/alerting.md" %}
-[alerting/alerting.md](alerting/alerting.md)
+{% content-ref url="alerting.md" %}
+[alerting.md](alerting.md)
 {% endcontent-ref %}
 
-{% content-ref url="queries/querying-gg9.md" %}
-[queries/querying-gg9.md](queries/querying-gg9.md)
+{% content-ref url="querying-gg9.md" %}
+[querying-gg9.md](querying-gg9.md)
 {% endcontent-ref %}
 
 {% content-ref url="deployment/" %}
 [deployment](deployment/)
 {% endcontent-ref %}
 
-{% content-ref url="events/events.md" %}
-[events/events.md](events/events.md)
+{% content-ref url="events.md" %}
+[events.md](events.md)
 {% endcontent-ref %}
 
-{% content-ref url="data-schema-import/data-schema-import.md" %}
-[data-schema-import/data-schema-import.md](data-schema-import/data-schema-import.md)
+{% content-ref url="data-schema-import.md" %}
+[data-schema-import.md](data-schema-import.md)
 {% endcontent-ref %}
 
-{% content-ref url="tables/tables.md" %}
-[tables/tables.md](tables/tables.md)
+{% content-ref url="tables.md" %}
+[tables.md](tables.md)
 {% endcontent-ref %}
 
-{% content-ref url="dcr/dcr.md" %}
-[dcr/dcr.md](dcr/dcr.md)
+{% content-ref url="dcr.md" %}
+[dcr.md](dcr.md)
 {% endcontent-ref %}
 
 {% content-ref url="snapshots/" %}
 [snapshots](snapshots/)
 {% endcontent-ref %}
 
-{% content-ref url="auth/authorization-permissions.md" %}
-[auth/authorization-permissions.md](auth/authorization-permissions.md)
+{% content-ref url="authorization-permissions.md" %}
+[authorization-permissions.md](authorization-permissions.md)
 {% endcontent-ref %}

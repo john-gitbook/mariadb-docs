@@ -35,6 +35,6 @@ kubectl patch mariadb mariadb-repl \
 
 ## More Information
 
-For more details, please refer to the [Primary Switchover on Graceful Shutdown](../topologies/replication.md#primary-switchover-on-graceful-shutdown) section in the Replication documentation.
+For more details, please refer to the [Primary Switchover on Graceful Shutdown](../topologies/high-availability/replication.md#primary-switchover-on-graceful-shutdown) section in the Replication documentation.
 
 <sub>_This page is: Copyright © 2026 MariaDB. All rights reserved._</sub>

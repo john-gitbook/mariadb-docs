@@ -38,8 +38,8 @@ It is recommended to complement the examples with the [API reference](api-refere
 
 If you are looking for production-grade examples, you can check the following manifests:
 
-* `mariadb_replication_production.yaml` and `maxscale_replication_production.yaml` for [asynchronous replication](topologies/replication.md)
-* `mariadb_galera_production.yaml` and `maxscale_galera_production.yaml` for [Galera](topologies/galera.md)
+* `mariadb_replication_production.yaml` and `maxscale_replication_production.yaml` for [asynchronous replication](topologies/high-availability/replication.md)
+* `mariadb_galera_production.yaml` and `maxscale_galera_production.yaml` for [Galera](topologies/high-availability/galera.md)
 
 <sub>_This page is: Copyright © 2026 MariaDB. All rights reserved._</sub>
 

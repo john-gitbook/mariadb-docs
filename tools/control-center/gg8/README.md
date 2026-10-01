@@ -1,10 +1,9 @@
 ---
-description: >-
-  Using GridGain Control Center with GridGain 8 and Apache Ignite 2 clusters.
+description: Using GridGain Control Center with GridGain 8 and Apache Ignite 2 clusters.
 hidden: true
 ---
 
-# GridGain 8
+# GridGain 8 / Ignite 2
 
 This section covers the Control Center features available for GridGain 8 and Apache Ignite 2 clusters.
 
@@ -24,30 +23,30 @@ This section covers the Control Center features available for GridGain 8 and Apa
 [snapshots](snapshots/)
 {% endcontent-ref %}
 
-{% content-ref url="alerting/alerting.md" %}
-[alerting/alerting.md](alerting/alerting.md)
+{% content-ref url="alerting.md" %}
+[alerting.md](alerting.md)
 {% endcontent-ref %}
 
-{% content-ref url="tracing/tracing.md" %}
-[tracing/tracing.md](tracing/tracing.md)
+{% content-ref url="tracing.md" %}
+[tracing.md](tracing.md)
 {% endcontent-ref %}
 
-{% content-ref url="terminal/cluster-terminal.md" %}
-[terminal/cluster-terminal.md](terminal/cluster-terminal.md)
+{% content-ref url="cluster-terminal.md" %}
+[cluster-terminal.md](cluster-terminal.md)
 {% endcontent-ref %}
 
-{% content-ref url="data-schema-import/data-schema-import.md" %}
-[data-schema-import/data-schema-import.md](data-schema-import/data-schema-import.md)
+{% content-ref url="data-schema-import.md" %}
+[data-schema-import.md](data-schema-import.md)
 {% endcontent-ref %}
 
-{% content-ref url="compute/compute-grid.md" %}
-[compute/compute-grid.md](compute/compute-grid.md)
+{% content-ref url="compute-grid.md" %}
+[compute-grid.md](compute-grid.md)
 {% endcontent-ref %}
 
-{% content-ref url="deployment/code-deployment-gg8.md" %}
-[deployment/code-deployment-gg8.md](deployment/code-deployment-gg8.md)
+{% content-ref url="code-deployment-gg8.md" %}
+[code-deployment-gg8.md](code-deployment-gg8.md)
 {% endcontent-ref %}
 
-{% content-ref url="auth/authorization-permissions.md" %}
-[auth/authorization-permissions.md](auth/authorization-permissions.md)
+{% content-ref url="authorization-permissions.md" %}
+[authorization-permissions.md](authorization-permissions.md)
 {% endcontent-ref %}

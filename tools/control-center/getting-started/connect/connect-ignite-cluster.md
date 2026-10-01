@@ -34,21 +34,21 @@ Cluster must have open egress on `TCP:8080`. Control Center must have open ingre
 ### Binary Package
 
 1. Contact us to obtain the `gridgain-control-center-on-premise-[version]` archive.
-2. Unpack the archive into the folder with the Apache Ignite installation.
+2.  Unpack the archive into the folder with the Apache Ignite installation.
 
-   The archive contains the following folders:
+    The archive contains the following folders:
 
-   ```
-   bin/
-   libs/
-       control-center-agent/
-   ```
+    ```
+    bin/
+    libs/
+        control-center-agent/
+    ```
 3. Copy the content of the `bin` folder to `{IGNITE_HOME}/bin/`, and the `libs/control-center-agent` folder to `{IGNITE_HOME}/libs`.
 4. If you start Ignite nodes from a java application, manually copy the libraries from `gridgain-control-center-agent-{version}/libs/control-center-agent` to your classpath.
-5. Start your cluster. You should see the following message in the console output of the coordinator node:
+5.  Start your cluster. You should see the following message in the console output of the coordinator node:
 
-   ![](../../../.gitbook/assets/cc-getting-started-node_output.png)
-6. If you have no `Control Center URI` configured, or if you want to use a URL different from the one you have configured, copy the link (URL + token) and paste it into your browser. Alternatively, copy the connection token and perform the [Attaching the Cluster to Control Center](#attaching-the-cluster-to-control-center) procedure.
+    ![](../../../.gitbook/assets/cc-getting-started-node_output.png)
+6. If you have no `Control Center URI` configured, or if you want to use a URL different from the one you have configured, copy the link (URL + token) and paste it into your browser. Alternatively, copy the connection token and perform the [Attaching the Cluster to Control Center](connect-ignite-cluster.md#attaching-the-cluster-to-control-center) procedure.
 
 ### Maven Dependency
 
@@ -80,13 +80,13 @@ Note that the Control Center Agent artifact version depends on the Apache Ignite
 To attach the cluster to Control Center:
 
 1. Click the **+** icon on the Control Center toolbar.
-2. In he **Attach cluster** dialog that opens, select the **Apache Ignite** tab.
+2.  In he **Attach cluster** dialog that opens, select the **Apache Ignite** tab.
 
-   ![Attach Apache Ignite cluster](../../../.gitbook/assets/cc-getting-started-attach-ai-cluster.png)
-3. In the **Connection token** field, enter the token you have generated while [Enabling the Control Center Module](#enabling-the-control-center-module) .
-4. Click **Continue**.
+    ![Attach Apache Ignite cluster](../../../.gitbook/assets/cc-getting-started-attach-ai-cluster.png)
+3. In the **Connection token** field, enter the token you have generated while [Enabling the Control Center Module](connect-ignite-cluster.md#enabling-the-control-center-module) .
+4.  Click **Continue**.
 
-   If the cluster is found and the token is successfully validated, the success notification appears in the dialog.
+    If the cluster is found and the token is successfully validated, the success notification appears in the dialog.
 5. Click **Attach**.
 
 The attached cluster displays in the [My cluster](../../gg8/dashboard/my-cluster.md) screen.
@@ -99,7 +99,7 @@ The following procedures and deployment modes are optional.
 
 You can enable tracing capabilities and view traces in Control Center in two ways:
 
-1. The best way to configure tracing is to use the [Tracing](../../gg8/tracing/tracing.md) screen of the Control Center.
+1. The best way to configure tracing is to use the [Tracing](../../gg8/tracing.md) screen of the Control Center.
 2. To configure tracing programmatically, see the [Tracing](https://ignite.apache.org/docs/ignite2/latest/monitoring-metrics/tracing) page for more detail.
 
 ### Embedded Mode
@@ -122,8 +122,8 @@ To connect an Apache Ignite cluster to Control Center deployed in Docker, please
 
 Deploy a Control Center Agent in Docker as it is not provided in the original delivery:
 
-- Download the Control Center Agent and unzip it to the `control-center-agent` directory.
-- Run `start.sh` that creates new Docker image and starts both Control Center and 2 Apache Ignite nodes.
+* Download the Control Center Agent and unzip it to the `control-center-agent` directory.
+* Run `start.sh` that creates new Docker image and starts both Control Center and 2 Apache Ignite nodes.
 
 The containers must have a common network, otherwise Control Center Agent will not detect Control Center and will not be able to connect to it.
 

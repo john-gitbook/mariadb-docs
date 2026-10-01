@@ -5,7 +5,7 @@ description: >-
 hidden: true
 ---
 
-# Install Control Center and Add License
+# Add a License
 
 When you start working with Control Center, our Sales Team will provide you with a copy of the latest release of Control Center. To start working with it:
 
@@ -15,7 +15,7 @@ When you start working with Control Center, our Sales Team will provide you with
 On the initial launch, Control Center provides a link to be used for creating an administrator account.
 
 {% hint style="info" %}
-When you launch the [Docker version](../installation/docker.md) of Control Center, the "admin" link is found in the backend Control Center log.
+When you launch the [Docker version](../admin-guide/installation/docker.md) of Control Center, the "admin" link is found in the backend Control Center log.
 {% endhint %}
 
 Follow the link, fill out the fields on the page that opens, and click **Sign up**. You are now logged into Control Center as an administrator.
@@ -32,4 +32,4 @@ Once you sign up and log in to Control Center, you are prompted to provide a lic
 
 Now Control Center is available for any user to work with.
 
-- [Connect a pre-made cluster](demo.md)
+* [Connect a pre-made cluster](demo.md)
