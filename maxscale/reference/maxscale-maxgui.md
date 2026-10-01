@@ -13,7 +13,7 @@ This tutorial is an overview of what the MaxGUI offers as an alternative solutio
 
 ## Dashboard
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-dashboard.png.png)
+![](../.gitbook/assets/MaxGUI-dashboard.png.png)
 
 ### Annotation
 
@@ -45,7 +45,7 @@ The replication status of a server monitored by [MariaDB-Monitor](maxscale-monit
 
 A session can be killed easily on the "Current Sessions" list which can be found on the [Dashboard](maxscale-maxgui.md#dashboard), Server detail, and Service detail page.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-kill-session.png.png)
+![](../.gitbook/assets/MaxGUI-kill-session.png.png)
 
 #### Annotation
 
@@ -78,7 +78,7 @@ This table displays the result set from the `PROCESSLIST` table, with options to
 
 This page shows information on each MaxScale object and allow to edit its parameter, relationships and perform other manipulation operations. Most of the control buttons will be shown on the mouse hover. Below is a screenshot of a Monitor Detail page, other Detail pages also have a similar layout structure so this is used for illustration purpose.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-detail.png.png)
+![](../.gitbook/assets/MaxGUI-detail.png.png)
 
 ### Annotation
 
@@ -100,7 +100,7 @@ This page visualizes MaxScale configuration and clusters.
 
 This page visualizes MaxScale configuration as shown in the figure below.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-config-visualization.png.png)
+![](../.gitbook/assets/MaxGUI-config-visualization.png.png)
 
 #### Annotation
 
@@ -117,7 +117,7 @@ This page visualizes MaxScale configuration as shown in the figure below.
 
 This page shows all monitor clusters using [mariadbmon](maxscale-monitors/mariadb-monitor.md) module in a card-like view. Clicking on the card will visualize the cluster into a tree graph as shown in the following figure.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-cluster-visualization.png.png)
+![](../.gitbook/assets/MaxGUI-cluster-visualization.png.png)
 
 #### Annotation
 
@@ -156,7 +156,7 @@ This page shows all monitor clusters using [mariadbmon](maxscale-monitors/mariad
 
 This page shows and allows editing of MaxScale parameters.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-settings.png.png)
+![](../.gitbook/assets/MaxGUI-settings.png.png)
 
 ### Annotation
 
@@ -168,7 +168,7 @@ This page shows and allows editing of MaxScale parameters.
 
 This page show real-time MaxScale logs with filter options.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-logs-archive.png.png)
+![](../.gitbook/assets/MaxGUI-logs-archive.png.png)
 
 ### Annotation
 
@@ -179,7 +179,7 @@ This page show real-time MaxScale logs with filter options.
 
 On this page, you may add numerous worksheets, each of which can be used for "Run queries", "Data migration", or "Create an ERD" task.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-workspace.png.png)
+![](../.gitbook/assets/MaxGUI-workspace.png.png)
 
 ### Run Queries
 
@@ -191,7 +191,7 @@ The Query Editor worksheet will be rendered in the active worksheet after correc
 
 There are various features in the Query Editor worksheet, the most notable ones are listed below.
 
-![](../.gitbook/assets/mariadb-corporation/MaxScale/25.01.2-docs/Documentation/Tutorials/images/MaxGUI-workspace-query-editor.png.png)
+![](../.gitbook/assets/MaxGUI-workspace-query-editor.png.png)
 
 **Create a new connection**
 

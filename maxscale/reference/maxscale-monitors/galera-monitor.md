@@ -29,32 +29,13 @@ MaxScale 2.4.0 added support for replicas replicating off of Galera nodes. If a 
 
 ### MariaDB Advanced Cluster (RAFT) support
 
-As of MaxScale 25.10.2, the Galera Monitor can monitor a
-[MariaDB Advanced Cluster](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/aEnK0ZXmUbJzqQrTjFyb/advanced-cluster).
-Advanced Cluster is a new synchronized replication scheme that offers reduced
-latency compared to the standard Galera implementation. An Advanced Cluster
-promotes one server as the *leader*. The leader approves and orders
-transactions. Since all transactions must pass through the leader, the Galera
-Monitor gives the leader the *Write* role, causing e.g. the
-ReadWriteSplit-router to direct all writes to it. If the leader cannot be found,
-the cluster is in a failure state, and both reads and writes are disabled until
-a leader emerges.
+As of MaxScale 25.10.2, the Galera Monitor can monitor a [MariaDB Advanced Cluster](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/advanced-cluster). Advanced Cluster is a new synchronized replication scheme that offers reduced latency compared to the standard Galera implementation. An Advanced Cluster promotes one server as the _leader_. The leader approves and orders transactions. Since all transactions must pass through the leader, the Galera Monitor gives the leader the _Write_ role, causing e.g. the ReadWriteSplit-router to direct all writes to it. If the leader cannot be found, the cluster is in a failure state, and both reads and writes are disabled until a leader emerges.
 
-The Galera Monitor automatically detects if the monitored cluster is a
-traditional Galera Cluster or an Advanced Cluster by looking at the
-`wsrep_provider_name` status variable. All servers in the cluster must use the
-same type of replication; mixing Galera and Advanced Cluster nodes is not
-allowed and will cause the monitor to withhold all *Write* and *Read* roles.
+The Galera Monitor automatically detects if the monitored cluster is a traditional Galera Cluster or an Advanced Cluster by looking at the `wsrep_provider_name` status variable. All servers in the cluster must use the same type of replication; mixing Galera and Advanced Cluster nodes is not allowed and will cause the monitor to withhold all _Write_ and _Read_ roles.
 
-The Galera Monitor does not require any additional configuration to be used with
-a MariaDB Advanced Cluster. On the contrary, Galera Monitor ignores the values
-of most of its configuration settings when dealing with a MariaDB Advanced
-Cluster. Specifically, `disable_master_failback`, `disable_master_role_setting`,
-`use_priority` and `root_node_as_master` are ineffective when dealing with an
-Advanced Cluster, as the cluster decides on the leader itself.
+The Galera Monitor does not require any additional configuration to be used with a MariaDB Advanced Cluster. On the contrary, Galera Monitor ignores the values of most of its configuration settings when dealing with a MariaDB Advanced Cluster. Specifically, `disable_master_failback`, `disable_master_role_setting`, `use_priority` and `root_node_as_master` are ineffective when dealing with an Advanced Cluster, as the cluster decides on the leader itself.
 
-During startup, the monitor prints a log message specifying which cluster type
-it detected.
+During startup, the monitor prints a log message specifying which cluster type it detected.
 
 ## Required Grants
 
@@ -114,7 +95,7 @@ This option allows Galera nodes to be used normally when they are donors in an S
 
 Normally when an SST is performed, both participating nodes lose their `Synced`, `Write` or `Read` statuses. When this option is enabled, the donor is treated as if it was a normal member of the cluster (i.e. `wsrep_local_state = 4`). This is especially useful if the cluster drops down to one node and an SST is required to increase the cluster size.
 
-The current list of non-blocking SST methods are `xtrabackup`, `xtrabackup-v2` and `mariadb-backup`. Read the [wsrep\_sst\_method](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/3VYeeVGUV4AMqrA3zwy7/reference/galera-cluster-system-variables) documentation for more details.
+The current list of non-blocking SST methods are `xtrabackup`, `xtrabackup-v2` and `mariadb-backup`. Read the [wsrep\_sst\_method](https://app.gitbook.com/s/3VYeeVGUV4AMqrA3zwy7/reference/galera-cluster-system-variables) documentation for more details.
 
 ### `disable_master_role_setting`
 

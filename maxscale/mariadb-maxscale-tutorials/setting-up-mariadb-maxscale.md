@@ -15,7 +15,7 @@ This tutorial assumes that one of the standard MaxScale binary distributions is 
 
 ### Installing MaxScale
 
-The precise installation process varies from one distribution to another. Details on package installation can be found in the [Installation Guide](../maxscale-management/installation-and-configuration/maxscale-installation-guide.md).
+The precise installation process varies from one distribution to another. Details on package installation can be found in the [Installation Guide](../maxscale-management/deployment/installation-and-configuration/maxscale-installation-guide.md).
 
 {% hint style="info" %}
 If you are using MaxScale Trial, see [Installing MaxScale Trial](../maxscale-use-cases/maxscale-trial.md#installing-maxscale-trial).
