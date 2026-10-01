@@ -1,7 +1,4 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
-# Site structure for the "mariadb copy" test site (site_HdZoj), synced from copy-branch.
-# Section and space keys are their identity in GitBook: never change an existing key, or
-# GitBook detaches that space and creates a new one. Titles, order and grouping are safe to edit.
 site:
   title: mariadb copy
   structure:
