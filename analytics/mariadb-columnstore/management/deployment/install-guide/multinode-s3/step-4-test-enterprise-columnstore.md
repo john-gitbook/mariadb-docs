@@ -11,7 +11,7 @@ This page details step 4 of a 5-step procedure for deploying Multi-Node ColumnSt
 
 This step tests MariaDB Enterprise Server and MariaDB ColumnStore.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 Interactive commands are detailed. Alternatively, the described operations can be performed using automation.
 
