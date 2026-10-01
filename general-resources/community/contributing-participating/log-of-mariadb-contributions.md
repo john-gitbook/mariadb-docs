@@ -11,8 +11,7 @@ License:  MCA or BSD
 Reviewer: ....
 ```
 
-For those cases this is not done, please add to this page a short line for each
-push into MariaDB that includes code from contributors not employed by the MariaDB Foundation or the MariaDB Corporation. The purpose of this is to properly track that all such patches are submitted either under [MCA](../community/legal-documents/mca.md) or BSD-new and to ensure that the developer gets credit for his work.
+For those cases this is not done, please add to this page a short line for each push into MariaDB that includes code from contributors not employed by the MariaDB Foundation or the MariaDB Corporation. The purpose of this is to properly track that all such patches are submitted either under [MCA](../community/legal-documents/mca.md) or BSD-new and to ensure that the developer gets credit for his work.
 
 Example:
 
@@ -375,15 +374,15 @@ Power8 optimization
 
 * [MariaDB Foundation](https://mariadb.org)
 
-Reviews for [replication](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication), [encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption), compression, [Galera](https://app.gitbook.com/s/3VYeeVGUV4AMqrA3zwy7/), [Connect](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/storage-engines/connect) storage engine, [Mroonga](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/storage-engines/mroonga) storage engine, [Spider](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/storage-engines/spider), [OR REPLACE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create) etc.
+Reviews for [replication](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/ha-and-performance/standard-replication), [encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption), compression, [Galera](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/3VYeeVGUV4AMqrA3zwy7/), [Connect](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/storage-engines/connect) storage engine, [Mroonga](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/storage-engines/mroonga) storage engine, [Spider](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/server-usage/storage-engines/spider), [OR REPLACE](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/reference/sql-statements/data-definition/create) etc.
 
 * [MariaDB Foundation](https://mariadb.org)
 
-[Encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption), scrubbing, enhanced semisync, dump thread enhancements, thd\_specifics plugin service
+[Encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption), scrubbing, enhanced semisync, dump thread enhancements, thd\_specifics plugin service
 
 * Google
 
-Table level [encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption), [plugin for secure encryption](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/enterprise-server/about/mariadb-enterprise-server-differences/mariadb-enterprise-server-data-at-rest-encryption/encryption-plugins)
+Table level [encryption](https://app.gitbook.com/s/SsmexDFPv2xG2OTyO5yV/security/encryption/data-at-rest-encryption), [plugin for secure encryption](https://app.gitbook.com/s/aEnK0ZXmUbJzqQrTjFyb/enterprise-server/about/mariadb-enterprise-server-differences/mariadb-enterprise-server-data-at-rest-encryption/encryption-plugins)
 
 * [Eperi GmbH](https://eperi.de/)
 
@@ -391,7 +390,7 @@ Table level [encryption](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/SsmexD
 
 * [Kakao Inc](https://www.kakao.com)
 
-[Galera (wsrep patches)](https://app.gitbook.com/s/3VYeeVGUV4AMqrA3zwy7/)
+[Galera (wsrep patches)](https://app.gitbook.com/o/diTpXxF5WsbHqTReoBsS/s/3VYeeVGUV4AMqrA3zwy7/)
 
 * [Codership](https://galeracluster.com/)
 

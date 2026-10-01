@@ -84,7 +84,7 @@
 
 ***
 
-* [Product Development](development-articles/README.md)
+* [Product Development](development-articles.md)
 
 ## Additional Resources
 
