@@ -22,6 +22,6 @@ Open either one below, or use the switcher at the top of the sidebar.
 [GridGain 8](https://app.gitbook.com/s/ArQLGGUSG0VzKl1t2Y53/)
 {% endcontent-ref %}
 
-{% content-ref url="https://app.gitbook.com/s/oHbGEk22iR73P3x6DryR/" %}
-[GridGain 9](https://app.gitbook.com/s/oHbGEk22iR73P3x6DryR/)
+{% content-ref url="{gridgain9}" %}
+[GridGain 9]({gridgain9})
 {% endcontent-ref %}

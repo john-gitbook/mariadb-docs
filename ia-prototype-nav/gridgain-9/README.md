@@ -20,46 +20,46 @@ Start from the overview to see how the cluster, SQL engine, and transaction mode
 
 ## Get Started
 
-{% content-ref url="get-started/install-gridgain-9.md" %}
-[install-gridgain-9.md](get-started/install-gridgain-9.md)
+{% content-ref url="{gridgain9}/gridgain9-management/installation" %}
+[Installation]({gridgain9}/gridgain9-management/installation)
 {% endcontent-ref %}
 
-{% content-ref url="get-started/connect-to-gridgain-9.md" %}
-[connect-to-gridgain-9.md](get-started/connect-to-gridgain-9.md)
+{% content-ref url="{gridgain9}/gridgain9-get-started/start-cluster" %}
+[Start a GridGain 9 Cluster]({gridgain9}/gridgain9-get-started/start-cluster)
 {% endcontent-ref %}
 
 ## Tutorials
 
-{% content-ref url="tutorials/gridgain-9-tutorial.md" %}
-[gridgain-9-tutorial.md](tutorials/gridgain-9-tutorial.md)
+{% content-ref url="{gridgain9}/gridgain9-get-started/quick-start" %}
+[Quick Start]({gridgain9}/gridgain9-get-started/quick-start)
 {% endcontent-ref %}
 
 ## How-To Guides
 
-{% content-ref url="how-to-guides/configure-gridgain-9.md" %}
-[configure-gridgain-9.md](how-to-guides/configure-gridgain-9.md)
+{% content-ref url="{gridgain9}/reference/configuration" %}
+[Configuration Parameters]({gridgain9}/reference/configuration)
 {% endcontent-ref %}
 
-{% content-ref url="how-to-guides/secure-gridgain-9.md" %}
-[secure-gridgain-9.md](how-to-guides/secure-gridgain-9.md)
+{% content-ref url="{gridgain9}/security" %}
+[Security]({gridgain9}/security)
 {% endcontent-ref %}
 
 ## Concepts
 
-{% content-ref url="overview/what-is-gridgain-9.md" %}
-[what-is-gridgain-9.md](overview/what-is-gridgain-9.md)
+{% content-ref url="{gridgain9}" %}
+[What Is GridGain 9]({gridgain9})
 {% endcontent-ref %}
 
-{% content-ref url="concepts/how-gridgain-9-works.md" %}
-[how-gridgain-9-works.md](concepts/how-gridgain-9-works.md)
+{% content-ref url="{gridgain9}/architecture" %}
+[Architecture]({gridgain9}/architecture)
 {% endcontent-ref %}
 
 ## Reference
 
-{% content-ref url="reference/gridgain-9-reference.md" %}
-[gridgain-9-reference.md](reference/gridgain-9-reference.md)
+{% content-ref url="{gridgain9}/reference" %}
+[Reference]({gridgain9}/reference)
 {% endcontent-ref %}
 
-{% content-ref url="release-notes/gridgain-9-releases.md" %}
-[gridgain-9-releases.md](release-notes/gridgain-9-releases.md)
+{% content-ref url="{release-notes}/gridgain-9" %}
+[GridGain 9 Release Notes]({release-notes}/gridgain-9)
 {% endcontent-ref %}
