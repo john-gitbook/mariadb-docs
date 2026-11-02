@@ -17,7 +17,7 @@ The topology consists of:
 * S3-compatible object storage for data.
 * Shared local storage (e.g., NFS, EBS Multi-Attach) for the Storage Manager metadata directory.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 ## Procedure
 

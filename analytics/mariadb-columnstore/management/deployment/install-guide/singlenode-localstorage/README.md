@@ -27,7 +27,7 @@ layout:
 
 MariaDB ColumnStore is a columnar storage engine for MariaDB Enterprise Server 10.6. ColumnStore is best suited for Online Analytical Processing (OLAP) workloads.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 This page provides an overview of the topology, requirements, and deployment procedures.
 

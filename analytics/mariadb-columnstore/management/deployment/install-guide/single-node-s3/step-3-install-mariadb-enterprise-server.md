@@ -11,7 +11,7 @@ This page details step 3 of the 9-step procedure "Deploy ColumnStore Object Stor
 
 This step installs MariaDB Enterprise Server, MariaDB ColumnStore, CMAPI, and dependencies.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 Interactive commands are detailed. Alternatively, the described operations can be performed using automation.
 

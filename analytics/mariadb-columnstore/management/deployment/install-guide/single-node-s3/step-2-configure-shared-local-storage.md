@@ -11,7 +11,7 @@ This page details step 2 of the 9-step procedure "Deploy ColumnStore Object Stor
 
 This step configures shared local storage on systems hosting ColumnStore.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 Interactive commands are detailed. Alternatively, the described operations can be performed using automation.
 

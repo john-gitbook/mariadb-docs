@@ -18,7 +18,7 @@ The [ColumnStore Bulk Data API](columnstore-bulk-data-loading.md) enables the cr
 The MaxScale CDC Data Adapter has been deprecated.
 {% endhint %}
 
-The MaxScale CDC Data Adapter allows streaming change data events (binary log events) from MariaDB Master hosting non-columnstore engines (InnoDB, MyRocks, MyISAM) to MariaDB ColumnStore. In other words, replicate data from a MariaDB master server to MariaDB ColumnStore. It acts as a CDC Client for MaxScale and uses the events received from MaxScale as input to MariaDB ColumnStore Bulk Data API to push the data to MariaDB ColumnStore. [maxscale-cdc-adapter](../../../.gitbook/assets/maxscale-cdc-adapter.jpg)
+The MaxScale CDC Data Adapter allows streaming change data events (binary log events) from MariaDB Master hosting non-columnstore engines (InnoDB, MyRocks, MyISAM) to MariaDB ColumnStore. In other words, replicate data from a MariaDB master server to MariaDB ColumnStore. It acts as a CDC Client for MaxScale and uses the events received from MaxScale as input to MariaDB ColumnStore Bulk Data API to push the data to MariaDB ColumnStore. [maxscale-cdc-adapter](../../.gitbook/assets/maxscale-cdc-adapter.jpg)
 
 It registers with MariaDB MaxScale as a CDC Client using the [MaxScale CDC Connector API](https://mariadb.com/downloads/mariadb-ax/connector), receiving change data records from MariaDB MaxScale (that are converted from binlog events received from the Master on MariaDB TX) in a JSON format. Then, using the MariaDB ColumnStore bulk write SDK, it converts the JSON data into API calls and streams it to a MariaDB PM node. The adapter has options to insert all the events in the same schema as the source database table or insert each event with metadata as well as table data. The event meta data includes the event timestamp, the GTID, event sequence and event type (insert, update, delete).
 
@@ -277,7 +277,7 @@ Each MariaDB ColumnStore Bulk Loader block needs to be configured. On the one ha
 
 Both configurations can be set in each block’s settings tab.
 
-![PDI Plugin Block settings info graphic](../../../.gitbook/assets/cs_pdi_block_settings.png)
+![PDI Plugin Block settings info graphic](../../.gitbook/assets/cs_pdi_block_settings.png)
 
 The database connection configuration follows PDI’s default schema.
 
@@ -287,7 +287,7 @@ Information on how to prepare the `ColumnStore.xml` configuration file can be fo
 
 ### Usage
 
-![PDI Plugin Block mapping info graphic](../../../.gitbook/assets/cs_pdi_block_mapping.png)
+![PDI Plugin Block mapping info graphic](../../.gitbook/assets/cs_pdi_block_mapping.png)
 
 Once a block is configured and all inputs are connected in PDI, the inputs have to be mapped to ColumnStore’s table format.
 

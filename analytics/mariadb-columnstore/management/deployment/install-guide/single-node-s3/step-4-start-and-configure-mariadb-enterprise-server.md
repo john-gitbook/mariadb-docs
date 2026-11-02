@@ -9,7 +9,7 @@ hidden: true
 
 This step starts and configures MariaDB Enterprise Server, and MariaDB ColumnStore.
 
-{% include "../../../../../.gitbook/includes/the-instructions-were-teste....md" %}
+{% include "../../../../.gitbook/includes/the-instructions-were-teste....md" %}
 
 ## Stop the ColumnStore Services
 
