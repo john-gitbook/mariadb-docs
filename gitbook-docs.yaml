@@ -166,7 +166,8 @@ site:
     - type: section
       key: mariadb-cloud-sec
       title: Cloud
-      path: mariadb-cloud
+      path: mariadb-sky
+      description: ""
       icon: cloud
       children:
         - type: space
