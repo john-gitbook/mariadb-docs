@@ -50,7 +50,8 @@ site:
         - type: section
           key: enterprise-server-sec
           title: Server
-          path: enterprise-server
+          path: enterprise-serverssss
+          description: ""
           icon: database
           children:
             - type: space
